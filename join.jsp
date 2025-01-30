@@ -55,7 +55,7 @@
 									<tr>
 										<th> * 아이디 </th> <!-- *붙이면 필수항목 -->
 										<td>
-											<input type="text" class="input" name="user_id" size="30" placeholder="공백없이 20자 이내로 작성해라" required autofocus> 
+											<input type="text" class="input" name="user_id" size="30" placeholder="공백없이 20자 이내로 작성" required autofocus> 
 											<input type="button" name="dubChk" value="중복확인" style="margin-left:10px" onclick="confirmId()">										
 										</td>
 									</tr>
@@ -63,19 +63,19 @@
 									<tr>
 										<th> * 비밀번호 </th> <!-- *붙이면 필수항목 -->
 										<td>
-											<input type="password" class="input" name="user_pwd" size="20" placeholder="공백없이 20자 이내로 작성해라" required > 
+											<input type="password" class="input" name="user_pwd" size="20" placeholder="영문,특수문자 포함8자 이상" required > 
 									</tr>
 									
 									<tr>
 										<th> * 비밀번호(확인) </th> <!-- *붙이면 필수항목 -->
 										<td>
-											<input type="password" class="input" name="re_pwd" size="20" placeholder="비밀번호 확인필요하다" required > 
+											<input type="password" class="input" name="re_pwd" size="20" placeholder="비밀번호 재확인필요" required > 
 									</tr>
 									
 									<tr>
 										<th> * 이름 </th> <!-- *붙이면 필수항목 -->
 										<td>
-											<input type="text" class="input" name="user_name" size="50" placeholder="이름 작성해줘라" required > 
+											<input type="text" class="input" name="user_name" size="50" placeholder="이름 작성" required > 
 									</tr>			
 									
 									<tr>
@@ -93,41 +93,74 @@
 									<tr>
 										<th> * 생년월일 </th> <!-- *붙이면 필수항목 -->
 										<td>
-											<input type="Date" class="input" name="user_birthday" size="8" placeholder="생년월일 작성해줘라" required > 
+											<input type="Date" class="input" name="user_birth" size="8"  required > 
 									</tr>	
 	
 									<tr>
-										<th> 전화번호 </th> <!-- *붙이면 필수항목 -->
+										<th> * 전화번호 </th> <!-- *붙이면 필수항목 -->
 										<td>
-											<input type="text" class="input" name="user_hp1" size="3" style="wdith:50px">
+											<select class="input" name="user_hp1" style="width:80px">
+												<option value="0"> 선택해주세요 </option>
+												<option value="010"> 010 </option>
+												<option value="011"> 011 </option>
+												<option value="018"> 018 </option>
+												<option value="016"> 016 </option>
+											</select>
+											<!-- <input type="text" class="input" name="user_hp1" size="3" style="wdith:50px"> -->
 											-
-											<input type="text" class="input" name="user_hp2" size="4" style="wdith:70px">
+											<input type="text" class="input" name="user_hp2" size="4" style="width:80px">
 											-
-											<input type="text" class="input" name="user_hp3" size="4" style="wdith:70px"> 
+											<input type="text" class="input" name="user_hp3" size="4" style="width:80px"> 
+										</td>
+									</tr>
+									
+									<tr>
+										<th> 지역 전화번호 </th> <!-- *붙이면 필수항목 -->
+										<td>
+											<select class="input" name="user_local1" style="width:80px">
+												<option value="0"> 선택해주세요 </option>
+												<option value="02"> 02 </option>
+												<option value="031"> 031 </option>
+												<option value="032"> 032 </option>
+												<option value="033"> 033 </option>
+												<option value="041"> 041 </option>
+												<option value="042"> 042 </option>
+												<option value="043"> 043 </option>
+												<option value="051"> 051 </option>
+												<option value="052"> 052 </option>
+												<option value="053"> 053 </option>
+												<option value="061"> 061 </option>
+												<option value="062"> 062 </option>
+												<option value="063"> 063 </option>
+											</select>
+											-
+											<input type="text" class="input" name="user_local2" size="4" style="wdith:70px">
+											-
+											<input type="text" class="input" name="user_local3" size="4" style="wdith:70px"> 
 										</td>
 									</tr>	
 									
 									<tr>
 										<th> * 주소 </th> <!-- *붙이면 필수항목 -->
 										<td>
-											<input type="text" id="sample4_postcode" placeholder="우편번호">
+											<input type="text" id="sample4_postcode" style="width:150x" placeholder="우편번호">
 											<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-											<input type="text" id="sample4_roadAddress" name="road" placeholder="도로명주소" required>
-											<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+											<input type="text" id="sample4_roadAddress" style="width:300px" name="road" placeholder="도로명주소" required>
+											<input type="text" id="sample4_jibunAddress" style="width:300px" placeholder="지번주소">
 											<span id="guide" style="color:#999;display:none"></span>
-											<input type="text" id="sample4_detailAddress" name="detail" placeholder="상세주소">
-											<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+											<input type="text" id="sample4_detailAddress" style="width:200px" name="detail" placeholder="상세주소">
+											<input type="text" id="sample4_extraAddress" style="width:200px" placeholder="참고항목">
 										</td>
 									</tr>
 									
 									<tr>
 										<th> * 이메일 </th> <!-- *붙이면 필수항목 -->
 										<td>
-											<input type="text" class="input" name="user_email1" size="50" style="wdith:50px" required>
+											<input type="text" class="input" name="user_email1" size="50" style="width:150px" required>
 											@
-											<input type="text" class="input" name="user_email2" size="50" style="wdith:50px" required >
+											<input type="text" class="input" name="user_email2" size="50" style="width:150px" required >
 											
-											<select class="input" name="user_email3" style="wdith:100px" onchange="selectEmailChk()">
+											<select class="input" name="user_email3" style="width:150px" onchange="selectEmailChk()">
 												<option value="0"> 직접 입력해주세요 </option>
 												<option value="naver.com"> naver.com </option>
 												<option value="gmail.com"> gmail.com </option>
@@ -136,31 +169,7 @@
 											</select>
 										</td>
 									</tr>		
-									
-									<tr>
-										<th> 지역 전화번호 </th> <!-- *붙이면 필수항목 -->
-										<td>
-											<input type="text" class="input" name="user_hpp1" size="3" style="wdith:50px">
-											-
-											<input type="text" class="input" name="user_hpp2" size="4" style="wdith:70px">
-											--
-											<input type="text" class="input" name="user_hpp3" size="4" style="wdith:70px"> 
-										</td>
-									</tr>
-									
-									 <!-- 개인정보 수집 동의 -->
-				          <!--        <div class="user1">
-					                  <h3 class="list">개인정보 수집/이용동의<span id="consentError"></span></h3>
-					                  <div id="informationConsent">
-					                  <span id="consentBox">
-					                      <h3>개인정보 처리방침<span id="consentError"></span></h3>
-					                      세부내용 중략
-					                  </span>
-						               </div>
-						               <label class="select"><input type="radio" id="check" name="check" value="동의">동의</label>
-						               <label class="select"><input type="radio" id="noneCheck"name="check" value="비동의" checked="checked">비동의</label>
-						               </div>
-						              -->
+						           
 									<tr>
 										<td colspan="2" style="border-bottom:none">
 										<br>
