@@ -5,23 +5,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- js -->
 <script src="${path}/resources/js/header.js" defer></script>
-<link rel="stylesheet" href="${path}/resources/css/header.css">
+
 <title>Header</title>
 </head>
 <body>
 	<header class="menu">
 		<div class="main-logo">
-			<img src="${path}/resources/image/logo.png" alt="로고">
+			<img src="${path}/resources/image/common/logo.png" alt="로고">
 		</div>
 		
 		<div class="travel">
 			<ul>
 				<li class="">
-					<a href="#">
-						추천
-					</a>
+					<a href="#">추천</a>
 					<div class="travel-menu">
 	            		<ul>
 	            			<li><a href="#">뚜벅이 코스</a></li>
@@ -31,9 +30,7 @@
 	            	</div>
 				</li>
 				<li class="">
-					<a href="#">
-						명소
-					</a>
+					<a href="#">명소</a>
 					<div class="travel-menu">
 	            		<ul>
 				            <li><a href="#">랜드마크</a></li>
@@ -54,14 +51,12 @@
         		</li>
 				<li>
 					<a href="#">
-						<i class="fa-solid fa-arrow-right-to-bracket" ></i>
-						로그인
+						<i class="fa-solid fa-arrow-right-to-bracket"></i>로그인
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa-solid fa-user-plus"></i>
-						회원가입
+						<i class="fa-solid fa-user-plus"></i> 회원가입
 					</a>
 				</li>
 			</ul>
@@ -77,8 +72,7 @@
 		        <ul>
 		            <li>
 		            	<a href="#">
-			            	추천
-			            	<i class="fa-solid fa-angle-down"></i>
+			            	추천 <i class="fa-solid fa-angle-down"></i>
 		            	</a>
 		            	<div class="side-travel-menu">
 		            		<ul>
@@ -90,8 +84,7 @@
 		            </li>
 		            <li>
 		            	<a href="#">
-			            	명소
-			            	<i class="fa-solid fa-angle-down"></i>
+			            	명소 <i class="fa-solid fa-angle-down"></i>
 		            	</a>
 		            	<div class="side-travel-menu">
 		            		<ul>
@@ -106,12 +99,14 @@
 	        <div class="side-user-menu">
 	        	<ul>
 		            <li>
-						<i class="fa-solid fa-arrow-right-to-bracket" id="icon"></i>
-						로그인
+		            	<a href="#">
+							<i class="fa-solid fa-arrow-right-to-bracket" id="icon"></i> 로그인
+						</a>
 					</li>
 					<li>
-						<i class="fa-solid fa-user-plus" id="icon"></i>
-						회원가입
+		            	<a href="#">
+							<i class="fa-solid fa-user-plus" id="icon"></i> 회원가입
+						</a>
 					</li>
 	        	</ul>
 	        </div>
