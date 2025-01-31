@@ -1,38 +1,38 @@
     
 ==================================================================
-1. ÇÁ·ÎÁ§Æ® »ı¼º : NEW > Spring Legacy Project > 
-   ÇÁ·ÎÁ§Æ®¸í ÀÔ·Â > nardrak_spring_mvc ¼±ÅÃ 
-   > ÆĞÅ°Áö¸í(3·¹º§ÀÌ»ó) ÀÔ·Â : com.spring.nardrak_mvc
+1. í”„ë¡œì íŠ¸ ìƒì„± : NEW > Spring Legacy Project > 
+   í”„ë¡œì íŠ¸ëª… ì…ë ¥ > nardrak_spring_mvc ì„ íƒ 
+   > íŒ¨í‚¤ì§€ëª…(3ë ˆë²¨ì´ìƒ) ì…ë ¥ : com.spring.nardrak_mvc
   
-   [HomeController.java ½ÇÇà]
-   => url °æ·Î => http://localhost/
+   [HomeController.java ì‹¤í–‰]
+   => url ê²½ë¡œ => http://localhost/
 
 ------------------------------------------------------------------
-1-1) Properties ¼³Á¤   
-     - project ¿ìÅ¬¸¯ > properties > Project Facets > java¸¦ 11·Î º¯°æ
-       Runtimes ÅÇ¿¡¼­ Apache Tomcat v9.0 Å¬¸¯ > Apply ¹öÆ°
+1-1) Properties ì„¤ì •   
+     - project ìš°í´ë¦­ > properties > Project Facets > javaë¥¼ 11ë¡œ ë³€ê²½
+       Runtimes íƒ­ì—ì„œ Apache Tomcat v9.0 í´ë¦­ > Apply ë²„íŠ¼
    
-     - project ¿ìÅ¬¸¯ > properties > Java Build Path > Library ÅÇ 
-       > jre System library ¼±ÅÃÈÄ Edit ¼±ÅÃ/¶Ç´Â jre System library ´õºíÅ¬¸¯
-       > ¼¼¹øÂ° workspace default JRE(jre1.11.0_xxx) ¼±ÅÃ
+     - project ìš°í´ë¦­ > properties > Java Build Path > Library íƒ­ 
+       > jre System library ì„ íƒí›„ Edit ì„ íƒ/ë˜ëŠ” jre System library ë”ë¸”í´ë¦­
+       > ì„¸ë²ˆì§¸ workspace default JRE(jre1.11.0_xxx) ì„ íƒ
    
-     - java compiler - 11¹öÀü È®ÀÎ
+     - java compiler - 11ë²„ì „ í™•ì¸
    
-   [Apply AND Close] Å¬¸¯
+   [Apply AND Close] í´ë¦­
 
 
 ------------------------------------------------------------------
 
-1-2-1) pom.xml¿¡ ¹öÀü ¹İ¿µ
+1-2-1) pom.xmlì— ë²„ì „ ë°˜ì˜
 	<properties>
 		<java-version>11</java-version>
 		<org.springframework-version>5.1.8.RELEASE</org.springframework-version>      
 	</properties>
 		
 		
-1-2-2) pom.xml¿¡ ¶óÀÌºê·¯¸® ¹İ¿µ
+1-2-2) pom.xmlì— ë¼ì´ë¸ŒëŸ¬ë¦¬ ë°˜ì˜
 		
-		<!-- jdbc ¼³Á¤ pom.xml¿¡ Ãß°¡  -->
+		<!-- jdbc ì„¤ì • pom.xmlì— ì¶”ê°€  -->
 		<dependency> 
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc6</artifactId> 
@@ -48,8 +48,8 @@
 
 ------------------------------------------------------------------
 
-1-3) context.xml¿¡ Ä¿³Ø¼ÇÇ® Ãß°¡ 
-    <!-- nardrak_spring_mvc °èÁ¤ ¿¬µ¿ : 1.225.126.54 (¿ÜºÎ È£½ºÆ®) -->
+1-3) context.xmlì— ì»¤ë„¥ì…˜í’€ ì¶”ê°€ 
+    <!-- nardrak_spring_mvc ê³„ì • ì—°ë™ : 1.225.126.54 (ì™¸ë¶€ í˜¸ìŠ¤íŠ¸) -->
     <Resource author="Container" 
 	    driverClassName="oracle.jdbc.driver.OracleDriver" 
 	    name="jdbc/nardrak_spring_mvc" 
@@ -61,16 +61,16 @@
 	    maxWait="1000"/>
 
 ==================================================================
-2. ÆĞÅ°Áö »ı¼º
+2. íŒ¨í‚¤ì§€ ìƒì„±
    com.spring.nardrak_mvc.controller
    com.spring.nardrak_mvc.service
    com.spring.nardrak_mvc.dao
    com.spring.nardrak_mvc.dto
 
 ==================================================================
-3. web.xml ¸Ç ¾Æ·¡¿¡ ÇÑ±Û ¾È±úÁöµµ·Ï Ãß°¡
+3. web.xml ë§¨ ì•„ë˜ì— í•œê¸€ ì•ˆê¹¨ì§€ë„ë¡ ì¶”ê°€
 
-	<!-- encoding ¼³Á¤ -->
+	<!-- encoding ì„¤ì • -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -92,12 +92,12 @@
 	</filter-mapping>
    
 ==================================================================
-4. pom.xml¿¡ Mybatis.jar ÆÄÀÏ ¼³Á¤
+4. pom.xmlì— Mybatis.jar íŒŒì¼ ì„¤ì •
    
-   mvnrepository.com¿¡¼­ 4°³ÀÇ ¶óÀÌºê·¯¸®¸¦ °Ë»öÇØ¼­ º¹»çÈÄ pom.xml¿¡ µî·ÏÇÏ¸é
-   maven Áß¾Ó repository(ÀúÀå¼Ò)·ÎºÎÅÍ ´Ù¿î·Îµå ÈÄ ºôµåµÇ¾î Maven Dependencies(.m2.repository)¿¡ ÀúÀåµÈ´Ù.
+   mvnrepository.comì—ì„œ 4ê°œì˜ ë¼ì´ë¸ŒëŸ¬ë¦¬ë¥¼ ê²€ìƒ‰í•´ì„œ ë³µì‚¬í›„ pom.xmlì— ë“±ë¡í•˜ë©´
+   maven ì¤‘ì•™ repository(ì €ì¥ì†Œ)ë¡œë¶€í„° ë‹¤ìš´ë¡œë“œ í›„ ë¹Œë“œë˜ì–´ Maven Dependencies(.m2.repository)ì— ì €ì¥ëœë‹¤.
    
-		<!-- Mybatis ¼³Á¤ ½ÃÀÛ -->
+		<!-- Mybatis ì„¤ì • ì‹œì‘ -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
@@ -118,7 +118,7 @@
    
 ==================================================================
 
-5. [CustomerController.java] ¼³Á¤
+5. [CustomerController.java] ì„¤ì •
     
 	package com.spring.nardrak_mvc.controller;
 	
@@ -133,7 +133,7 @@
 	
 		private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 	
-		// -------------------------[¸ŞÀÎ È­¸é]-------------------------
+		// -------------------------[ë©”ì¸ í™”ë©´]-------------------------
 		@RequestMapping("main.do")
 	    public String main() {
 	        logger.info("<<< url ==>  /main.do >>>");
@@ -144,80 +144,80 @@
 	}
 	
 ==================================================================
-6. [CustomerDAOImpl.java] ¼³Á¤
+6. [CustomerDAOImpl.java] ì„¤ì •
 
 	@Repository
 	public class CustomerDAOImpl implements CustomerDAO {
 		// 6-2)
 		@Autowired
-		private SqlSessionTemplate sqlSession;   // dataSource-config.xml - ÄÁ³Ø¼ÇÇ® + ¸¶ÀÌ¹ÙÆ¼½º ¼³Á¤(pom.xml)
+		private SqlSessionTemplate sqlSession;   // dataSource-config.xml - ì»¨ë„¥ì…˜í’€ + ë§ˆì´ë°”í‹°ìŠ¤ ì„¤ì •(pom.xml)
 
    }
    
 ------------------------------------------------------------------
-6-1) src/main/resources/dataSource-config.xml ¼³Á¤
-6-1-1) web.xml¿¡ µî·ÏÇØ¾ß ÇÔ 
+6-1) src/main/resources/dataSource-config.xml ì„¤ì •
+6-1-1) web.xmlì— ë“±ë¡í•´ì•¼ í•¨ 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/spring/root-context.xml
-			classpath:/dataSource-config.xml <!-- dataSource-config µî·Ï -->
+			classpath:/dataSource-config.xml <!-- dataSource-config ë“±ë¡ -->
 		</param-value>
 	</context-param>
 	
-6-1-2) src/main/resources/dataSource-config.xml ¼³Á¤
--- src/main/resources/ ¿ìÅ¬¸¯ > New > Spring Bean Configuration File > dataSource-config.xml
+6-1-2) src/main/resources/dataSource-config.xml ì„¤ì •
+-- src/main/resources/ ìš°í´ë¦­ > New > Spring Bean Configuration File > dataSource-config.xml
 		<?xml version="1.0" encoding="UTF-8"?>
 		<beans xmlns="http://www.springframework.org/schema/beans"
 		   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 				
-			<!-- Mybatis ¼³Á¤ ½ÃÀÛ -->
-		    <!-- ÄÁ³Ø¼ÇÇ® -->
+			<!-- Mybatis ì„¤ì • ì‹œì‘ -->
+		    <!-- ì»¨ë„¥ì…˜í’€ -->
 		    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		       <property name="jndiName" value="java:comp/env/jdbc/nardrak_spring_mvc" />
 		       <property name="resourceRef" value="true" />
 		    </bean>
 		    
-		    <!-- Mybatis ÆÄÀÏ À§Ä¡ ÁöÁ¤, ÄÁ³Ø¼ÇÇ® -->
+		    <!-- Mybatis íŒŒì¼ ìœ„ì¹˜ ì§€ì •, ì»¨ë„¥ì…˜í’€ -->
 		    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		       <property name="dataSource" ref="dataSource" />
-		       <!-- src/main/resources/ÇÏÀ§¿¡ mappers Æú´õ »ı¼º -->
-		       <!-- mappers/**/ ÇÏÀ§ Æú´õ ¾î¶²°Íµµ °¡´ÉÇÔ -->
+		       <!-- src/main/resources/í•˜ìœ„ì— mappers í´ë” ìƒì„± -->
+		       <!-- mappers/**/ í•˜ìœ„ í´ë” ì–´ë–¤ê²ƒë„ ê°€ëŠ¥í•¨ -->
 		       <property name="mapperLocations" value="classpath:mappers/**/*.xml" />  
 		    </bean>
 		    
-		    <!-- »ı¼ºÀÚ DIÀÌ¸ç, sqlSessionÀÌ ÂüÁ¶º¯¼ö -->
+		    <!-- ìƒì„±ì DIì´ë©°, sqlSessionì´ ì°¸ì¡°ë³€ìˆ˜ -->
 		    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		       <constructor-arg ref="sqlSessionFactory" />
 		    </bean>
 		
 		</beans>
 ------------------------------------------------------------------
-6-2) DAOImpl¿¡ sqlSession Ãß°¡
+6-2) DAOImplì— sqlSession ì¶”ê°€
    
-   // Mybatis jar ÆÄÀÏµéÀÌ pom.xml¿¡ µî·ÏµÇ¾î ÀÖ¾î¾ß SqlSessionÀÌ import °¡´É
-   // dataSource-config.xml¿¡ bean id="sqlSession"·Î ¼³Á¤µÇ¾î ÀÖ¾î¾ß ÇÔ
+   // Mybatis jar íŒŒì¼ë“¤ì´ pom.xmlì— ë“±ë¡ë˜ì–´ ìˆì–´ì•¼ SqlSessionì´ import ê°€ëŠ¥
+   // dataSource-config.xmlì— bean id="sqlSession"ë¡œ ì„¤ì •ë˜ì–´ ìˆì–´ì•¼ í•¨
    
    @Autowired
-   private SqlSessionTemplate sqlSession;   // dataSource-config.xml - ÄÁ³Ø¼ÇÇ® + ¸¶ÀÌ¹ÙÆ¼½º ¼³Á¤(pom.xml)
+   private SqlSessionTemplate sqlSession;   // dataSource-config.xml - ì»¨ë„¥ì…˜í’€ + ë§ˆì´ë°”í‹°ìŠ¤ ì„¤ì •(pom.xml)
 
 ------------------------------------------------------------------ 
-6-3) ¸¶ÀÌ¹ÙÆ¼½º ¸ÅÆÛ ÆÄÀÏ ÀÛ¼º   
-     => 1. ÇÑµÎÁÙÀÇ ÀÚ¹ÙÄÚµå·Î DB¿¬µ¿À» Ã³¸®ÇÑ´Ù
-     => 2. SQL ¸í·É¾î¸¦ ÀÚ¹Ù ÄÚµå¿¡¼­ ºĞ¸®ÇÏ¿© XML ÆÄÀÏ¿¡ Mapper·Î µû·Î °ü¸®
+6-3) ë§ˆì´ë°”í‹°ìŠ¤ ë§¤í¼ íŒŒì¼ ì‘ì„±   
+     => 1. í•œë‘ì¤„ì˜ ìë°”ì½”ë“œë¡œ DBì—°ë™ì„ ì²˜ë¦¬í•œë‹¤
+     => 2. SQL ëª…ë ¹ì–´ë¥¼ ìë°” ì½”ë“œì—ì„œ ë¶„ë¦¬í•˜ì—¬ XML íŒŒì¼ì— Mapperë¡œ ë”°ë¡œ ê´€ë¦¬
          
-	- src/main/resources/¿¡¼­ Æú´õ »ı¼º : mappers Æú´õ »ı¼º
-	- ±× Æú´õ ¿ìÅ¬¸¯ > new > other > xml file > customerMapper.xml »ı¼º
+	- src/main/resources/ì—ì„œ í´ë” ìƒì„± : mappers í´ë” ìƒì„±
+	- ê·¸ í´ë” ìš°í´ë¦­ > new > other > xml file > customerMapper.xml ìƒì„±
 	  
-	-  customerMapper.xml¿¡ Ãß°¡
+	-  customerMapper.xmlì— ì¶”ê°€
 	<?xml version="1.0" encoding="UTF-8"?>
 
 	<!DOCTYPE mapper
      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
      
-    <mapper namespace="com.spring.nardrak_mvc.dao.CustomerDAO">  <!-- namespace="ÆĞÅ°Áö¸í.ÀÎÅÍÆäÀÌ½º" -->
+    <mapper namespace="com.spring.nardrak_mvc.dao.CustomerDAO">  <!-- namespace="íŒ¨í‚¤ì§€ëª….ì¸í„°í˜ì´ìŠ¤" -->
    
     </mapper> 
    
