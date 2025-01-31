@@ -12,7 +12,7 @@
 <title>Header</title>
 </head>
 <body>
-	<header class="menu">
+	<div id="header">
 		<div class="main-logo">
 			<img src="${path}/resources/image/common/logo.png" alt="로고">
 		</div>
@@ -67,6 +67,7 @@
 		
 		<!-- 슬라이드 메뉴 -->
 		<div class="side" id="side">
+			<!-- &times : 곱셈(multiple) 속성으로, 특수 문자 x와 동일 -->
 	        <button class="close-btn" id="close-btn">&times;</button>
 	        <div class="side-travel">
 		        <ul>
@@ -111,6 +112,6 @@
 	        	</ul>
 	        </div>
     	</div>
-	</header>
+	</div>
 </body>
 </html>
