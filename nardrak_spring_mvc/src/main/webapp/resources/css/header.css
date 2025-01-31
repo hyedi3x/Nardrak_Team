@@ -4,6 +4,7 @@
 body {
     margin: 0; /* body의 외부 여백을 없앰 */
     padding: 0; /* body의 내부 여백을 없앰 */
+    font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
 }
 
 /* menu 클래스 스타일 */
