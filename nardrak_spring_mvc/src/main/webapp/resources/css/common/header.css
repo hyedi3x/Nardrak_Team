@@ -1,143 +1,74 @@
-@charset "UTF-8"; /* CSS 문자 인코딩을 UTF-8로 설정 */
 
-/* body 태그 스타일 */
-body {
-    margin: 0; /* body의 외부 여백을 없앰 */
-    padding: 0; /* body의 내부 여백을 없앰 */
-    font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
+/*===================[header_SessionScope.jsp의 스타일 속성]===================*/
+#headerWrap {
+	position: relative; /* 자식 요소의 절대 위치를 위한 기준이 됨 */
+	width: 100vw;       /* viewport width */
+	height: 100vh;      /* viewport height */
+	margin: 0; 
+    padding: 0;  
 }
 
-/* menu 클래스 스타일 */
-.menu {
-    max-width: 1100px; /* 메뉴의 최대 너비 설정 */
-    width: 100%; /* 메뉴의 너비를 100%로 설정 */
-    margin: 0 auto; /* 메뉴를 화면 중앙에 배치 */
-    position: relative; /* 자식 요소의 절대 위치를 위한 기준이 됨 */
-    display: flex; /* 메뉴 항목을 가로로 배치 */
-    justify-content: space-between; /* 메뉴 항목들 사이에 균등한 간격 */
-    align-items: center; /* 메뉴 항목들을 세로로 중앙 정렬 */
-    padding: 15px 20px; /* 메뉴의 내부 여백 설정 */
-}
-
-/* 메뉴 배경 이미지 설정 */
-.menu:before {
-    content: ""; /* 콘텐츠는 없음 */
+/* 헤더 배경 이미지 설정 */
+#headerWrap:before {
     position: absolute; /* 메뉴의 절대 위치 */
-    top: 0; /* 화면 상단에 위치 */
-    left: 0; /* 화면 왼쪽에 위치 */
-    width: 100%; /* 배경의 너비는 100% */
-    height: 500px; /* 배경 이미지의 높이 */
+    width: 100%;        /* headerWrap(width: 100vw)의 너비 100% 상속*/
+    height: 450px;      /* 배경 이미지의 높이 */
     background: url("/nardrak_spring_mvc/resources/image/common/seoul.png") no-repeat center; /* 배경 이미지 삽입 */
-    background-size: cover; /* 배경 이미지의 크기를 부모 요소에 맞게 설정 */
-    z-index: -2; /* 배경을 맨 뒤로 보냄 */
+    background-size: cover;  /* 배경 이미지의 크기를 부모 요소에 맞게 설정 */
+    z-index: -2;        /* 배경 이미지를 모든 jsp 페이지의 맨 뒤로 보냄 */
     transition: opacity 0.3s ease; /* 배경 투명도에 대한 애니메이션 설정 */
+    content: "";        /* 콘텐츠는 없음 */
 }
 
-/* 메뉴의 흰색 배경 효과 */
-.menu:after{
-	content: ""; /* 빈 콘텐츠 삽입 */
-    width: 100%; /* 너비 100% */
-    height: 0; /* 기본 높이 0 */
-    position: absolute; /* 절대 위치 */
-    background: #fff; /* 흰색 배경 */
-    top: 0; /* 상단 위치 */
-    left: 0; /* 왼쪽 위치 */
-    z-index: -1; /* 요소를 뒤쪽으로 배치(배경 이미지보단 앞쪽) */
-    opacity: 0; /* 투명하게 처리 */
+/*===================[header.jsp의 스타일 속성]===================*/
+#header {
+	position: relative;    /* 자식 요소의 절대 위치를 위한 기준이 됨 */
+    display: flex; 
+    justify-content: space-between; /* 요소들을 균등한 간격으로 배치 */
+    align-items: center;   /* 요소들을 수직 중앙 정렬 */
+    width: 100%;           /* headerWrap(width: 100vw)의 너비 100% 상속*/
+    padding: 15px 0px;     /* 내부 여백 상하 좌우 */
+}
+
+/* 헤더에 마우스 오버시 흰색 배경 효과 */
+#header:after{
+	position: absolute;  /* 절대 위치 */
+    width: 100%;         /* 너비 100% */
+    background-color: #ffffff; /* 흰색 배경 */
+    top: 0;   /* top: 0px; left:0px -> transform: translate(0px, 0px);*/
+    left:0;
+    height: 0;
+    z-index: -1;   /* #header 요소를 배경 이미지 한칸 앞으로 배치  */
     transition: height 0.2s ease-out, opacity 0.2s ease-out; /* 높이 및 투명도 애니메이션 */	
+    opacity: 0;    /* 투명도 0 : 투명하게 처리 */
+	content: "";   /* 빈 콘텐츠 삽입 */
 }
 
-/* 햄버거 메뉴 클릭 시 배경 이미지 투명도 조정 */
-.menu.opacity:before {
-    opacity: 0.5; /* 배경 이미지의 투명도 조정 */
-    filter: blur(3px); /* 배경 이미지 흐리게 처리 */
-}
-
-/* 메뉴가 활성화된 상태에서의 스타일 */
-.menu.active:after {
+/* 헤더가 활성화된 상태에서의 스타일 */
+#header.active:after {
     height: 400px; /* 메뉴의 최대 높이를 충분히 크게 설정 */
-	opacity: 1;
-}
-
-/* 메뉴 항목의 링크 색깔 */
-.menu.active .travel a,
-.menu.active .user a {
-    color: black; /* 활성화된 메뉴에서 링크 색상을 검정으로 설정 */
+	opacity: 1;    /* 투명도 1 : 불투명*/
 }
 
 /* 로고 이미지 스타일 */
 .main-logo img {
-    max-width: 130px; /* 로고의 최대 너비 */
-    max-height: 130px; /* 로고의 최대 높이 */
-    width: auto; /* 너비 자동 조정 */
-    height: auto; /* 높이 자동 조정 */
     position: relative; /* 상대 위치 */
-    left: 0; /* 왼쪽 위치 설정 */
-    top: 0; /* 상단 위치 설정 */
+    max-width: 130px;   /* 로고의 최대 너비 */
+    max-height: 130px;  /* 로고의 최대 높이 */
+    width: auto;  /* 너비 자동 조정 */
+    height: auto; /* 높이 자동 조정 */
+    top: 0;   /* top: 0px; left:0px -> transform: translate(0px, 10px);*/
+    left: 10px;
 }
 
-/* 여행 관련 메뉴 스타일 */
-.travel {
-    position: absolute; /* 위치를 절대적으로 설정 */
-    left: 50%; /* 화면의 정중앙으로 위치 */
-    transform: translateX(-50%); /* 정확한 가운데 정렬 */
+/* 메뉴 항목의 링크 색깔 */
+#header.active .travel li a,
+#header.active .user li a {
+    color: #000000; /* 활성화된 메뉴에서 링크 색상을 검정으로 설정 */
 }
 
-/* 여행 메뉴 항목 스타일 */
-.travel li {
-    position: relative; /* 항목의 위치를 상대적으로 설정 */
-    padding: 10px; /* 항목의 내부 여백 설정 */
-}
-
-/* 여행 메뉴 항목 선택 시 스타일 */
-.travel li.select {
-    border-bottom: 3px solid black; /* 선택된 항목에 하단 테두리 추가 */
-}
-
-/* 여행 메뉴 하위 메뉴 스타일 */
-.travel-menu {
-    position: absolute; /* 위치를 절대적으로 설정 */
-    top: 100%; /* 상단에서 바로 아래에 위치 */
-    left: 0; /* 왼쪽 위치 설정 */
-    right: 0; /* 오른쪽 위치 설정 */
-    display: none; /* 기본적으로 하위 메뉴는 숨겨짐 */
-    padding: 10px; /* 내부 여백 설정 */
-    opacity: 0; /* 처음에는 투명 상태 */
-    visibility: hidden; /* 처음에는 보이지 않음 */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* 하위 메뉴의 애니메이션 설정 */
-}
-
-/* 여행 메뉴 하위 메뉴 활성화 시 표시 */
-.travel-menu.active {
-    opacity: 1; /* 하위 메뉴를 보이게 설정 */
-    display: flex; /* 하위 메뉴를 보이게 설정 */
-    visibility: visible; /* 하위 메뉴를 보이게 설정 */
-}
-
-/* 여행 메뉴 하위 항목들 스타일 */
-.travel-menu ul {
-    display: flex; /* 항목을 세로로 배치 */
-    flex-direction: column; /* 세로로 정렬 */
-    padding: 0; /* 내부 여백 제거 */
-    margin: 0; /* 외부 여백 제거 */
-    list-style: none; /* 목록 스타일 제거 */
-}
-
-/* 여행 메뉴 하위 항목 스타일 */
-.travel-menu li {
-    font-size: 0.9em; /* 항목 글자 크기 설정 */
-    padding: 8px 0; /* 항목의 내부 여백 설정 */
-    cursor: pointer; /* 항목을 클릭할 수 있도록 설정 */
-    white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
-}
-
-/* 여행 메뉴 항목의 링크 색상 설정 */
-.travel-menu a {
-    color: black !important; /* 링크 색상을 검정색으로 설정 */
-}
-
-/* 여행 및 사용자 메뉴의 ul 공통 스타일 */
-.travel ul, .user ul {
+/* ul 공통 스타일 */
+.travel-menu ul, .travel ul, .user ul {
     display: flex; /* 메뉴 항목을 가로로 배치 */
     margin: 0; /* 외부 여백 제거 */
     padding: 0; /* 내부 여백 제거 */
@@ -149,74 +80,129 @@ body {
     color: white; /* 링크 색상 흰색으로 설정 */
     margin-right: 20px; /* 항목 간의 간격 설정 */
     font-weight: bold; /* 글씨 두껍게 설정 */
-    text-decoration: none; /* 텍스트에 밑줄 제거 */
 }
 
-/* 사용자 메뉴 항목 스타일 */
+/* ------------------[추천|명소 헤더 스타일]---------------------- */
+.travel {
+    position: absolute; /* 위치를 절대적으로 설정 */
+    left: 50%;          /* 화면의 왼쪽 끝에서 50% 위치로 배치 */
+    transform: translateX(-50%);  /* left에 적용한 너비의 절반만큼 왼쪽으로 이동시켜, 요소가 정확히 화면의 중앙에 배치 */
+}
+
+/* a 링크 스타일 */
+.travel li a  {
+    position: relative; /* 항목의 위치를 상대적으로 설정 */
+    padding: 10px;      /* 항목의 내부 여백 설정 */
+    font-size: 18px;
+    
+}
+
+/* 여행 메뉴 항목 선택 시 스타일 */
+.travel li.select {
+	padding-bottom: 5px;
+    border-bottom: 2px solid #012a4a; /* 선택된 항목에 하단 테두리 추가 */
+}
+
+/* 추천|명소 헤더 하위 메뉴 스타일 */
+.travel-menu {
+    position: absolute; /* 위치를 절대적으로 설정 */
+    top: 100%;          /* 상단에서 바로 아래에 위치 */
+    left: 0;            /* 왼쪽 위치 설정 */
+    right: 0;           /* 오른쪽 위치 설정 */
+    opacity: 0;         /* 처음에는 투명 상태 */
+    display: none;
+    visibility: hidden; /* 처음에는 보이지 않음 */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* 하위 메뉴의 애니메이션 설정 */
+}
+
+/* 여행 메뉴 하위 메뉴 활성화 시 표시 */
+.travel-menu.active {
+    display: flex;
+    visibility: visible; /* 하위 메뉴를 보이게 설정 */
+    opacity: 1; 
+}
+
+/* 여행 메뉴 하위 항목들 스타일 */
+.travel-menu ul {
+    display: flex;
+    flex-direction: column; /* 요소 방향 세로 배치*/
+}
+
+/* 여행 메뉴 하위 항목 스타일 */
+.travel-menu li {
+    font-size: 14px; /* 항목 글자 크기 설정 */
+    padding: 8px 0px; /* 항목의 내부 여백 설정 */
+    white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
+}
+
+/* 여행 메뉴 항목의 링크 색상 설정 */
+.travel-menu a {
+    color: black; /* 링크 색상을 검정색으로 설정 */
+}
+
+/* ------------------[사용자 메뉴 헤더 스타일(로그인, 회원가입)]---------------------- */
 .user li {
-    display: flex; /* 항목을 가로로 배치 */
-    flex-direction: column; /* 항목을 세로로 정렬 */
-    align-items: center; /* 항목을 중앙에 정렬 */
-    margin: auto 10px; /* 항목 간의 간격 설정 */
+    display: flex; 
+    flex-direction: column;  /* 요소 방향 세로 배치*/
+    align-items: center;     /* 항목을 중앙에 정렬 */
+    margin: auto 10px;       /* 항목 간의 간격 설정 */
 }
 
-/* 사용자 메뉴 항목 안의 링크 스타일 */
+/* a 링크 스타일 */
 .user li a {
-    display: flex; /* 항목을 가로로 배치 */
-    flex-direction: column; /* 항목을 세로로 정렬 */
-    align-items: center; /* 항목을 중앙에 정렬 */
-    gap: 5px; /* 아이콘과 텍스트 간의 간격 설정 */
+    display: flex; 
+    flex-direction: column;  /* 요소 방향 세로 배치*/
+    align-items: center;     /* 요소들을 수직 중앙 정렬 */
+    font-size: 15px; 
+    gap: 5px;                /* 아이콘과 텍스트 간의 간격 설정 */
 }
 
 /* 검색 아이콘 크기 설정 */
 #search {
-    font-size: 20px; /* 검색 아이콘 크기 설정 */
-    margin-right: 10px; /* 오른쪽 간격 설정 */
+    font-size: 18px;    /* 검색 아이콘 크기 설정 */
 }
 
-/* 햄버거 메뉴 버튼 스타일 */
+/* ------------------[메뉴바 버튼 스타일]---------------------- */
 #menu-button {
-    display: none; /* 기본적으로 햄버거 메뉴는 숨겨짐 */
-    color: white; /* 햄버거 메뉴 아이콘 색상 */
-    padding: 10px; /* 내부 여백 설정 */
-    position: fixed; /* 화면 고정 위치 */
-    top: 20px; /* 상단에서 20px 떨어짐 */
-    right: 20px; /* 오른쪽에서 20px 떨어짐 */
-    cursor: pointer; /* 클릭 가능한 커서 스타일 */
+    display: none;    /* 기본적으로 햄버거 메뉴는 숨겨짐 */
+    color: white;     /* 햄버거 메뉴 아이콘 색상 */
+    padding: 10px;    /* 내부 여백 설정 */
+    position: fixed;  /* 화면 고정 위치 */
+    top: 20px;        /* 상단에서 20px 떨어짐 */
+    right: 20px;      /* 오른쪽에서 20px 떨어짐 */
+    font-size: 20px;  /* 검색 아이콘 크기 설정 */
 }
 
-/* 슬라이드 메뉴 스타일 */
+/* 메뉴바 스타일 */
 .side {
     position: fixed; /* 화면 고정 위치 */
-    top: 0; /* 화면 상단에 위치 */
-    right: 0; /* 화면 오른쪽에 위치 */
-    width: 300px; /* 메뉴의 너비 설정 */
-    height: 100%; /* 메뉴의 높이를 화면 높이에 맞춤 */
+    top: 0; 
+    right: 0; 
+    width: 250px;  
+    height: 100%;    /* 메뉴의 높이를 화면 높이에 맞춤 */
     background-color: white; /* 배경을 흰색으로 설정 */
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* 메뉴 왼쪽에 그림자 추가 */
-    z-index: 100; /* 메뉴가 다른 요소들보다 위에 보이도록 설정 */
-    flex-direction: column; /* 항목들을 세로로 배치 */
-    padding: 20px; /* 내부 여백 설정 */
+    box-shadow: -2px 0 3px rgba(0, 0, 0, 0.5); /* 메뉴 왼쪽에 그림자 추가 */
+    z-index: 999;    /* 메뉴바가 다른 요소들보다 위에 보이도록 설정 */
+    padding: 20px;   /* 내부 여백 설정 */
     transform: translateX(100%); /* 메뉴가 화면 밖에 위치 */
     transition: transform 0.3s ease-in-out; /* 슬라이드 애니메이션 설정 */
 }
 
-/* 슬라이드 메뉴 활성화 시 화면에 나타나는 스타일 */
+/* 사이드 메뉴 활성화 시 화면에 나타나는 스타일 */
 .side.active {
     transform: translateX(0); /* 메뉴가 화면에 슬라이딩 */
 }
 
-/* 슬라이드 메뉴 항목 스타일 */
-.side li {
-    list-style-type: none; /* 목록 스타일 제거 */
-    font-weight: 600; /* 항목 글씨 두껍게 설정 */
-    padding: 15px 0; /* 항목 간의 간격 설정 */
+/* 사이드 메뉴 ul 스타일 */
+.side ul {
+    padding-left: 10px;
 }
 
-/* 슬라이드 메뉴 링크 스타일 */
-.side a {
-    text-decoration: none; /* 링크에 밑줄 제거 */
-    color: black; /* 링크 색상 설정 */
+/* 사이드 메뉴 li 스타일 */
+.side li {
+    list-style-type: none;   /* 글머리표 스타일 제거 */
+    font-weight: 600; /* 항목 글씨 두껍게 설정 */
+    padding: 15px 0; /* 항목 간의 간격 설정 */
 }
 
 /* 여행 관련 슬라이드 메뉴 스타일 */
@@ -284,9 +270,9 @@ body {
         display: none; /* 메뉴 항목 숨김 */
     }
     
-    /* 메뉴 배경 이미지 높이 조정 */
-    .menu:before {
-        height: 200px; /* 배경 이미지의 높이 설정 */
+    /* 배경 이미지 높이 조정 */
+    #headerWrap:before {
+        height: 200px; 
     }
 
     /* 로고 크기 조정 */
