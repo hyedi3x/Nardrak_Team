@@ -1,0 +1,79 @@
+@charset "UTF-8";
+#footerWrap{
+	border-top: 1px solid #aed9e0;
+	padding: 20px 0px;
+	width: 100%;
+}
+
+#footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+	padding: 0 40px;
+}
+
+.footer-logo img {
+	max-width: 100px;
+	margin-bottom: 10px;
+}
+
+.footer-links {
+	text-align: center;
+	align-items: center;
+	margin: 10px 0;
+}
+
+.footer-links a {
+	margin: 0 10px;
+	text-decoration: none;
+	color: #333;
+	font-size: 1rem;
+}
+
+.footer-links a:hover {
+	color: #6b9080;
+}
+
+.sns-icons {
+	margin: 10px auto;
+}
+
+.sns-icons a {
+	margin: 0 10px;
+	font-size: 20px;
+	color: #333;
+	text-decoration: none;
+}
+
+.sns-icons a:hover {
+	color: #6b9080;
+}
+
+.footer-text {
+	font-size: 1rem;
+	color: #777;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+	.footer-links{
+		display:flex;
+		flex-direction: column;
+	}
+
+	.footer-links a {
+		text-align: center;
+		margin: 10px 15px;
+		font-size: 0.9rem;
+	}
+
+	.sns-icons a {
+		font-size: 20px;
+		margin: 0 12px;
+	}
+
+	.footer-text {
+		font-size: 0.9rem;
+	}
+}

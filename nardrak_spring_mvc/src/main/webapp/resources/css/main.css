@@ -1,0 +1,8 @@
+
+/* main에 대한 기본 속성 */
+#main {
+	display: flex;
+	margin: 0 auto;
+  	width: 980px;  
+	height: 600px;
+}
