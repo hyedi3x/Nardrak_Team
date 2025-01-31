@@ -1,4 +1,4 @@
-const menu = document.querySelector(".menu");							// 메뉴 전체 영역 (배경 이미지 포함)
+const header = document.querySelector("#header");							// 메뉴 전체 영역 (배경 이미지 포함)
 const menuButton = document.querySelector("#menu-button");				// 햄버거 메뉴 버튼
 const sideMenu = document.querySelector("#side");						// 슬라이드 메뉴 (햄버거 메뉴 클릭 시 표시되는 메뉴)
 const closeButton = document.querySelector("#close-btn");				// 슬라이드 메뉴 닫기 버튼 (X 버튼)
@@ -11,13 +11,11 @@ const travelItems = document.querySelectorAll(".travel li");			// travel 메뉴�
 // 햄버거 버튼 클릭 시 슬라이드 메뉴 열기
 menuButton.addEventListener("click", () => {
     sideMenu.classList.add("active");  // 슬라이드 메뉴를 활성화 (화면에 표시)
-    menu.classList.add("opacity"); // 배경 이미지에 투명도 적용
 });
 
 // 닫기(&times - X) 버튼 클릭 시 슬라이드 메뉴 닫기
 closeButton.addEventListener("click", () => {
     sideMenu.classList.remove("active");  // 슬라이드 메뉴를 비활성화 (숨기기)
-    menu.classList.remove("opacity"); // 배경 이미지의 투명도 제거
 });
 
 // 메뉴 외부 클릭 시 슬라이드 메뉴 닫기
@@ -25,7 +23,6 @@ document.addEventListener("click", (event) => {
     // 클릭한 위치가 슬라이드 메뉴나 햄버거 버튼이 아니라면 메뉴 닫기
     if (!sideMenu.contains(event.target) && event.target !== menuButton) {
         sideMenu.classList.remove("active"); // 슬라이드 메뉴 숨기기
-        menu.classList.remove("opacity"); // 배경 이미지의 투명도 제거
     }
 });
 
@@ -57,16 +54,14 @@ travelItems.forEach((item, index) => {
         item.addEventListener("mouseover", () => {
             submenu.classList.add("active"); // 하위 메뉴 활성화
             travelItems[index].classList.add("select"); // 상위 메뉴 항목에 선택된 스타일 추가
-            menu.classList.add("active"); // 메뉴 활성화
-            menu.classList.add("opacity"); // 배경 이미지에 투명도 적용
+            header.classList.add("active"); // 메뉴 활성화
         });
 
         // 마우스가 항목에서 벗어났을 때
         item.addEventListener("mouseout", () => {
             submenu.classList.remove("active"); // 하위 메뉴 비활성화
             travelItems[index].classList.remove("select"); // 상위 메뉴 항목에서 선택된 스타일 제거
-            menu.classList.remove("active"); // 메뉴 비활성화
-            menu.classList.remove("opacity"); // 배경 이미지의 투명도 제거
+            header.classList.remove("active"); // 메뉴 비활성화
         });
     }
 });
