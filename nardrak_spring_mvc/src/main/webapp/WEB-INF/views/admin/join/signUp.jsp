@@ -200,12 +200,6 @@
 				<td><input type="checkbox" class="chkList" id="chkList4" name="chkList4" style="width: 20px" value="4"><b class="font14">[선택]<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">고유식별 정보 처리</a>에 동의합니다.</b></td>
 			</tr>
 			
-			<!-- <tr>
-				<td class="submitBTN">
-					<button type="submit">관리자 등록</button>
-				</td>
-			</tr> -->
-			
 			<!-- 태영 변경: 버튼 간격, hover 적용 -->
 			<tr>
 				<td>
