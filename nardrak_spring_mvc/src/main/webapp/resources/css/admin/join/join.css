@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+/* box-sizing 속성이 기본적으로 content-box인데 너비가 content만 포함, 패딩과 보더를 포함하게 border로 변경 */
+* {		
+    box-sizing: border-box;
+}
+html, body{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+.wrap{
+	display: flex;
+	justify-content: center;
+	width: 980px;
+	max-width:980px;
+	min-width:980px;
+	min-height: 100%;
+	margin: 0px;
+}
+
+.container{
+	width: 100%;
+	margin: 0px;
+}
+
+table{
+	width: 400px;
+}
+
+input{
+	padding:12px;
+	width: 100%;
+	border-radius: 5px;
+	margin:0px;
+	border: 1px solid lightgray;
+	margin-bottom: 10px;
+}
+
+th{
+	text-align: left;
+	font-weight: normal;
+	padding-bottom: 5px;
+}
+
+td{
+	padding-bottom: 15px
+}
+
+select{
+	padding:12px;
+	width:100%;
+	border-radius: 5px;
+	margin:0px;
+	border: 1px solid lightgray;
+	margin-bottom: 10px;
+}
+
+.joinLogo{
+	display: flex;
+	justify-content: center;	
+}
+.joinLogo img{
+	width: 100px;
+	height: 150px;
+}
+
+input:hover, 
+select:hover {
+	border-color: #0052FF;
+}
+
+/* focus는 outline 검정색 변경*/
+input:focus, 
+select:focus {
+	border-color: #0052FF;
+	outline: 3px solid rgba(0, 82, 255, 0.2);
+}
+
+
+/* number 화살표 버튼 제거 */
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+#dot{
+	color: #AEB4C6;
+	font-size: 14px;
+	padding-left: 3px;
+}
+
+.font14{
+	font-size:14px;
+}
+
+.red{
+	color: red;
+}
+
+.check{
+	color: blue;
+}
+
+a:link, a:visited{
+	color: black;
+}
+
+/* 태영 추가 */
+.submitBTN:hover{
+	background-color:#2952b8;
+}
+
+/* 태영 변경 : .submitBTN button에서 button 삭제, margin 삭제 */
+.submitBTN { 
+	/* margin:0px 0px; */
+	width: 100%;
+	height: 50px;
+	background-color: #0052FF;
+	color: white;
+	font-size: 16px;
+	border: none;
+	border-radius:5px;
+	text-align: center;
+}
+
+/* 태영 추가: 해당 hide 클래스가 존재하는 경우 화면에 표시 */
+/* 비밀번호 유효성 체크 */
+.hide{
+display: none;
+}
+
+.pwd_class{
+	position:relative;
+	height:100%;
+}
+#pwdIcon1, #pwdIcon2{
+	position: absolute;
+	right: 15px;
+	top: 14px;
+	font-size:20px;
+	color: #AEB4C6;
+}
