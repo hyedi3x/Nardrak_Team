@@ -256,15 +256,8 @@ btn.on("click", () => {
         oncomplete: function(data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분
             console.log(data); // 검색 결과를 콘솔에서 출력
-            if(data.userSelectedType == "R"){
-            	$('#ad_zip1').val(data.zonecode);
-            	$('#ad_zip2').val(data.address);
-            }
-            if(data.userSelectedType == "J"){
-            	$('#ad_zip1').val(data.zonecode);
-            	$('#ad_zip2').val(data.address);
-            }
-            
+            	$('#ad_zip1').val(data.zonecode); // 우편번호
+            	$('#ad_zip2').val(data.address);  // 기본주소
         }
     }).open();
 });
