@@ -9,13 +9,13 @@
  
 	<!--  id 중복 확인  -->
 	<select id="adminIdConfirm" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM admin_tbl WHERE ad_id = #{ad_id}
+		SELECT COUNT(*) FROM admin_tb WHERE ad_id = #{ad_id}
 	</select>
 	
 	<!--  관리자 회원가입  -->
 	<insert id="adminSignUpAction" parameterType="com.spring.nardrak_mvc.dto.AdminDTO">
-		INSERT INTO admin_tbl(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_tel, ad_cpnum, ad_dep, ad_terms)
-		VALUES(#{ad_id}, #{ad_pwd}, #{ad_name}, #{ad_birth}, #{ad_phone}, #{ad_email}, #{ad_tel}, #{ad_cpnum}, #{ad_dep}, #{ad_terms})
+		INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_tel, ad_empnum, ad_dep, ad_terms)
+		VALUES(#{ad_id}, #{ad_pwd}, #{ad_name}, #{ad_birth}, #{ad_phone}, #{ad_email}, #{ad_tel}, #{ad_empnum}, #{ad_dep}, #{ad_terms})
 	</insert>
 	
 </mapper> 
