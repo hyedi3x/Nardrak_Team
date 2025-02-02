@@ -19,7 +19,7 @@
 	<c:if test="${insertCnt == 0}">
 		<script type="text/javascript">
 			alert("관리자 등록 실패");
-			window.location="${path}//main.do";
+			window.location="${path}/main.do";
 		</script>
 	</c:if>
 	
