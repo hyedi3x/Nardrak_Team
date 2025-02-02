@@ -133,7 +133,11 @@ select:focus {
 }
 
 
-/* number 화살표 버튼 제거 */
+/* number 화살표 버튼 제거
+  [type:""]을 가진 input 선택자 사용
+  ::-webkit-inner-spin-button = 숫자를 증가시키거나 감소시킬 수 있도록 돕는 UI 
+  none으로 줘서 스핀버튼이 보이지 않게 함
+*/
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
