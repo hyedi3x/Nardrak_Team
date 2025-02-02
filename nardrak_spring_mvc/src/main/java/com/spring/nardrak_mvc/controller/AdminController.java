@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.nardrak_mvc.HomeController;
 import com.spring.nardrak_mvc.service.AdminService;
 
 @Controller
@@ -22,7 +21,7 @@ public class AdminController {
 	@Autowired
 	private AdminService service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
 	// 관리자 회원가입 페이지
 	@RequestMapping("/adminSignUp.ad")
