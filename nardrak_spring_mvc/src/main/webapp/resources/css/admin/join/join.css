@@ -4,56 +4,111 @@
 * {		
     box-sizing: border-box;
 }
-html, body{
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
-}
 .wrap{
 	display: flex;
 	justify-content: center;
-	width: 980px;
-	max-width:980px;
-	min-width:980px;
-	min-height: 100%;
-	margin: 0px;
 }
 
 .container{
-	width: 100%;
-	margin: 0px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
-
+form{
+	display: flex;
+	justify-content: center;
+}
 table{
 	width: 400px;
 }
 
 input{
-	padding:12px;
-	width: 100%;
+	padding:10px 12px;
+	/* width: 100%; */
 	border-radius: 5px;
 	margin:0px;
-	border: 1px solid lightgray;
+	border: 1px solid  #d9d9d9;
 	margin-bottom: 10px;
+	height:50px;
+}
+
+.ad_id{
+	width: 300px;
+}
+
+.idChkBTN{
+	width: 90px;
+	border-radius: 5px;
+	background-color:#729ea1;
+	color: #ffffff;
+	border: none;	
+}
+.ad_pwd, .pwdChk, 
+.ad_name, .ad_phone2, 
+#ad_tel, #ad_empnum,
+#ad_zip2, #ad_zip3{
+	width: 100%;
+}
+
+.ad_birth{
+	width: 195px;
+	margin-bottom: 2px"
+}
+
+.birthIcon{
+	color:#9dbebb; 
+	font-size:20px; 
+	vertical-align:middle; 
+	margin: 0px 5px;
+}
+
+#birthChk, .pwdIcon2, #phoneChk{
+	display:none;
 }
 
 th{
-	text-align: left;
 	font-weight: normal;
-	padding-bottom: 5px;
+	padding-bottom: 7px;
 }
 
 td{
-	padding-bottom: 15px
+	padding-bottom: 15px;
+	height:66px;
+}
+
+.ad_email1{
+	width: 195px;
+}
+
+.ad_email2{
+	width: 170px;
+}
+
+.emailIcon{
+ font-size:20px;
+ color:#9dbebb; 
+ font-weight:bold;
+}
+
+.eamilTd{
+	position:relative;
+	height:66px;
+	padding-bottom: 15px;
+}
+.ad_email3{
+	width: 170px;
+	position:absolute; 
+	right:0; 
+	top:0; 
+	margin-right:4px;
 }
 
 select{
-	padding:12px;
+	padding:10px 12px;
 	width:100%;
 	border-radius: 5px;
 	margin:0px;
-	border: 1px solid lightgray;
+	border: 1px solid  #d9d9d9;
 	margin-bottom: 10px;
 }
 
@@ -62,20 +117,19 @@ select{
 	justify-content: center;	
 }
 .joinLogo img{
-	width: 100px;
-	height: 150px;
+	width: 140px;
 }
 
 input:hover, 
 select:hover {
-	border-color: #0052FF;
+	border-color: #729ea1;
 }
 
 /* focus는 outline 검정색 변경*/
 input:focus, 
 select:focus {
-	border-color: #0052FF;
-	outline: 3px solid rgba(0, 82, 255, 0.2);
+	border-color: #9dbebb;
+	outline: 3px solid rgba(45, 62, 63, 0.2);
 }
 
 
@@ -85,7 +139,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #dot{
-	color: #AEB4C6;
+	color: #9dbebb;
 	font-size: 14px;
 	padding-left: 3px;
 }
@@ -99,16 +153,20 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .check{
-	color: blue;
+	color: #9dbebb;
 }
 
 a:link, a:visited{
-	color: black;
+	color: #000000;
+}
+
+.chkList{
+	width: 20px;
 }
 
 /* 태영 추가 */
 .submitBTN:hover{
-	background-color:#2952b8;
+	background-color:#729ea1;
 }
 
 /* 태영 변경 : .submitBTN button에서 button 삭제, margin 삭제 */
@@ -116,7 +174,7 @@ a:link, a:visited{
 	/* margin:0px 0px; */
 	width: 100%;
 	height: 50px;
-	background-color: #0052FF;
+	background-color: #9dbebb;
 	color: white;
 	font-size: 16px;
 	border: none;
@@ -139,5 +197,17 @@ display: none;
 	right: 15px;
 	top: 14px;
 	font-size:20px;
-	color: #AEB4C6;
+	color: #9dbebb;
+}
+
+#pwdMessage{
+	color: #ff0000;
+}
+
+#ad_zip1{
+	width: 195px;
+	margin-right: 25px;
+}
+.ad_ZIPBTN{
+	width: 170px;
 }
