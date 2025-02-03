@@ -14,8 +14,8 @@
 	
 	<!--  관리자 회원가입  -->
 	<insert id="adminSignUpAction" parameterType="com.spring.nardrak_mvc.dto.AdminDTO">
-		INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_tel, ad_empnum, ad_dep, ad_terms)
-		VALUES(#{ad_id}, #{ad_pwd}, #{ad_name}, #{ad_birth}, #{ad_phone}, #{ad_email}, #{ad_tel}, #{ad_empnum}, #{ad_dep}, #{ad_terms})
+		INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
+		VALUES(#{ad_id}, #{ad_pwd}, #{ad_name}, #{ad_birth}, #{ad_phone}, #{ad_email}, #{ad_zip}, #{ad_tel}, #{ad_empnum}, #{ad_dep}, #{ad_terms}, 'Admin')
 	</insert>
 	
 </mapper> 
