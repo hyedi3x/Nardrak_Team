@@ -139,7 +139,7 @@
 				<td>
 				<input type="text" id="ad_email1" name="ad_email1" class="ad_email1" placeholder="이메일 입력" maxlength="15" required>
 				<span class="emailIcon">@</span>
-				<input type="text" id="ad_email2" name="ad_email2" class="ad_email2" placeholder="이메일 입력" maxlength="14" required>
+				<input type="text" id="ad_email2" name="ad_email2" class="ad_email2" placeholder="exam.com" maxlength="14" required>
 				
 				<select id="ad_email3" class="ad_email3" onchange="emailFn()">
 					<option value="">직접입력</option>
