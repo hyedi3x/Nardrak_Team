@@ -9,6 +9,7 @@
 
 <!-- css -->
 <link rel="stylesheet" href="${path}/resources/css/admin/join/join.css">
+<link rel="stylesheet" href="${path}/resources/css/admin/join/idConfirm.css">
 
 <!-- js -->
 <script type="text/javascript" src="${path}/resources/js/admin/join/join.js" defer></script>
@@ -24,27 +25,27 @@
 			<table>
 			<c:if test="${selectCnt == 1}">
 				<tr>
-					<th style="text-align:center; font-size: 16px; padding: 20px 0px">입력하신 아이디 [ ${ad_id} ]는 사용할 수 없습니다.</th>
+					<th id="idConTh">입력하신 아이디 [ ${ad_id} ]는 사용할 수 없습니다.</th>
 				</tr>
 				<tr>
-					<td style="display:flex; justify-content:center; align-items:center; ">
-						<span style="margin-bottom:12px; font-weight:bold; font-size:16px; color:#AEB4C6">아이디   </span>
+					<td class="inConTd">
+						<span id="idConTitle">아이디</span>
 						<input type="text" id="ad_id" class="ad_id" name="ad_id" placeholder="영어 소문자 및 숫자로만, 4~16자리" autofocus style="width: 300px" onchange="idChkReset()">
 					</td>
 				</tr>
 				<tr>
-					<td style="display:flex; justify-content:center">
-						<button type="submit" style="width: 90px; height:50px; border-radius: 5px; background-color:#0052FF; color:white; border: none;"  onclick="return idConfirm3()"> 중복확인 </button> <!-- 함수로 새창을 열지 않고 뷰객체를 다시 생성해야 opener를 정상 사용가능 -->
+					<td class="inConTd">
+						<button type="submit" class="idConBTN" onclick="return idConfirm3()"> 중복확인 </button> <!-- 함수로 새창을 열지 않고 뷰객체를 다시 생성해야 opener를 정상 사용가능 -->
 					</td>
 				</tr>
 			</c:if>
 			<c:if test="${selectCnt == 0}">
 				<tr>
-					<th class="font14" style="text-align:center; font-size: 16px; padding: 20px 0px">입력하신 아이디 [ ${ad_id} ]는 사용가능합니다.</th>
+					<th class="font14">입력하신 아이디 [ ${ad_id} ]는 사용가능합니다.</th>
 				</tr>
 				<tr>	
-					<td style="display:flex; justify-content:center">
-						<button type="button" style="width: 90px; height:50px; border-radius: 5px; background-color:#0052FF; color:white; border: none;" onclick="idConfirm2('${ad_id}')"> 확인 </button>
+					<td class="inConTd">
+						<button type="button" class="idConBTN" onclick="idConfirm2('${ad_id}')"> 확인 </button>
 					</td>
 				</tr>
 			</c:if>
