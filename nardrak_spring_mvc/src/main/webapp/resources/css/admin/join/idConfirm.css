@@ -1,0 +1,36 @@
+@charset "UTF-8"; /* CSS 문자 인코딩을 UTF-8로 설정 */
+
+#idConTitle{
+    color: #729ea1;
+    padding: 6px 10px 0px 0px;
+    font-size: 15px;
+}
+
+#idConTh{
+	text-align:center; 
+	font-size: 16px; 
+	padding: 20px 0px;
+}
+
+.inConTd{
+	display:flex;
+	justify-content:center;
+	padding-bottom: 10px;
+}
+
+.idConBTN {
+	width: 90px;
+	border: none;
+    background-color: #9dbebb;
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 8px;
+}
+
+.idColor {
+	font-size: 15px;
+	color: #729ea1;
+	font-weight: bold;
+}
