@@ -10,3 +10,8 @@ body {
 a {
 	text-decoration: none; /* 텍스트에 밑줄 제거 */
 } 
+
+/* box-sizing 속성이 기본적으로 content-box인데 너비가 content만 포함, 패딩과 보더를 포함하게 border로 변경 */
+*{		
+    box-sizing: border-box;
+}
