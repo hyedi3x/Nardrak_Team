@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	  
+<!-- namespace="패키지명.인터페이스" --> 	  
+<mapper namespace="com.spring.nardrak_mvc.dao.AdminDAO">  
+ 
+	<!--  id 중복 확인  -->
+	<select id="adminIdConfirm" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM admin_tb WHERE ad_id = #{ad_id}
+	</select>
+	
+	<!--  관리자 회원가입  -->
+	<insert id="adminSignUpAction" parameterType="com.spring.nardrak_mvc.dto.AdminDTO">
+		INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
+		VALUES(#{ad_id}, #{ad_pwd}, #{ad_name}, #{ad_birth}, #{ad_phone}, #{ad_email}, #{ad_zip}, #{ad_tel}, #{ad_empnum}, #{ad_dep}, #{ad_terms}, 'Admin')
+	</insert>
+	
+</mapper> 
