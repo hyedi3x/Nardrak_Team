@@ -102,7 +102,7 @@
 			</tr>
 			<tr>	
 				<td>
-					<input type="number" id="ad_birth" class="ad_birth" name="ad_birth" placeholder="생년월일 6자리" required>
+					<input type="number" id="ad_birth" class="ad_birth" name="ad_birth" maxlength="6" placeholder="생년월일 6자리" required>
 					<span class="birthIcon"><i class="fa-solid fa-minus"></i></span>
 					<c:forEach begin="1" end="7">
 						<i class="fa-solid fa-circle" id="dot"></i>
@@ -126,7 +126,7 @@
 			</tr>
 			<tr class="width100">	
 				<td>
-					<input type="number" id="ad_phone2" class="ad_phone2" name="ad_phone2" placeholder="-없이 숫자만 입력" required>
+					<input type="number" id="ad_phone2" class="ad_phone2" name="ad_phone2" maxlength="11" placeholder="-없이 숫자만 입력" required>
 					<br>
 					<div class="red" id="phoneChk"><div class="font16">휴대폰번호를 정확하게 입력해 주세요.</div></div>
 				</td>
@@ -177,11 +177,11 @@
 				<td>
 					<select id="ad_tel" name="ad_tel" required>
 						<option value="">사내번호 선택</option>
-						<option value="02-111-2222">경영지원(02-111-2222)</option>
-						<option value="02-333-4444">마케팅(02-333-4444)</option>
-						<option value="02-555-6666">영업(02-555-6666)</option>
-						<option value="02-888-9999">CS(02-888-9999)</option>
-						<option value="02-000-0000">IT(02-000-0000)</option>
+						<option value="02-111-2222">경영지원 (02-111-2222)</option>
+						<option value="02-333-4444">마케팅 (02-333-4444)</option>
+						<option value="02-555-6666">영업 (02-555-6666)</option>
+						<option value="02-888-9999">CS (02-888-9999)</option>
+						<option value="02-000-0000">IT (02-000-0000)</option>
 					</select>
 				</td>
 			</tr>
@@ -212,25 +212,26 @@
 			</tr>
 			
 			<tr id="termsTr">
-				<th id="termsTh" class="font16">본인인증 약관동의</th>
+				<th id="termsTh" class="font15"> ✓ 본인인증 약관동의</th>
 			</tr>
 			<tr>
-				<td><input type="checkbox" id="allCheck" name="allChk" class="chkList" value="a" onclick="chkListClick($('#allCheck'))"><b class="font16">전체동의 합니다.</b></td>
+				<td><input type="checkbox" id="allCheck" name="allChk" class="chkList" value="a" onclick="chkListClick($('#allCheck'))"><b class="font15">전체동의 합니다.</b></td>
 			</tr>
 			
 			<tr >
-				<td><input type="checkbox" class="chkList" id="chkList1" name="chkList1" value="1" onclick="chkListClick($('#chkList1'))" required><b class="font16"><span class="check">[필수]</span>
+				<td><input type="checkbox" class="chkList" id="chkList1" name="chkList1" value="1" onclick="chkListClick($('#chkList1'))" required><b class="font15"><span class="check">[필수]</span>
 					<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">본인 확인 서비스 이용 약관</a>에 동의합니다.</b></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" class="chkList" id="chkList2" name="chkList2" value="2" onclick="chkListClick($('#chkList2'))" required><b class="font16" ><span class="check">[필수]</span>
+				<td><input type="checkbox" class="chkList" id="chkList2" name="chkList2" value="2" onclick="chkListClick($('#chkList2'))" required><b class="font15" ><span class="check">[필수]</span>
 						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">통신사 이용 약관</a>동의</b></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" class="chkList" id="chkList3" name="chkList3" value="3"><b class="font16">[선택]통신사/인증사의 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">개인정보 이용 · 제공</a>에 동의합니다.</b></td>
+				<td><input type="checkbox" class="chkList" id="chkList3" name="chkList3" value="3"><b class="font15"><span class="choose">[선택]</span> 신사/인증사의 
+						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">개인정보 이용 · 제공</a>에 동의합니<br> <span id="left-10px">다.</span></b></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" class="chkList" id="chkList4" name="chkList4"  value="4"><b class="font16">[선택]<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">고유식별 정보 처리</a>에 동의합니다.</b></td>
+				<td><input type="checkbox" class="chkList" id="chkList4" name="chkList4"  value="4"><b class="font15"><span class="choose">[선택]</span> <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">고유식별 정보 처리</a>에 동의합니다.</b></td>
 			</tr>
 			
 			<!-- 태영 변경: 버튼 간격, hover 적용 -->
