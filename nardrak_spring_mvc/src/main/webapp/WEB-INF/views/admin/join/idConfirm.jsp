@@ -25,7 +25,7 @@
 			<table>
 			<c:if test="${selectCnt == 1}">
 				<tr>
-					<th id="idConTh">입력하신 아이디 [ ${ad_id} ]는 사용할 수 없습니다.</th>
+					<th id="idConTh">입력하신 아이디 <span class="idColor">${ad_id}</span>는 사용할 수 없습니다.</th>
 				</tr>
 				<tr>
 					<td class="inConTd">
@@ -41,7 +41,7 @@
 			</c:if>
 			<c:if test="${selectCnt == 0}">
 				<tr>
-					<th class="font14">입력하신 아이디 [ ${ad_id} ]는 사용가능합니다.</th>
+					<th id="idConTh">입력하신 아이디 <span class="idColor">${ad_id}</span>는 사용 가능합니다.</th>
 				</tr>
 				<tr>	
 					<td class="inConTd">
