@@ -2,7 +2,6 @@
  * 
  */
  
- 
 // 태영 추가 : 메인으로 이동 (임시: 로그인 페이지)
 function mainBTN(path){
 	window.location=path+"/main.do";
@@ -49,8 +48,6 @@ function submitChk(){
    let pwdChk = $('#pwdChk').val();
    let pwd = $('#ad_pwd').val().length;
    let adBirth = $('#ad_birth').val().length;
-   let adTel = $('#ad_tel').val().length;
-   
    
    if(pw != pwdChk){
       alert("비밀번호가 일치하지 않습니다.");
@@ -80,20 +77,30 @@ function submitChk(){
       return false;
    }
    
-   if( !(adTel == 9 || adTel == 10 || adTel == 11) ){
-      alert(adTel+"사내전화번호를 정확히 입력해주세요.");
-      $('#ad_tel').focus();
+   if($('#idValCheck').val() == 0){
+      alert("아이디 입력을 다시 확인해주세요");
+      $('#ad_id').focus();
       return false;
    }
    
-   if($('#pwdValCheck').val() == 0){
-      alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+   if($('#emailVal1Check').val() == 0){
+      alert("이메일 입력을 다시 확인해주세요");
+      $('#ad_email1').focus();
       return false;
-      $('#pwdChk').focus();
    }
+   
+   if($('#emailVal2Check').val() == 0){
+      alert("이메일 입력을 다시 확인해주세요");
+      return false;
+      $('#ad_email2').focus();
+   }
+   if($('#brithValCheck').val() == 0){
+      alert("생년월일 입력을 다시 확인해주세요");
+      $('#ad_birth').focus();
+      return false;
+   }
+  
 }
-
-
 
 // 아이콘 클릭시 비밀번호 이미지와 타입 변경
 function pwdShow(pwhChk){ 
@@ -117,25 +124,17 @@ $(function(){
 	});
 });
 			
-			
+// 정규식 체크
+// 아이디, 이메일1, 이메일2 정규식
+const reg_id = /^(?=.*[a-z])[a-z\d]{4,10}$/;
+const reg_email1 = /^(?=.*[a-z])[a-z\d]*$/;
+const reg_email2 = /^[a-z]+\.[a-z]+$/;
+	
 // 생년월일, 휴대폰 번호 입력 확인
 // 입력이 변할 때 마다 합수가 실행되어 6자리가 입력되지 않으면 스타일을 변경하고 #birthChk 문구를 띄운다
 $(function(){
-	$('#ad_birth').on('keyup', function(){
-		let ad_birth = $('#ad_birth').val();
-		if(ad_birth.length == 0 || ad_birth.length == 6){
-			$('#birthChk').css('display', 'none');
-			$('#ad_birth').css('border', '1px solid #d9d9d9');
-			$('#ad_birth').css('outline', 'none');
-			$('#ad_birth:hover').css('border-color', '#729ea1');
-		}
-		else{
-			$('#birthChk').css('display', 'flex');
-			$('#ad_birth').css('border', '1px solid rgba(255, 0, 0)');
-			$('#ad_birth').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
-		}
-	});
-	
+
+	// 핸드폰
 	$('#ad_phone2').on('keyup', function(){
 		let ad_phone = $('#ad_phone2').val();
 		if(ad_phone.length == 0 || ad_phone.length == 11){
@@ -150,6 +149,120 @@ $(function(){
 			$('#ad_phone2').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
 		}
 	});
+	// 아이디
+	$('#ad_id').on('keyup', function(){
+		let ad_id = $('#ad_id').val();
+			if(reg_id.test(ad_id) || ad_id.length == 0){
+				$('#idStr').css('display', 'none');
+				$('#ad_id').css('border', '1px solid #d9d9d9');
+				$('#ad_id').css('outline', 'none');
+				$('#idValCheck').val(1);
+			}
+			else{
+				$('#idStr').css('display', 'flex');
+				$('#ad_id').css('border', '1px solid rgba(255, 0, 0)');
+				$('#ad_id').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
+				$('#idValCheck').val(0);
+			}
+	});
+	// 비밀번호
+	$('#pwdChk').on('keyup', function(){
+			if($('#pwdChk').val() == $('#ad_pwd').val()){
+				$('#pwdStr').css('display', 'none');
+				$('#pwdChk').css('border', '1px solid #d9d9d9');
+				$('#pwdChk').css('outline', 'none');
+			}
+			else{
+				$('#pwdStr').css('display', 'flex');
+				$('#pwdChk').css('border', '1px solid rgba(255, 0, 0)');
+				$('#pwdChk').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
+			}
+	});
+	// 이메일
+	$('#ad_email1').on('keyup', function(){
+		let ad_email1 = $('#ad_email1').val();
+			if(reg_email1.test(ad_email1) || ad_email1.length == 0){
+				$('#email1Str').css('display', 'none');
+				$('#ad_email1').css('border', '1px solid #d9d9d9');
+				$('#ad_email1').css('outline', 'none');
+				$('#emailVal1Check').val(1);
+			}
+			else{
+				$('#email1Str').css('display', 'flex');
+				$('#ad_email1').css('border', '1px solid rgba(255, 0, 0)');
+				$('#ad_email1').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
+				$('#emailVal1Check').val(0);
+			}
+	});
+	
+	// 이메일2
+	$('#ad_email2').on('keyup', function(){
+		// 값 직접 입력시에만 실행
+		$('#emailVal2Check').val(0);
+		let ad_email2 = $('#ad_email2').val();
+		if(reg_email2.test(ad_email2) || ad_email2.length == 0){
+			$('#email2Str').css('display', 'none');
+			$('#ad_email2').css('border', '1px solid #d9d9d9');
+			$('#ad_email2').css('outline', 'none');
+			$('#emailVal2Check').val(1);
+		}
+		else{
+			$('#email2Str').css('display', 'flex');
+			$('#ad_email2').css('border', '1px solid rgba(255, 0, 0)');
+			$('#ad_email2').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
+			$('#emailVal2Check').val(0);
+		}
+	});
+	
+	// 생년월일
+	$('#ad_birth').on('keyup', function(){
+		// 값 직접 입력시에만 실행
+		let ad_birthY = $('#ad_birth').val().substring(0,2);
+		let ad_birthM = $('#ad_birth').val().substring(2,4);
+		let ad_birthD = $('#ad_birth').val().substring(4,6);
+		let ad_birth = $('#ad_birth').val();
+		if(ad_birth.length == 6){
+			if( ad_birthY <= 10 && ad_birthY >= 00 && ad_birthM >=1 && ad_birthM <=12
+			|| ad_birthY >= 65 && ad_birthY <=99 && ad_birthM >=1 && ad_birthM <=12 ){
+				if(ad_birthM % 2 == 0){
+					if(ad_birthD >= 1 && ad_birthD <= 31){
+						$('#birthChk').css('display', 'none');
+						$('#ad_birth').css('border', '1px solid #d9d9d9');
+						$('#ad_birth').css('outline', 'none');
+						$('#brithValCheck').val(1);
+					}
+					else{
+						$('#birthChk').css('display', 'flex');
+						$('#ad_birth').css('border', '1px solid rgba(255, 0, 0)');
+						$('#ad_birth').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
+						$('#brithValCheck').val(0);
+					}
+				}
+				if(ad_birthM % 2 != 0){
+					if(ad_birthD >= 1 && ad_birthD <= 30){
+						$('#birthChk').css('display', 'none');
+						$('#ad_birth').css('border', '1px solid #d9d9d9');
+						$('#ad_birth').css('outline', 'none');
+						$('#brithValCheck').val(1);
+					}
+					else if(ad_birth.length == 0){
+						$('#birthChk').css('display', 'none');
+						$('#ad_birth').css('border', '1px solid #d9d9d9');
+						$('#ad_birth').css('outline', 'none');
+						$('#brithValCheck').val(0);
+					}
+				}
+			}
+		}
+		else{
+			$('#birthChk').css('display', 'flex');
+			$('#ad_birth').css('border', '1px solid rgba(255, 0, 0)');
+			$('#ad_birth').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
+			$('#brithValCheck').val(0);
+		}
+	});
+	
+	
 	
 });
  
@@ -182,10 +295,16 @@ check.on('click', () => {
 	
 	// 필수 약관의 모달에서 동의를 하지 않으면 체크가 안되도록한다.
 	if($('#modalChk1').val() == 0){
+		$('#allCheck').prop('checked', false);
 		$('#chkList1').prop('checked', false);
+		$('#chkList3').prop('checked', false);
+		$('#chkList4').prop('checked', false);
 	}
 	if($('#modalChk2').val() == 0){
+		$('#allCheck').prop('checked', false);
 		$('#chkList2').prop('checked', false);
+		$('#chkList3').prop('checked', false);
+		$('#chkList4').prop('checked', false);
 	}
 });
 
