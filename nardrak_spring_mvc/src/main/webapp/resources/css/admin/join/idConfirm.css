@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+#idConTitle{
+	color: #729ea1;
+	font-weight: bold;
+	margin: 0px 10px 12px 0px;
+}
+#idConTh{
+	text-align:center; 
+	font-size: 16px; 
+	padding: 20px 0px;
+}
+.inConTd{
+	display:flex;
+	justify-content:center;
+}
+.idConBTN{
+	width: 90px;
+	height:50px; 
+	border-radius: 5px; 
+	background-color:#0052FF; 
+	color:white; 
+	border: none;
+}
