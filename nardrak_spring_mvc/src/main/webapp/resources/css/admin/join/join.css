@@ -1,26 +1,25 @@
-@charset "UTF-8";
+@charset "UTF-8"; /* CSS 문자 인코딩을 UTF-8로 설정 */
 
-/* box-sizing 속성이 기본적으로 content-box인데 너비가 content만 포함, 패딩과 보더를 포함하게 border로 변경 */
-*{		
-    box-sizing: border-box;
-}
 /* 가장 바깥 div 가운데 맞춤 */
 .wrap{
 	display: flex;
 	justify-content: center;
 }
+
 /* 로고와 테이블 교차축 가운데 정렬 */
 .container{
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 }
+
 /* 내부 요소 가운데 정렬 */
 form{
 	display: flex;
 	justify-content: center;
 	margin: 0px;
 }
+
 /* 테이블 크기 */
 table{
 	width: 400px;
@@ -29,11 +28,12 @@ table{
 /* 제목 설정 */
 th{
 	font-weight: normal;
-	padding-bottom: 7px;
+	padding-bottom: 10px;
 }
+
 /* 요소 설정 */
 td{
-	padding-bottom: 15px;
+	padding-bottom: 18px;
 }
 
 /* input 설정 */
@@ -54,7 +54,7 @@ select{
 	margin-bottom: 10px;
 }
 
-* 입력란 hover 색 변경 */
+/* 입력란 hover 색 변경 */
 input:hover, 
 select:hover {
 	border-color: #729ea1;
@@ -72,10 +72,16 @@ select:focus {
 	font-size: 16px;
 }
 
+/* 폰트 16 */
+.font15{
+	font-size: 15px;
+}
+
 /* 메세지 색상 */
 .red{
 	color: #ff0000;
 }
+
 input[type="button"], input[type="submit"]{
 	background-color: #9dbebb;
 	color: white;
@@ -84,6 +90,7 @@ input[type="button"], input[type="submit"]{
 	border-radius:5px;
 	text-align: center;
 }
+
 /* input type:number 화살표 버튼 제거 (생년월일, 휴대폰번호, 사내번호)
   [type=""]을 가진 input 선택자 사용
   ::-webkit-inner-spin-button = 숫자를 증가시키거나 감소시킬 수 있도록 돕는 UI 
@@ -92,18 +99,23 @@ input[type="button"], input[type="submit"]{
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
 /* 브랜드 로고 */
 .joinLogo{
 	display: flex;
 	justify-content: center;	
 }
+
 .joinLogo img{
 	width: 140px;
 }
+
 /* id 필드 */
 .ad_id{
-	width: 300px;
+	width: 297px;
+    margin-right: 5px;
 }
+
 /* 중복확인 버튼 */
 .idChkBTN{
 	width: 90px;
@@ -113,15 +125,17 @@ input[type="number"]::-webkit-inner-spin-button {
 .width100 input{
 	width: 100%;
 }
+
 /* 비밀번호 아이콘 절대 위치 설정 - 부모는 relative */
 .pwd_class{
 	position: relative;
 }
+
 #pwdIcon1, #pwdIcon2{
 	position: absolute;
 	right: 15px;
 	top: 14px;
-	font-size: 20px;
+	font-size: 19px;
 	color: #9dbebb;
 }
 
@@ -129,11 +143,11 @@ input[type="number"]::-webkit-inner-spin-button {
 .ad_birth{
 	width: 195px;
 }
+
 /* 생년월일 - 아이콘 */
 .birthIcon{
 	color: #9dbebb; 
-	font-size: 20px; 
-	vertical-align: middle; 
+	font-size: 19px; 
 }
 
 /* 비밀번호 메세지, 생년월일 메세지, 비밀번호 아이콘2 안보이게 처리 */
@@ -148,32 +162,33 @@ input[type="number"]::-webkit-inner-spin-button {
 
 /* 이메일 너비 설정 */
 .ad_email1{
-	width: 120px;
+	width: 125px;
 }
 
 .ad_email2{
-	width: 120px;
-	margin-right: 7px;
+	width: 118px;
+    margin-right: 5px;
 }
 
 .emailIcon{
- font-size: 20px;
+ font-size: 19px;
  color: #9dbebb; 
  font-weight: bold;
 }
 
 .ad_email3{
-	width: 110px;
+	width: 114px;
 	color: #6c757d;
 }
 
 /* 우편번호 input과 버튼 */
 #ad_zip1{
-	width: 195px;
-	margin-right: 7px;
+	width: 200px;
+    margin-right: 5px;
 }
+
 .ad_ZIPBTN{
-	width: 190px;
+	width: 187px;
 }
 
 /* 생년월일 도트 아이콘 */
@@ -187,20 +202,39 @@ input[type="number"]::-webkit-inner-spin-button {
 #termsTr{
 	border-top: 1px solid #d9d9d9;
 }
+
+/* 약관 제목 설정 */
 #termsTh{
-	padding-top: 8px;
+	padding: 15px 3px;
+	color: #15616d;
+    font-weight: bold;
 }
+
 /* 약관 링크를 클릭 하더라도 색상변경 없음 */
-a:link, a:visited{
-	color: #000000;
+a:link {
+	color: #729ea1;
+	font-weight: normal;
 }
+
 /* 체크박스 크기 */
 .chkList{
 	width: 20px;
+	margin-right: 5px;
 }
+
 /* [필수] 약관 글 색상 변경 */
 .check{
+	color: #468189;
+}
+
+/* [선택] 약관 글 색상 변경 */
+.choose {
 	color: #729ea1;
+}
+
+/* [선택] 약관 글 넘어간 부분 설정 ('다') */
+#left-10px{
+	padding-left : 25px;	
 }
 
 /* 태영 추가 */
@@ -211,7 +245,6 @@ a:link, a:visited{
 /* 태영 변경 : .submitBTN button에서 button 삭제, margin 삭제 */
 .submitBTN { 
 	width: 100%;
-
 }
 
 /* 태영 추가: 해당 hide 클래스가 존재하는 경우 화면에 표시 */
