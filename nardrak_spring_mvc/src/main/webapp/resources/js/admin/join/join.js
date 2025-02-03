@@ -1,6 +1,3 @@
-/**
- * 
- */
  
 // 태영 추가 : 메인으로 이동 (임시: 로그인 페이지)
 function mainBTN(path){
@@ -16,7 +13,7 @@ function idConfirm1(path){
 	}
 	let url = path+"/adminidConfirm.ad?ad_id="+ad_id;
 	// menubar=no : 메뉴바 없이, width & height: 새창 크기, left & top= 새창 생성위치 조정 
-	window.open(url, "adminidConfirm", "menubar=no, width=450, height=250, left=900, top=250"); 
+	window.open(url, "adminidConfirm", "menubar=no, width=450, height=270, left=900, top=250"); 
 }
 
 // id 중복확인 성공 시 보여지는 확인 버튼 (idChk에 1값을 value로 반환한 후(submit하기위해) self.close)
@@ -131,7 +128,7 @@ const reg_email1 = /^(?=.*[a-z])[a-z\d]*$/;
 const reg_email2 = /^[a-z]+\.[a-z]+$/;
 	
 // 생년월일, 휴대폰 번호 입력 확인
-// 입력이 변할 때 마다 합수가 실행되어 6자리가 입력되지 않으면 스타일을 변경하고 #birthChk 문구를 띄운다
+// 입력이 변할 때 마다 함수가 실행되어(실시간 함수 실행) 6자리가 입력되지 않으면 스타일을 변경하고 #birthChk 문구를 띄운다
 $(function(){
 
 	// 핸드폰
@@ -149,6 +146,7 @@ $(function(){
 			$('#ad_phone2').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
 		}
 	});
+	
 	// 아이디
 	$('#ad_id').on('keyup', function(){
 		let ad_id = $('#ad_id').val();
@@ -165,6 +163,7 @@ $(function(){
 				$('#idValCheck').val(0);
 			}
 	});
+	
 	// 비밀번호
 	$('#pwdChk').on('keyup', function(){
 			if($('#pwdChk').val() == $('#ad_pwd').val()){
@@ -178,6 +177,7 @@ $(function(){
 				$('#pwdChk').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
 			}
 	});
+	
 	// 이메일
 	$('#ad_email1').on('keyup', function(){
 		let ad_email1 = $('#ad_email1').val();
@@ -262,7 +262,17 @@ $(function(){
 		}
 	});
 	
-	
+	// input type이 number일 때, 지정한 maxlength 만큼 입력이 됨
+	// .on('input', function(ev) { ... }) : 사용자가 입력할 때(input 이벤트 발생 시) 실행되는 함수
+	$('input[type=number][maxlength]').on('input', function(ev) {
+	    var $this = $(this);                             // 현재 입력 이벤트가 발생한 <input> 요소를 jQuery 객체로 저장
+	    var maxlength = $this.attr('maxlength');         // maxlength 속성 값을 불러옴
+	    var value = $this.val();
+	    
+	    if (value && value.length >= maxlength) {
+	        $this.val(value.substr(0, maxlength));
+    }
+});
 	
 });
  
