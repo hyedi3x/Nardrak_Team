@@ -57,15 +57,22 @@ public class AdminServiceImpl implements AdminService{
 		// 통신사(ex. S, K, L) 000-0000-0000 형식으로 DB에 값 저장
 		// ad_phone = 통신사데이터 + 공백 + 휴대폰번호 앞에서부터 3자리 + '-' + 4자리 + '-' 4자리
 		String ad_phone = ad_phone1+" "
-										 +ad_phone2.substring(0,3)+"-"
-										 +ad_phone2.substring(3,7)+"-"
-										 +ad_phone2.substring(7,11);
+						 +ad_phone2.substring(0,3)+"-"
+						 +ad_phone2.substring(3,7)+"-"
+						 +ad_phone2.substring(7,11);
 		dto.setAd_phone(ad_phone);
 		
+		// 이메일과 우편번호&주소는 나눠서 받은 input 필드의 값을 하나의 변수에 구분자 '@'와 ', '를 함께 저장한다.
 		String ad_email1 = request.getParameter("ad_email1"); 	// ex.seoul
 		String ad_email2 = request.getParameter("ad_email2"); 	// ex.naver.com
 		String ad_email = ad_email1+"@"+ad_email2; 				// ex.seoul@naver.com
 		dto.setAd_email(ad_email);
+		
+		String ad_zip1 = request.getParameter("ad_zip1");
+		String ad_zip2 = request.getParameter("ad_zip2");
+		String ad_zip3 = request.getParameter("ad_zip3");
+		String ad_zip = ad_zip1 + ", " + ad_zip2 + ", " + ad_zip3;
+		dto.setAd_zip(ad_zip);
 		
 		dto.setAd_tel(request.getParameter("ad_tel"));			// 사내 전화번호 (필수X)
 		dto.setAd_empnum(request.getParameter("ad_empnum"));		// 사번
