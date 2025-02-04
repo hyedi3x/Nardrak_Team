@@ -73,5 +73,14 @@ public class CustomerController {
 			
 		return "customer/join/joinAgreement";
 	}
+	
+	// ======================= [회원가입 페이지] =======================
+	@RequestMapping("/join.do")
+	public String join() {
+		logger.info("<<< url => /join.do >>>");
+
+		return "customeoin/join";
+	}
+	
 }
 
