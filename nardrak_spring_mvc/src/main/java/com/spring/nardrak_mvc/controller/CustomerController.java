@@ -65,4 +65,13 @@ public class CustomerController {
 
 		return "common/main";	
 	}
+	
+	// ======================= [개인정보 처리 동의 페이지] =======================
+	@RequestMapping("/joinAgreement.do")
+	public String joinAgreement() {
+		logger.info("<<< url => /joinAgreement.do >>>");
+			
+		return "customer/join/joinAgreement";
+	}
 }
+
