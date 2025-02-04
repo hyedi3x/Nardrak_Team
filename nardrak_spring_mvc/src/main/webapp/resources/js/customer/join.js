@@ -1,11 +1,11 @@
 // 아이디 중복확인 버튼 클릭시
-function confirmId() {
+function confirmId(path) {
     if (!document.inputform.cs_id.value) {
         alert("아이디를 입력하세요!!");
         document.inputform.cs_id.focus();
         return false;
     }
-    let url = "/nardrak_spring_mvc/idConfirmAction.do?cs_id=" + document.inputform.cs_id.value;
+    let url = path+"/idConfirmAction.do?cs_id=" + document.inputform.cs_id.value;
     window.open(url, "confirm", "menubar=no, width=500, height=400");
 }
 
