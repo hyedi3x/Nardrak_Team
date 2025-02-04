@@ -21,4 +21,9 @@
 			         UNION 
 			        SELECT ad_id, login_session FROM admin_tb) a 
 			 WHERE cs_id=#{strId} AND login_session='Admin' </select>
+			 
+		<!-- ID 중복확인 처리 -->
+	   	<select id="useridCheck" parameterType="String" resultType="int">
+	      SELECT COUNT(*) FROM customer_tb
+	      WHERE cs_id = #{cs_id} </select>
    </mapper> 
