@@ -211,7 +211,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 /* 약관 링크를 클릭 하더라도 색상변경 없음 */
-a:link {
+a:link, a:visited {
 	color: #729ea1;
 	font-weight: normal;
 }
