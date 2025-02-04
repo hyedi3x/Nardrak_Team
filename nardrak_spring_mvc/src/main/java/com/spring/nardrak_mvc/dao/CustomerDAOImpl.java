@@ -31,7 +31,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	public int insertCustomer(CustomerDTO dto) { 
 	    System.out.println("CustomerDAOImpl - insertCustomer()");
 	  
-	 int insertCnt = sqlSession.insert("spring.pj.nardrak_spring_mvc.dao.CustomerDAO.insertCustomer", dto);
+	 int insertCnt = sqlSession.insert(namespace + "insertCustomer", dto);
 	      
 	      return insertCnt;
 	 }
