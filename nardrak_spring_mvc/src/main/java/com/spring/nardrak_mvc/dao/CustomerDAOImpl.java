@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.nardrak_mvc.dto.CustomerDTO;
+
 @Repository
 public class CustomerDAOImpl implements CustomerDAO{
 
@@ -16,16 +18,26 @@ public class CustomerDAOImpl implements CustomerDAO{
 	String namespace = "com.spring.nardrak_mvc.dao.CustomerDAO."; 
 
 
+	// ======================= [id 중복확인 처리] =======================
 	@Override
-	
-	 // ======================= [id 중복확인 처리] =======================
-	 public int useridCheck(String cs_id) {
-	     System.out.println("CustomerDAOImpl - useridCheck()");
+	public int useridCheck(String cs_id) {
+	    System.out.println("CustomerDAOImpl - useridCheck()");
 	   
-	     return sqlSession.selectOne(namespace + "useridCheck", cs_id);
+	    return sqlSession.selectOne(namespace + "useridCheck", cs_id);
 	}
 	
+	// ======================= [회원가입 처리] =======================
+	@Override
+	public int insertCustomer(CustomerDTO dto) { 
+	    System.out.println("CustomerDAOImpl - insertCustomer()");
+	  
+	 int insertCnt = sqlSession.insert("spring.pj.nardrak_spring_mvc.dao.CustomerDAO.insertCustomer", dto);
+	      
+	      return insertCnt;
+	 }
+	   
 	// ======================= [회원정보 인증(아이디, 비번)] =======================
+	@Override
 	public int userIdPwdChk(Map<String, Object> map) {
 		System.out.println("CustomerDAOImpl - userIdPwdChk()");
 		
@@ -33,6 +45,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	// ======================= [회원정보 인증(권한 확인)] =======================
+	@Override
 	public int sessionResult(String strId) {
 		System.out.println("CustomerDAOImpl - sessionResult()");
 		
