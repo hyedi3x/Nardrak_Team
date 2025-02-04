@@ -55,7 +55,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="${path}/join.do">
+					<a href="${path}/joinAgreement.do">
 						<i class="fa-solid fa-user-plus"></i> 회원가입
 					</a>
 				</li>

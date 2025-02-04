@@ -34,7 +34,7 @@
 						<div id="utility">
 							<span id="font12-left">
 								<span id="font12">아직 회원이 아니신가요?</span>
-									<a href="${path}/join.do" id="leftLink">회원가입</a>
+									<a href="${path}/joinAgreement.do" id="leftLink">회원가입</a>
 							</span>
 							<span id="font12-right">
 								<a href="#" id="rightLink">아이디/비밀번호 찾기</a>
