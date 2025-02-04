@@ -13,7 +13,7 @@ function idConfirm1(path){
 	}
 	let url = path+"/adminidConfirm.ad?ad_id="+ad_id;
 	// menubar=no : 메뉴바 없이, width & height: 새창 크기, left & top= 새창 생성위치 조정 
-	window.open(url, "adminidConfirm", "menubar=no, width=450, height=270, left=900, top=250"); 
+	window.open(url, "adminidConfirm", "menubar=no, width=450, height=290, left=900, top=250"); 
 }
 
 // id 중복확인 성공 시 보여지는 확인 버튼 (idChk에 1값을 value로 반환한 후(submit하기위해) self.close)
