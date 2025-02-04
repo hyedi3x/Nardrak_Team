@@ -69,7 +69,7 @@ public class CustomerController {
 	// ======================= [개인정보 처리 동의 페이지] =======================
 	@RequestMapping("/joinAgreement.do")
 	public String joinAgreement() {
-		logger.info("<<< url => /joinAgreement.do >>>");
+		logger.info("<< url => /joinAgreement.do >>");
 			
 		return "customer/join/joinAgreement";
 	}
@@ -77,10 +77,20 @@ public class CustomerController {
 	// ======================= [회원가입 페이지] =======================
 	@RequestMapping("/join.do")
 	public String join() {
-		logger.info("<<< url => /join.do >>>");
+		logger.info("<< url => /join.do >>");
 
-		return "customeoin/join";
+		return "customer/join/join";
 	}
 	
+	// ======================= [id 중복확인 페이지] =======================
+	@RequestMapping("/idConfirmAction.do")
+	public String idConfirmAction(HttpServletRequest request, HttpServletResponse response , Model model) 
+			throws ServletException, IOException {
+		logger.info("<< url => /idConfirmAction.do >>");
+
+		service.inConfirmAction(request,response, model);
+
+		return "customer/join/idConfirmAction";
+	}
 }
 
