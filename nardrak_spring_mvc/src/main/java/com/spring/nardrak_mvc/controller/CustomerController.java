@@ -92,5 +92,17 @@ public class CustomerController {
 
 		return "customer/join/idConfirmAction";
 	}
+	
+	// ======================= [회원가입 처리 페이지] =======================
+	// 서비스 호출, joinAction.jsp
+	@RequestMapping("/joinAction.do")
+	public String joinAction(HttpServletRequest request,HttpServletResponse response , Model model) 
+			throws ServletException, IOException {
+		logger.info("<<< url => /joinAction.do >>>");
+
+		service.signUpAction(request, response ,model);
+
+		return "customer/join/joinAction";
+		}
 }
 
