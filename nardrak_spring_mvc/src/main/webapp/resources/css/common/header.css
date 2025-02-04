@@ -2,8 +2,7 @@
 /*===================[header_SessionScope.jsp의 스타일 속성]===================*/
 #headerWrap {
 	position: relative; /* 자식 요소의 절대 위치를 위한 기준이 됨 */
-	width: 100vw;       /* viewport width */
-	height: 100vh;      /* viewport height */
+    height: 240px;      /* 배경 이미지의 높이 */
 	margin: 0; 
     padding: 0;  
 }
@@ -12,7 +11,7 @@
 #headerWrap:before {
     position: absolute; /* 메뉴의 절대 위치 */
     width: 100%;        /* headerWrap(width: 100vw)의 너비 100% 상속*/
-    height: 450px;      /* 배경 이미지의 높이 */
+    height: 240px;      /* 배경 이미지의 높이 */
     background: url("/nardrak_spring_mvc/resources/image/common/seoul.png") no-repeat center; /* 배경 이미지 삽입 */
     background-size: cover;  /* 배경 이미지의 크기를 부모 요소에 맞게 설정 */
     z-index: -2;        /* 배경 이미지를 모든 jsp 페이지의 맨 뒤로 보냄 */
