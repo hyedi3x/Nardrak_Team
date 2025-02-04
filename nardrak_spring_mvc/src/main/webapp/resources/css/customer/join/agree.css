@@ -1,0 +1,131 @@
+/* 기본 스타일 설정 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.agree-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+.agree-check {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+/* 커스텀 체크박스 디자인 */
+.agree-check input[type="checkbox"] {
+    display: none; /* 기본 체크박스를 숨깁니다 */
+}
+
+.agree-check label {
+    position: relative;
+    font-size: 14px;
+    color: #555;
+    padding-left: 30px; /* 레이블에 여백을 추가해 체크박스를 잘 보이도록 합니다 */
+    cursor: pointer;
+}
+
+.agree-check label::before {
+    content: ''; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #9dbebb;
+    border-radius: 4px;
+    background-color: white;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* 체크박스를 선택했을 때 스타일 */
+.agree-check input[type="checkbox"]:checked + label::before {
+    background-color: #9dbebb;
+    border-color: #9dbebb;
+}
+
+/* 체크박스를 선택했을 때 체크 표시 */
+.agree-check input[type="checkbox"]:checked + label::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* 버튼 스타일 */
+.agree-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #9dbebb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.agree-btn:hover {
+    background-color: #729ea1;
+}
+
+.agree-btn:active {
+    background-color: #729ea1;
+}
+
+/* 반응형 설정 */
+@media screen and (max-width: 600px) {
+    .agree-container {
+        padding: 15px;
+    }
+
+    .agree-btn {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
