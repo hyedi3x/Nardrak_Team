@@ -1,0 +1,176 @@
+@charset "UTF-8";
+/* login.css(join.css 복사해서 수정) */
+
+/* 공통 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+}
+
+.wrap {
+   width: 100%;
+   margin: 0 auto;
+    max-width: 980px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h3 {
+    color: #729ea1;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 표 스타일 */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    width: 30%;
+}
+
+td {
+    padding: 10px;
+}
+
+
+
+/* 입력 필드 스타일 */
+input[type="text"], input[type="password"], input[type="date"], input[type="email"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="radio"]:hover {
+    margin-right: 5px;
+    background-color: #9dbebb;
+}
+
+input[type="button"], input[type="submit"], input[type="reset"] {
+    padding: 10px 20px;
+    background-color: #9dbebb;
+    border: none;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #729ea1;
+}
+
+/* 전화번호 입력 */
+input[type="text"].input {
+    width: auto;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+input[type="text"].input[type="text"]:not(:first-child) {
+    margin-left: 10px;
+}
+
+/* 주소 관련 스타일 */
+#sample4_postcode {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="button"] {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* 버튼 정렬 */
+div[align="center"] {
+    margin-top: 20px;
+}
+
+/* 회원가입 버튼 스타일 */
+.inputButton {
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    background-color: #4c6ef5;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+.inputButton:hover {
+    background-color: #4057d2;
+}
+
+/* 중복확인 버튼 */
+input[name="dubChk"] {
+    padding: 10px 15px;
+    background-color: #f2a365;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[name="dubChk"]:hover {
+    background-color: #e87e41;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    .inputButton {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    input[type="text"].input, input[type="password"], input[type="email"], select {
+        width: 100%;
+    }
+}
