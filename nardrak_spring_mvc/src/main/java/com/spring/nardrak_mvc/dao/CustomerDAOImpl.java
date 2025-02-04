@@ -17,6 +17,14 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 
 	@Override
+	
+	 // ======================= [id 중복확인 처리] =======================
+	 public int useridCheck(String cs_id) {
+	     System.out.println("CustomerDAOImpl - useridCheck()");
+	   
+	     return sqlSession.selectOne(namespace + "useridCheck", cs_id);
+	}
+	
 	// ======================= [회원정보 인증(아이디, 비번)] =======================
 	public int userIdPwdChk(Map<String, Object> map) {
 		System.out.println("CustomerDAOImpl - userIdPwdChk()");
