@@ -21,6 +21,24 @@ public class CustomerServiceImpl implements CustomerService{
 	private CustomerDAO dao;
 	
 	@Override
+	
+	//ID 중복확인 처리
+	public void inConfirmAction(HttpServletRequest request, HttpServletResponse response, Model model)
+	        throws ServletException, IOException {
+	      
+	      System.out.println("서비스 - idConfirmAction()");
+	      
+	      // 스트리트에서 get방식으로 넘긴 값을 가져온다.
+	      String cs_id = request.getParameter("cs_id");
+	         
+	      // ID 중복확인 처리
+	      int inConfirmCnt = dao.useridCheck(cs_id);
+	      
+	      // jsp로 처리결과 전달
+	      model.addAttribute("inConfirmCnt", inConfirmCnt);
+	      model.addAttribute("cs_id", cs_id);
+	   }
+	
 	// ======================= [로그인 성공 처리 페이지] =======================
 	public void loginResult(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
