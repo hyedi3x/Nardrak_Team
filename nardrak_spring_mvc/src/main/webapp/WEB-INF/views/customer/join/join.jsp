@@ -51,7 +51,7 @@
 									    <th> * 아이디 </th>	<!-- *붙이면 필수항목 -->
 									    <td>
 									        <input type="text" style="width:250px" class="input" name="cs_id" size="30" placeholder="공백없이 20자 이내로 작성" required autofocus> 
-									        <input type="button" style="margin-left:10px" value="중복확인" onclick="confirmId()">
+									        <input type="button" style="margin-left:10px" value="중복확인" onclick="confirmId('${path}')">
 									        <br>
 									        <div class="red hide" id="idChk" style="display:none">
 									            <div class="font14" style="color:red;">아이디는 10자 이내로 입력해주세요.</div>
