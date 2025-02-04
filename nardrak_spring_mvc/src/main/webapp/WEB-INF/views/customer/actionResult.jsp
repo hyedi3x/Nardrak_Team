@@ -32,7 +32,7 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<!-- 회원가입 성공 -->
+	<!-- 회원가입 성공 ,실패 여부 -->
 	<c:choose>
 		<c:when test="${signUpCnt == 1 }">
 			<script type="text/javascript"> 
@@ -41,7 +41,6 @@
 			</script>
 		</c:when>
 			
-		<!-- 회원가입 실패 -->
 		<c:otherwise>
 			<script type="text/javascript">
 				alert("회원가입 실패ㅜㅜ");
