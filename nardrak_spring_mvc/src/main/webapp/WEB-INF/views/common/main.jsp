@@ -19,7 +19,7 @@
 	<!-- main page -->
 	<div id="main"> <h3>mainpage</h3></div>
 	
-	<!-- footer page --><%-- 
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>		 --%>
+	<!-- footer page -->
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>
