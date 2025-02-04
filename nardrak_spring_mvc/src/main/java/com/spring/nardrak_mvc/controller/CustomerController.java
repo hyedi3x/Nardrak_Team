@@ -102,7 +102,7 @@ public class CustomerController {
 
 		service.signUpAction(request, response ,model);
 
-		return "customer/join/joinAction";
+		return "customer/actionResult";
 		}
 }
 
