@@ -45,18 +45,18 @@
 		<div class="user">
 			<ul>
 				<li>
-					<a href="#">
-        				<i class="fa-solid fa-magnifying-glass" id="search"></i>
-					</a>
-        		</li>
-				<li>
-					<a href="${path}/login.do">
-						<i class="fa-solid fa-arrow-right-to-bracket"></i>로그인
+					<a href="${path}/logout.do">
+						<i class="fa-solid fa-arrow-right-to-bracket"></i>로그아웃
 					</a>
 				</li>
 				<li>
-					<a href="${path}/join.do">
-						<i class="fa-solid fa-user-plus"></i> 회원가입
+					<a href="${path}/adminSignUp.ad">
+        				<i class="fa-solid fa-users-gear"></i> 새로운 관리자등록
+					</a>
+        		</li>
+				<li>
+					<a href="${path}/myInfoAdmin.ad">
+						<i class="fa-regular fa-user"></i> 관리자 페이지
 					</a>
 				</li>
 			</ul>
@@ -99,14 +99,19 @@
 	        </div>
 	        <div class="side-user-menu">
 	        	<ul>
-		            <li>
-		            	<a href="#">
-							<i class="fa-solid fa-arrow-right-to-bracket" id="icon"></i> 로그인
+					<li>
+						<a href="${path}/logout.do">
+							<i class="fa-solid fa-arrow-right-to-bracket"></i>로그아웃
 						</a>
 					</li>
 					<li>
-		            	<a href="#">
-							<i class="fa-solid fa-user-plus" id="icon"></i> 회원가입
+						<a href="${path}/adminSignUp.ad">
+	        				<i class="fa-solid fa-users-gear"></i> 새로운 관리자등록
+						</a>
+	        		</li>
+					<li>
+						<a href="${path}/myInfoAdmin.ad">
+							<i class="fa-regular fa-user"></i> 관리자 페이지
 						</a>
 					</li>
 	        	</ul>
