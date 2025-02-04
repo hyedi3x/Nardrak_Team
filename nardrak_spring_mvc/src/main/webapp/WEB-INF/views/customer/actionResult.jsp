@@ -32,5 +32,23 @@
 		</c:otherwise>
 	</c:choose>
 	
+	<!-- 회원가입 성공 -->
+	<c:choose>
+		<c:when test="${signUpCnt == 1 }">
+			<script type="text/javascript"> 
+				alert("회원가입 성공!!");
+				window.location="${path}/main.do";
+			</script>
+		</c:when>
+			
+		<!-- 회원가입 실패 -->
+		<c:otherwise>
+			<script type="text/javascript">
+				alert("회원가입 실패ㅜㅜ");
+				window.location="${path}/join.do";
+			</script>
+		</c:otherwise>
+	</c:choose>
+
 </body>
 </html>
