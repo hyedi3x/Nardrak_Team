@@ -106,7 +106,7 @@ INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zi
 
 -- 관리자 등록 구문(DAO 구문)
 INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
-		VALUES(#{ad_id}, #{ad_pwd}, #{ad_name}, #{ad_birth}, #{ad_phone}, #{ad_email}, #{ad_zip}, #{ad_tel}, #{ad_empnum}, #{ad_dep}, #{ad_terms}, 'Admin')
+		VALUES(#{ad_id}, #{ad_pwd}, #{ad_name}, #{ad_birth}, #{ad_phone}, #{ad_email}, #{ad_zip}, #{ad_tel}, #{ad_empnum}, #{ad_dep}, #{ad_terms}, 'Admin');
 
 -- 관리자 등록 테이블 조회
 SELECT * FROM admin_tb;
@@ -118,6 +118,33 @@ SELECT COUNT(*) FROM admin_tb
 WHERE ad_id = 'hyeri';
 
 -- 관리자 등록 시 아이디 중복 확인(DAO 구문)
-SELECT COUNT(*) FROM admin_tb WHERE ad_id = #{ad_id}
+SELECT COUNT(*) FROM admin_tb WHERE ad_id = #{ad_id};
 
-	
+
+-- 아이디, 비밀번호 확인 (sql)
+SELECT COUNT(*)
+  FROM (SELECT cs_id, cs_pwd, login_session, delete_status FROM customer_tb 
+         UNION 
+        SELECT ad_id, ad_pwd, login_session, delete_status FROM admin_tb) a 
+WHERE cs_id='test' AND cs_pwd='test1234!' AND delete_status='N';	
+
+-- 아이디, 비밀번호 확인 (Spring 구문)
+SELECT COUNT(*)
+  FROM (SELECT cs_id, cs_pwd, login_session, delete_status FROM customer_tb 
+         UNION 
+        SELECT ad_id, ad_pwd, login_session, delete_status FROM admin_tb) a 
+WHERE cs_id='test' AND cs_pwd='test1234!' AND delete_status='N';	
+
+-- 권한 확인 (고객인지, 관리자인지 확인, sql 구문) 
+SELECT COUNT(*) 
+  FROM (SELECT cs_id, login_session FROM customer_tb 
+         UNION 
+        SELECT ad_id, login_session FROM admin_tb) a 
+ WHERE cs_id='test' AND login_session='Admin'
+
+-- 권한 확인 (고객인지, 관리자인지 확인, Spring 구문) 
+SELECT COUNT(*) 
+  FROM (SELECT cs_id, login_session FROM customer_tb 
+         UNION 
+        SELECT ad_id, login_session FROM admin_tb) a 
+ WHERE cs_id=#{strId} AND login_session='Admin'

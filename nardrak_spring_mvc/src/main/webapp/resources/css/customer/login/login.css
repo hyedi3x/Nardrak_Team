@@ -1,0 +1,148 @@
+
+/* [login 전체 컨테이너] */
+#loginWrap {
+	display: flex;
+	flex-direction: column;
+}
+
+/* =======================[login_container 설정]======================= */
+.login_container {
+	display: flex;
+    flex-direction: column;
+	padding-top : 30px;
+    margin: 0 auto;  /* 페이지 가운데로 요소 정렬 */
+    width: 768px;    /* 요소 전체 너비 768px */
+}
+
+/* [loginTitle 요소] */
+#loginTitle {
+	margin-top: 20px;
+}
+
+#loginTitle h2 {
+	margin: 0;
+    padding: 15px 10px;
+    border-bottom: 1px solid #003049;
+    color: #003049;
+} 
+
+/* =======================[로그인 요소들에 대한 설정]======================= */
+
+#loginSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;  /* align-items : 수직정렬 요소 / 현재 디스플레이 방향이 세로이므로, 수평 가운데 정렬*/
+}
+
+/* ---- 로그인 요소들에 대한 설정 ---- */
+#loginArticle {
+	display: flex;
+  	align-items: center; /* 자식 요소를 수직 중앙으로 정렬 */
+  	justify-content: space-between; /* 양쪽에 여백 추가 */
+  	margin-bottom: 30px;
+  	width: 100%;
+}
+
+/* ---- 로그인 입력 요소들에 대한 설정(아이디, 비번 입력) ---- */
+/* input 태그들을 자동으로 세로 배치 */
+#loginArticle form {
+	display: flex;
+	flex-direction: column;
+	width: 420px;
+  	align-items: center; /* 자식 요소를 수직 중앙으로 정렬 */
+  	justify-content: center; /* 자식 요소를 수평 중앙 정렬 */
+}
+
+#loginInput {
+	width: 400px;
+}
+
+#loginInput p {
+	font-size: 15px;
+	margin: 0px 0px 15px 50px;
+}
+
+#loginInput input[type="text"], #loginInput input[type="password"]{
+	width: 350px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 0px 0px 12px 50px;
+    border: 1px solid #d9d9d9;
+}
+
+/* focus */
+#loginInput input[type="text"]:focus, #loginInput input[type="password"]:focus {
+	border: 1px solid #9dbebb;  /* 테두리 색상*/
+	outline: none;
+}
+
+#loginInput input[type="submit"] {
+	width: 350px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 0px 0px 12px 50px;
+	background-color: #9dbebb;   /* 버튼 색상 */
+	border: 1px solid  #9dbebb;  /* 테두리 색상*/
+	font-size: 16px;
+	color: #ffffff;
+}
+
+#loginInput input[type="checkbox"] {
+	margin: 8px 20px;
+	font-size: 14px;
+}
+
+
+/* ---- 광고 포스터에 대한 설정(img) ---- */
+#login_ad {
+	display: flex;
+	flex-direction: column; 
+	width: 280px;
+	margin: 20px 0px;
+}
+
+#login_ad a {
+  display: flex;
+  align-items: center;      /* 자식 요소를 수직 중앙으로 정렬 */
+  justify-content: center;  /* 자식 요소를 수평 중앙 정렬 */
+}
+
+#login_ad img {
+	display: flex;
+	width: 90%; /*.login_ad 클래스의 너비 80% 상속 */
+}
+
+#utility {
+	width: 350px;
+    margin: 0px 0px 12px 50px;
+    
+}
+
+#font12 {
+	font-size: 12px;
+	color: #6c757d;
+}
+
+#font12-left {
+	font-size: 12px;
+	float: left;
+}
+
+#leftLink {
+	position: relative;
+    display: inline-block;
+    color: #468189;
+    border-bottom: 1px solid #468189;
+}
+
+#utility  #font12-right {
+	font-size: 12px;
+	float: right;
+}
+
+#rightLink {
+    position: relative;
+    display: inline-block;
+    color: #667084;
+}
+

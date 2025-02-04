@@ -2,6 +2,8 @@
 
 /* ===================[전체 적용 스타일]=================== */
 body {
+	width: 100vw;       /* viewport width */
+	height: 100vh;      /* viewport height */
     margin: 0;      /* margin : 외부 여백을 없앰 */
     padding: 0;     /* padding : 내부 여백을 없앰 */
     font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif; /* 폰트 적용 */
