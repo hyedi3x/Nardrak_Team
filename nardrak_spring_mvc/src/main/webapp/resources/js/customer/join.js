@@ -1,3 +1,21 @@
+
+
+// 아이디 체크 함수 (정규식)
+function checkId(inputValue) {
+    // 영문 대소문자와 숫자만 허용하며, 4~10자 정규식
+    const idPattern = /^[a-zA-Z0-9]{4,10}$/;
+    
+    // 입력값이 정규식에 맞지 않으면 경고 메시지 표시
+    if (!idPattern.test(inputValue)) {
+        document.getElementById('idChk').style.display = 'block';
+        document.getElementById('idChk').innerHTML = '<div class="font14" style="color:red;">아이디는 영문과 숫자만 사용 가능하며 4~10자여야 합니다.</div>';
+    } else {
+        // 유효한 경우 메시지 숨김
+        document.getElementById('idChk').style.display = 'none';
+    }
+}
+
+
 // 아이디 중복확인 버튼 클릭시
 function confirmId(path) {
     if (!document.inputform.cs_id.value) {
@@ -16,9 +34,10 @@ function setUserid(userid) {
 	self.close();
 }
 
+
 // 기존 메시지 숨기기
 function hideAllErrorMessages() {
-    document.getElementById("idChk").style.display = "none";
+    document.getElementById("idChk").style.display = "none"; 
     document.getElementById("pwdChk").style.display = "none";
     document.getElementById("nameChk").style.display = "none";
     document.getElementById("phoneChk").style.display = "none";
