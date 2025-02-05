@@ -11,6 +11,8 @@
 <!-- css -->
 <link rel="stylesheet" href="${path}/resources/css/customer/join/join.css">
 
+<script src="${path}/resources/js/customer/join.js" defer></script>
+
 
 <style>
     /* 기본 레이아웃 설정 */
