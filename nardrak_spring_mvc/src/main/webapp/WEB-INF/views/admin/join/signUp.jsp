@@ -60,8 +60,7 @@
 				<td>
 					<input type="text" id="ad_id" class="ad_id" name="ad_id" placeholder="영어 소문자 및 숫자로만, 4~16자리" maxlength="10" autofocus required>
 					<input type="button" class="idChkBTN" onclick="idConfirm1('${path}')" value="중복확인">
-					<br>
-					<div class="red" id="idStr"><div class="font16">영소문자 필수, 숫자 포함가능, 4~10 글자로 작성하세요.</div></div>
+					<div class="red" id="idStr"><div class="font14">영소문자 필수, 숫자 포함가능, 4~10 글자로 작성하세요.</div></div>
 			</td>
 				
 			</tr>
@@ -74,9 +73,7 @@
 					<input type="password" id="ad_pwd" class="ad_pwd" name="ad_pwd" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" required >
 						<i id="pwdIcon1" class="fa-regular fa-eye-slash" onclick="pwdShow(0)"></i>
 						<i id="pwdIcon2" class="fa-regular fa-eye" onclick="pwdShow(1)"></i>
-					<!-- 태영 추가 -->
-					<br>
-					<div class="strongPassword-message hide"><div class="font16" id="pwdMessage">8글자 이상, 영문, 숫자, 특수문자(@$!%*#?&)를 작성하세요.</div></div>				
+					<div class="strongPassword-message hide"><div class="font14" id="pwdMessage">8글자 이상, 영문, 숫자, 특수문자(@$!%*#?&)를 작성하세요.</div></div>				
 				</td>
 			</tr>
 			
@@ -86,8 +83,7 @@
 			<tr class="width100">		
 				<td>
 					<input type="password" id="pwdChk" class="pwdChk" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" required>
-					<br>
-					<div class="red" id="pwdStr"><div class="font16">비밀번호가 일치하지 않습니다.</div></div>
+					<div class="red" id="pwdStr"><div class="font14">비밀번호가 일치하지 않습니다.</div></div>
 				</td>
 			</tr>
 			<tr>
@@ -107,7 +103,7 @@
 					<c:forEach begin="1" end="7">
 						<i class="fa-solid fa-circle" id="dot"></i>
 					</c:forEach>
-					<div class="red" id="birthChk"><div class="font16">생년월일을 정확하게 입력해 주세요.<br>[ 만14세 이상 만60세 이하 ]</div></div>
+					<div class="red" id="birthChk"><div class="font14">생년월일을 정확하게 입력해 주세요.<br>[ 만14세 이상 만60세 이하 ]</div></div>
 				</td>
 			</tr>
 			
@@ -127,8 +123,7 @@
 			<tr class="width100">	
 				<td>
 					<input type="number" id="ad_phone2" class="ad_phone2" name="ad_phone2" maxlength="11" placeholder="-없이 숫자만 입력" required>
-					<br>
-					<div class="red" id="phoneChk"><div class="font16">휴대폰번호를 정확하게 입력해 주세요.</div></div>
+					<div class="red" id="phoneChk"><div class="font14">휴대폰번호를 정확하게 입력해 주세요.</div></div>
 				</td>
 			</tr>
 			
@@ -148,9 +143,8 @@
 					<option value="daum.com">다음</option>
 					<option value="nate.com">네이트</option>
 				</select>
-				<br>
-					<div class="red" id="email1Str"><div class="font16">영소문자와 숫자로만 작성하세요.</div></div>
-					<div class="red" id="email2Str"><div class="font16">이메일 양식을 지켜주세요.</div></div>
+					<div class="red" id="email1Str"><div class="font14">영소문자와 숫자로만 작성하세요.</div></div>
+					<div class="red" id="email2Str"><div class="font14">이메일 양식을 지켜주세요.</div></div>
 				</td>
 			</tr>
 			
