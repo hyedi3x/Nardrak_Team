@@ -165,7 +165,7 @@ $(function(){
 	});
 	
 	// 비밀번호
-	$('#pwdChk').on('keyup', function(){
+	$('input[type=password]').on('input', function(){
 			if($('#pwdChk').val() == $('#ad_pwd').val()){
 				$('#pwdStr').css('display', 'none');
 				$('#pwdChk').css('border', '1px solid #d9d9d9');
@@ -199,7 +199,9 @@ $(function(){
 	$('#ad_email2').on('keyup', function(){
 		// 값 직접 입력시에만 실행
 		$('#emailVal2Check').val(0);
+		$('#ad_email3 option').prop('selected',false);  // 이메일 select option들은 직접입력하면 초기화
 		let ad_email2 = $('#ad_email2').val();
+		
 		if(reg_email2.test(ad_email2) || ad_email2.length == 0){
 			$('#email2Str').css('display', 'none');
 			$('#ad_email2').css('border', '1px solid #d9d9d9');
@@ -215,7 +217,7 @@ $(function(){
 	});
 	
 	// 생년월일
-	$('#ad_birth').on('keyup', function(){
+	$('#ad_birth').on('input', function(){
 		// 값 직접 입력시에만 실행
 		let ad_birthY = $('#ad_birth').val().substring(0,2);
 		let ad_birthM = $('#ad_birth').val().substring(2,4);
@@ -283,6 +285,11 @@ function emailFn(){
 	let email2 = $('#ad_email2');
 	if(email3.val() != 0){
 		email2.val(email3.val());
+		$('#email2Str').css('display', 'none');
+		$('#ad_email2').css('border', '1px solid #d9d9d9');
+		$('#ad_email2').css('outline', 'none');
+		$('#emailVal2Check').val(1);
+
 	}
 	else{
 		email2.val('');
