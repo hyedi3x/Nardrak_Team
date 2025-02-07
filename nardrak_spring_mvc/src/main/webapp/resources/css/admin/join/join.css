@@ -3,13 +3,11 @@
 /* 가장 바깥 div 가운데 맞춤 */
 .wrap{
 	display: flex;
-	justify-content: center;
 }
 
 /* 로고와 테이블 교차축 가운데 정렬 */
 .container{
 	display: flex;
-	justify-content: center;
 	flex-direction: column;
 }
 
@@ -247,13 +245,7 @@ a:link, a:visited {
 	width: 100%;
 }
 
-/* 태영 추가: 해당 hide 클래스가 존재하는 경우 화면에 표시 */
-/* 비밀번호 유효성 체크 */
-.hide{
-display: none;
-}
-
 /* id , email1, emial2, 비밀번호 확인 값 확인 */
-#idStr, #email1Str, #email2Str, #pwdStr{
+#idStr, #email1Str, #email2Str, #pwdStr1, #pwdStr2{
 	display: none;
 }
