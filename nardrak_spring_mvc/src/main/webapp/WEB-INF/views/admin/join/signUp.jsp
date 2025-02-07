@@ -73,7 +73,7 @@
 					<input type="password" id="ad_pwd" class="ad_pwd" name="ad_pwd" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" required >
 						<i id="pwdIcon1" class="fa-regular fa-eye-slash" onclick="pwdShow(0)"></i>
 						<i id="pwdIcon2" class="fa-regular fa-eye" onclick="pwdShow(1)"></i>
-					<div class="strongPassword-message hide"><div class="font14" id="pwdMessage">8글자 이상, 영문, 숫자, 특수문자(@$!%*#?&)를 작성하세요.</div></div>				
+					<div class="red" id="pwdStr1"><div class="font14">8글자 이상, 영문, 숫자, 특수문자(@$!%*#?&)를 작성하세요.</div></div>				
 				</td>
 			</tr>
 			
@@ -83,7 +83,7 @@
 			<tr class="width100">		
 				<td>
 					<input type="password" id="pwdChk" class="pwdChk" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" required>
-					<div class="red" id="pwdStr"><div class="font14">비밀번호가 일치하지 않습니다.</div></div>
+					<div class="red" id="pwdStr2"><div class="font14">비밀번호가 일치하지 않습니다.</div></div>
 				</td>
 			</tr>
 			<tr>
@@ -170,12 +170,12 @@
 			<tr class="width100">	
 				<td>
 					<select id="ad_tel" name="ad_tel" required>
-						<option value="">사내번호 선택</option>
-						<option value="02-111-2222">경영지원 (02-111-2222)</option>
-						<option value="02-333-4444">마케팅 (02-333-4444)</option>
-						<option value="02-555-6666">영업 (02-555-6666)</option>
-						<option value="02-888-9999">CS (02-888-9999)</option>
-						<option value="02-000-0000">IT (02-000-0000)</option>
+						<option class="op1" value="">사내번호 선택</option>
+						<option class="op2" value="02-111-2222">경영지원 (02-111-2222)</option>
+						<option class="op3" value="02-333-4444">마케팅 (02-333-4444)</option>
+						<option class="op4" value="02-555-6666">영업 (02-555-6666)</option>
+						<option class="op5" value="02-888-9999">CS (02-888-9999)</option>
+						<option class="op6" value="02-000-0000">IT (02-000-0000)</option>
 					</select>
 				</td>
 			</tr>
@@ -195,12 +195,12 @@
 				
 				<td>
 					<select name="ad_dep" id="ad_dep" required>
-						<option value="">부서 선택</option>
-						<option value="A0001">경영지원</option>
-						<option value="A0002">마케팅</option>
-						<option value="A0003">영업</option>
-						<option value="A0004">CS</option>
-						<option value="A0005">IT</option>
+						<option class="op1" value="">부서 선택</option>
+						<option class="op2" value="MG001">경영지원</option>
+						<option class="op3" value="MK002">마케팅</option>
+						<option class="op4" value="SL003">영업</option>
+						<option class="op5" value="CS004">CS</option>
+						<option class="op6" value="IT005">IT</option>
 					</select>
 				</td>
 			</tr>
