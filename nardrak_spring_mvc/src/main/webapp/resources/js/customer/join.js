@@ -126,18 +126,6 @@ function passwordOne() {
     }
 }
 
-// 기존 메시지 숨기기
-function hideAllErrorMessages() {
-    document.getElementById("idChk").style.display = "none"; 
-    document.getElementById("pwdChk").style.display = "none";
-    document.getElementById("nameChk").style.display = "none";
-    document.getElementById("phoneChk").style.display = "none";
-    document.getElementById("emailChk").style.display = "none";
-    document.getElementById("birthChk").style.display = "none";
-    document.getElementById("addressChk").style.display = "none";
-}
-
-
 // 14세미만 가입불가 (달력제한)
 // 페이지 로드 시에 14년 전 날짜를 계산하여 max 속성에 설정
 window.onload = function() {
@@ -154,19 +142,29 @@ window.onload = function() {
     document.getElementById("cs_birth").setAttribute("max", minDateString);
 };
 
+// 이메일 입력 필드 수정 시 select 값 자동 변경
+function checkCustomEmail() {
+    const emailSelect = document.inputform.user_email3;
+    const emailInput = document.inputform.user_email2;
+
+    if (emailInput.value !== emailSelect.value) {
+        emailSelect.value = "";  // select를 "직접 입력"으로 변경
+    }
+}
 
 // 이메일 선택시 처리
 function selectEmailChk() {
     const selectedEmail = document.inputform.user_email3.value;
     const emailInput = document.inputform.user_email2;
 
-    if (selectedEmail === "0") { // "직접입력" 선택시
+    if (selectedEmail === "") { // "직접입력" 선택시
         emailInput.value = "";
         emailInput.focus();
     } else {
         emailInput.value = selectedEmail;
     }
 }
+
 
 // 이메일 형식 체크 (정규식)
 function validateEmail(email) {
@@ -176,31 +174,37 @@ function validateEmail(email) {
 
 // 회원가입 체크 함수
 function signlnCheck() {
-    hideAllErrorMessages();
- 	
+    
     // 아이디 유효성 체크
-    const userId = document.inputform.cs_id.value;
+    const userId = document.inputform.cs_id.value; // 아이디
     if (!userId) {
         showErrorMessage("idChk", "아이디를 입력하세요!");
         return false;
     }
-
-    // 비밀번호 유효성 체크
-    const password = document.inputform.cs_pwd.value;
+    
+	// 비밀번호 유효성 체크
+    const password = document.inputform.cs_pwd.value; // 비밀번호
     if (!password || password.length < 8) {
         showErrorMessage("pwdChk", "비밀번호는 8자 이상이어야 합니다!");
         return false;
     }
-
-    // 전화번호 유효성 체크
-    const phone = document.inputform.user_hp2.value + document.inputform.user_hp3.value;
+    
+    // 비밀번호 일치 여부 확인
+    const re_password = document.inputform.re_cs_pwd.value; // 비밀번호 재확인
+    if(password !== re_password){
+    	alert("비밀번호가 일치하지 않습니다.");
+    	return false;
+    }
+    
+	// 전화번호 유효성 체크
+    const phone = document.inputform.user_hp2.value + document.inputform.user_hp3.value; // 전화번호
     if (!phone || phone.length !== 8) {
         showErrorMessage("phoneChk", "전화번호를 올바르게 입력해주세요!");
         return false;
     }
-
-    // 이메일 유효성 체크
-    const email = document.inputform.user_email1.value + "@" + document.inputform.user_email2.value;
+    
+	// 이메일 유효성 체크
+    const email = document.inputform.user_email1.value + "@" + document.inputform.user_email2.value; // 이메일
     if (!validateEmail(email)) {
         showErrorMessage("emailChk", "이메일을 올바르게 입력해주세요!");
         return false;
