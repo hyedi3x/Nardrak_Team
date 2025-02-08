@@ -1,69 +1,53 @@
-@charset "UTF-8";
-/* login.css(join.css 복사해서 수정) */
-
-/* 공통 스타일 초기화 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size : 12px;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-}
-
-#container {
-    background-color: #fff;
+/* ------------------ [agree-container 스타일 설정] ------------------  */
+#joinContainer {
+	width: 100%;
+    max-width: 768px;
+    margin: 30px auto;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 60px;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    padding: 30px 60px;
 }
 
-#togglePassword {
-    color: #729ea1; /* 아이콘 색을 파란색으로 설정 */
-}
-
-.em {
-    color: #729ea1;
-}
-
-h3 {
-    color: #729ea1;
-    font-size: 24px;
-    font-weight: bold;
+h2 {
+    max-width: 768px;
     text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #729ea1;
+    box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
     margin-bottom: 20px;
 }
 
 /* 표 스타일 */
 table {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
     border-collapse: collapse;
 }
 
 th {
     text-align: left;
-    padding: 15px;
-    font-size: 14px;
+    padding: 10px 20px 10px 60px;
+    font-size: 15px;
     color: #333;
     width: 30%;
+    font-weight: normal;
 }
 
 td {
     padding: 10px;
+   
 }
 
-/* 입력 필드 스타일 */
-input[type="text"], input[type="password"], input[type="date"], input[type="email"], select, input[type="number"] {
-    width: 100%; 
-    padding: 10px;
+/* 필수 체크 input에 대한 *표시 컬러 */
+.requiredAll{
+	font-size: 15px;
+    color: #40798c;
+}
+
+/* 아이디 입력 필드 속성 */
+#inputId {
+	width: 250px;	
+	padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
@@ -72,38 +56,41 @@ input[type="text"], input[type="password"], input[type="date"], input[type="emai
     box-sizing: border-box; 
 }
 
-input[type="radio"] {
-    margin-right: 5px;
-}
-
-input[type="radio"]:hover {
-    margin-right: 5px;
-    background-color: #9dbebb;
-}
-
-input[type="button"], input[type="submit"], input[type="reset"] {
-    padding: 10px 20px;
+/* 중복 ID 속성 */
+input[type="button"]#inputIdConfirm {
+	margin-left: 5px;
+	padding: 8px 15px;
     background-color: #9dbebb;
     border: none;
-    color: white;
+    color: #ffffff;
     font-size: 14px;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
 }
 
-input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover {
-    background-color: #729ea1;
+.font13{
+	font-size: 13px;
+	color: rgba(255, 0, 0);
+	padding-top: 4px;
 }
 
-/* 전화번호 입력 */
-input[type="text"].input {
-    width: 110;
-    display: inline-block;
-    margin-top: 5px;
+/* 부모는 relative */
+.pwd_class{
+	position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
+/* 비밀번호 아이콘 절대 위치 설정 */
+#togglePassword {
+    font-size: 19px;
+    color: #9dbebb;
+    cursor: pointer;
+    position: absolute;
+    top: 24;
+    left: 320;
+}
 
 /* 주소 관련 스타일 */
 #sample4_postcode {
@@ -113,56 +100,105 @@ input[type="text"].input {
     border-radius: 4px;
 }
 
-/* 버튼 정렬 */
-div[align="center"] {
-    margin-top: 20px;
-}
-
-
-
-/* 회원가입 버튼 스타일 */
-.inputButton {
-    padding: 12px 25px;
-    font-size: 16px;
-    color: white;
-    background-color: #4c6ef5;
-    border: none;
+/* input 공통 속성 */
+.input, .input2, .input3 {
+	padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+    box-sizing: border-box; 
+}
+
+.input {
+	width: 348px;
+}
+
+.input2 {
+    width: 105px;
+}
+
+.input3 {
+    width: 171px;
+}
+
+/* @ 기호, - 기호 */
+.em {
+	font-size: 14px;
+	font-weight: bold;
+	color: #9dbebb;
+}
+
+/* 우편주소 찾기 버튼 속성 */
+input[type="button"]#zip {
+	margin-left: 5px;
+	padding: 8px 15px;
+    background-color: #9dbebb;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 6px;
     cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-.inputButton:hover {
-    background-color: #4057d2;
-}
-
-/* 중복확인 버튼 */
-input[name="dubChk"] {
-    padding: 10px 15px;
-    background-color: #f2a365;
+/* 회원가입 및 회원 가입 초기화*/
+ input[type="submit"], input[type="reset"] {
+ 	width: 492px;
+    padding: 10px 20px;
+    background-color: #9dbebb;
     border: none;
     color: white;
-    border-radius: 4px;
+    font-size: 14px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 12px 10px 5px 50px;
 }
 
-input[name="dubChk"]:hover {
-    background-color: #e87e41;
+input[type="button"]#inputIdConfirm:hover, input[type="button"]#zip:hover,
+input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #729ea1;
 }
 
-/* 반응형 디자인 */
+.radio14 {
+	font-size:14px;
+	color: #333;
+}
+
+/* focus는 outline 검정색에서 변경*/
+input:focus,
+select:focus {
+	border: 2px solid #9dbebb;
+	outline: none;
+}
+
+/* ------------------ [반응형 설정] ------------------ */
 @media (max-width: 768px) {
     table {
-        width: 100%;
+        width: 768px;
     }
+    
+    th {
+	    text-align: left;
+	    padding: 10px 20px 10px 60px;
+	    font-size: 15px;
+	    color: #333;
+	    width: 194.39px;
+	    font-weight: normal;
+	}
 
-    .inputButton {
-        width: 100%;
-        font-size: 18px;
-    }
-
-    input[type="text"].input, input[type="password"], input[type="email"], select {
-        width: 100%;
-    }
+	td {
+	    padding: 10px;
+	}
+	
+	h2 {
+	    width: 768px;
+	    text-align: center;
+	    padding-bottom: 15px;
+	    border-bottom: 1px solid #729ea1;
+	    box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
+	    margin-bottom: 20px;
+	}
 }

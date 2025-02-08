@@ -1,91 +1,144 @@
-/* 기본 스타일 설정 */
-
+/* ------------------ [agree-container 스타일 설정] ------------------  */
 .agree-container {
     max-width: 600px;
     margin: 30px auto;
-    padding: 20px;
+    padding: 30px;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+h2 {
     text-align: center;
-    font-size: 24px;
     margin-bottom: 20px;
-}
-
-p{
-	font-size: 16px;
-	font-weight: bold;
-	margin: 25px 0px 10px 0px;
-	color: #333;
 }
 
 p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 13px;
+	color: #555;
 }
 
 ul {
     margin: 0;
-    padding-left: 20px;
+    padding-left: 35px;
     font-size: 14px;
     color: #555;
 }
 
 li {
-    margin-bottom: 8px;
+	margin-bottom: 8px;
+    padding-left: 7px;
 }
 
-.agree-check {
+/* ------------------ [전체 동의 체크] ------------------ */
+.agree-checkFinal {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    margin: 16px 0px 10px 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #729ea1;
+    box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
 }
 
-/* 커스텀 체크박스 디자인 */
-.agree-check input[type="checkbox"] {
-    opacity: 0; /* 기본 체크박스를 투명하게 만듭니다. */
-    position: absolute; /* 필요에 따라 위치를 조정할 수 있습니다. */
-    /* ... 기타 스타일 속성 ... */
+/* 기존 체크박스를 투명하게 만듭니다. */
+.agree-checkFinal input[type="checkbox"] {
+    opacity: 0; 
+    position: absolute; 
 }
 
-.agree-check label {
-	position: relative;
-	font-size: 14px;
-	color: #508991;
-	padding-left: 25px;
-	cursor: pointer;
-	padding-top: 1px;
-	font-weight: bold;
-}
-
-.agree-check label::before {
+/* 전체 동의 체크박스 커스텀 */
+.agree-checkFinal label::before {
 	content: '';
 	position: absolute;
 	left: 0;
 	top: 2;
 	width: 13px;
 	height: 13px;
-	border: 2px solid #9dbebb;
+	border: 2px solid #729ea1;
 	border-radius: 5px;
 	transition: background-color 0.3s, border-color 0.3s;
 }
 
+/* 전체 동의 체크 텍스트 */
+.agree-checkFinal label {
+	position: relative;
+	font-size: 16px;
+	color: #508991;
+	padding-left: 25px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+/* 전체 동의 체크 박스를 선택했을 때 체크 표시 */
+.agree-checkFinal input[type="checkbox"]:checked + label::after {
+	content: '';
+	position: absolute;
+	top: 4;
+	left: 5;
+	width: 5px;
+	height: 8px;
+	border: 2px solid #ffffff;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+/* 포커스를 시각적으로 구분하기 위한 outline 추가 */
+.agree-checkFinal input[type="checkbox"]:focus + label::before {
+    outline: 2px solid #729ea1; 
+}
+
+/* ------------------ [전체 동의 외 개인정보 처리 동의 체크] ------------------ */
+.agree-check {
+    display: flex;
+    align-items: center;
+    margin: 10px 0px 25px 0px;
+}
+
+/* 기존 체크박스를 투명하게 만듭니다. */
+.agree-check input[type="checkbox"] {
+    opacity: 0; 
+    position: absolute;
+}
+
+/* 개인정보 처리 동의 체크박스 커스텀 */
+.agree-check label::before {
+	content: '';
+	position: absolute;
+	left: 18;
+	top: 2;
+	width: 13px;
+	height: 13px;
+	border: 2px solid #729ea1;
+	border-radius: 5px;
+	transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* 개인정보 처리 동의 텍스트 */
+.agree-check label {
+	position: relative;
+	font-size: 14px;
+	color: #508991;
+	padding-left: 42px;
+	cursor: pointer;
+	padding-top: 1px;
+	font-weight: bold;
+}
+
 /* 체크박스를 선택했을 때 스타일 */
-.agree-check input[type="checkbox"]:checked + label::before {
-    background-color: #9dbebb;
-    border-color: #9dbebb;
+.agree-check input[type="checkbox"]:checked + label::before,
+.agree-checkFinal input[type="checkbox"]:checked + label::before {
+    background-color: #729ea1;
+    border-color: #729ea1;
 }
 
 /* 체크박스를 선택했을 때 체크 표시 */
 .agree-check input[type="checkbox"]:checked + label::after {
 	content: '';
 	position: absolute;
-	top: 4px;
-	left: 5px;
+	top: 4;
+	left: 23;
 	width: 5px;
 	height: 8px;
 	border: 2px solid #ffffff;
@@ -95,16 +148,10 @@ li {
 
 /* 포커스를 시각적으로 구분하기 위한 outline 추가 */
 .agree-check input[type="checkbox"]:focus + label::before {
-    outline: 2px solid #9dbebb; /* 포커스를 빨간색으로 표시 */
+    outline: 2px solid #729ea1; 
 }
 
-/* 체크박스에 포커스가 갔을 때, 포커스를 강조하는 스타일 */
-.agree-check input[type="checkbox"]:focus {
-    outline: 2px solid blue; /* 포커스를 시각적으로 강조 */
-}
-
-
-/* 버튼 스타일 */
+/* ------------------ [버튼 스타일] ------------------ */
 .agree-btn {
 	width: 100%;
 	padding: 15px;
@@ -120,6 +167,7 @@ li {
 	font-weight: bold;
 }
 
+/* 버튼에 마우스를 올릴 때 */
 .agree-btn:hover {
     background-color: #729ea1;
 }
@@ -128,11 +176,8 @@ li {
     background-color: #729ea1;
 }
 
-
-
-
-/* 반응형 설정 */
-@media screen and (max-width: 600px) {
+/* ------------------ [반응형 설정] ------------------ */
+@media screen and (max-width: 768px) {
     .agree-container {
         padding: 15px;
     }

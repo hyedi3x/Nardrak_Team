@@ -1,0 +1,104 @@
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 375px;
+    border-collapse: collapse;
+}
+
+th {
+	text-align: left;
+    padding: 10px 0px 10px 50px;
+    font-size: 15px;
+    color: #333;
+    width: 30%;
+    font-weight: normal;
+}
+
+td {
+    padding: 0px;
+   
+}
+
+/* 필수 체크 input에 대한 *표시 컬러 */
+.requiredAll{
+	font-size: 15px;
+    color: #40798c;
+}
+
+/* 아이디 입력 필드 속성 */
+#inputId {
+    width: 178px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+    margin-left: 15px;
+    box-sizing: border-box;
+}
+
+/* 중복 ID 속성 */
+input[type="submit"]#inputIdConfirm {
+	margin-left: 5px;
+	padding: 8px 15px;
+    background-color: #9dbebb;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #729ea1;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.idValue {
+	color:#729ea1; 
+	font-weight: bold;
+}
+
+.font13{
+    font-size: 13px;
+    color: rgba(255, 0, 0);
+    padding-top: 4px;
+    margin-left: 15px;
+}
+
+input[type="button"] {
+	width: 100%;
+    background-color: #9dbebb;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
