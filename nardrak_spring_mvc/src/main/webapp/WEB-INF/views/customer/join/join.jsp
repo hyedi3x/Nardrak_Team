@@ -79,7 +79,7 @@
 	            <tr>
 	                <th> 생년월일 <span class="requiredAll">*</span></th>
 	                <td>
-	                    <input type="Date" id="cs_birth" class="input" name="cs_birth" style="width:350px" required oninput="checkAge()">
+	                    <input type="Date" id="cs_birth" class="input" name="cs_birth" style="width:350px" required>
 	                    <br>
 	                    <p style="color:#729ea1; font-size:12px;">14세 미만은 가입이 불가합니다.</p>
 	                    <div class="red hide" id="birthChk" style="display:none">
@@ -155,7 +155,7 @@
 	                <td>
 	                    <input type="text" class="input2" name="user_email1" maxlength="20"required>
 	                    <span class="em">@</span>
-	                    <input type="text" class="input2" name="user_email2" required>
+	                    <input type="text" class="input2" name="user_email2" oninput="checkCustomEmail()" required>
 	                    <select class="input2" name="user_email3" onchange="selectEmailChk()">
 	                        <option value=""> 직접 입력</option>
 	                        <option value="naver.com"> naver.com </option>
