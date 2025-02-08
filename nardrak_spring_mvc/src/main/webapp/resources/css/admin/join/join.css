@@ -42,7 +42,7 @@ input{
 	border: 1px solid  #d9d9d9;
 	margin-bottom: 10px;
 }
-
+/* select 설정 */
 select{
 	padding: 10px 12px;
 	width: 100%;
@@ -89,7 +89,8 @@ input[type="button"], input[type="submit"]{
 	text-align: center;
 }
 
-/* input type:number 화살표 버튼 제거 (생년월일, 휴대폰번호, 사내번호)
+/*
+   input type:number 화살표 버튼 제거 (생년월일, 휴대폰번호, 사내번호)
   [type=""]을 가진 input 선택자 사용
   ::-webkit-inner-spin-button = 숫자를 증가시키거나 감소시킬 수 있도록 돕는 UI 
   none으로 줘서 스핀버튼이 보이지 않게 함
@@ -139,13 +140,15 @@ input[type="number"]::-webkit-inner-spin-button {
 
 /* 생년월일 입력창 */
 .ad_birth{
-	width: 195px;
+	width: 180px;
 }
-
+.ad_jender{
+	width: 42px;
+}
 /* 생년월일 - 아이콘 */
 .birthIcon{
 	color: #9dbebb; 
-	font-size: 19px; 
+	font-size: 18px; 
 }
 
 /* 비밀번호 메세지, 생년월일 메세지, 비밀번호 아이콘2 안보이게 처리 */
@@ -235,17 +238,15 @@ a:link, a:visited {
 	padding-left : 25px;	
 }
 
-/* 태영 추가 */
 .submitBTN:hover{
 	background-color:#729ea1;
 }
 
-/* 태영 변경 : .submitBTN button에서 button 삭제, margin 삭제 */
 .submitBTN { 
 	width: 100%;
 }
 
 /* id , email1, emial2, 비밀번호 확인 값 확인 */
-#idStr, #email1Str, #email2Str, #pwdStr1, #pwdStr2{
+#idStr, #email1Str, #email2Str, #pwdStr1, #pwdStr2, #jenderChk{
 	display: none;
 }
