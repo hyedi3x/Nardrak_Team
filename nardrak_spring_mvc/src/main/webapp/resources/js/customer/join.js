@@ -24,7 +24,8 @@ function confirmId(path) {
         return false;
     }
     let url = path+"/idConfirmAction.do?cs_id=" + document.inputform.cs_id.value;
-    window.open(url, "confirm", "menubar=no, width=500, height=400");
+    window.open(url, "confirm", "menubar=no, width=450, height=290, left=900, top=250");
+    
 }
 
 // 아이디 중복 확인후 cs_id 적용
