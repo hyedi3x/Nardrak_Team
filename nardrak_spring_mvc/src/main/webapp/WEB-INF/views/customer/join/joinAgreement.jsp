@@ -20,10 +20,10 @@
 
 	<form name="agreeform" action="join.do" method="post" onsubmit="return validateForm()">
 	    <div class="agree-container">
-	        <h1>개인정보 처리 동의</h1>
-	        <p>저희 서비스 이용을 위해 아래의 개인정보 처리에 동의해주세요.</p>
+	        <h2>개인정보 처리 동의</h2>
+	        <p> 저희 서비스 이용을 위해 아래의 개인정보 처리에 동의해주세요.</p>
 	
-	        <div class="agree-check">
+	        <div class="agree-checkFinal">
 	            <input type="checkbox" id="finalAgree" name="finalAgree" onclick="toggleAgreement(this);">
 	            <label for="finalAgree">전체 동의합니다.</label>
 	        </div>
