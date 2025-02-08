@@ -145,11 +145,17 @@ CREATE TABLE customer_tb(
 SELECT * FROM customer_tb;
 
 -- 고객 회원가입 중복확인 조회(sql)
-SELECT COUNT(*) FROM customer_tb
- WHERE cs_id ='hello';
+SELECT COUNT(*) 
+  FROM (SELECT cs_id FROM customer_tb 
+         UNION 
+        SELECT ad_id FROM admin_tb) a 
+ WHERE cs_id ='111q';
 
 -- 고객 회원가입 중복확인 조회(Spring 구문)
-SELECT COUNT(*) FROM customer_tb
+SELECT COUNT(*) 
+  FROM (SELECT cs_id FROM customer_tb 
+         UNION 
+        SELECT ad_id FROM admin_tb) a 
  WHERE cs_id = #{cs_id}
 
 -- 고객 등록 구문(sql)
