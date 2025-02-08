@@ -17,5 +17,7 @@ public interface AdminService {
 		// 관리자 회원가입
 		public void adminSignUpAction(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
-
+		// 유니크 값 체크
+				public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model)
+						throws ServletException, IOException;
 }
