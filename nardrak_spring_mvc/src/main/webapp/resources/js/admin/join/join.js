@@ -106,7 +106,7 @@ function submitChk(){
   	}
   	
   	if(!(jender_input == 1 || jender_input == 2)){
-   	alert(jender_input+'주민번호 뒷자리를 확인해 주세요.');
+   	alert('주민번호 뒷자리를 확인해 주세요.');
     $('#ad_jender').focus();
    	return false;
   	}
@@ -361,7 +361,7 @@ $('#ad_birth').on('input', function(){
            $('#ad_birth').css('outline', 'none');
            $('#brithValCheck').val(1);
            
-           // 생년월일 변경시 성별 검사
+           // 생년월일 변경시 성별 검사 다시 실행
            jenderChk();
            
         }
@@ -378,6 +378,7 @@ $('#ad_birth').on('input', function(){
 
 
 // 성별 검사
+// jender의 값을 읽는데 
 function jenderChk(){
 	let ad_jender = $('#ad_jender').val();
 	let jenderChk =0;
