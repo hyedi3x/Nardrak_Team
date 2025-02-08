@@ -10,9 +10,6 @@
 <!-- css -->
 <link rel="stylesheet" href="${path}/resources/css/admin/join/join.css">
 
-<!-- 아이콘 -->
-<script src="https://kit.fontawesome.com/3e59cb63da.js" crossorigin="anonymous"></script>
-
 <!-- js -->
 <script type="text/javascript" src="${path}/resources/js/admin/join/join.js" defer></script>
 
@@ -100,10 +97,12 @@
 				<td>
 					<input type="number" id="ad_birth" class="ad_birth" name="ad_birth" maxlength="6" placeholder="생년월일 6자리" required>
 					<span class="birthIcon"><i class="fa-solid fa-minus"></i></span>
-					<c:forEach begin="1" end="7">
+					<input type="number" id="ad_jender" class="ad_jender" name="ad_jender" maxlength="1" required oninput="jenderChk()">
+					<c:forEach begin="1" end="6">
 						<i class="fa-solid fa-circle" id="dot"></i>
 					</c:forEach>
 					<div class="red" id="birthChk"><div class="font14">생년월일을 정확하게 입력해 주세요.<br>[ 만14세 이상 만60세 이하 ]</div></div>
+					<div class="red" id="jenderChk"><div class="font14"> 주민번호 뒷자리를 정확하게 입력해 주세요.</div></div>
 				</td>
 			</tr>
 			
@@ -122,8 +121,9 @@
 			</tr>
 			<tr class="width100">	
 				<td>
-					<input type="number" id="ad_phone2" class="ad_phone2" name="ad_phone2" maxlength="11" placeholder="-없이 숫자만 입력" required>
+					<input type="number" id="ad_phone2" class="ad_phone2" name="ad_phone2" maxlength="11" placeholder="-없이 숫자만 입력" oninput="uniqueChk('${path}', '#phoneUnique', '#ad_phone2')" required>
 					<div class="red" id="phoneChk"><div class="font14">휴대폰번호를 정확하게 입력해 주세요.</div></div>
+					<div id="phoneUnique"></div>
 				</td>
 			</tr>
 			
@@ -132,11 +132,11 @@
 			</tr>
 			<tr>	
 				<td>
-				<input type="text" id="ad_email1" name="ad_email1" class="ad_email1" placeholder="이메일 입력" maxlength="15" required>
+				<input type="text" id="ad_email1" name="ad_email1" class="ad_email1" placeholder="이메일 입력" maxlength="15" oninput="uniqueChk('${path}', '#emailUnique', '#ad_email1')" required>
 				<span class="emailIcon">@</span>
-				<input type="text" id="ad_email2" name="ad_email2" class="ad_email2" placeholder="exam.com" maxlength="14" required>
+				<input type="text" id="ad_email2" name="ad_email2" class="ad_email2" placeholder="exam.com" maxlength="14" oninput="uniqueChk('${path}', '#emailUnique', '#ad_email2')" required>
 				
-				<select id="ad_email3" class="ad_email3" onchange="emailFn()">
+				<select id="ad_email3" class="ad_email3" onchange="emailFn(); uniqueChk('${path}', '#emailUnique', '#ad_email3')">
 					<option value="">직접입력</option>
 					<option value="naver.com">네이버</option>
 					<option value="google.com">구글</option>
@@ -145,6 +145,7 @@
 				</select>
 					<div class="red" id="email1Str"><div class="font14">영소문자와 숫자로만 작성하세요.</div></div>
 					<div class="red" id="email2Str"><div class="font14">이메일 양식을 지켜주세요.</div></div>
+					<div id="emailUnique"></div>
 				</td>
 			</tr>
 			
@@ -153,12 +154,12 @@
 			</tr>
 			<tr>
 				<td>												
-					<input type="text" class="input" name="ad_zip1" id="ad_zip1" size="20" value="" placeholder="우편번호 입력" readonly>
+					<input type="text" class="input" name="ad_zip1" id="ad_zip1" size="20" value="" placeholder="우편번호 입력" readonly >
 					<input type="button" class="ad_ZIPBTN" id="ad_ZIPBTN" name="ad_ZIPBTN"  value="주소 검색">
 				</td>
 			</tr>
 			<tr class="width100">
-				<td><input type="text" class="input" name="ad_zip2" id="ad_zip2" size="20" value="" placeholder="도로명 주소 입력" readonly></td>
+				<td><input type="text" class="input" name="ad_zip2" id="ad_zip2" size="20" value="" placeholder="도로명 주소 입력" readonly ></td>
 			</tr>
 			<tr class="width100">
 				<td><input type="text" class="input" name="ad_zip3" id="ad_zip3" size="20" value="" placeholder="상세 주소 입력" maxlength="30" ></td>
@@ -184,7 +185,11 @@
 				<th class="font16">사번</th>
 			</tr>
 			<tr class="width100">	
-				<td><input type="text" id="ad_empnum" name="ad_empnum" placeholder="사번 입력" maxlength="13" required></td>
+				<td>
+					<input type="text" id="ad_empnum" name="ad_empnum" placeholder="사번 입력" maxlength="13" oninput="uniqueChk('${path}', '#empnumlUnique', '#ad_empnum')" required>
+					<div id="empnumlUnique"></div>
+				</td>
+				
 			</tr>
 			
 			<!-- 태영 수정 -->
