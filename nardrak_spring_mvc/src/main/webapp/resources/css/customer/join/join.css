@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size : 12px;
 }
 
 body {
@@ -34,6 +35,14 @@ body {
     margin: 0 auto;
 }
 
+#togglePassword {
+    color: #729ea1; /* 아이콘 색을 파란색으로 설정 */
+}
+
+.em {
+    color: #729ea1;
+}
+
 h3 {
     color: #729ea1;
     font-size: 24px;
@@ -51,7 +60,7 @@ table {
 
 th {
     text-align: left;
-    padding: 35px;
+    padding: 15px;
     font-size: 14px;
     color: #333;
     width: 30%;
@@ -61,17 +70,16 @@ td {
     padding: 10px;
 }
 
-
-
 /* 입력 필드 스타일 */
-input[type="text"], input[type="password"], input[type="date"], input[type="email"], select {
-    width: 100%;
+input[type="text"], input[type="password"], input[type="date"], input[type="email"], select, input[type="number"] {
+    width: 100%; 
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
     color: #333;
     margin-top: 5px;
+    box-sizing: border-box; 
 }
 
 input[type="radio"] {
@@ -101,32 +109,26 @@ input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hove
 
 /* 전화번호 입력 */
 input[type="text"].input {
-    width: auto;
+    width: 110;
     display: inline-block;
     margin-top: 5px;
 }
 
-input[type="text"].input[type="text"]:not(:first-child) {
-    margin-left: 10px;
-}
 
 /* 주소 관련 스타일 */
 #sample4_postcode {
-    width: 30%;
+    width: 220px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-}
-
-input[type="button"] {
-    display: inline-block;
-    margin-top: 10px;
 }
 
 /* 버튼 정렬 */
 div[align="center"] {
     margin-top: 20px;
 }
+
+
 
 /* 회원가입 버튼 스타일 */
 .inputButton {
