@@ -93,16 +93,6 @@
         text-align: center;
     }
 
-    .error {
-        background-color: #f8d7da;
-        color: #721c24;
-    }
-
-    .success {
-        background-color: #d4edda;
-        color: #155724;
-    }
-
 </style>
 
 </head>
@@ -115,7 +105,7 @@
             <!-- id가 중복일 때, id를 입력받아 다시 중복체크 -->
             <c:if test="${inConfirmCnt == 1}">
                 <div class="message error">
-                    <span>입력하신 ${cs_id}는 사용할 수 없습니다.</span>
+                    <span>입력하신 아이디 <span style="color:#729ea1; font-weight: bold;">${cs_id}</span>는 사용할 수 없습니다.</span>
                 </div>
                 
                 <table>
@@ -138,7 +128,7 @@
             <!-- id가 중복이 아닐 때 -->
             <c:if test="${inConfirmCnt != 1}">
                 <div class="message success">
-                    <span>입력하신 ${cs_id}는 사용할 수 있습니다.</span>
+                    <span>입력하신 아이디<span style="color:#729ea1; font-weight: bold;">${cs_id}</span>는 사용할 수 있습니다.</span>
                 </div>
 
                 <table>
