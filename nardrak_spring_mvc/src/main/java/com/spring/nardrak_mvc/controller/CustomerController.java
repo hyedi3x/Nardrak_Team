@@ -73,23 +73,15 @@ public class CustomerController {
 		return "customer/join/joinAgreement";
 	}
 	
-	// ======================= [전화번호 중복 확인] =======================
-	@RequestMapping("/checkPhone.do")
-	public void checkPhone(HttpServletRequest request, HttpServletResponse response, Model model)
-	        throws ServletException, IOException {
-	    logger.info("<< url => /checkPhone.do >>");
-
-	    service.checkPhone(request, response, model);
-	}
-	
-	// ======================= [이메일 중복 확인] =======================
-	@RequestMapping("/checkEmail.do")
-	public void checkEmail(HttpServletRequest request, HttpServletResponse response, Model model)
+	// ======================= [전화번호 & 이메일 중복 확인] =======================
+	@RequestMapping("/uniqueCheck.do")
+	public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
-		logger.info("<< url => /checkEmail.do >>");
-		
-		service.checkEmail(request, response, model);
+	    logger.info("<< url => /uniqueCheck.do >>");
+
+	    service.uniqueCheck(request, response, model);
 	}
+
 
 	// ======================= [회원가입 페이지] =======================
 	@RequestMapping("/join.do")
