@@ -109,7 +109,7 @@
 	            </div>
 	            
 	             <!-- hidden input으로 마케팅 동의 값 넘기기 -->
-	        	<input type="hidden" id="marketingConsentHidden" name="marketingConsent" value="false">	
+	        	<input type="hidden" id="marketingConsentHidden" name="cs_Terms">	
 	        	
 	        </div>
 	
