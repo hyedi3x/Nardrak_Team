@@ -154,16 +154,19 @@
 	            <tr>
 	                <th> 이메일 <span class="requiredAll">*</span></th>
 	                <td>
-	                    <input type="text" class="input2" name="user_email1" maxlength="20" required>
+	                    <input type="text" class="input2" name="user_email1" maxlength="20" oninput="checkEmail();" required>
 	                    <span class="em">@</span>
-	                    <input type="text" class="input2" name="user_email2" oninput="checkCustomEmail()" required>
-	                    <select class="input2" name="user_email3" onchange="selectEmailChk()">
+	                    <input type="text" class="input2" name="user_email2" oninput="checkCustomEmail(); checkEmail();" required>
+	                    <select class="input2" name="user_email3" onchange="selectEmailChk(); checkEmail();">
 	                        <option value=""> 직접 입력</option>
 	                        <option value="naver.com"> naver.com </option>
 	                        <option value="gmail.com"> gmail.com </option>
 	                        <option value="kakao.com"> kakao.com </option>
 	                        <option value="nate.com"> nate.com </option>
 	                    </select>
+	                    <div class="red hide" id="emailChk" style="display:none">
+	                        <div class="font14" style="color:red;"></div>
+	                    </div>
 	                </td>
 	            </tr>  
 	
