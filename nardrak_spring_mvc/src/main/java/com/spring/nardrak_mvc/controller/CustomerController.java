@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.nardrak_mvc.service.CustomerService;
 
@@ -72,6 +73,15 @@ public class CustomerController {
 		return "customer/join/joinAgreement";
 	}
 	
+	// ======================= [전화번호 중복 확인] =======================
+	@RequestMapping("/checkPhone.do")
+	public void checkPhone(HttpServletRequest request, HttpServletResponse response, Model model)
+	        throws ServletException, IOException {
+	    logger.info("<< url => /checkPhone.do >>");
+
+	    service.checkPhone(request, response, model);
+	}
+
 	// ======================= [회원가입 페이지] =======================
 	@RequestMapping("/join.do")
 	public String join(HttpServletRequest request) {
