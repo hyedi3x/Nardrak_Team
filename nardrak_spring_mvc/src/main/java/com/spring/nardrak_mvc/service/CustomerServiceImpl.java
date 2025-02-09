@@ -42,41 +42,29 @@ public class CustomerServiceImpl implements CustomerService{
 	      model.addAttribute("cs_id", cs_id);
 	   }
 	
-	// ======================= [전화번호 중복확인 처리] =======================
+	// ======================= [전화번호 & 이메일 중복 확인] =======================
 	@Override
-	public void checkPhone(HttpServletRequest request, HttpServletResponse response, Model model)
+	public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException {
-		System.out.println("서비스 - checkPhone()");
-		
-		String phone = request.getParameter("cs_phone"); // ajax에서 받은 data
-		int phoneCnt = dao.phoneCheck(phone); // 중복확인 체크
-		
-		// JSON 문자열을 직접 생성
-	    String jsonResponse = "{ \"phoneCnt\": " + phoneCnt + " }"; // JSON 형식의 문자열을 저장
+	    System.out.println("서비스 - uniqueCheck()");
 
-	    // JSON 응답
-	    response.setContentType("application/json"); // 응답 타입 JSON
-	    response.setCharacterEncoding("UTF-8"); // UTF-8로 인코딩
-	    response.getWriter().write(jsonResponse); // json 데이터 전송
+	    String type = request.getParameter("type"); // phone 또는 email
+	    String value = request.getParameter("value");
+	    
+	    int count = 0;
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("type", type);
+	    map.put("value", value);
+	    count = dao.uniqueCheck(map);
+	    
+	    // JSON 문자열을 직접 생성
+	    String jsonResponse = "{ \"count\": " + count + " }"; // JSON 형식의 문자열을 저장 
+
+	    response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+	    response.getWriter().write(jsonResponse);
 	}
-	
-	// ======================= [이메일 중복확인 처리] =======================
-	@Override
-	public void checkEmail(HttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException {
-		System.out.println("서비스 - checkEmail()");
-		
-		String email = request.getParameter("cs_email"); // ajax에서 받은 data
-		int emailCnt = dao.emailCheck(email); // 중복확인 체크
-		
-		// JSON 문자열을 직접 생성
-		String jsonResponse = "{ \"emailCnt\": " + emailCnt + " }"; // JSON 형식의 문자열을 저장
-		
-		// JSON 응답
-		response.setContentType("application/json"); // 응답 타입 JSON
-		response.setCharacterEncoding("UTF-8"); // UTF-8로 인코딩
-		response.getWriter().write(jsonResponse); // json 데이터 전송
-	}
+
 	
 	// ======================= [회원가입 처리 페이지] =======================
 	   @Override
