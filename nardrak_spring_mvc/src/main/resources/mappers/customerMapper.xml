@@ -30,6 +30,13 @@
 			        SELECT ad_id FROM admin_tb) a 
 			 WHERE cs_id = #{cs_id}
  		</select>
+ 		
+ 		<!-- 전화번호 중복확인 처리 -->
+ 		<select id="phoneCheck" parameterType="String" resultType="int">
+ 			SELECT count(*)
+ 			  FROM customer_tb
+ 			 WHERE cs_phone = #{cs_phone}
+ 		</select>
 	      
 	    <!-- 회원가입 처리 -->
 		<insert id="insertCustomer" parameterType="com.spring.nardrak_mvc.dto.CustomerDTO" >
