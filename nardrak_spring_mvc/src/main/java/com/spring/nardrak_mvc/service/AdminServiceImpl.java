@@ -30,7 +30,6 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void adminIdConfirm(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException{
-		
 		System.out.println("Service idConfirm");
 		
 		String ad_id = request.getParameter("ad_id");
@@ -43,13 +42,15 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void adminSignUpAction(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException{
-		
 		System.out.println("Service AdminSignUpAction");
 		
 		dto.setAd_id(request.getParameter("ad_id")); 			// 아이디
 		dto.setAd_pwd(request.getParameter("ad_pwd")); 			// 비밀번호
 		dto.setAd_name(request.getParameter("ad_name")); 		// 이름
-		dto.setAd_birth(request.getParameter("ad_birth")); 		// 생일
+		
+		String ad_bitth = request.getParameter("ad_birth")+"-"+
+						  request.getParameter("ad_jender");
+		dto.setAd_birth(ad_bitth); 		// 생일
 		
 		String ad_phone1 = request.getParameter("ad_phone1"); 	// 통신사 
 		String ad_phone2 = request.getParameter("ad_phone2"); 	// 번호 (-없이 입력)
@@ -100,6 +101,35 @@ public class AdminServiceImpl implements AdminService{
 		dto.setAd_terms(ad_terms);
 		
 		model.addAttribute("insertCnt",  dao.adminSignUpAction(dto));
+	}
+
+	// 유니크 값 체크
+	@Override
+	public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("Service uniqueCheck");
+		
+		String id = request.getParameter("id");
+		String value = request.getParameter("value");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("value", value);
+		
+		// 저장되어 있는 번호들의 형식이 010-0000-0000 이기에 형식을 맞춰서 와일드카드로 포함되는지 구분한다.
+		String ad_phone = "";
+		if(id.equals("ad_phone")) {
+			if(value.length() == 11||value.length() == 12) { // 12를 준 이유는 js로 최대값 이상이 되면 값을 자르기 전에 여기로 값이 들어와서 추가 입력시 12자리가 된다.
+				String phone1 = value.substring(0, 3);
+				String phone2 = value.substring(3, 7);
+				String phone3 = value.substring(7, 11);
+				ad_phone = phone1+"-"+phone2+"-"+phone3;
+			}
+		}
+		map.put("ad_phone", ad_phone);
+	
+		model.addAttribute("uniqueCheck", dao.uniqueCheck(map));
+		model.addAttribute("id", id);
+		
 	}
 
 }

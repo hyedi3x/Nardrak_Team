@@ -12,5 +12,7 @@ public interface AdminDAO {
 		// 관리자 회원가입
 		// dto : 뷰 객체에서 전송한 input 값을 멤버 변수로 담은 클래스, DB로 전송하기 위함.
 		public int adminSignUpAction(AdminDTO dto);
-
+		
+		// 유니크 값 검사
+		public int uniqueCheck(Map<String, Object> map);
 }

@@ -30,7 +30,11 @@
 				<tr>
 					<td class="inConTd">
 						<span id="idConTitle">아이디</span>
-						<input type="text" id="ad_id" class="ad_id" name="ad_id" placeholder="영어 소문자 및 숫자로만, 4~16자리" autofocus style="width: 300px" onchange="idChkReset()">
+						<input type="text" id="ad_id" class="ad_id" name="ad_id" placeholder="영어 소문자 및 숫자로만, 4~10자리" autofocus style="width: 300px" onchange="idChkReset()">
+					</td>
+				<tr>
+					<td class="inConTd">	
+						<div class="red" id="idStr"><div class="font14">영소문자 필수, 숫자 포함가능, 4~10 글자로 작성하세요.</div></div>
 					</td>
 				</tr>
 				<tr>

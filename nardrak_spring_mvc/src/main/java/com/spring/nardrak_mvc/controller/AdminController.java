@@ -56,4 +56,15 @@ public class AdminController {
 		return "admin/join/actionResult";
 	}
 	
+	// 유니크 값 체크
+	@RequestMapping("/uniqueCheck.ad")
+	public String uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		
+		logger.info("<< url : uniqueCheck.ad >>" );
+		
+		service.uniqueCheck(request, response, model);
+		
+		return "admin/join/actionResult";
+	}
 }
