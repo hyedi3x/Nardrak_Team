@@ -226,8 +226,8 @@
 						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">통신사 이용 약관</a>동의</b></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" class="chkList" id="chkList3" name="chkList3" value="3"><b class="font15"><span class="choose">[선택]</span> 신사/인증사의 
-						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">개인정보 이용 · 제공</a>에 동의합니<br> <span id="left-10px">다.</span></b></td>
+				<td><input type="checkbox" class="chkList" id="chkList3" name="chkList3" value="3"><b class="font15"><span class="choose">[선택]</span> 통신사/인증사의 
+						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">개인정보 이용 · 제공</a>에 <br> <span id="left-10px">동의합니다.</span></b></td>
 			</tr>
 			<tr>
 				<td><input type="checkbox" class="chkList" id="chkList4" name="chkList4"  value="4"><b class="font15"><span class="choose">[선택]</span> <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">고유식별 정보 처리</a>에 동의합니다.</b></td>
