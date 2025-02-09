@@ -30,10 +30,9 @@ public class CustomerDAOImpl implements CustomerDAO{
 	@Override
 	public int insertCustomer(CustomerDTO dto) { 
 	    System.out.println("CustomerDAOImpl - insertCustomer()");
-	  
-	 int insertCnt = sqlSession.insert(namespace + "insertCustomer", dto);
+	    int insertCnt = sqlSession.insert(namespace + "insertCustomer", dto);
 	      
-	      return insertCnt;
+	    return insertCnt;
 	 }
 	   
 	// ======================= [회원정보 인증(아이디, 비번)] =======================
