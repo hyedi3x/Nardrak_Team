@@ -5,6 +5,8 @@ function toggleAgreement(checkbox) {
     for (var i = 0; i < checkboxes.length; i++) {
         checkboxes[i].checked = checkbox.checked;
     }
+    
+    updateMarketingConsent();
 }
 
 // 개별 체크박스를 클릭할 때 전체 동의 체크박스를 업데이트
