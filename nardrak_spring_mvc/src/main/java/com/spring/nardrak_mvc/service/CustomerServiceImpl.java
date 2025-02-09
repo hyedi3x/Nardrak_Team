@@ -42,6 +42,22 @@ public class CustomerServiceImpl implements CustomerService{
 	      model.addAttribute("cs_id", cs_id);
 	   }
 	
+	// ======================= [전화번호 중복확인 처리] =======================
+	@Override
+	public void checkPhone(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		String phone = request.getParameter("cs_phone"); // ajax에서 받은 data
+		int phoneCnt = dao.phoneCheck(phone); // 중복확인 체크
+		
+		// JSON 문자열을 직접 생성
+	    String jsonResponse = "{ \"phoneCnt\": " + phoneCnt + " }"; // JSON 형식의 문자열을 저장
+
+	    // JSON 응답
+	    response.setContentType("application/json"); // 응답 타입 JSON
+	    response.setCharacterEncoding("UTF-8"); // UTF-8로 인코딩
+	    response.getWriter().write(jsonResponse); // json 데이터 전송
+	}
+	
 	// ======================= [회원가입 처리 페이지] =======================
 	   @Override
 	   public void signUpAction(HttpServletRequest request,HttpServletResponse response, Model model)
@@ -155,5 +171,5 @@ public class CustomerServiceImpl implements CustomerService{
 			}
 		}
 	}
-	
+
 }
