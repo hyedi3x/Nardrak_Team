@@ -34,6 +34,14 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return sqlSession.selectOne(namespace + "phoneCheck", cs_phone);
 	}
 	
+	// ======================= [전화번호 중복확인 처리] =======================
+	@Override
+	public int emailCheck(String cs_email) {
+		System.out.println("CustomerDAOImpl - emailCheck()");
+		
+		return sqlSession.selectOne(namespace + "emailCheck", cs_email);
+	}
+	
 	// ======================= [회원가입 처리] =======================
 	@Override
 	public int insertCustomer(CustomerDTO dto) { 

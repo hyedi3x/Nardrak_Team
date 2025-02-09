@@ -10,7 +10,10 @@ public interface CustomerDAO {
 	public int useridCheck(String cs_id);
 	
 	// ======================= [전화번호 중복확인 처리] =======================
-		public int phoneCheck(String cs_phone);
+	public int phoneCheck(String cs_phone);
+	
+	// ======================= [이메일 중복확인 처리] =======================
+	public int emailCheck(String cs_email);
 	
 	// ======================= [회원가입 처리] =======================
 	public int insertCustomer(CustomerDTO dto); 
