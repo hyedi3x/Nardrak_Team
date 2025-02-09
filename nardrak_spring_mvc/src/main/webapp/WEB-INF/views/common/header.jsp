@@ -55,7 +55,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="${path}/join.do">
+					<a href="${path}/joinAgreement.do">
 						<i class="fa-solid fa-user-plus"></i> 회원가입
 					</a>
 				</li>
@@ -100,12 +100,12 @@
 	        <div class="side-user-menu">
 	        	<ul>
 		            <li>
-		            	<a href="#">
+		            	<a href="${path}/login.do">
 							<i class="fa-solid fa-arrow-right-to-bracket" id="icon"></i> 로그인
 						</a>
 					</li>
 					<li>
-		            	<a href="#">
+		            	<a href="${path}/join.do">
 							<i class="fa-solid fa-user-plus" id="icon"></i> 회원가입
 						</a>
 					</li>
