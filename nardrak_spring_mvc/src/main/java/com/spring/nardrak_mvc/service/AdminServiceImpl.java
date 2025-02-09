@@ -109,13 +109,15 @@ public class AdminServiceImpl implements AdminService{
 			throws ServletException, IOException {
 		System.out.println("Service uniqueCheck");
 		
-		String column = request.getParameter("id");
+		String id = request.getParameter("id");
 		String value = request.getParameter("value");
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("column", column);
+		map.put("id", id);
 		map.put("value", value);
+		
+		// 저장되어 있는 번호들의 형식이 010-0000-0000 이기에 형식을 맞춰서 와일드카드로 포함되는지 구분한다.
 		String ad_phone = "";
-		if(column.equals("ad_phone")) {
+		if(id.equals("ad_phone")) {
 			if(value.length() == 11||value.length() == 12) { // 12를 준 이유는 js로 최대값 이상이 되면 값을 자르기 전에 여기로 값이 들어와서 추가 입력시 12자리가 된다.
 				String phone1 = value.substring(0, 3);
 				String phone2 = value.substring(3, 7);
@@ -126,7 +128,7 @@ public class AdminServiceImpl implements AdminService{
 		map.put("ad_phone", ad_phone);
 	
 		model.addAttribute("uniqueCheck", dao.uniqueCheck(map));
-		model.addAttribute("column", column);
+		model.addAttribute("id", id);
 		
 	}
 
