@@ -111,6 +111,8 @@ public class CustomerServiceImpl implements CustomerService{
 	      }
 	      dto.setCs_tel(local);
 	      
+	      dto.setCs_terms(request.getParameter("cs_Terms"));
+	      
 	      dto.setCs_regDate(new Timestamp(System.currentTimeMillis())); 	//System.currentTimeMillias()현재 시각
 	     
 	      // 회원가입 처리
