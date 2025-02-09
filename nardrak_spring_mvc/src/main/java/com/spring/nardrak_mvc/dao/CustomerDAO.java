@@ -9,11 +9,8 @@ public interface CustomerDAO {
 	// ======================= [ID 중복확인 처리] =======================
 	public int useridCheck(String cs_id);
 	
-	// ======================= [전화번호 중복확인 처리] =======================
-	public int phoneCheck(String cs_phone);
-	
-	// ======================= [이메일 중복확인 처리] =======================
-	public int emailCheck(String cs_email);
+	// ======================= [전화번호 & 이메일 중복 확인] =======================
+	public int uniqueCheck(Map<String, Object> map);
 	
 	// ======================= [회원가입 처리] =======================
 	public int insertCustomer(CustomerDTO dto); 
