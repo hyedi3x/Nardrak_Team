@@ -14,12 +14,8 @@ public interface CustomerService {
 	public void inConfirmAction(HttpServletRequest request,HttpServletResponse response, Model model) 
 	        throws ServletException, IOException;
 	
-	// ======================= [전화번호 중복확인 처리] =======================
-	public void checkPhone(HttpServletRequest request,HttpServletResponse response, Model model) 
-			throws ServletException, IOException;
-	
-	// ======================= [이메일 중복확인 처리] =======================
-	public void checkEmail(HttpServletRequest request,HttpServletResponse response, Model model) 
+	// ======================= [전화번호 & 이메일 중복 확인] =======================
+	public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException;
 
 	// ======================= [회원가입 처리] =======================
