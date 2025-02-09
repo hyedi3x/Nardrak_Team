@@ -172,8 +172,24 @@ $('input[type=number][maxlength]').on('input', function() {
 
 // 핸드폰
 $('#ad_phone2').on('input', function(){
+	
+	// 기본 설정
+    phone_input = 0;
+    $('#phoneChk').css('display', 'flex');
+	$('#ad_phone2').css('border', '1px solid rgba(255, 0, 0)');
+	$('#ad_phone2').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
+	
 	let ad_phone = $('#ad_phone2').val();
-	if(ad_phone.length == 0 || ad_phone.length == 11){
+	
+	// 값이 없으면 초기화
+	if(ad_phone.length == 0){
+		$('#phoneChk').css('display', 'none');
+		$('#ad_phone2').css('border', '1px solid #d9d9d9');
+		$('#ad_phone2').css('outline', 'none');
+		$('#ad_phone2:hover').css('border-color', '#729ea1');
+	}
+	// 길이가 11이며, 010으로 시작하면 정상
+	if(ad_phone.length == 11){
 		// 핸드폰 앞자리 010으로 통합됨
 		if(ad_phone.substring(0,3) == '010'){
 			$('#phoneChk').css('display', 'none');
@@ -182,12 +198,6 @@ $('#ad_phone2').on('input', function(){
 			$('#ad_phone2:hover').css('border-color', '#729ea1');
 			phone_input = 1;
 		}
-	}
-	else{
-		$('#phoneChk').css('display', 'flex');
-		$('#ad_phone2').css('border', '1px solid rgba(255, 0, 0)');
-		$('#ad_phone2').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
-		phone_input = 0;
 	}
 });
 
