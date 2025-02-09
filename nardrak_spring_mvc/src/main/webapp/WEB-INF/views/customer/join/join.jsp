@@ -90,16 +90,16 @@
 	            <tr>
 	                <th> 전화번호 <span class="requiredAll">*</span></th>
 	                <td>
-	                    <select class="input2" name="user_hp1" onchange="uniqueCheck('phone')">
+	                    <select class="input2" name="user_hp1" onchange="uniqueCheck('${path}', 'phone')">
 	                        <option value="010"> 010 </option>
 	                        <option value="011"> 011 </option>
 	                        <option value="018"> 018 </option>
 	                        <option value="016"> 016 </option>
 	                    </select>
 	                    <span class="em">-</span>
-	                    <input type="text" class="input2" name="user_hp2" maxlength="4" required oninput="uniqueCheck('phone')">
+	                    <input type="text" class="input2" name="user_hp2" maxlength="4" required oninput="uniqueCheck('${path}', 'phone')">
 	                    <span class="em">-</span>
-	                    <input type="text" class="input2" name="user_hp3" maxlength="4" required oninput="uniqueCheck('phone')"> 
+	                    <input type="text" class="input2" name="user_hp3" maxlength="4" required oninput="uniqueCheck('${path}', 'phone')"> 
 	               		 <div class="red hide" id="phoneChk" style="display:none">
 	                        <div class="font14" style="color:red;"></div>
 	                    </div>
@@ -154,10 +154,10 @@
 	            <tr>
 	                <th> 이메일 <span class="requiredAll">*</span></th>
 	                <td>
-	                    <input type="text" class="input2" name="user_email1" maxlength="20" oninput="uniqueCheck('email');" required>
+	                    <input type="text" class="input2" name="user_email1" maxlength="20" oninput="uniqueCheck('${path}', 'email');" required>
 	                    <span class="em">@</span>
-	                    <input type="text" class="input2" name="user_email2" oninput="checkCustomEmail(); uniqueCheck('email');" required>
-	                    <select class="input2" name="user_email3" onchange="selectEmailChk(); uniqueCheck('email');">
+	                    <input type="text" class="input2" name="user_email2" oninput="checkCustomEmail(); uniqueCheck('${path}', 'email');" required>
+	                    <select class="input2" name="user_email3" onchange="selectEmailChk(); uniqueCheck('${path}', 'email');">
 	                        <option value=""> 직접 입력</option>
 	                        <option value="naver.com"> naver.com </option>
 	                        <option value="gmail.com"> gmail.com </option>
