@@ -120,7 +120,53 @@ WHERE ad_id = 'hyeri';
 -- 관리자 등록 시 아이디 중복 확인(DAO 구문)
 SELECT COUNT(*) FROM admin_tb WHERE ad_id = #{ad_id};
 
+-- ==================[고객 회원가입 테이블]=====================
+DROP TABLE customer_tb CASCADE CONSTRAINTS;
+CREATE TABLE customer_tb(
+    cs_id              VARCHAR2(10)    PRIMARY KEY,        -- ID : 영어 소문자, 숫자로만 4~10자
+    cs_pwd             VARCHAR2(16)    NOT NULL,           -- 비밀번호 : 영어, 숫자, 특수문자 조합 8~16자
+    cs_name            VARCHAR2(30)    NOT NULL,           -- 이름
+    cs_gender          VARCHAR2(8)     NOT NULL,           -- 성별
+    cs_birth           DATE            NOT NULL,           -- 생년월일  
+    cs_phone           VARCHAR2(20)    UNIQUE NOT NULL,    -- 핸드폰  
+    cs_zip             VARCHAR2(250)   NOT NULL,           -- 주소
+    cs_email           VARCHAR2(30)    UNIQUE NOT NULL,    -- 이메일
+    cs_tel             VARCHAR2(13)    UNIQUE,             -- 지역 전화번호
+    cs_user_num        VARCHAR2(30),                       -- 유저 고유 번호
+    cs_regDate         TIMESTAMP       DEFAULT sysdate,    -- 가입일
+    cs_terms           VARCHAR(8)      NOT NULL,           -- 약관 동의
+    delete_status      CHAR(1)         DEFAULT 'N',        -- 탈퇴자 여부 (기본 N)
+    login_session      VARCHAR2(20)    NOT NULL,           -- 일반회원 세션
+    CONSTRAINT customer_tb_fk_session FOREIGN KEY(login_session) REFERENCES login_tb(login_session)
+    ON DELETE CASCADE
+);
 
+-- 고객 등록 테이블 조회
+SELECT * FROM customer_tb;
+
+-- 고객 회원가입 중복확인 조회(sql)
+SELECT COUNT(*) 
+  FROM (SELECT cs_id FROM customer_tb 
+         UNION 
+        SELECT ad_id FROM admin_tb) a 
+ WHERE cs_id ='111q';
+
+-- 고객 회원가입 중복확인 조회(Spring 구문)
+SELECT COUNT(*) 
+  FROM (SELECT cs_id FROM customer_tb 
+         UNION 
+        SELECT ad_id FROM admin_tb) a 
+ WHERE cs_id = #{cs_id}
+
+-- 고객 등록 구문(sql)
+INSERT INTO customer_tb(cs_id, cs_pwd, cs_name, cs_gender, cs_birth, cs_phone, cs_zip, cs_email, cs_tel, cs_user_num, cs_regDate, cs_terms, delete_status, login_session)
+    VALUES('hello','hello1234!','김헬로','male','2001-11-07','010-7777-7777','원효로','hello@naver.com','', TO_CHAR((SELECT NVL(MAX(cs_user_num)+1,1) FROM customer_tb)), sysdate, 'yes', DEFAULT, 'Customer');
+
+-- 고객 등록 구문(Spring 구문)
+INSERT INTO customer_tb(cs_id, cs_pwd, cs_name, cs_gender, cs_birth, cs_phone, cs_zip, cs_email, cs_tel, cs_user_num, cs_regDate, cs_terms, delete_status, login_session)
+	 VALUES(#{cs_id},#{cs_pwd},#{cs_name},#{cs_gender},#{cs_birth},#{cs_phone},#{cs_zip},#{cs_email},#{cs_tel}, TO_CHAR((SELECT NVL(MAX(cs_user_num)+1,1) FROM customer_tb)), #{cs_regDate}, 'yes', DEFAULT,'Customer')
+
+-- ==================[로그인 구문]=====================
 -- 아이디, 비밀번호 확인 (sql)
 SELECT COUNT(*)
   FROM (SELECT cs_id, cs_pwd, login_session, delete_status FROM customer_tb 
@@ -148,3 +194,5 @@ SELECT COUNT(*)
          UNION 
         SELECT ad_id, login_session FROM admin_tb) a 
  WHERE cs_id=#{strId} AND login_session='Admin'
+
+
