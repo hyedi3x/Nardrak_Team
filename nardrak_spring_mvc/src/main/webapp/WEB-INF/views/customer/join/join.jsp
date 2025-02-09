@@ -90,16 +90,19 @@
 	            <tr>
 	                <th> 전화번호 <span class="requiredAll">*</span></th>
 	                <td>
-	                    <select class="input2" name="user_hp1">
+	                    <select class="input2" name="user_hp1" onchange="checkPhone()">
 	                        <option value="010"> 010 </option>
 	                        <option value="011"> 011 </option>
 	                        <option value="018"> 018 </option>
 	                        <option value="016"> 016 </option>
 	                    </select>
 	                    <span class="em">-</span>
-	                    <input type="text" class="input2" name="user_hp2" maxlength="4" required>
+	                    <input type="text" class="input2" name="user_hp2" maxlength="4" required oninput="checkPhone()">
 	                    <span class="em">-</span>
-	                    <input type="text" class="input2" name="user_hp3" maxlength="4" required> 
+	                    <input type="text" class="input2" name="user_hp3" maxlength="4" required oninput="checkPhone()"> 
+	               		 <div class="red hide" id="phoneChk" style="display:none">
+	                        <div class="font14" style="color:red;"></div>
+	                    </div>
 	                </td>
 	            </tr>
 	
