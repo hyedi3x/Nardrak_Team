@@ -81,6 +81,15 @@ public class CustomerController {
 
 	    service.checkPhone(request, response, model);
 	}
+	
+	// ======================= [이메일 중복 확인] =======================
+	@RequestMapping("/checkEmail.do")
+	public void checkEmail(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		logger.info("<< url => /checkEmail.do >>");
+		
+		service.checkEmail(request, response, model);
+	}
 
 	// ======================= [회원가입 페이지] =======================
 	@RequestMapping("/join.do")
