@@ -216,6 +216,33 @@ window.onload = function() {
     document.getElementById("cs_birth").setAttribute("max", minDateString);
 };
 
+// 전화번호 중복확인
+function checkPhone(){
+	let hp1 = document.inputform.user_hp1.value;
+    let hp2 = document.inputform.user_hp2.value;
+    let hp3 = document.inputform.user_hp3.value;
+    let phoneNumber = hp1 + "-" + hp2 + "-" + hp3; // 전화번호 조합
+
+    $.ajax({
+    	type:"POST",
+    	url: "/nardrak_mvc/checkPhone.do",
+    	data: { cs_phone : phoneNumber },
+    	success: function(response){
+    		if (response.phoneCnt === 0) {
+		        $("#phoneChk").css("display", "block");
+		        $("#phoneChk > .font14").css("color", "green").text("사용 가능한 전화번호입니다.");
+		    } 
+		    else {
+		        $("#phoneChk").css("display", "block");
+		        $("#phoneChk > .font14").css("color", "red").text("이미 등록된 전화번호입니다.");
+		    }
+    	},
+    	error: function(){
+    		alert("오류 발생");
+    	}
+    });
+}
+
 // 이메일 입력 필드 수정 시 select 값 자동 변경
 function checkCustomEmail() {
     const emailSelect = document.inputform.user_email3;
