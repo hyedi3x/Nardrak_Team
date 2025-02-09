@@ -17,6 +17,10 @@ public interface CustomerService {
 	// ======================= [전화번호 중복확인 처리] =======================
 	public void checkPhone(HttpServletRequest request,HttpServletResponse response, Model model) 
 			throws ServletException, IOException;
+	
+	// ======================= [이메일 중복확인 처리] =======================
+	public void checkEmail(HttpServletRequest request,HttpServletResponse response, Model model) 
+			throws ServletException, IOException;
 
 	// ======================= [회원가입 처리] =======================
     public void signUpAction(HttpServletRequest request,HttpServletResponse response, Model model) 

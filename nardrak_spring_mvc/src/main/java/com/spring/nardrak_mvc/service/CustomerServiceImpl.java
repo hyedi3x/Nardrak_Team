@@ -46,6 +46,8 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public void checkPhone(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
+		System.out.println("서비스 - checkPhone()");
+		
 		String phone = request.getParameter("cs_phone"); // ajax에서 받은 data
 		int phoneCnt = dao.phoneCheck(phone); // 중복확인 체크
 		
@@ -56,6 +58,24 @@ public class CustomerServiceImpl implements CustomerService{
 	    response.setContentType("application/json"); // 응답 타입 JSON
 	    response.setCharacterEncoding("UTF-8"); // UTF-8로 인코딩
 	    response.getWriter().write(jsonResponse); // json 데이터 전송
+	}
+	
+	// ======================= [이메일 중복확인 처리] =======================
+	@Override
+	public void checkEmail(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("서비스 - checkEmail()");
+		
+		String email = request.getParameter("cs_email"); // ajax에서 받은 data
+		int emailCnt = dao.emailCheck(email); // 중복확인 체크
+		
+		// JSON 문자열을 직접 생성
+		String jsonResponse = "{ \"emailCnt\": " + emailCnt + " }"; // JSON 형식의 문자열을 저장
+		
+		// JSON 응답
+		response.setContentType("application/json"); // 응답 타입 JSON
+		response.setCharacterEncoding("UTF-8"); // UTF-8로 인코딩
+		response.getWriter().write(jsonResponse); // json 데이터 전송
 	}
 	
 	// ======================= [회원가입 처리 페이지] =======================
