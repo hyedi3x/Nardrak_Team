@@ -1,4 +1,78 @@
 
+// 회원가입 submit 체크 함수
+function signlnCheck() {
+    // 아이디 유효성 체크
+    const userId = document.inputform.cs_id.value;
+    if (!userId) {
+        alert("아이디를 입력하세요!");
+        document.inputform.cs_id.focus();
+        return false;
+    }
+
+    // 비밀번호 유효성 체크
+    const password = document.inputform.cs_pwd.value;
+    if (!password || password.length < 8) {
+        alert("비밀번호 형식을 맞춰주세요!");
+        document.inputform.cs_pwd.focus();
+        return false;
+    }
+
+    // 비밀번호 일치 여부 확인
+    const re_password = document.inputform.re_cs_pwd.value;
+    if (password !== re_password) {
+        alert("비밀번호가 일치하지 않습니다.");
+        document.inputform.re_cs_pwd.focus();
+        return false;
+    }
+
+    // 전화번호 유효성 체크 (뒷번호가 총 8자리가 아닌 경우)
+    const phone = document.inputform.user_hp2.value + document.inputform.user_hp3.value;
+    if (!phone || phone.length !== 8) {
+        alert("전화번호 형식을 맞춰주세요!");
+        document.inputform.user_hp2.focus();
+        return false;
+    }
+
+    const email1 = document.inputform.user_email1.value.trim();
+    const email2 = document.inputform.user_email2.value.trim();
+
+    console.log("입력된 이메일:", `"${email1}"`, `"${email2}"`); // 값 확인
+
+    // **공백만 입력한 경우 체크**
+    if (email1 === "" || email2 === "") {  
+        alert("이메일을 올바르게 입력해주세요! (공백만 입력할 수 없습니다)");
+        return false;
+    }
+
+    // **공백 포함 여부 검사** (입력값 내부에 공백이 포함되었는지 검사)
+    if (/\s/.test(email1) || /\s/.test(email2)) {
+        alert("이메일에는 공백을 포함할 수 없습니다!");
+        return false;
+    }
+
+    // 이메일 앞부분: 영문, 숫자, 일부 특수문자 허용 (공백 X)
+    const pattern1 = /^[a-zA-Z0-9._%+-]+$/;
+    
+    // 이메일 도메인 부분: 영문, 숫자, 점(.)과 하이픈(-) 허용 (첫 글자가 점이면 안 됨, 공백 X)
+    const pattern2 = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
+    
+    // 정규식 검사
+    if (!pattern1.test(email1)) {
+        alert("이메일 아이디(앞부분)를 올바르게 입력해주세요!");
+        document.inputform.user_email1.focus();
+        return false;
+    } 
+    if (!pattern2.test(email2)) {
+        alert("이메일 도메인 부분을 올바르게 입력해주세요!");
+        document.inputform.user_email2.focus();
+        return false;
+    }
+
+    return true;
+}
+
+
+
 // 아이디 체크 함수 (정규식)
 function checkId(inputValue) {
 	// 소문자와 숫자를 반드시 포함하며, 대문자는 선택 사항, 4~10자로 제한
@@ -170,46 +244,5 @@ function selectEmailChk() {
 function validateEmail(email) {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return regex.test(email);
-}
-
-// 회원가입 체크 함수
-function signlnCheck() {
-    
-    // 아이디 유효성 체크
-    const userId = document.inputform.cs_id.value; // 아이디
-    if (!userId) {
-        showErrorMessage("idChk", "아이디를 입력하세요!");
-        return false;
-    }
-    
-	// 비밀번호 유효성 체크
-    const password = document.inputform.cs_pwd.value; // 비밀번호
-    if (!password || password.length < 8) {
-        showErrorMessage("pwdChk", "비밀번호는 8자 이상이어야 합니다!");
-        return false;
-    }
-    
-    // 비밀번호 일치 여부 확인
-    const re_password = document.inputform.re_cs_pwd.value; // 비밀번호 재확인
-    if(password !== re_password){
-    	alert("비밀번호가 일치하지 않습니다.");
-    	return false;
-    }
-    
-	// 전화번호 유효성 체크
-    const phone = document.inputform.user_hp2.value + document.inputform.user_hp3.value; // 전화번호
-    if (!phone || phone.length !== 8) {
-        showErrorMessage("phoneChk", "전화번호를 올바르게 입력해주세요!");
-        return false;
-    }
-    
-	// 이메일 유효성 체크
-    const email = document.inputform.user_email1.value + "@" + document.inputform.user_email2.value; // 이메일
-    if (!validateEmail(email)) {
-        showErrorMessage("emailChk", "이메일을 올바르게 입력해주세요!");
-        return false;
-    }
-
-    return true;
 }
 
