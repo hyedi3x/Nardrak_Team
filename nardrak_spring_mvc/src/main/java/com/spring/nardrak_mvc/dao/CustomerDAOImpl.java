@@ -26,20 +26,19 @@ public class CustomerDAOImpl implements CustomerDAO{
 	    return sqlSession.selectOne(namespace + "useridCheck", cs_id);
 	}
 	
-	// ======================= [전화번호 중복확인 처리] =======================
+	// ======================= [전화번호 & 이메일 중복 확인] =======================
 	@Override
-	public int phoneCheck(String cs_phone) {
-		System.out.println("CustomerDAOImpl - phoneCheck()");
+	public int uniqueCheck(Map<String, Object> map) {
+		System.out.println("CustomerDAOImpl - uniqueCheck()");
 		
-		return sqlSession.selectOne(namespace + "phoneCheck", cs_phone);
-	}
-	
-	// ======================= [전화번호 중복확인 처리] =======================
-	@Override
-	public int emailCheck(String cs_email) {
-		System.out.println("CustomerDAOImpl - emailCheck()");
-		
-		return sqlSession.selectOne(namespace + "emailCheck", cs_email);
+		int count = 0;
+		if(map.get("type").equals("phone")) {
+			count = sqlSession.selectOne(namespace + "phoneCheck", map);
+		}
+		else if(map.get("type").equals("email")) {
+			count = sqlSession.selectOne(namespace + "emailCheck", map);
+		}
+		return count;
 	}
 	
 	// ======================= [회원가입 처리] =======================
