@@ -24,8 +24,7 @@
 	        
 	        <!-- 2-1 중복확인 -->
 	        <input type="hidden" name="hiddenUserId" value="0">
-	        <input type="hidden" id="marketingConsentHidden" name="marketingConsentHidden" value="no">
-	        ${marketingConsent}
+	        <input type="hidden" id="marketingConsentHidden" name="cs_Terms" value="${cs_Terms}">
 	        
 	        <table>
 	            <tr>
