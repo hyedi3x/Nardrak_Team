@@ -37,6 +37,13 @@
  			  FROM customer_tb
  			 WHERE cs_phone = #{cs_phone}
  		</select>
+ 		
+ 		<!-- 이메일 중복확인 처리 -->
+ 		<select id="emailCheck" parameterType="String" resultType="int">
+ 			SELECT count(*)
+ 			  FROM customer_tb
+ 			 WHERE cs_email = #{cs_email}
+ 		</select>
 	      
 	    <!-- 회원가입 처리 -->
 		<insert id="insertCustomer" parameterType="com.spring.nardrak_mvc.dto.CustomerDTO" >
