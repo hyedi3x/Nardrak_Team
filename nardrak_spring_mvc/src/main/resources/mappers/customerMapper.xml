@@ -29,11 +29,12 @@
 			         UNION 
 			        SELECT ad_id FROM admin_tb) a 
 			 WHERE cs_id = #{cs_id}
-  </select>
+ 		</select>
 	      
 	    <!-- 회원가입 처리 -->
 		<insert id="insertCustomer" parameterType="com.spring.nardrak_mvc.dto.CustomerDTO" >
 		  INSERT INTO customer_tb(cs_id, cs_pwd, cs_name, cs_gender, cs_birth, cs_phone, cs_zip, cs_email, cs_tel, cs_user_num, cs_regDate, cs_terms, delete_status, login_session)
-			 VALUES(#{cs_id},#{cs_pwd},#{cs_name},#{cs_gender},#{cs_birth},#{cs_phone},#{cs_zip},#{cs_email},#{cs_tel}, TO_CHAR((SELECT NVL(MAX(cs_user_num)+1,1) FROM customer_tb)), #{cs_regDate}, 'yes', DEFAULT,'Customer') </insert>
+			 VALUES(#{cs_id},#{cs_pwd},#{cs_name},#{cs_gender},#{cs_birth},#{cs_phone},#{cs_zip},#{cs_email},#{cs_tel}, TO_CHAR((SELECT NVL(MAX(cs_user_num)+1,1) FROM customer_tb)), #{cs_regDate}, #{cs_terms}, DEFAULT, 'Customer')
+		</insert>
     
    </mapper> 
