@@ -216,7 +216,7 @@ window.onload = function() {
     document.getElementById("cs_birth").setAttribute("max", minDateString);
 };
 
-function uniqueCheck(type) {
+function uniqueCheck(path, type) {
     let value;
     
     if (type === "phone") {
@@ -233,7 +233,7 @@ function uniqueCheck(type) {
 
     $.ajax({
         type: "POST",
-        url: "/nardrak_mvc/uniqueCheck.do",  // 통합된 컨트롤러 매핑
+        url: path + "/uniqueCheck.do",  // 통합된 컨트롤러 매핑
         data: { type: type, value: value },  // type과 value 전달
         dataType: "json",
         success: function(response) {
