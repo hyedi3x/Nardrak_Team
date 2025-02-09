@@ -15,7 +15,10 @@
 form{
 	display: flex;
 	justify-content: center;
-	margin: 0px;
+	margin: 30px auto;
+	padding: 20px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
 }
 
 /* 테이블 크기 */
