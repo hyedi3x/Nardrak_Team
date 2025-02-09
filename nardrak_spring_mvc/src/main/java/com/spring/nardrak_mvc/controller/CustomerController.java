@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.nardrak_mvc.service.CustomerService;
 
-
-
 @Controller
 public class CustomerController {
 
@@ -76,9 +74,11 @@ public class CustomerController {
 	
 	// ======================= [회원가입 페이지] =======================
 	@RequestMapping("/join.do")
-	public String join() {
+	public String join(HttpServletRequest request) {
 		logger.info("<< url => /join.do >>");
-
+		
+		request.setAttribute("cs_Terms", request.getParameter("cs_Terms"));
+		
 		return "customer/join/join";
 	}
 	
@@ -103,6 +103,6 @@ public class CustomerController {
 		service.signUpAction(request, response ,model);
 
 		return "customer/actionResult";
-		}
+	}
 }
 
