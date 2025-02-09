@@ -34,12 +34,12 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public int uniqueCheck(Map<String, Object> map) {
 		System.out.println("DAO adminSignUpAction");
-		System.out.println(map.get("column"));
+		System.out.println(map.get("id"));
 		// 핸드폰은 통신사 자르고 검사해야해서 실행 구문이 다르다.
-		if(map.get("column").equals("ad_phone")) {
+		if(map.get("id").equals("ad_phone")) {
 			return sqlSession.selectOne(namespace+"uniqueCheckPhone",map);
 		}
-		else if(map.get("column").equals("ad_email")) {
+		else if(map.get("id").equals("ad_email")) {
 			return sqlSession.selectOne(namespace+"uniqueCheckEmail",map);
 		}
 		return sqlSession.selectOne(namespace+"uniqueCheckEmpnum",map);
