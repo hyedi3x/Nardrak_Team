@@ -273,3 +273,29 @@ function validateEmail(email) {
     return regex.test(email);
 }
 
+// 이메일 중복확인 체크
+function checkEmail(){
+	let email1 = document.inputform.user_email1.value;
+    let email2 = document.inputform.user_email2.value;
+    let email = email1 + "@" + email2;
+    
+    $.ajax({
+    	type:"POST",
+    	url: "/nardrak_mvc/checkEmail.do",
+    	data: { cs_email : email },
+    	success: function(response){
+    		if (response.emailCnt === 0) {
+		        $("#emailChk").css("display", "block");
+		        $("#emailChk > .font14").css("color", "green").text("사용 가능한 이메일입니다.");
+		    } 
+		    else {
+		        $("#emailChk").css("display", "block");
+		        $("#emailChk > .font14").css("color", "red").text("이미 등록된 이메일입니다.");
+		    }
+    	},
+    	error: function(){
+    		alert("오류 발생");
+    	}
+    });
+}
+
