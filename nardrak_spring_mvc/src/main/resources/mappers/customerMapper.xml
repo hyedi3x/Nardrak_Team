@@ -32,17 +32,17 @@
  		</select>
  		
  		<!-- 전화번호 중복확인 처리 -->
- 		<select id="phoneCheck" parameterType="String" resultType="int">
+ 		<select id="phoneCheck" parameterType="java.util.Map" resultType="int">
  			SELECT count(*)
  			  FROM customer_tb
- 			 WHERE cs_phone = #{cs_phone}
+ 			 WHERE cs_phone = #{value}
  		</select>
  		
  		<!-- 이메일 중복확인 처리 -->
- 		<select id="emailCheck" parameterType="String" resultType="int">
+ 		<select id="emailCheck" parameterType="java.util.Map" resultType="int">
  			SELECT count(*)
  			  FROM customer_tb
- 			 WHERE cs_email = #{cs_email}
+ 			 WHERE cs_email = #{value}
  		</select>
 	      
 	    <!-- 회원가입 처리 -->
