@@ -216,32 +216,55 @@ window.onload = function() {
     document.getElementById("cs_birth").setAttribute("max", minDateString);
 };
 
-// 전화번호 중복확인
-function checkPhone(){
-	let hp1 = document.inputform.user_hp1.value;
-    let hp2 = document.inputform.user_hp2.value;
-    let hp3 = document.inputform.user_hp3.value;
-    let phoneNumber = hp1 + "-" + hp2 + "-" + hp3; // 전화번호 조합
+function uniqueCheck(type) {
+    let value;
+    
+    if (type === "phone") {
+        value = document.inputform.user_hp1.value + "-" + 
+                document.inputform.user_hp2.value + "-" + 
+                document.inputform.user_hp3.value;
+    } else if (type === "email") {
+        value = document.inputform.user_email1.value + "@" + 
+                document.inputform.user_email2.value;
+    } else {
+        alert("잘못된 type 입력:"+ type);
+        return;
+    }
 
     $.ajax({
-    	type:"POST",
-    	url: "/nardrak_mvc/checkPhone.do",
-    	data: { cs_phone : phoneNumber },
-    	success: function(response){
-    		if (response.phoneCnt === 0) {
-		        $("#phoneChk").css("display", "block");
-		        $("#phoneChk > .font14").css("color", "green").text("사용 가능한 전화번호입니다.");
-		    } 
-		    else {
-		        $("#phoneChk").css("display", "block");
-		        $("#phoneChk > .font14").css("color", "red").text("이미 등록된 전화번호입니다.");
-		    }
-    	},
-    	error: function(){
-    		alert("오류 발생");
-    	}
+        type: "POST",
+        url: "/nardrak_mvc/uniqueCheck.do",  // 통합된 컨트롤러 매핑
+        data: { type: type, value: value },  // type과 value 전달
+        dataType: "json",
+        success: function(response) {
+        	console.log("응답 데이터:", response);  // 응답 내용 확인
+            let resultElementId = (type === "phone") ? "phoneChk" : "emailChk";
+            let resultElement = $(`#${resultElementId}`);
+            resultElement.css("display", "block");
+
+            let successMessage = "";
+	        let errorMessage = "";
+	
+	        if (type === "phone") {
+	            successMessage = "사용 가능한 전화번호입니다.";
+	            errorMessage = "이미 등록된 전화번호입니다.";
+	        } else if (type === "email") {
+	            successMessage = "사용 가능한 이메일입니다.";
+	            errorMessage = "이미 등록된 이메일입니다.";
+	        }
+	
+	        if (response.count === 0) {
+	            resultElement.find(".font14").css("color", "green").text(successMessage);
+	        } else {
+	            resultElement.find(".font14").css("color", "red").text(errorMessage);
+	        }
+        },
+        error: function() {
+	        alert("오류 발생");
+	    }
     });
 }
+
 
 // 이메일 입력 필드 수정 시 select 값 자동 변경
 function checkCustomEmail() {
@@ -271,31 +294,5 @@ function selectEmailChk() {
 function validateEmail(email) {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return regex.test(email);
-}
-
-// 이메일 중복확인 체크
-function checkEmail(){
-	let email1 = document.inputform.user_email1.value;
-    let email2 = document.inputform.user_email2.value;
-    let email = email1 + "@" + email2;
-    
-    $.ajax({
-    	type:"POST",
-    	url: "/nardrak_mvc/checkEmail.do",
-    	data: { cs_email : email },
-    	success: function(response){
-    		if (response.emailCnt === 0) {
-		        $("#emailChk").css("display", "block");
-		        $("#emailChk > .font14").css("color", "green").text("사용 가능한 이메일입니다.");
-		    } 
-		    else {
-		        $("#emailChk").css("display", "block");
-		        $("#emailChk > .font14").css("color", "red").text("이미 등록된 이메일입니다.");
-		    }
-    	},
-    	error: function(){
-    		alert("오류 발생");
-    	}
-    });
 }
 
