@@ -92,16 +92,15 @@
 	                <th> 전화번호 <span class="requiredAll">*</span></th>
 	                <td>
 	                    <select class="input2" name="user_hp1">
-	                        <option value="0"> 선택 </option>
 	                        <option value="010"> 010 </option>
 	                        <option value="011"> 011 </option>
 	                        <option value="018"> 018 </option>
 	                        <option value="016"> 016 </option>
 	                    </select>
 	                    <span class="em">-</span>
-	                    <input type="text" class="input2" name="user_hp2" maxlength="4">
+	                    <input type="text" class="input2" name="user_hp2" maxlength="4" required>
 	                    <span class="em">-</span>
-	                    <input type="text" class="input2" name="user_hp3" maxlength="4"> 
+	                    <input type="text" class="input2" name="user_hp3" maxlength="4" required> 
 	                </td>
 	            </tr>
 	
@@ -141,11 +140,11 @@
 	            <tr>
 	                <th> 주소 <span class="requiredAll">*</span></th> 
 	                <td>
-	                    <input type="text" id="sample4_postcode" style="width:219px" name="postcode" placeholder="우편번호">
+	                    <input type="text" id="sample4_postcode" style="width:219px" name="postcode" placeholder="우편번호" required>
 	                    <input type="button" id="zip" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 	                    <input type="text" id="sample4_roadAddress" class="input" name="road" placeholder="도로명주소" required>
 	                    <input type="text" id="sample4_jibunAddress" class="input" name="jibun"  placeholder="지번주소">
-	                    <input type="text" id="sample4_detailAddress" class="input3" name="detail" placeholder="상세주소">
+	                    <input type="text" id="sample4_detailAddress" class="input3" name="detail" placeholder="상세주소" required>
 	                    <input type="text" id="sample4_extraAddress" class="input3" name="extra" placeholder="참고항목">
 	                </td>
 	            </tr>
@@ -153,14 +152,14 @@
 	            <tr>
 	                <th> 이메일 <span class="requiredAll">*</span></th>
 	                <td>
-	                    <input type="text" class="input2" name="user_email1" maxlength="20"required>
+	                    <input type="text" class="input2" name="user_email1" maxlength="20" required>
 	                    <span class="em">@</span>
 	                    <input type="text" class="input2" name="user_email2" oninput="checkCustomEmail()" required>
 	                    <select class="input2" name="user_email3" onchange="selectEmailChk()">
 	                        <option value=""> 직접 입력</option>
 	                        <option value="naver.com"> naver.com </option>
 	                        <option value="gmail.com"> gmail.com </option>
-	                        <option value="daum.co.kr"> daum.co.kr </option>
+	                        <option value="kakao.com"> kakao.com </option>
 	                        <option value="nate.com"> nate.com </option>
 	                    </select>
 	                </td>
