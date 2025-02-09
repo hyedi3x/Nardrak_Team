@@ -26,11 +26,14 @@
 
 </head>
 <body>
+
+<!-- header_SessionScope.jsp : banner page & header page -->
+	<%@ include file="/WEB-INF/views/common/header_SessionScope.jsp" %> 
 	
+
+<!-- main 시작 -->
 <div class="wrap">
 <div class="container">
-	
-	<div class="joinLogo"><a href="#"><img src="${path}/resources/image/admin/logo.png" alt="로고"></a></div>
 	
 	<form action="${path}/adminSignUpAction.ad" method="post" name="joinForm" onsubmit="return submitChk()">
 	
@@ -251,6 +254,10 @@
 	
 </div>
 </div>
+<!-- main 끝 -->
+
+<!-- footer page -->
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 
 <!-- 모달 약관 모음 -->
 <%@ include file="./terms.jsp" %>
