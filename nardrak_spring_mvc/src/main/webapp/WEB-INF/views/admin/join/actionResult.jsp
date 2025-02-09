@@ -26,13 +26,13 @@
 		</c:when>
 		
 		<c:when test="${uniqueCheck == 0}">
-			<c:if test="${column eq 'ad_phone' }">
+			<c:if test="${id eq 'ad_phone' }">
 				<input id="uniquePhone" type="hidden" value="1" />
 			</c:if>
-			<c:if test="${column eq 'ad_email' }">
+			<c:if test="${id eq 'ad_email' }">
 				<input id="uniqueEmail" type="hidden" value="1" />
 			</c:if>
-			<c:if test="${column eq 'empnum' }">
+			<c:if test="${id eq 'empnum' }">
 				<input id="uniqueEmpnum" type="hidden" value="1" />
 			</c:if>
 		</c:when>
