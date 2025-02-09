@@ -237,7 +237,6 @@ function uniqueCheck(type) {
         data: { type: type, value: value },  // type과 value 전달
         dataType: "json",
         success: function(response) {
-        	console.log("응답 데이터:", response);  // 응답 내용 확인
             let resultElementId = (type === "phone") ? "phoneChk" : "emailChk";
             let resultElement = $(`#${resultElementId}`);
             resultElement.css("display", "block");
@@ -254,9 +253,9 @@ function uniqueCheck(type) {
 	        }
 	
 	        if (response.count === 0) {
-	            resultElement.find(".font14").css("color", "green").text(successMessage);
+	            resultElement.find(".font14").css("color", "#50858b").text(successMessage);
 	        } else {
-	            resultElement.find(".font14").css("color", "red").text(errorMessage);
+	            resultElement.find(".font14").css("color", "rgba(255, 0, 0)").text(errorMessage);
 	        }
         },
         error: function() {
