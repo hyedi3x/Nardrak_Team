@@ -10,10 +10,13 @@
 	<!--  id 중복 확인, 고객 & 관리자 모두 검사  -->
 	<select id="adminIdConfirm" parameterType="String" resultType="int">
 <<<<<<< HEAD
+<<<<<<< HEAD
 		SELECT COUNT(*) 
 		  FROM admin_tb 
 		 WHERE ad_id = #{ad_id}
 =======
+=======
+>>>>>>> origin/admin_modify_dev1
 		SELECT COUNT(*)
 		  FROM (
 		        SELECT ad_id, login_session
@@ -24,7 +27,10 @@
 		          FROM customer_tb
 		         WHERE cs_id = #{ad_id}
 		         )
+<<<<<<< HEAD
 >>>>>>> 2d2a0f7 ([feat] 관리자 등록, 수정 페이지 관련)
+=======
+>>>>>>> origin/admin_modify_dev1
 	</select>
 	
 	<!--  관리자 회원가입  -->
@@ -46,9 +52,12 @@
 		 WHERE ad_email = #{value}
 	</select>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 >>>>>>> 2d2a0f7 ([feat] 관리자 등록, 수정 페이지 관련)
+=======
+>>>>>>> origin/admin_modify_dev1
 	<!-- 유니크 값 검사 사번 -->
 	<select id="uniqueCheckEmpnum" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*)
@@ -56,6 +65,7 @@
 		 WHERE ad_empnum = #{value}
 	</select>
 	
+<<<<<<< HEAD
 <<<<<<< HEAD
 	<!--  아이디, 패스워드 일치   -->
 	<select id="userIdPwdChk" parameterType="java.util.Map" resultType="int"> 
@@ -65,6 +75,8 @@
 	</select>
 	
 =======
+=======
+>>>>>>> origin/admin_modify_dev1
 		
 	<!-- 관리자 비밀번호 확인 -->
 	<select id="adminModify" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
@@ -81,5 +93,8 @@
 		 WHERE ad_id = #{ad_id}
 	</update>
 	
+<<<<<<< HEAD
 >>>>>>> 2d2a0f7 ([feat] 관리자 등록, 수정 페이지 관련)
+=======
+>>>>>>> origin/admin_modify_dev1
 </mapper> 

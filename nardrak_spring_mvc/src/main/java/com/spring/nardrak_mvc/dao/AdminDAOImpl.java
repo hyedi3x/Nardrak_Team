@@ -32,10 +32,14 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	// 유니크 체크
 =======
 	// 유니크 값 검사
 >>>>>>> 2d2a0f7 ([feat] 관리자 등록, 수정 페이지 관련)
+=======
+	// 유니크 값 검사
+>>>>>>> origin/admin_modify_dev1
 	@Override
 	public int uniqueCheck(Map<String, Object> map) {
 		System.out.println("DAO adminSignUpAction");
@@ -56,6 +60,7 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	// ======================= [회원정보 인증(아이디, 비번)] =======================
 	@Override
 	public int userIdPwdChk(Map<String, Object> map) {
@@ -65,6 +70,8 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 =======
+=======
+>>>>>>> origin/admin_modify_dev1
 	// 관리자 수정/삭제 페이지 비밀번호 확인
 	@Override
 	public AdminDTO adminModify(Map<String, Object> map) {
@@ -81,5 +88,8 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSession.update(namespace+"adminModifyAction", dto);
 	}
 	
+<<<<<<< HEAD
 >>>>>>> 2d2a0f7 ([feat] 관리자 등록, 수정 페이지 관련)
+=======
+>>>>>>> origin/admin_modify_dev1
 }

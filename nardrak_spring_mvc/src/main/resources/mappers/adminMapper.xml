@@ -41,6 +41,7 @@
 	</select>
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<!--  아이디, 패스워드 일치   -->
 	<select id="userIdPwdChk" parameterType="java.util.Map" resultType="int"> 
 		SELECT COUNT(*)
@@ -49,6 +50,8 @@
 	</select>
 	
 =======
+=======
+>>>>>>> origin/admin_modify_dev1
 		
 	<!-- 관리자 비밀번호 확인 -->
 	<select id="adminModify" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
@@ -65,5 +68,8 @@
 		 WHERE ad_id = #{ad_id}
 	</update>
 	
+<<<<<<< HEAD
 >>>>>>> 565d27e ([feat] adminMapper.xml - 관리자 비밀번호 확인, 수정 기능 추가)
+=======
+>>>>>>> origin/admin_modify_dev1
 </mapper> 
