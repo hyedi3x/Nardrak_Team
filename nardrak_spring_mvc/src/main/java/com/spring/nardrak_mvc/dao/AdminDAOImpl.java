@@ -37,8 +37,14 @@ public class AdminDAOImpl implements AdminDAO {
 		System.out.println("DAO adminSignUpAction");
 		// 핸드폰은 통신사 자르고 검사해야해서 실행 구문이 다르다.
 		if(map.get("id").equals("ad_phone")) {
-			return sqlSession.selectOne(namespace+"uniqueCheckPhone",map);
+			if(((String) map.get("value")).length() >= 11) {
+				return sqlSession.selectOne(namespace+"uniqueCheckPhone",map);
+			}
+			else {
+				return 0;
+			}
 		}
+		
 		else if(map.get("id").equals("ad_email")) {
 			return sqlSession.selectOne(namespace+"uniqueCheckEmail",map);
 		}
