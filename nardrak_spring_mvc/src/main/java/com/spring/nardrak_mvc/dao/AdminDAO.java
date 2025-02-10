@@ -16,21 +16,13 @@ public interface AdminDAO {
 		// 유니크 값 검사
 		public int uniqueCheck(Map<String, Object> map);
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
 		// ======================= [회원정보 인증(아이디, 비번)] =======================
 		public int userIdPwdChk(Map<String, Object> map);
-=======
-=======
->>>>>>> origin/admin_modify_dev1
+
 		// 관리자 수정/삭제 페이지 비밀번호 확인
 		public AdminDTO adminModify(Map<String, Object> map);
 		
 		// 관리자 수정
 		public int adminModifyAction(AdminDTO dto);
-<<<<<<< HEAD
->>>>>>> 2d2a0f7 ([feat] 관리자 등록, 수정 페이지 관련)
-=======
->>>>>>> origin/admin_modify_dev1
 		
 }

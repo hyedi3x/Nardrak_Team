@@ -40,18 +40,12 @@
 		 WHERE ad_empnum = #{value}
 	</select>
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
 	<!--  아이디, 패스워드 일치   -->
 	<select id="userIdPwdChk" parameterType="java.util.Map" resultType="int"> 
 		SELECT COUNT(*)
 		  FROM admin_tb
 		 WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
 	</select>
-	
-=======
-=======
->>>>>>> origin/admin_modify_dev1
 		
 	<!-- 관리자 비밀번호 확인 -->
 	<select id="adminModify" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
@@ -67,9 +61,5 @@
 		   SET ad_pwd= #{ad_pwd}, ad_name= #{ad_name}, ad_birth= #{ad_birth}, ad_phone= #{ad_phone}, ad_email= #{ad_email}, ad_zip= #{ad_zip}, ad_tel= #{ad_tel}, ad_empnum= #{ad_empnum}, ad_dep= #{ad_dep}, ad_terms= #{ad_terms}
 		 WHERE ad_id = #{ad_id}
 	</update>
-	
-<<<<<<< HEAD
->>>>>>> 565d27e ([feat] adminMapper.xml - 관리자 비밀번호 확인, 수정 기능 추가)
-=======
->>>>>>> origin/admin_modify_dev1
+
 </mapper> 

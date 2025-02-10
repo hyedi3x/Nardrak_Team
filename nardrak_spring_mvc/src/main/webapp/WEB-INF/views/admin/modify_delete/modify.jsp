@@ -48,7 +48,7 @@
 		<input type="hidden" id="idChk" value="1">
 		<input type="hidden" id="pwdShow" value="0">
 		<input type="hidden" id="idValCheck" value="1">
-		<input type="hidden" id="pwdValCheck" value="0">
+		<input type="hidden" id="pwdValCheck" value="1">
 		<input type="hidden" id="emailVal1Check" value="1">
 		<input type="hidden" id="emailVal2Check" value="1">
 		<input type="hidden" id="brithValCheck" value="1">
@@ -60,9 +60,12 @@
 		<input id="uniquePhone" type="hidden" value="1">
 		<input id="uniqueEmail" type="hidden" value="1">
 		<input id="uniqueEmpnum" type="hidden" value="1">
-		
-	<!-- id 10자리, 비밀번호(확인) 16자리, 이름 30자리, 생년월일 6자리, 핸드폰 13자리, [ 이메일1 15자리, (@) 이메일 2 14자리 : 총 30자 ], [ 상세주소 30자 : 총 30자 ], 사번 20자리  --> 
-
+	
+		<div id="signUpTitle">
+			<p id="ad_title"> 관리자 회원가입 </p>
+			<p> 회원 가입 시, 관리자의 승인이 있어야 로그인이 가능합니다.</p>			
+		</div>		
+		<!-- id 10자리, 비밀번호(확인) 16자리, 이름 30자리, 생년월일 6자리, 핸드폰 13자리, [ 이메일1 15자리, (@) 이메일 2 14자리 : 총 30자 ], [ 상세주소 30자 : 총 30자 ], 사번 20자리  --> 
 		<table>
 			
 			<tr>
@@ -80,7 +83,7 @@
 			</tr>
 			<tr class="width100">	
 				<td class="pwd_class">
-					<input type="password" id="ad_pwd" class="ad_pwd" name="ad_pwd" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" autofocus required >
+					<input type="password" id="ad_pwd" class="ad_pwd" name="ad_pwd" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" value="${dto.ad_pwd}" autofocus required >
 						<i id="pwdIcon1" class="fa-regular fa-eye-slash" onclick="pwdShow(0)"></i>
 						<i id="pwdIcon2" class="fa-regular fa-eye" onclick="pwdShow(1)"></i>
 					<div class="red" id="pwdStr1"><div class="font14">8글자 이상, 영문, 숫자, 특수문자(@$!%*#?&)를 작성하세요.</div></div>				
@@ -92,7 +95,7 @@
 			<tr>
 			<tr class="width100">		
 				<td>
-					<input type="password" id="pwdChk" class="pwdChk" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" required>
+					<input type="password" id="pwdChk" class="pwdChk" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" value="${dto.ad_pwd}" required>
 					<div class="red" id="pwdStr2"><div class="font14">비밀번호가 일치하지 않습니다.</div></div>
 				</td>
 			</tr>
@@ -267,8 +270,8 @@
 						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">통신사 이용 약관</a>동의</b></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" class="chkList" id="chkList3" name="chkList3" value="3"  ${fn:contains(dto.ad_terms, '3') ? 'checked':'' }><b class="font15"><span class="choose">[선택]</span> 신사/인증사의 
-						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">개인정보 이용 · 제공</a>에 동의합니<br> <span id="left-10px">다.</span></b></td>
+				<td><input type="checkbox" class="chkList" id="chkList3" name="chkList3" value="3"  ${fn:contains(dto.ad_terms, '3') ? 'checked':'' }><b class="font15"><span class="choose">[선택]</span> 통신사/인증사의 
+						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">개인정보 이용 · 제공</a>에 <br> <span id="left-10px">동의합니다.</span></b></td>
 			</tr>
 			<tr>
 				<td><input type="checkbox" class="chkList" id="chkList4" name="chkList4" value="4" ${fn:contains(dto.ad_terms, '4') ? 'checked':'' } ><b class="font15"><span class="choose">[선택]</span> <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">고유식별 정보 처리</a>에 동의합니다.</b></td>
