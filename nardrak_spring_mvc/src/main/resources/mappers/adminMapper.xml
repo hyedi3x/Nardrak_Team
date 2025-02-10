@@ -45,4 +45,21 @@
 		  FROM admin_tb
 		 WHERE ad_empnum = #{value}
 	</select>
+	
+		
+	<!-- 관리자 비밀번호 확인 -->
+	<select id="adminModify" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
+		SELECT *
+		  FROM admin_tb
+		 WHERE ad_id = #{ad_id}
+		   AND ad_pwd= #{ad_pwd}
+	</select>
+	
+	<!-- 관리자 수정 -->
+	<update id="adminModifyAction">
+		UPDATE admin_tb
+		   SET ad_pwd= #{ad_pwd}, ad_name= #{ad_name}, ad_birth= #{ad_birth}, ad_phone= #{ad_phone}, ad_email= #{ad_email}, ad_zip= #{ad_zip}, ad_tel= #{ad_tel}, ad_empnum= #{ad_empnum}, ad_dep= #{ad_dep}, ad_terms= #{ad_terms}
+		 WHERE ad_id = #{ad_id}
+	</update>
+	
 </mapper> 
