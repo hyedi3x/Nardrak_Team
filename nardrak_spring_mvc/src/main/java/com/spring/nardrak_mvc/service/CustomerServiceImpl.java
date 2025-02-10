@@ -164,19 +164,12 @@ public class CustomerServiceImpl implements CustomerService{
 		// -------------[5단계] 로그인 성공여부 처리-------------
 		// 아이디와 비밀번호가 일치하는지 userIdPwdChk 메서드 실행후 결과값을 selectCnt 변수에 담는다.
 		int loginCnt = dao.userIdPwdChk(map);
-		int sessionCnt = dao.sessionResult(strId);
 				
 		// -------------[6단계] - selectCnt 값에 따라 세션 설정 및 에러 처리 ------------
-		// sessionCnt 값에 따라 세션 설정 및 에러 처리
 		// request.getSession() : 컨트롤러 호출 시 세션이 존재하면 존재하는 세션을 전달, 없으면 새로 생성 또는 null 반환
-		if (loginCnt == 1) {		
-			if (sessionCnt == 0) { // 일반 회원	
-				request.getSession().setAttribute("sessionID", strId);
-				request.getSession().setAttribute("login_session", "Customer"); // 사용자 유형 저장
-			} else if (sessionCnt == 1) { // 관리자
-				request.getSession().setAttribute("sessionID", strId);
-				request.getSession().setAttribute("login_session", "Admin"); // 사용자 유형 저장
-			}
+		if (loginCnt == 1) {	
+			request.getSession().setAttribute("sessionID", strId);
+			request.getSession().setAttribute("login_session", "Customer"); // 사용자 유형 저장
 		}
 	}
 
