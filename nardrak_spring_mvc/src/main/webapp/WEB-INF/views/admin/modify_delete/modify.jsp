@@ -12,7 +12,7 @@
 
 <!-- js -->
 <script type="text/javascript" src="${path}/resources/js/admin/join/join.js" defer></script>
-<script type="text/javascript" src="${path}/resources/js/admin/modify/modify.js" defer></script>
+<script type="text/javascript" src="${path}/resources/js/admin/modify_delete/modify_delete.js" defer></script>
 
 <!-- 부트 스트랩 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -25,7 +25,10 @@
 </head>
 <!-- input 함수들에서 체크하는 값들을 초기값을 설정해준다. (변경안하면 0을 유지해서) -->
 <body onload="bodyOnLoad()">
-	
+
+<!-- header_SessionScope.jsp : banner page & header page -->
+<%@ include file="/WEB-INF/views/common/header_SessionScope.jsp" %> 
+
 <div class="wrap">
 <div class="container">
 
@@ -294,6 +297,9 @@
 	
 </div>
 </div>
+
+<!-- footer page -->
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 
 <!-- 모달 약관 모음 -->
 <%@ include file="/WEB-INF/views/admin/join/terms.jsp" %>
