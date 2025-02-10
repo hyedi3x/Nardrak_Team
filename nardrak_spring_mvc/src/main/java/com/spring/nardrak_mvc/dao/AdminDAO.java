@@ -15,4 +15,8 @@ public interface AdminDAO {
 		
 		// 유니크 값 검사
 		public int uniqueCheck(Map<String, Object> map);
+		
+		// ======================= [회원정보 인증(아이디, 비번)] =======================
+		public int userIdPwdChk(Map<String, Object> map);
+		
 }
