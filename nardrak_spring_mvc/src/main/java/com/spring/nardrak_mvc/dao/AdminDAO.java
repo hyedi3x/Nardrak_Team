@@ -25,4 +25,7 @@ public interface AdminDAO {
 		// 관리자 수정
 		public int adminModifyAction(AdminDTO dto);
 		
+		// 관리자 삭제
+		public int adminDeleteAction(Map<String, Object> map);
+		
 }

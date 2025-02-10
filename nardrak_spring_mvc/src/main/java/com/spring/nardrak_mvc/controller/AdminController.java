@@ -104,7 +104,7 @@ public class AdminController {
 		
 		service.adminModify(request, response, model);
 		
-		return "admin/modify_delete/modify";
+		return "admin/modify_delete/delete";
 	}
 	
 	// 관리자 수정
@@ -118,4 +118,14 @@ public class AdminController {
 		return "admin/join/actionResult";
 	}
 	
+	// 관리자 삭제
+		@RequestMapping("/adminDeleteAction.ad")
+		public String adminDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+				throws ServletException, IOException{
+			logger.info("<< url : adminDeleteAction.ad >>" );
+			
+			service.adminDeleteAction(request, response, model);
+			
+			return "admin/join/actionResult";
+		}
 }

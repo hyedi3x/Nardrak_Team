@@ -72,8 +72,15 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public int adminModifyAction(AdminDTO dto) {
 		System.out.println("DAO adminModifyAction");
-		System.out.println(dto.toString());
+
 		return sqlSession.update(namespace+"adminModifyAction", dto);
+	}
+
+	@Override
+	public int adminDeleteAction(Map<String, Object> map) {
+		System.out.println("DAO adminModifyAction");
+		
+		return sqlSession.update(namespace+"adminDeleteAction", map);
 	}
 	
 }

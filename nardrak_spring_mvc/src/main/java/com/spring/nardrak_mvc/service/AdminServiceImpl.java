@@ -244,4 +244,22 @@ public class AdminServiceImpl implements AdminService{
 	      
 	      model.addAttribute("updateCnt", dao.adminModifyAction(dto));
 	   }
+	
+	// 관리자 삭제
+	@Override
+	public void adminDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		 System.out.println("Service adminModifyAction");
+		
+		String ad_id = request.getParameter("ad_id");
+		String ad_pwd = request.getParameter("ad_pwd");
+		    
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("ad_id", ad_id); 
+		map.put("ad_pwd", ad_pwd);
+		
+		System.out.println(request.getParameter("ad_id"));
+		System.out.println(ad_id);
+		model.addAttribute("deleteCnt", dao.adminDeleteAction(map));
+	}
 }
