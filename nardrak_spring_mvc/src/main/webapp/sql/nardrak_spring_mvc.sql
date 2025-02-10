@@ -93,7 +93,8 @@ CREATE TABLE admin_tb(
     ad_dep         VARCHAR2(30)    NOT NULL,           -- 부서코드
     ad_regDate     TIMESTAMP    DEFAULT sysdate,       -- 가입일
     ad_terms       VARCHAR2(8)    NOT NULL,            -- 약관동의 항목
-    delete_status  CHAR(1) DEFAULT 'N'     NOT NULL,   -- 권한상태 -> default에다가 인풋값이 아닌 컬럼이기에 기본 not null 상태, not null 조건 안주셔도 됩니다 
+    delete_status  CHAR(1) DEFAULT 'N'     NOT NULL,   -- 관리자 탈퇴 여부 권한 상태 -> default에다가 인풋값이 아닌 컬럼이기에 기본 not null 상태, not null 조건 안주셔도 됩니다 
+    access_status  CHAR(1) DEFAULT 'N',                -- 관리자 회원가입 권한 부여 
     login_session  VARCHAR2(20),                       -- 권한 세션
     CONSTRAINT admin_tb_login_fk 
         FOREIGN KEY(login_session) 
@@ -146,16 +147,12 @@ SELECT * FROM customer_tb;
 
 -- 고객 회원가입 중복확인 조회(sql)
 SELECT COUNT(*) 
-  FROM (SELECT cs_id FROM customer_tb 
-         UNION 
-        SELECT ad_id FROM admin_tb) a 
+  FROM customer_tb 
  WHERE cs_id ='111q';
 
 -- 고객 회원가입 중복확인 조회(Spring 구문)
 SELECT COUNT(*) 
-  FROM (SELECT cs_id FROM customer_tb 
-         UNION 
-        SELECT ad_id FROM admin_tb) a 
+  FROM customer_tb 
  WHERE cs_id = #{cs_id}
 
 -- 고객 등록 구문(sql)
@@ -166,33 +163,24 @@ INSERT INTO customer_tb(cs_id, cs_pwd, cs_name, cs_gender, cs_birth, cs_phone, c
 INSERT INTO customer_tb(cs_id, cs_pwd, cs_name, cs_gender, cs_birth, cs_phone, cs_zip, cs_email, cs_tel, cs_user_num, cs_regDate, cs_terms, delete_status, login_session)
 	 VALUES(#{cs_id},#{cs_pwd},#{cs_name},#{cs_gender},#{cs_birth},#{cs_phone},#{cs_zip},#{cs_email},#{cs_tel}, TO_CHAR((SELECT NVL(MAX(cs_user_num)+1,1) FROM customer_tb)), #{cs_regDate}, 'yes', DEFAULT,'Customer')
 
--- ==================[로그인 구문]=====================
+-- ==================[로그인 구문(고객)]=====================
 -- 아이디, 비밀번호 확인 (sql)
 SELECT COUNT(*)
-  FROM (SELECT cs_id, cs_pwd, login_session, delete_status FROM customer_tb 
-         UNION 
-        SELECT ad_id, ad_pwd, login_session, delete_status FROM admin_tb) a 
-WHERE cs_id='test' AND cs_pwd='test1234!' AND delete_status='N';	
+  FROM customer_tb
+ WHERE cs_id='kil123' AND cs_pwd='kil1234$' AND login_session='Customer' AND delete_status='N';	
 
 -- 아이디, 비밀번호 확인 (Spring 구문)
+SELECT cs_id, cs_pwd, login_session, delete_status 
+  FROM customer_tb
+ WHERE cs_id=#{strId} AND cs_pwd=#{strPwd} AND login_session='Customer' AND delete_status='N';	
+
+
+-- ==================[로그인 구문(관리자)]=====================
 SELECT COUNT(*)
-  FROM (SELECT cs_id, cs_pwd, login_session, delete_status FROM customer_tb 
-         UNION 
-        SELECT ad_id, ad_pwd, login_session, delete_status FROM admin_tb) a 
-WHERE cs_id='test' AND cs_pwd='test1234!' AND delete_status='N';	
-
--- 권한 확인 (고객인지, 관리자인지 확인, sql 구문) 
-SELECT COUNT(*) 
-  FROM (SELECT cs_id, login_session FROM customer_tb 
-         UNION 
-        SELECT ad_id, login_session FROM admin_tb) a 
- WHERE cs_id='test' AND login_session='Admin'
-
--- 권한 확인 (고객인지, 관리자인지 확인, Spring 구문) 
-SELECT COUNT(*) 
-  FROM (SELECT cs_id, login_session FROM customer_tb 
-         UNION 
-        SELECT ad_id, login_session FROM admin_tb) a 
- WHERE cs_id=#{strId} AND login_session='Admin'
-
+  FROM admin_tb
+ WHERE ad_id='ad1234' AND ad_pwd='ad12345678@!' AND login_session='Admin' AND delete_status='N' AND access_status='N';
+ 
+SELECT COUNT(*)
+  FROM admin_tb
+ WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
 
