@@ -18,6 +18,7 @@ public interface AdminService {
 		public void adminSignUpAction(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
 		// 유니크 값 체크
+<<<<<<< HEAD
 		public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
 		
@@ -25,4 +26,16 @@ public interface AdminService {
 		public void loginResult(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
 		
+=======
+				public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model)
+						throws ServletException, IOException;
+		
+		// 관리자 수정/삭제 비밀번호 확인
+		public void adminModify(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
+		
+		// 관리자 수정
+		public void adminModifyAction(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
+>>>>>>> 2d2a0f7 ([feat] 관리자 등록, 수정 페이지 관련)
 }
