@@ -144,5 +144,19 @@
     position: relative;
     display: inline-block;
     color: #667084;
+    border-bottom: 1px solid #667084;
 }
 
+#login_ad {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin: 20px 0px 20px 50px;
+    font-size: 12px;
+    align-items: flex-end;
+}
+
+#login_ad a {
+    color: #468189;
+    border-bottom: 1px solid #468189;
+}
