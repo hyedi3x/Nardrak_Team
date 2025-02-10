@@ -19,27 +19,18 @@
 		
 		<div class="travel">
 			<ul>
-				<li class="">
-					<a href="#">추천</a>
-					<div class="travel-menu">
-	            		<ul>
-	            			<li><a href="#">뚜벅이 코스</a></li>
-			                <li><a href="#">데이트 코스</a></li>
-			                <li><a href="#">테마코스</a></li>
-	            		</ul>
-	            	</div>
+				<li>
+					<a href="#">국내여행</a>
 				</li>
-				<li class="">
-					<a href="#">명소</a>
-					<div class="travel-menu">
-	            		<ul>
-				            <li><a href="#">랜드마크</a></li>
-			                <li><a href="#">문화재</a></li>
-			                <li><a href="#">미술관 & 박물관</a></li>
-	            		</ul>
-	            	</div>
+				<li>
+					<a href="#">추천여행지</a>
 				</li>
 			</ul>
+		</div>
+		
+		<div class="search">
+			<i class="fa-solid fa-magnifying-glass" id=""></i>
+			<input type="text" placeholder="어디로 놀러 가세요?" id="search-text">
 		</div>
 		
 		<div class="user">
@@ -54,6 +45,11 @@
 						<i class="fa-regular fa-user"></i> 마이페이지
 					</a>
 				</li>
+				<li>
+					<a href="#">
+						<i class="fa-solid fa-phone"></i> 고객센터
+					</a>
+				</li>
 			</ul>
 		</div>
 		
@@ -64,31 +60,13 @@
 		<div class="side" id="side">
 			<!-- &times : 곱셈(multiple) 속성으로, 특수 문자 x와 동일 -->
 	        <button class="close-btn" id="close-btn">&times;</button>
-	        <div class="side-travel">
+	         <div class="side-travel">
 		        <ul>
 		            <li>
-		            	<a href="#">
-			            	추천 <i class="fa-solid fa-angle-down"></i>
-		            	</a>
-		            	<div class="side-travel-menu">
-		            		<ul>
-		            			<li><a href="#">뚜벅이 코스</a></li>
-				                <li><a href="#">데이트 코스</a></li>
-				                <li><a href="#">테마코스</a></li>
-		            		</ul>
-		            	</div>
+		            	<a href="#">국내여행</a>
 		            </li>
 		            <li>
-		            	<a href="#">
-			            	명소 <i class="fa-solid fa-angle-down"></i>
-		            	</a>
-		            	<div class="side-travel-menu">
-		            		<ul>
-					            <li><a href="#">랜드마크</a></li>
-				                <li><a href="#">문화재</a></li>
-				                <li><a href="#">미술관 & 박물관</a></li>
-		            		</ul>
-		            	</div>
+		            	<a href="#">추천여행지</a>
 		            </li>
 		        </ul>
 	        </div>
@@ -102,6 +80,11 @@
 					<li>
 						<a href="${path}/myInfoAdmin.do">
 							<i class="fa-regular fa-user"></i> 마이페이지
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa-solid fa-phone"></i> 고객센터
 						</a>
 					</li>
 	        	</ul>
