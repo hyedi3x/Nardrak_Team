@@ -611,17 +611,17 @@ function uniqueChk(path, elementId, inputId){
 		success: function(response){
 			
 			if(response.uniqueCheck == 0){
-				if(input = 'ad_phone'){
+				if(elementId == '#phoneUnique'){
 					element.html('<div class="inputAjax"> 사용 가능한 번호입니다. </div>');
 					element.find('.inputAjax').css({"color": "#50858b", 'font-size': '14px'});
 					$('#phoneUnique').val(1);
 				}
-				else if(input = 'ad_email'){
+				if(elementId == '#emailUnique'){
 					element.html('<div class="inputAjax"> 사용 가능한 이메일입니다. </div>');
 					element.find('.inputAjax').css({"color": "#50858b", 'font-size': '14px'});
 					$('#uniqueEmail').val(1);
 				}
-				else if(input = 'empnum'){
+				if(elementId == '#empnumlUnique'){
 					element.html('<div class="inputAjax"> 사용 가능한 사번입니다. </div>');
 					element.find('.inputAjax').css({"color": "#50858b", 'font-size': '14px'});
 					$('#uniqueEmail').val(1);
@@ -629,20 +629,25 @@ function uniqueChk(path, elementId, inputId){
 			}
 			
 			if(response.uniqueCheck == 1){
-				if(input = 'ad_phone'){
+				if(elementId == '#phoneUnique'){
 					element.html('<div class="inputAjax"> 이미 등록된 번호입니다. </div>');
 					$('#uniqueEmail').val(1);
 					element.find('.inputAjax').css({"color": "rgba(255, 0, 0)", 'font-size': '14px'});
 				}
-				else if(input = 'ad_email'){
+				if(elementId == '#emailUnique'){
 					element.html('<div class="inputAjax"> 이미 등록된 이메일입니다. </div>');
 					element.find('.inputAjax').css({"color": "rgba(255, 0, 0)", 'font-size': '14px'});
 					$('#uniqueEmail').val(1);
 				}
-				else if(input = 'empnum'){
+				if(elementId == '#empnumlUnique'){
 					element.html('<div class="inputAjax"> 이미 등록된 사번입니다. </div>');
 					element.find('.inputAjax').css({"color": "rgba(255, 0, 0)", 'font-size': '14px'});
 					$('#empnumlUnique').val(1);
+				}
+			}
+			if(input.val() == 0){
+				if(elementId == '#phoneUnique' || elementId == '#emailUnique' || elementId == '#empnumlUnique'){
+					element.find('.inputAjax').css("display", "none");
 				}
 			}
 			
@@ -651,5 +656,5 @@ function uniqueChk(path, elementId, inputId){
 			alert("error");
 		}
 	});
-	
 }
+
