@@ -39,6 +39,20 @@
 			</script>
 		</c:when>
 		
+		<c:when test="${delete == 1}">
+			<script type="text/javaScript">
+				alert("관리자 삭제 성공");
+				window.location="${path}/main.do";
+			</script>
+		</c:when>
+		
+		<c:when test="${delete == 0}">
+			<script type="text/javaScript">
+				alert("관리자 삭제 실패");
+				window.location="${path}/main.do";
+			</script>
+		</c:when>
+		
 	</c:choose>
 	
 </body>
