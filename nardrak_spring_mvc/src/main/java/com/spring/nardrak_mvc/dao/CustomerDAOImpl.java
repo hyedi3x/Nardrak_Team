@@ -57,14 +57,5 @@ public class CustomerDAOImpl implements CustomerDAO{
 		
 		return sqlSession.selectOne(namespace  +"userIdPwdChk", map);  // 0, 1 결과 반환		
 	}
-
-	// ======================= [회원정보 인증(권한 확인)] =======================
-	@Override
-	public int sessionResult(String strId) {
-		System.out.println("CustomerDAOImpl - sessionResult()");
-		
-		return sqlSession.selectOne(namespace + "sessionResult", strId);  // 0, 1 결과 반환		
-	
-	}
 	
 }

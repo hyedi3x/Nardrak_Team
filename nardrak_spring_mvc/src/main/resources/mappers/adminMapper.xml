@@ -9,16 +9,9 @@
  
 	<!--  id 중복 확인, 고객 & 관리자 모두 검사  -->
 	<select id="adminIdConfirm" parameterType="String" resultType="int">
-		SELECT COUNT(*)
-		  FROM (
-		        SELECT ad_id, login_session
-		          FROM admin_tb
-		         WHERE ad_id = #{ad_id}
-		        UNION
-		        SELECT cs_id, login_session
-		          FROM customer_tb
-		         WHERE cs_id = #{ad_id}
-		         )
+		SELECT COUNT(*) 
+		  FROM admin_tb 
+		 WHERE ad_id = #{ad_id}
 	</select>
 	
 	<!--  관리자 회원가입  -->
@@ -39,10 +32,19 @@
 		  FROM admin_tb
 		 WHERE ad_email = #{value}
 	</select>
+	
 	<!-- 유니크 값 검사 사번 -->
 	<select id="uniqueCheckEmpnum" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*)
 		  FROM admin_tb
 		 WHERE ad_empnum = #{value}
 	</select>
+	
+	<!--  아이디, 패스워드 일치   -->
+	<select id="userIdPwdChk" parameterType="java.util.Map" resultType="int"> 
+		SELECT COUNT(*)
+		  FROM admin_tb
+		 WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
+	</select>
+	
 </mapper> 
