@@ -19,36 +19,22 @@
 		
 		<div class="travel">
 			<ul>
-				<li class="">
-					<a href="#">추천</a>
-					<div class="travel-menu">
-	            		<ul>
-	            			<li><a href="#">뚜벅이 코스</a></li>
-			                <li><a href="#">데이트 코스</a></li>
-			                <li><a href="#">테마코스</a></li>
-	            		</ul>
-	            	</div>
+				<li>
+					<a href="#">국내여행</a>
 				</li>
-				<li class="">
-					<a href="#">명소</a>
-					<div class="travel-menu">
-	            		<ul>
-				            <li><a href="#">랜드마크</a></li>
-			                <li><a href="#">문화재</a></li>
-			                <li><a href="#">미술관 & 박물관</a></li>
-	            		</ul>
-	            	</div>
+				<li>
+					<a href="#">추천여행지</a>
 				</li>
 			</ul>
 		</div>
 		
+		<div class="search">
+			<i class="fa-solid fa-magnifying-glass" id=""></i>
+			<input type="text" placeholder="어디로 놀러 가세요?" id="search-text">
+		</div>
+		
 		<div class="user">
 			<ul>
-				<li>
-					<a href="#">
-        				<i class="fa-solid fa-magnifying-glass" id="search"></i>
-					</a>
-        		</li>
 				<li>
 					<a href="${path}/login.do">
 						<i class="fa-solid fa-arrow-right-to-bracket"></i>로그인
@@ -57,6 +43,11 @@
 				<li>
 					<a href="${path}/joinAgreement.do">
 						<i class="fa-solid fa-user-plus"></i> 회원가입
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa-solid fa-phone"></i> 고객센터
 					</a>
 				</li>
 			</ul>
@@ -72,28 +63,10 @@
 	        <div class="side-travel">
 		        <ul>
 		            <li>
-		            	<a href="#">
-			            	추천 <i class="fa-solid fa-angle-down"></i>
-		            	</a>
-		            	<div class="side-travel-menu">
-		            		<ul>
-		            			<li><a href="#">뚜벅이 코스</a></li>
-				                <li><a href="#">데이트 코스</a></li>
-				                <li><a href="#">테마코스</a></li>
-		            		</ul>
-		            	</div>
+		            	<a href="#">국내여행</a>
 		            </li>
 		            <li>
-		            	<a href="#">
-			            	명소 <i class="fa-solid fa-angle-down"></i>
-		            	</a>
-		            	<div class="side-travel-menu">
-		            		<ul>
-					            <li><a href="#">랜드마크</a></li>
-				                <li><a href="#">문화재</a></li>
-				                <li><a href="#">미술관 & 박물관</a></li>
-		            		</ul>
-		            	</div>
+		            	<a href="#">추천여행지</a>
 		            </li>
 		        </ul>
 	        </div>
@@ -105,8 +78,13 @@
 						</a>
 					</li>
 					<li>
-		            	<a href="${path}/join.do">
+		            	<a href="${path}/joinAgreement.do">
 							<i class="fa-solid fa-user-plus" id="icon"></i> 회원가입
+						</a>
+					</li>
+					<li>
+		            	<a href="#">
+							<i class="fa-solid fa-phone" id="icon"></i> 고객센터
 						</a>
 					</li>
 	        	</ul>
