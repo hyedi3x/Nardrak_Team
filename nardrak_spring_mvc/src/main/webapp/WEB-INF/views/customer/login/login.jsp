@@ -40,6 +40,9 @@
 								<a href="#" id="rightLink">아이디/비밀번호 찾기</a>
 							</span>
 						</div>
+						<div id="login_ad">
+							<a href="${path}/loginAdmin.ad">관리자 로그인</a>
+						</div>
 					</div>
 				</form>
 				<div id="login_ad">

@@ -7,33 +7,36 @@
 	<mapper namespace="com.spring.nardrak_mvc.dao.CustomerDAO">  <!-- namespace="패키지명.인터페이스" -->
 		<!--  아이디, 패스워드 일치   -->
 		<select id="userIdPwdChk" parameterType="java.util.Map" resultType="int"> 
-			SELECT COUNT(*) 
-			  FROM (SELECT cs_id, cs_pwd, login_session, delete_status FROM customer_tb 
-			         UNION 
-			        SELECT ad_id, ad_pwd, login_session, delete_status FROM admin_tb) a 
-			WHERE cs_id=#{strId} AND cs_pwd=#{strPwd} AND delete_status='N' 
-		</select>
-		
-		<!--  login_session 컬럼 값이 어드민이면 1 반환, 고객이면 0 반환 (아이디, 패스워드가 우선 일치해야함)  -->
-		<select id="sessionResult" parameterType="String" resultType="int"> 
-			SELECT COUNT(*) 
-			  FROM (SELECT cs_id, login_session FROM customer_tb 
-			         UNION 
-			        SELECT ad_id, login_session FROM admin_tb) a 
-			 WHERE cs_id=#{strId} AND login_session='Admin' </select>
+			SELECT COUNT(*)
+			  FROM customer_tb
+			 WHERE cs_id=#{strId} AND cs_pwd=#{strPwd} AND login_session='Customer' AND delete_status='N'
+ 		</select>
 			 
 		<!-- ID 중복확인 처리 -->
 	   	<select id="useridCheck" parameterType="String" resultType="int">
 	    	SELECT COUNT(*) 
-			  FROM (SELECT cs_id FROM customer_tb 
-			         UNION 
-			        SELECT ad_id FROM admin_tb) a 
+			  FROM customer_tb 
 			 WHERE cs_id = #{cs_id}
-  </select>
+ 		</select>
+ 		
+ 		<!-- 전화번호 중복확인 처리 -->
+ 		<select id="phoneCheck" parameterType="java.util.Map" resultType="int">
+ 			SELECT count(*)
+ 			  FROM customer_tb
+ 			 WHERE cs_phone = #{value}
+ 		</select>
+ 		
+ 		<!-- 이메일 중복확인 처리 -->
+ 		<select id="emailCheck" parameterType="java.util.Map" resultType="int">
+ 			SELECT count(*)
+ 			  FROM customer_tb
+ 			 WHERE cs_email = #{value}
+ 		</select>
 	      
 	    <!-- 회원가입 처리 -->
 		<insert id="insertCustomer" parameterType="com.spring.nardrak_mvc.dto.CustomerDTO" >
 		  INSERT INTO customer_tb(cs_id, cs_pwd, cs_name, cs_gender, cs_birth, cs_phone, cs_zip, cs_email, cs_tel, cs_user_num, cs_regDate, cs_terms, delete_status, login_session)
-			 VALUES(#{cs_id},#{cs_pwd},#{cs_name},#{cs_gender},#{cs_birth},#{cs_phone},#{cs_zip},#{cs_email},#{cs_tel}, TO_CHAR((SELECT NVL(MAX(cs_user_num)+1,1) FROM customer_tb)), #{cs_regDate}, 'yes', DEFAULT,'Customer') </insert>
+			 VALUES(#{cs_id},#{cs_pwd},#{cs_name},#{cs_gender},#{cs_birth},#{cs_phone},#{cs_zip},#{cs_email},#{cs_tel}, TO_CHAR((SELECT NVL(MAX(cs_user_num)+1,1) FROM customer_tb)), #{cs_regDate}, #{cs_terms}, DEFAULT, 'Customer')
+		</insert>
     
    </mapper> 
