@@ -53,7 +53,7 @@ public class AdminController {
 		
 		service.adminSignUpAction(request, response, model);
 		
-		return "admin/join/actionResult";
+		return "admin/actionResultAdmin";
 	}
 	
 	// 유니크 값 체크
@@ -65,6 +65,26 @@ public class AdminController {
 		
 		service.uniqueCheck(request, response, model);
 		
-		return "admin/join/actionResult";
+		return "admin/actionResultAdmin";
+	}
+	
+	// ======================= [관리자 로그인 처리 페이지] =======================
+	@RequestMapping("/loginAdmin.ad")
+	public String loginAdmin(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		logger.info("<< url - loginAdmin.ad >>");
+				
+		return "admin/login/loginAdmin";
+	}
+	
+	// ======================= [관리자 로그인 성공 처리 페이지] =======================
+	@RequestMapping("/loginResult.ad")
+	public String loginResult(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		logger.info("<< url - loginResult.ad >>");
+			
+		service.loginResult(request, response, model);
+
+		return "admin/actionResultAdmin";
 	}
 }

@@ -31,6 +31,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSession.insert(namespace+"adminSignUpAction", dto);
 	}
 
+	// 유니크 체크
 	@Override
 	public int uniqueCheck(Map<String, Object> map) {
 		System.out.println("DAO adminSignUpAction");
@@ -44,4 +45,13 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return sqlSession.selectOne(namespace+"uniqueCheckEmpnum",map);
 	}
+	
+	// ======================= [회원정보 인증(아이디, 비번)] =======================
+	@Override
+	public int userIdPwdChk(Map<String, Object> map) {
+		System.out.println("CustomerDAOImpl - userIdPwdChk()");
+		
+		return sqlSession.selectOne(namespace  +"userIdPwdChk", map);  // 0, 1 결과 반환		
+	}
+
 }
