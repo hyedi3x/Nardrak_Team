@@ -37,5 +37,8 @@ public interface AdminService {
 		// 관리자 수정
 		public void adminModifyAction(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
+<<<<<<< HEAD
 >>>>>>> 2d2a0f7 ([feat] 관리자 등록, 수정 페이지 관련)
+=======
+>>>>>>> origin/admin_modify_dev1
 }

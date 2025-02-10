@@ -66,6 +66,7 @@ public class AdminController {
 		service.uniqueCheck(request, response, model);
 		
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return "admin/actionResultAdmin";
 	}
 	
@@ -122,4 +123,39 @@ public class AdminController {
 >>>>>>> 2d2a0f7 ([feat] 관리자 등록, 수정 페이지 관련)
 	}
 	
+=======
+	}
+	
+	// 마이페이지 - 수정/삭제 비밀번호 확인 페이지 이동
+	@RequestMapping("/pwdCheck.ad")
+	public String pwdCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : pwdCheck.ad >>" );
+		
+		return "admin/modify_delete/pwdCheck";
+	}
+				
+	// 비밀번호 확인 => 관리자 수정 페이지 이동
+	@RequestMapping("/adminModify.ad")
+	public String adminModify(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminModify.ad >>" );
+		
+		service.adminModify(request, response, model);
+		
+		return "admin/modify_delete/modify";
+	}
+	
+	// 관리자 수정
+	@RequestMapping("/adminModifyAction.ad")
+	public String adminModifyAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminModifyAction.ad >>" );
+		
+		service.adminModifyAction(request, response, model);
+		
+		return "admin/join/actionResult";
+	}
+	
+>>>>>>> origin/admin_modify_dev1
 }
