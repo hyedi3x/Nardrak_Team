@@ -31,10 +31,10 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSession.insert(namespace+"adminSignUpAction", dto);
 	}
 
+	// 유니크 값 검사
 	@Override
 	public int uniqueCheck(Map<String, Object> map) {
 		System.out.println("DAO adminSignUpAction");
-		System.out.println(map.get("id"));
 		// 핸드폰은 통신사 자르고 검사해야해서 실행 구문이 다르다.
 		if(map.get("id").equals("ad_phone")) {
 			return sqlSession.selectOne(namespace+"uniqueCheckPhone",map);
@@ -44,4 +44,21 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return sqlSession.selectOne(namespace+"uniqueCheckEmpnum",map);
 	}
+	
+	// 관리자 수정/삭제 페이지 비밀번호 확인
+	@Override
+	public AdminDTO adminModify(Map<String, Object> map) {
+		System.out.println("DAO adminModify");
+		
+		return sqlSession.selectOne(namespace+"adminModify",map);
+	}
+
+	// 관리자 수정
+	@Override
+	public int adminModifyAction(AdminDTO dto) {
+		System.out.println("DAO adminModifyAction");
+		System.out.println(dto.toString());
+		return sqlSession.update(namespace+"adminModifyAction", dto);
+	}
+	
 }

@@ -20,4 +20,12 @@ public interface AdminService {
 		// 유니크 값 체크
 				public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model)
 						throws ServletException, IOException;
+		
+		// 관리자 수정/삭제 비밀번호 확인
+		public void adminModify(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
+		
+		// 관리자 수정
+		public void adminModifyAction(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
 }

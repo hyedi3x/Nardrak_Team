@@ -7,9 +7,18 @@
 <!-- namespace="패키지명.인터페이스" --> 	  
 <mapper namespace="com.spring.nardrak_mvc.dao.AdminDAO">  
  
-	<!--  id 중복 확인  -->
+	<!--  id 중복 확인, 고객 & 관리자 모두 검사  -->
 	<select id="adminIdConfirm" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM admin_tb WHERE ad_id = #{ad_id}
+		SELECT COUNT(*)
+		  FROM (
+		        SELECT ad_id, login_session
+		          FROM admin_tb
+		         WHERE ad_id = #{ad_id}
+		        UNION
+		        SELECT cs_id, login_session
+		          FROM customer_tb
+		         WHERE cs_id = #{ad_id}
+		         )
 	</select>
 	
 	<!--  관리자 회원가입  -->
@@ -17,5 +26,40 @@
 		INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
 		VALUES(#{ad_id}, #{ad_pwd}, #{ad_name}, #{ad_birth}, #{ad_phone}, #{ad_email}, #{ad_zip}, #{ad_tel}, #{ad_empnum}, #{ad_dep}, #{ad_terms}, 'Admin')
 	</insert>
+	
+	<!-- 유니크 값 검사 핸드폰 -->
+	<select id="uniqueCheckPhone" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*)
+		  FROM admin_tb
+		WHERE ad_phone LIKE '%' || #{ad_phone} || '%'
+	</select>
+	<!-- 유니크 값 검사 이메일 -->
+	<select id="uniqueCheckEmail" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*)
+		  FROM admin_tb
+		 WHERE ad_email = #{value}
+	</select>
+	<!-- 유니크 값 검사 사번 -->
+	<select id="uniqueCheckEmpnum" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*)
+		  FROM admin_tb
+		 WHERE ad_empnum = #{value}
+	</select>
+	
+		
+	<!-- 관리자 로그인 -->
+	<select id="adminModify" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
+		SELECT *
+		  FROM admin_tb
+		 WHERE ad_id = #{ad_id}
+		   AND ad_pwd= #{ad_pwd}
+	</select>
+	
+	<!-- 관리자 수정 -->
+	<update id="adminModifyAction">
+		UPDATE admin_tb
+		   SET ad_pwd= #{ad_pwd}, ad_name= #{ad_name}, ad_birth= #{ad_birth}, ad_phone= #{ad_phone}, ad_email= #{ad_email}, ad_zip= #{ad_zip}, ad_tel= #{ad_tel}, ad_empnum= #{ad_empnum}, ad_dep= #{ad_dep}, ad_terms= #{ad_terms}
+		 WHERE ad_id = #{ad_id}
+	</update>
 	
 </mapper> 

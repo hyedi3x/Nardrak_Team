@@ -42,10 +42,20 @@ function idConfirm3(){
 let phone_input = 0;
 let jender_input = 0;
 function submitChk(){
-   let pw = $('#ad_pwd').val();
-   let pwdChk = $('#pwdChk').val();
-   let pwd = $('#ad_pwd').val().length;
-   let adBirth = $('#ad_birth').val().length;
+   
+   // 아이디 중복 확인
+   if($('#idChk').val() != 1){
+      alert("아이디 중복을 확인해주세요.");
+      $('#ad_id').focus();
+      return false;      
+   }
+   
+   // 아이디 정규식
+   if($('#idValCheck').val() == 0){
+      alert("아이디 입력을 다시 확인해주세요");
+      $('#ad_id').focus();
+      return false;
+   }
    
    // 비밀번호 일치
    if($('#ad_pwd').val() != $('#pwdChk').val()){
@@ -55,72 +65,70 @@ function submitChk(){
       return false;
    }
    
-   // 아이디 중복 확인
-   if($('#idChk').val() != 1){
-      alert("아이디 중복을 확인해주세요.");
-      $('#ad_id').focus();
-      return false;      
-   }   
-   
-   // 필수 약관
-   if($('#modalChk1').val() == 0 || $('#modalChk2').val() == 0){
-      alert("필수 약관을 읽고 동의해주세요");
-      $('#modalChk1').focus();
+   // 비밀번호 정규식
+   if($('#pwdValCheck').val() == 0){
+      alert("비밀번호를 확인해주세요.");
+      $('#ad_pwd').focus();
+      $('#pwdChk').val("");
       return false;
    }
    
+   // 전화번호 정규식
    if(phone_input != 1 ){
       alert("전화번호 11자리를 정확히 입력해주세요.");
-      $('#ad_phone').focus();
+      $('#ad_phone2').focus();
       return false;
    }
    
-   if($('#idValCheck').val() == 0){
-      alert("아이디 입력을 다시 확인해주세요");
-      $('#ad_id').focus();
-      return false;
-   }
-   
+   // 이메일 사용자이름 정규식
    if($('#emailVal1Check').val() == 0){
       alert("이메일 입력을 다시 확인해주세요");
       $('#ad_email1').focus();
       return false;
    }
    
+   // 이메일 도메인 정규식
    if($('#emailVal2Check').val() == 0){
       alert("이메일 입력을 다시 확인해주세요");
+       $('#ad_email2').focus();
       return false;
-      $('#ad_email2').focus();
+     
    }
    
+   // 생년월일 범위 검사
    if($('#brithValCheck').val() == 0){
       alert("생년월일 입력을 다시 확인해주세요");
       $('#ad_birth').focus();
       return false;
    }
    
+   // 주소 공란 검사
    if(!$('#ad_zip1').val() || !$('#ad_zip2').val()){
    	alert('주소를 입력해주세요.');
     $('#ad_ZIPBTN').focus();
    	return false;
   	}
   	
-  	if(!(jender_input == 1 || jender_input == 2)){
+  	// 주민번호 성별 확인
+  	if(jenderChk == 0){
    	alert('주민번호 뒷자리를 확인해 주세요.');
     $('#ad_jender').focus();
    	return false;
   	}
+  	
   	// unique 폰, 이메일, 사번 ajax로 받아오기
   	if($('#uniquePhone').val()!=1){
    	alert('이미 등록된 핸드폰 번호입니다.');
     $('#ad_phone2').focus();
    	return false;
   	}
+  	
   	if($('#uniqueEmail').val()!=1){
    	alert('이미 등록된 이메일입니다.');
     $('#ad_email1').focus();
    	return false;
   	}
+  	
   	if($('#uniqueEmpnum').val()!=1){
    	alert('이미 등록된 사번입니다.');
     $('#ad_empnum').focus();
@@ -354,6 +362,7 @@ $('#ad_birth').on('input', function(){
                 $('#ad_birth').css('border', '1px solid rgba(255, 0, 0)');
                 $('#ad_birth').css('outline', '3px solid rgba(255, 0, 0, 0.3)');
                 $('#brithValCheck').val(0);
+                jender_input = 0;
 		}
 	} // 0일 때 else
 	
@@ -372,7 +381,7 @@ $('#ad_birth').on('input', function(){
            $('#brithValCheck').val(1);
            
            // 생년월일 변경시 주민번호 뒷자리 성별 검사 다시 실행
-           jenderChk();
+           jender();
            
         }
         else{ // 14세 미만
@@ -385,15 +394,18 @@ $('#ad_birth').on('input', function(){
 	
 });
 	
-
-
+// submit에서 검사용
+let jenderChk =0;
 // 주민번호 뒷자리 input[type=number] 첫 한자리 입력 성별 검사
 // jender의 값을 읽는다.
-function jenderChk(){
+function jender(){
+	
+	// 함수가 시작되면 초기화
+	jenderChk =0;
+	
 	let ad_jender = $('#ad_jender').val();
 	
-	// submit에서 검사용
-	let jenderChk =0;
+	
 	// 생년월일 검사에서 입력이 6자리이면 삼항식으로 값을 1 또는 2로 변경 
 	if(jender_input == 1){
 		if(ad_jender == 1 || ad_jender == 2){
@@ -595,8 +607,45 @@ function uniqueChk(path, elementId, inputId){
 		url: path+"/uniqueCheck.ad",
 		data:elementJson, // get 방식으로 넘기기에 parameter로 받기	
 		type: 'POST',
-		success: function(result){
-			element.html(result);
+		dataType:"json",  // response.getWritter().write("문자열");을 json 타입으로 지정
+		success: function(response){
+			
+			if(response.uniqueCheck == 0){
+				if(input = 'ad_phone'){
+					element.html('<div class="inputAjax"> 사용 가능한 번호입니다. </div>');
+					element.find('.inputAjax').css({"color": "#50858b", 'font-size': '14px'});
+					$('#phoneUnique').val(1);
+				}
+				else if(input = 'ad_email'){
+					element.html('<div class="inputAjax"> 사용 가능한 이메일입니다. </div>');
+					element.find('.inputAjax').css({"color": "#50858b", 'font-size': '14px'});
+					$('#uniqueEmail').val(1);
+				}
+				else if(input = 'empnum'){
+					element.html('<div class="inputAjax"> 사용 가능한 사번입니다. </div>');
+					element.find('.inputAjax').css({"color": "#50858b", 'font-size': '14px'});
+					$('#uniqueEmail').val(1);
+				}
+			}
+			
+			if(response.uniqueCheck == 1){
+				if(input = 'ad_phone'){
+					element.html('<div class="inputAjax"> 이미 등록된 번호입니다. </div>');
+					$('#uniqueEmail').val(1);
+					element.find('.inputAjax').css({"color": "rgba(255, 0, 0)", 'font-size': '14px'});
+				}
+				else if(input = 'ad_email'){
+					element.html('<div class="inputAjax"> 이미 등록된 이메일입니다. </div>');
+					element.find('.inputAjax').css({"color": "rgba(255, 0, 0)", 'font-size': '14px'});
+					$('#uniqueEmail').val(1);
+				}
+				else if(input = 'empnum'){
+					element.html('<div class="inputAjax"> 이미 등록된 사번입니다. </div>');
+					element.find('.inputAjax').css({"color": "rgba(255, 0, 0)", 'font-size': '14px'});
+					$('#empnumlUnique').val(1);
+				}
+			}
+			
 		},
 		error: function(){
 			alert("error");

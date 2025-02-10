@@ -58,13 +58,44 @@ public class AdminController {
 	
 	// 유니크 값 체크
 	@RequestMapping("/uniqueCheck.ad")
-	public String uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
+	public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException{
 		
 		logger.info("<< url : uniqueCheck.ad >>" );
 		
 		service.uniqueCheck(request, response, model);
 		
+	}
+	
+	// 마이페이지 - 수정/삭제 비밀번호 확인 페이지 이동
+	@RequestMapping("/pwdCheck.ad")
+	public String pwdCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : pwdCheck.ad >>" );
+		
+		return "admin/modify_delete/pwdCheck";
+	}
+				
+	// 비밀번호 확인 => 관리자 수정 페이지 이동
+	@RequestMapping("/adminModify.ad")
+	public String adminModify(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminModify.ad >>" );
+		
+		service.adminModify(request, response, model);
+		
+		return "admin/modify_delete/modify";
+	}
+	
+	// 관리자 수정
+	@RequestMapping("/adminModifyAction.ad")
+	public String adminModifyAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminModifyAction.ad >>" );
+		
+		service.adminModifyAction(request, response, model);
+		
 		return "admin/join/actionResult";
 	}
+	
 }
