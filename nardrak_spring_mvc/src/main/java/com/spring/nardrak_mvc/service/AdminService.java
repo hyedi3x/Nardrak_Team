@@ -18,6 +18,11 @@ public interface AdminService {
 		public void adminSignUpAction(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
 		// 유니크 값 체크
-				public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model)
-						throws ServletException, IOException;
+		public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
+		
+		// 로그인 성공 처리 페이지
+		public void loginResult(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
+		
 }

@@ -14,11 +14,22 @@
 /* 내부 요소 가운데 정렬 */
 form{
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	margin: 30px auto;
 	padding: 20px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
+}
+
+#signUpTitle {
+	margin: 10px 0px;
+	border-bottom: 1px solid #729ea1;
+    box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
+}
+
+#ad_title{
+	font-size: 24px;	
 }
 
 /* 테이블 크기 */
