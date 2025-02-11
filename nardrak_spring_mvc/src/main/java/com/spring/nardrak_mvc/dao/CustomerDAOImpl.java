@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.nardrak_mvc.dto.CustomerDTO;
+import com.spring.nardrak_mvc.dto.CustomerDeleteDTO;
 
 @Repository
 public class CustomerDAOImpl implements CustomerDAO{
@@ -58,4 +59,33 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return sqlSession.selectOne(namespace  +"userIdPwdChk", map);  // 0, 1 결과 반환		
 	}
 	
+	
+	
+	   
+   //======================= [회원정보 수정처리] =================================
+    @Override
+    public int updateCustomer(CustomerDTO dto) {
+       System.out.println("CustomerDAOImpl - updateCustomer()");
+      
+       int updateCnt = sqlSession.update(namespace + "updateCustomer", dto);
+     
+       return updateCnt;
+   }
+
+    //======================= [회원정보 탈퇴 정보 처리] =======================
+  	@Override
+  	public int deleteCustomer(CustomerDeleteDTO dto){
+  		System.out.println("CustomerDAOImpl - deleteCustomer()");
+  		
+  		return sqlSession.insert(namespace + "deleteCustomer", dto);
+  	}
+		
+	//======================= [회원정보 탈퇴 처리 후, 고객 테이블에서 해당 회원 삭제] =======================
+	@Override	
+	public int deleteCustomerRemove(String cs_id) {
+		System.out.println("CustomerDAOImpl - deleteCustomerRemove()");
+		
+		return sqlSession.update(namespace + "deleteCustomerRemove", cs_id);
+	}
+
 }
