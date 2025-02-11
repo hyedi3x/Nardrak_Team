@@ -27,7 +27,7 @@
 		WHERE ad_phone LIKE '%' || #{ad_phone} || '%'
 	</select>
 	<!-- 유니크 값 검사 이메일 -->
-	<select id="uniqueCheckEmail" parameterType="java.util.Map" resultType="int">
+	<select id="uniqueCheckEmail" parameterType="String" resultType="int">
 		SELECT COUNT(*)
 		  FROM admin_tb
 		 WHERE ad_email = #{value}
@@ -46,14 +46,6 @@
 		  FROM admin_tb
 		 WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
 	</select>
-		
-	<!-- 관리자 비밀번호 확인 -->
-	<select id="adminModify" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
-		SELECT *
-		  FROM admin_tb
-		 WHERE ad_id = #{ad_id}
-		   AND ad_pwd= #{ad_pwd}
-	</select>
 	
 	<!-- 관리자 수정 -->
 	<update id="adminModifyAction" parameterType="com.spring.nardrak_mvc.dto.AdminDTO">
@@ -67,7 +59,6 @@
 		UPDATE admin_tb
 		   SET delete_status = 'Y'
 		 WHERE ad_id = #{ad_id}
-		   AND ad_pwd= #{ad_pwd}
 	</update>
 	
 	<!-- 관리자 요청 카운트 -->
