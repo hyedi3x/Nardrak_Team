@@ -96,17 +96,6 @@ public class AdminController {
 		return "admin/modify_delete/pwdCheck";
 	}
 				
-	// 비밀번호 확인 => 관리자 수정 페이지 이동
-	@RequestMapping("/adminModify.ad")
-	public String adminModify(HttpServletRequest request, HttpServletResponse response, Model model) 
-			throws ServletException, IOException{
-		logger.info("<< url : adminModify.ad >>" );
-		
-		service.adminModify(request, response, model);
-		
-		return "admin/modify_delete/delete";
-	}
-	
 	// 관리자 수정
 	@RequestMapping("/adminModifyAction.ad")
 	public String adminModifyAction(HttpServletRequest request, HttpServletResponse response, Model model) 
