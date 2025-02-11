@@ -182,5 +182,15 @@ SELECT COUNT(*)
  
 SELECT COUNT(*)
   FROM admin_tb
- WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
+ WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' ;
 
+-- ==================[관리자 이미지 등록 테이블]=====================
+DROP TABLE admin_image_tb;
+CREATE TABLE admin_image_tb (
+    image_id       NUMBER PRIMARY KEY,             -- 이미지 고유 ID
+    image_path     VARCHAR2(255) NOT NULL,         -- 이미지 경로
+    upload_date    TIMESTAMP DEFAULT sysdate,      -- 업로드 날짜
+    image_show     CHAR(1) DEFAULT 'Y' NOT NULL,   -- 표시 여부 (기본값 'Y')
+    image_uploader VARCHAR2(50) NOT NULL,          -- 이미지를 업로드한 사용자
+    image_detail   VARCHAR2(255) NOT NULL          -- 이미지에 대한 설명
+);
