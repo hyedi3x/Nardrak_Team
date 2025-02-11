@@ -282,13 +282,13 @@
 			
 			<tr>
 				<td>
-					<input type="submit" class="submitBTN" value="관리자 등록">
+					<input type="submit" class="submitBTN" value="관리자 수정">
 				</td>
 			</tr>
 			
 			<tr>
 				<td>
-					<input type="button" class="submitBTN" onclick="mainBTN('${path}')" value="가입 취소">
+					<input type="button" class="submitBTN" onclick="mainBTN('${path}')" value="수정 취소">
 				</td>
 			</tr>
 
