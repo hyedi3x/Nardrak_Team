@@ -37,6 +37,9 @@ public interface AdminService {
 		// 관리자 삭제
 				public void adminDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
 						throws ServletException, IOException;
-	
+		// 관리자 요청 조회
+		public void adminAccess(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
+
 
 }

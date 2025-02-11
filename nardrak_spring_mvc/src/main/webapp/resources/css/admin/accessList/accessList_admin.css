@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/* 가장 바깥 div 가운데 맞춤 */
+.wrap{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: auto;
+}
+
+/* 로고와 테이블 교차축 가운데 정렬 */
+.container{
+	display: flex;
+	margin: auto;
+}
+
+/* 내부 요소 가운데 정렬 */
+form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 30px auto;
+	padding: 20px;
+	border-radius: 10px;
+}
+table{
+	width: 900px;
+}
+th{
+	background-color: #9dbebb ;
+	height: 50px;
+	color: #ffffff;	
+}
+#noTh{
+	width: 100px;
+}
+#idTh{
+	width: 300px;
+}
+#accTh{
+	width: 300px;
+}
+#dateTh{
+	width: 200px;
+}
+.font20{
+	font-size: 20px;
+}

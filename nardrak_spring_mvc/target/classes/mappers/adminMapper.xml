@@ -70,4 +70,19 @@
 		   AND ad_pwd= #{ad_pwd}
 	</update>
 	
+	<!-- 관리자 요청 카운트 -->
+	<select id="AdminAccessCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM admin_tb
+		WHERE access_status = 'N'
+	</select>
+	
+	<!-- 관리자 등록 요청 조회 -->
+	<select id="adminAccess" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
+		SELECT ROWNUM, ad.*
+		 FROM (SELECT *
+         FROM admin_tb
+        WHERE access_status = 'N') ad
+		WHERE ROWNUM BETWEEN #{startRow} AND #{endRow}
+	</select>
 </mapper> 
