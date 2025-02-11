@@ -119,13 +119,17 @@ public class AdminController {
 	}
 	
 	// 관리자 삭제
-		@RequestMapping("/adminDeleteAction.ad")
-		public String adminDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
-				throws ServletException, IOException{
-			logger.info("<< url : adminDeleteAction.ad >>" );
-			
-			service.adminDeleteAction(request, response, model);
-			
-			return "admin/join/actionResult";
-		}
+	@RequestMapping("/adminDeleteAction.ad")
+	public String adminDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminDeleteAction.ad >>" );
+		
+		service.adminDeleteAction(request, response, model);
+		
+		return "admin/join/actionResult";
+	}
+	
+	
+		
+		
 }
