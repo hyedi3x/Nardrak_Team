@@ -32,15 +32,29 @@
 					<th id="accTh">권한상태</th>
 					<th id="dateTh">요청일</th>
 				</tr>
+				<c:set var="no" value="0"/>
 				<c:forEach var="dto" items="${list}">
 					<tr>	
-						<td>${1}</td>
+						<td>${no = no+1}</td>
 						<td>${dto.ad_id}</td>
 						<td>${dto.access_status}</td>
 						<td>${dto.ad_regDate}</td>
-					</tr>	
+					</tr>
 				</c:forEach>
 				
+				<tr>
+					<td colspan="4">
+						
+						<a href="${path}/adminAccess.ad?page=${paging.prev}">[이전]</a>
+						
+						<c:forEach var="num" begin="${paging.startBlock}" end="${paging.endBlock}">
+							<a href="${path}/adminAccess.ad?page=${num}">${num}</a>
+						</c:forEach>
+						
+						<a href="${path}/adminAccess.ad?page=${paging.next}">[다음]</a>
+						
+					</td>
+				</tr>
 	
 			</table>
 		</form>
