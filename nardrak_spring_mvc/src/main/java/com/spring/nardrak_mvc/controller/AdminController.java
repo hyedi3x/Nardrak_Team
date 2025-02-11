@@ -129,7 +129,6 @@ public class AdminController {
 		return "admin/join/actionResult";
 	}
 	
-	
 		
 		
 }

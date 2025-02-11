@@ -56,18 +56,18 @@
 	</select>
 	
 	<!-- 관리자 수정 -->
-	<update id="adminModifyAction">
+	<update id="adminModifyAction" parameterType="com.spring.nardrak_mvc.dto.AdminDTO">
 		UPDATE admin_tb
 		   SET ad_pwd= #{ad_pwd}, ad_name= #{ad_name}, ad_birth= #{ad_birth}, ad_phone= #{ad_phone}, ad_email= #{ad_email}, ad_zip= #{ad_zip}, ad_tel= #{ad_tel}, ad_empnum= #{ad_empnum}, ad_dep= #{ad_dep}, ad_terms= #{ad_terms}
 		 WHERE ad_id = #{ad_id}
 	</update>
 	
 	<!-- 관리자 삭제 -->
-	<update id="adminDeleteAction">
+	<update id="adminDeleteAction" parameterType="java.util.Map">
 		UPDATE admin_tb
 		   SET delete_status = 'Y'
 		 WHERE ad_id = #{ad_id}
-		   AND ad_pwd = #{ad_pwd}
+		   AND ad_pwd= #{ad_pwd}
 	</update>
 	
 </mapper> 

@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 
 import com.spring.nardrak_mvc.dao.AdminDAO;
 import com.spring.nardrak_mvc.dto.AdminDTO;
+import com.spring.nardrak_mvc.paging.AdminPaging;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -175,8 +176,7 @@ public class AdminServiceImpl implements AdminService{
 	      map.put("ad_id", ad_id);
 	      map.put("ad_pwd", ad_pwd);
 	      
-	      model.addAttribute("dto",dao.adminModify(map)); 
-	      System.out.println("dto:"+request.getAttribute("dto"));
+	      model.addAttribute("dto", dao.adminModify(map)); 
 	      
 	   }
 
@@ -187,6 +187,7 @@ public class AdminServiceImpl implements AdminService{
 	      System.out.println("Service adminModifyAction");
 	      
 	      dto.setAd_id(request.getParameter("ad_id"));          // 아이디
+	      System.out.println("id 요청"+request.getParameter("ad_id"));
 	      dto.setAd_pwd(request.getParameter("ad_pwd"));          // 비밀번호
 	      dto.setAd_name(request.getParameter("ad_name"));       // 이름
 	      
@@ -249,7 +250,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void adminDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
-		 System.out.println("Service adminModifyAction");
+		 System.out.println("Service adminDeleteAction");
 		
 		String ad_id = request.getParameter("ad_id");
 		String ad_pwd = request.getParameter("ad_pwd");
@@ -258,8 +259,8 @@ public class AdminServiceImpl implements AdminService{
 		map.put("ad_id", ad_id); 
 		map.put("ad_pwd", ad_pwd);
 		
-		System.out.println(request.getParameter("ad_id"));
-		System.out.println(ad_id);
 		model.addAttribute("deleteCnt", dao.adminDeleteAction(map));
 	}
+	
+	
 }

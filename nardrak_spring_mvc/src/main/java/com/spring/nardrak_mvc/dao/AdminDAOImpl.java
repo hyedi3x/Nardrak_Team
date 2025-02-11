@@ -1,5 +1,6 @@
 package com.spring.nardrak_mvc.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -75,12 +76,14 @@ public class AdminDAOImpl implements AdminDAO {
 
 		return sqlSession.update(namespace+"adminModifyAction", dto);
 	}
-
+	
+	// 관리자 삭제
 	@Override
 	public int adminDeleteAction(Map<String, Object> map) {
 		System.out.println("DAO adminModifyAction");
 		
 		return sqlSession.update(namespace+"adminDeleteAction", map);
 	}
+
 	
 }
