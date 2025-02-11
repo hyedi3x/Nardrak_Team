@@ -1,0 +1,72 @@
+
+/* =======================[회원탈퇴 인증처리 오른쪽 콘텐츠 전체 설정]======================= */ 
+#myInfoDetail {
+	display: flex;
+	flex-direction: column;
+	width: 100%;   /* 요소 전체 너비 980px의 70% */
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .149);
+    margin: 20px 0px;
+}
+
+#myInfoDetail h3 {
+	margin: 0;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #ebebeb;  /* 테두리 아래쪽 연한 그레이*/
+}
+
+/* ---- 비밀번호 인증 처리에 대한 설정 ---- */
+/* input 태그들을 자동으로 세로 배치 */
+#myInfoDetail form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+  	align-items: center; /* 자식 요소를 수직 중앙으로 정렬 */
+  	justify-content: center; /* 자식 요소를 수평 중앙 정렬 */
+}
+
+#certification {
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+}
+
+#certification p {
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 16px;
+	text-align: center;
+}
+
+#pwdInput {
+	display: flex;
+	width: 100%;
+}
+
+/* ----------------------[비밀번호 인증 버튼 설정]---------------------- */
+#pwdInput input[type="password"]{
+	width: 250px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 0px;
+    border: 1px solid #d9d9d9;
+}
+
+#pwdInput input[type="submit"] {
+	width: 50px;
+    margin-left: 8px;
+    padding: 8px;
+    background-color: #9dbebb;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #9dbebb;
+    border-radius: 6px;
+}
+
+/* focus */
+#pwdInput input[type="password"]:focus {
+	border: 1px solid #729ea1;  /* 연핑크 */
+	outline: none;
+} 
