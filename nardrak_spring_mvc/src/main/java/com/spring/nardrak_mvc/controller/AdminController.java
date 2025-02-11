@@ -128,7 +128,16 @@ public class AdminController {
 		
 		return "admin/join/actionResult";
 	}
-	
+
+	// 관리자 등록 요청 조회 리스트
+	@RequestMapping("/adminAccess.ad")
+	public String adminAccess(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminAccess.ad >>" );
 		
+		service.adminAccess(request, response, model);
+		
+		return "admin/accessList/accessList_admin";
+	}
 		
 }

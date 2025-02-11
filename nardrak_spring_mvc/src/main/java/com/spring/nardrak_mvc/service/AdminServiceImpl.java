@@ -262,5 +262,30 @@ public class AdminServiceImpl implements AdminService{
 		model.addAttribute("deleteCnt", dao.adminDeleteAction(map));
 	}
 	
-	
+	// 관리자 요청 조회
+	@Override
+	public void adminAccess(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		 System.out.println("Service adminAccess");
+		 
+		 // 관리자 리스트에 처음 들어올 때는 null, 블록을 누르면 페이지 전달
+		 AdminPaging paging = new AdminPaging(request.getParameter("page"));
+		 
+		 // 전체 요청수를 매개 변수로 전달하여, 전체 페이지수, 시작 글 번호, 마지막 글 번호 설정, 블록 함수 실행
+		 int totalCount = dao.AdminAccessCount();
+		 System.out.println(totalCount);
+		 paging.setCount(totalCount);
+		 
+		 // 시작 글 번호, 끝 글번호만큼만 조회
+		 Map<String,Object> map = new HashMap<String, Object>();
+		 
+		 map.put("startRow", paging.getStartRow());
+		 map.put("endRow", paging.getEndRow());
+		 System.out.println(map.get("startRow"));
+		 System.out.println(map.get("endRow"));
+		 model.addAttribute("list", dao.adminAccess(map));
+		 model.addAttribute("paging", paging);
+		 
+		
+	}
 }

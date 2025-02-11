@@ -85,5 +85,22 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSession.update(namespace+"adminDeleteAction", map);
 	}
 
+	// 관리자 요청 총 갯수 카운트
+	@Override
+	public int AdminAccessCount() {
+		System.out.println("DAO AdminAccessCount");
+		
+		return sqlSession.selectOne(namespace+"AdminAccessCount");
+	}
+	
+	// 관리자 등록 요청 조회
+	@Override
+	public List<AdminDTO> adminAccess(Map<String, Object> map) {
+		System.out.println("DAO adminAccess");
+		
+		return sqlSession.selectList(namespace+"adminAccess", map);
+	}
+	
+	
 	
 }
