@@ -23,7 +23,7 @@
 					<a href="#">국내여행</a>
 				</li>
 				<li>
-					<a href="#">추천여행지</a>
+					<a href="${path}/choose.tr">추천여행지</a>
 				</li>
 			</ul>
 		</div>
