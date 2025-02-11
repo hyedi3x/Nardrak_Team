@@ -57,11 +57,6 @@ function deleteSubmit(){
 		return false;
 	}
 	else{
-		if(confirm('정말삭제하시겠습니까?')){
-			return true;
-		}
-		else{
-			return false;
-		}
+		return confirm('정말 삭제하시겠습니까?');
 	}
 }

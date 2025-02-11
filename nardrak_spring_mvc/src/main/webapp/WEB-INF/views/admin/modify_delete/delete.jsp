@@ -44,17 +44,19 @@
 	</script>
 </c:if>
 	
-	<input type="hidden" name="ad_id" value="${dto.ad_id}">
-	<input type="hidden" name="ad_pwd" value="${dto.ad_pwd}">
 	
 	<form action="${path}/adminDeleteAction.ad" method="post" name="joinForm" onsubmit="return deleteSubmit()">
+		<input type="hidden" name="ad_id" value="${dto.ad_id}">
+		<input type="hidden" name="ad_pwd" value="${dto.ad_pwd}">
 		<table>
-			
 			<tr>
-				<td><h3>관리자 등록 삭제</h3></td>
+				<td class="width100"></td>
+			</tr>
+			<tr>
+				<td><h3>${dto.ad_id}님의 관리자 권한 삭제</h3></td>
 			</tr>
 			<tr id="termsTr">
-				<th id="termsTh" class="font15"> ✓ 본인인증 약관동의 내역</th>
+				<th id="termsTh" class="font16"> ✓ 본인인증 약관동의 내역</th>
 			</tr>
 			<tr>
 				<td id="termsTd1"><pre id="terms1"></pre></td>
@@ -72,22 +74,22 @@
 				<td id="termsTd4"><pre id="terms4"></pre></td>
 			</tr>
 			<tr>
-				<td>등록된 관리자를 삭제하려면 "동의합니다."를 입력하세요.</td>
+				<td>관리자 계정에 등록된 정보와 등록 시, 동의하신 약관들은 30일 동안 보관된 후 삭제됩니다. <br>등록된 관리자를 삭제하려면 <b>"동의합니다."</b>를 입력하세요.</td>
 			</tr>
 			<tr>
 				<td class="width100">
-					<input type="text" id="deleteChk">
+					<input type="text" id="deleteChk" placeholder="여기에 입력하세요.">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" class="submitBTN" value="관리자 삭제">
+					<input type="submit" class="submitBTN" value="관리자 권한 삭제">
 				</td>
 			</tr>
 			
 			<tr>
 				<td>
-					<input type="button" class="submitBTN" onclick="mainBTN('${path}')" value="가입 취소 (메인)">
+					<input type="button" class="submitBTN" onclick="mainBTN('${path}')" value="가입 취소 [메인으로]">
 				</td>
 			</tr>
 

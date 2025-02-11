@@ -1,5 +1,6 @@
 package com.spring.nardrak_mvc.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.spring.nardrak_mvc.dto.AdminDTO;
@@ -27,5 +28,6 @@ public interface AdminDAO {
 		
 		// 관리자 삭제
 		public int adminDeleteAction(Map<String, Object> map);
+		
 		
 }
