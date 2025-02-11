@@ -115,5 +115,51 @@ public class CustomerController {
 
 		return "customer/actionResult";
 	}
+	
+	
+	
+	
+	// ======================= [회원수정 - 상세페이지] =====================
+	@RequestMapping("/modifyInfo.do")
+	public String modifyDetailAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+	 		throws ServletException, IOException {
+		logger.info("<<< url => /modifyInfo.do >>>");
+		   
+	 	service.modifyDetailAction(request, response, model);
+	 			
+	 	return "customer/modifyDelete/modifyInfo";
+	 }
+	   
+	// ======================= [회원수정 - 결과] =====================
+	@RequestMapping("/modifyCustomerAction.do")
+	public String modifyCustomerAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+	 		throws ServletException, IOException {
+		logger.info("<<< url => /modifyCustomerAction.do >>>");
+		   
+	 	service.modifyCustomerInAction(request, response, model);
+
+	 	return "customer/modifyDelete/modifyCustomerAction";
+	 }
+	   
+	 // ======================= [회원 탈퇴 - 안내페이지] =====================
+	 @RequestMapping("/deleteInfo.do")
+	 public String deleteAgree(HttpServletRequest request, HttpServletResponse response, Model model) 
+	 		throws ServletException, IOException {
+		logger.info("<<< url => /deleteInfo.do >>>");
+		   
+	 	return "customer/modifyDelete/deleteInfo";
+	 }
+	   
+	 // ======================= [회원 탈퇴 처리 메시지] =====================
+	 @RequestMapping("/delete.do")
+	 public String delete(HttpServletRequest request, HttpServletResponse response, Model model) 
+			 throws ServletException, IOException {
+		 logger.info("<<< url => /delete.do >>>");
+		   
+		 service.deleteCustomer(request, response, model);
+		   
+		 return "customer/actionResult";
+	  }
+	
 }
 
