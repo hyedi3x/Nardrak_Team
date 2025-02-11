@@ -1,0 +1,372 @@
+@charset "UTF-8";
+/* 회원 탈퇴 안내 페이지 css (노랑풍선 참고) */
+
+/* 기본 스타일 설정 */
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, figure, figcaption {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+/* body 설정 */
+body {
+    position: relative; /* relative: 해당 요소를 기준으로 다른 절대 위치 요소(absolute)들이 위치할 수 있도록 함 */
+    height: 100%;
+    font-family: 'pr-font-regular', Sans-serif;
+    font-size: 15px;
+    word-break: break-all;	/* 텍스트가 너무 길어져서 한 줄에 다 들어가지 않을 때, 모든 글자에서 줄 바꿈 할 수 있게 설정 */
+    color: #555;
+}
+
+/* form 요소*/
+form {
+    display: block;
+    margin-top: 0em;	/* 위쪽 여백 */
+    unicode-bidi: isolate;	/* 텍스트이 방향을 독립적으로 설정 */
+}
+
+/* 전체 페이지 */
+#wrap {
+	display: flex;
+    width: 100%;
+}
+
+/* container 설정 */
+#container {
+	padding-bottom: 100px;
+    margin: auto;
+}
+
+/* content_block (메뉴바 + 본문) */
+/* 기본 불릿(점) 없애주기 */
+ul, ol {
+    list-style: none;
+}
+
+/* a 태그 글꼴 */
+a {
+    text-decoration: none;	/* 링크 밑줄 제거 */
+    color: inherit;
+}
+/********************************************************************/
+/* 네비게이션 태그 */
+.page_navigation {
+    width: 1200px;
+    height: 50px;
+    margin: auto;
+    text-align: right;
+    padding-top: 30px;
+}
+
+.page_nav li{
+	display: inline-block;	/* 각 항목을 가로로 나열 */
+	margin-right: 10px;		/* 항목들 간의 간격 */
+}
+
+/* 메뉴바 + 본문 내용 박스 */
+.content_block {
+    position: relative;
+    width: 1200px;
+    min-height: 600px;
+}
+
+/* 본문 */
+.content {
+	float: right;
+    width: 910px;
+    min-height: 800px;
+}
+
+/* 타이틀 */
+.content>.big_title {
+	padding: 10px 0 20px 0;
+    border-bottom: 2px solid #222;	/* 타이틀과 본문 나누는 선 */
+    font-weight: bold;
+}
+
+.big_title {
+	margin-bottom: 20px;
+    line-height: 1;	/* 위에 1만큼 띄어줌 */
+    font-size: 32px;
+    font-family: 'pr-font-medium';	/* 폰트 조금 굵게 만들어줌.*/
+    color: #222;
+}
+
+/* 타이틀 제외 본문 (form 태그) */
+#frmPass {
+	margin: 0;
+    padding: 0;
+    font-weight: normal;	/* 폰트 굵기 노말*/
+}
+
+/* 맨 위 안내문장 */
+.detailContent .notice {
+    padding: 0;
+    margin: 33px 0;
+    border-top: 0 none;
+}
+
+/* 안내사항 폰트 */
+.notice p {
+    text-align: center;
+    font-size: 24px;
+    line-height: 34px;
+    color: #222;
+    font-family: 'pr-font-regular';
+}
+
+em {
+	font-style: normal;
+	font-weight: normal;
+}
+
+.emp_red {
+	color: #ff5c46 !important;
+}
+
+/*********************************************/
+/* 전체 안내 박스 */
+.box_guide {
+    position: relative;
+    line-height: 24px;
+    padding: 35px 40px;
+    font-size: 15px;
+}
+
+/* 첫 번째 안내 박스 */
+.box_guide.wline {
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.detailContent .box_guide .bg_1_1 {
+    margin-top: 3px;
+    margin-bottom: 16px;
+}
+
+.bg_1_1 {
+    margin-bottom: 10px;
+    line-height: 1;
+    font-size: 18px;
+    color: #222;
+    font-weight: bold;
+}
+
+/***********************************************/
+/* 첫 번째 박스 밑 */
+.detailContent .box_qna {
+    margin-top: 15px;
+}
+
+/* txt_info 설정*/
+.txt_info {
+    line-height: 24px;
+    padding-left: 13px;
+    font-size: 14px;
+    padding-top: 7px;
+}
+
+.detailContent .txt_info.multi .info {
+    position: relative;
+}
+
+.btn_go_page {
+    display: inline-block;
+    padding: 0 5px;
+    font-size: inherit;
+    text-decoration: underline;
+}
+
+/************************************************/
+/* 안내사항 */
+.noti_info {
+    position: relative;
+    padding: 40px;
+    margin-top: 40px;
+    background: #f3f3f3;
+}
+
+/* 안내사항 */
+.fa-solid fa-circle-exclamation {
+    line-height: 20px;
+    padding-left: 40px;
+    color: #222;
+}
+
+ul.tbl_info_list {
+    margin-top: 10px;
+}
+
+.detailContent ul.tbl_info_list li+li {
+    margin-top: 5px;
+}
+
+.detailContent ul.tbl_info_list li {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+/****************************************************/
+/* 탈퇴 동의 체크박스 */
+.detailContent .box_agree {
+    margin-top: 18px;
+}
+
+.form_block {
+    position: relative;
+}
+
+input[type="checkbox"]+label span {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    vertical-align: sub;
+    cursor: pointer;
+}
+
+input[type="checkbox"]+label {
+    cursor: pointer;
+}
+
+/****************************************************/
+/* 회원탈퇴 사유 선택 안내*/
+.detailContent .txt_check {
+    position: relative;
+    padding-left: 180px;
+    margin: 54px 0;
+    font-size: 18px;
+    color: #222;
+}
+
+.detailContent .txt_check:before {
+    position: absolute;
+    left: 100px;
+    display: block;
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: '\f575';
+    font-size: 45px;
+}
+
+.emp_blue{
+	color: #4567ad !important;
+}
+
+/***************************************************/
+/* 탈퇴 사유 선택 타이틀 */
+.stit_con_title {
+    margin-bottom: 20px;
+    line-height: 1;
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+}
+
+/* 탈퇴 사유 체크 박스*/
+.detailContent .list_align_category {
+    padding: 10px 0 20px 20px;
+    margin: 19px 0 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.detailContent .list_align_category li {
+    width: 300px;
+}
+
+ul.list_align_category li {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.form_block {
+    position: relative;
+}
+
+/***************************************************/
+.block_tit_area.blc {
+    margin-bottom: 10px;
+}
+
+.block_tit_area {
+    position: relative;
+    padding: 7px 0 10px 0;
+    margin: 40px 0 20px 0;
+}
+
+.p_align_right {
+    position: relative;
+}
+
+p.txt_nor_info {
+    display: inline;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    line-height: 1;
+    font-size: 14px;
+    text-align: right;
+}
+
+.detailContent .tf_wish {
+    width: 910px;
+}
+
+textarea {
+    width: 700px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 15px;
+}
+
+/**************************************************/
+.align_ctr {
+    text-align: center !important;
+}
+
+
+
+.stit_con_mix {
+    line-height: 36px;
+    font-size: 24px;
+    color: #222;
+}
+
+/* 탈퇴 버튼 */
+button {
+    cursor: pointer;
+    overflow: visible;
+    border: 0 none;
+    font-family: 'pr-font-regular', Sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    color: #555;
+    text-indent: 0;
+}
+
+.btn_area {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.btn_cof {
+    display: inline-block;
+    width: 140px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 4px;
+    background: #555;
+    font-size: 18px;
+    color: #fff;
+    vertical-align: top;
+    text-align: center;
+}
+
