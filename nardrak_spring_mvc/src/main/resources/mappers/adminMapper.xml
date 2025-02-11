@@ -79,10 +79,14 @@
 	
 	<!-- 관리자 등록 요청 조회 -->
 	<select id="adminAccess" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
-		SELECT ROWNUM, ad.*
-		 FROM (SELECT *
-         FROM admin_tb
-        WHERE access_status = 'N') ad
-		WHERE ROWNUM BETWEEN #{startRow} AND #{endRow}
+		SELECT *
+		  FROM(
+		      SELECT ROWNUM rn, ad.*
+		        FROM (SELECT *
+		                FROM admin_tb
+		              WHERE access_status = 'N'
+		              ) ad
+		      )
+		WHERE rn BETWEEN #{startRow} AND #{endRow}
 	</select>
 </mapper> 
