@@ -94,4 +94,26 @@ public class MyInfoController {
 	    
 	    return "admin/modifyDelete/adminDeleteInfo";
 	}
+	
+	// 수정 버튼 클릭 시 이동할 페이지 (수정 정보 페이지)
+	@RequestMapping("/customerModify.do")
+	public String customerModify(HttpServletRequest request, HttpServletResponse response, Model model) 
+	        throws ServletException, IOException {
+	    logger.info("<< url : adminModify.do >>");
+	    	    
+	    service.myInfo(request, response, model); // 사용자 정보 메서드
+	    
+	 	return "customer/modifyDelete/modifyInfo";
+	}
+	
+	// 삭제 버튼 클릭 시 이동할 페이지(약관 동의 페이지)
+	@RequestMapping("customerDelete.do")
+	public String customerDelete(HttpServletRequest request, HttpServletResponse response, Model model) 
+	        throws ServletException, IOException {
+	    logger.info("<< url : customerDelete.do >>");
+	    
+	    service.myInfo(request, response, model); // 사용자 정보 메서드
+	    
+	    return "customer/modifyDelete/deleteInfo";
+	}
 }
