@@ -21,7 +21,7 @@
 			<c:if test="${updateCnt == 1}">
 				<script type="text/javascript">
 				alert("회원수정 성공!!");
-				window.location="${path}/myInfoAdmin.do";
+				window.location="${path}/myInfo.do";
 				</script>
 			</c:if>
 			
