@@ -21,10 +21,10 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	// ======================= [id 중복확인 처리] =======================
 	@Override
-	public int useridCheck(String cs_id) {
+	public int useridCheck(String strId) {
 	    System.out.println("CustomerDAOImpl - useridCheck()");
 	   
-	    return sqlSession.selectOne(namespace + "useridCheck", cs_id);
+	    return sqlSession.selectOne(namespace + "useridCheck", strId);
 	}
 	
 	// ======================= [전화번호 & 이메일 중복 확인] =======================
@@ -59,9 +59,6 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return sqlSession.selectOne(namespace  +"userIdPwdChk", map);  // 0, 1 결과 반환		
 	}
 	
-	
-	
-	   
    //======================= [회원정보 수정처리] =================================
     @Override
     public int updateCustomer(CustomerDTO dto) {
@@ -82,10 +79,10 @@ public class CustomerDAOImpl implements CustomerDAO{
 		
 	//======================= [회원정보 탈퇴 처리 후, 고객 테이블에서 해당 회원 삭제] =======================
 	@Override	
-	public int deleteCustomerRemove(String cs_id) {
+	public int deleteCustomerRemove(String strId) {
 		System.out.println("CustomerDAOImpl - deleteCustomerRemove()");
 		
-		return sqlSession.update(namespace + "deleteCustomerRemove", cs_id);
+		return sqlSession.update(namespace + "deleteCustomerRemove", strId);
 	}
 
 }
