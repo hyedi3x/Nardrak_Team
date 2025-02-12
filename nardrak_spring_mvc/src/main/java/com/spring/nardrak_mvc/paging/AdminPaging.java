@@ -44,18 +44,32 @@ public class AdminPaging {
 			pageNum = totalCount / pageSize + (totalCount % pageSize == 0? 0: 1);
 			
 			// 시작 블록은 현재페이지/페이지 당 글번호 +나머지 값 있으면 +1
-			startBlock = currentPage/pageSize +(currentPage % pageSize == 0? 0:1);
-			
+			if(currentPage% pageBlock !=0 ) {
+				startBlock = (currentPage/pageBlock)*pageBlock +1;
+			}
+			else {
+				startBlock = (currentPage/pageBlock-1)*pageBlock +1;
+			}
+			System.out.println("startBlock"+startBlock);
 			endBlock = startBlock + pageBlock-1;
-			
+			System.out.println("endBlock"+endBlock);
 			// 마지막 블록이 전체 페이지 보다 커지면 동일하게
 			if(endBlock > pageNum) endBlock = pageNum;
-			
-			// 이전버튼 :  시작 블록이 페이지당 글 수 보다 크면  시작 블록 -= 블록수 
-			if(startBlock > pageSize) prev = startBlock - pageBlock;
-			
+
+			// 이전버튼 :  시작 블록이 블록수 보다 클때만 크면  시작 블록 -= 블록수 
+			if(startBlock > pageBlock){
+				prev = startBlock - pageBlock;
+			}
+			else{
+				prev = startBlock = 1;
+			}
 			// 다음버튼 :  블록 시작이 전체 페이지 수 보다 작으면 시작 += 블록수
-			if(startBlock < pageNum) next = startBlock + pageBlock;
+			if(startBlock < pageNum){
+				next = startBlock + pageBlock;
+			}
+			else{
+				next = pageNum;
+			}
 			
 		}
 	}
