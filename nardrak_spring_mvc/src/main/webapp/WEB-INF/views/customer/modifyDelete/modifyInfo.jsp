@@ -26,12 +26,11 @@
 	        <!-- 2-1 중복확인 -->
 	        <input type="hidden" name="hiddenUserId" value="0">
 	        
-	        <c:if test="${selectCnt == 1}">
 	        <table>
 	            <tr>
 	                <th> 아이디 <span class="requiredAll">*</span></th> 
 	                <td>
-	                    ${dto.cs_id}
+	                    ${dtoCS.cs_id}
 	                </td>
 	            </tr>
 	            
@@ -39,7 +38,7 @@
 	                <th> 비밀번호 <span class="requiredAll">*</span></th>
 	                <td class="pwd_class">
 	                    <div>
-	                        <input type="password" class="input" name="cs_pwd" id="cs_pwd" maxlength="16" placeholder="영문,특수문자 포함 8자 이상" required oninput="checkPasswordStrength(this.value)">
+	                        <input type="password" class="input" name="cs_pwd" id="cs_pwd" maxlength="16" placeholder="영문,특수문자 포함 8자 이상"  value='${dtoCS.cs_pwd}' required oninput="checkPasswordStrength(this.value)">
 	                        <i id="togglePassword" class="fa fa-eye-slash" onclick="passwordOne()"></i>
 	                    </div>
 	                    <span id="pwdStrength"></span><span id="pwdChk"></span>
@@ -49,7 +48,7 @@
 	            <tr>
 	                <th> 비밀번호 확인 <span class="requiredAll">*</span></th>
 	                <td>
-	                    <input type="password" class="input" name="re_cs_pwd" id="re_cs_pwd" maxlength="16" placeholder="비밀번호 재확인필요" required oninput="checkPasswordMatch(this.value)">
+	                    <input type="password" class="input" name="re_cs_pwd" id="re_cs_pwd" maxlength="16" placeholder="비밀번호 재확인필요" value='${dtoCS.cs_pwd}' required oninput="checkPasswordMatch(this.value)">
 	                    <span id="pwdReChk"></span>
 	                </td>
 	            </tr>
@@ -57,7 +56,7 @@
 	            <tr>
 	                <th> 이름 <span class="requiredAll">*</span></th>
 	                <td>
-	                    <input type="text" class="input" name="cs_name" maxlength="15" value="${dto.cs_name}" placeholder="이름 작성" required>
+	                    <input type="text" class="input" name="cs_name" maxlength="15" value="${dtoCS.cs_name}" placeholder="이름 작성" required>
 
 	                </td>
 	            </tr>        
@@ -66,10 +65,10 @@
 	                <th> 성별 <span class="requiredAll">*</span></th>
 	                <td>
 	                    <label class="radio14">
-	                        <input type="radio" name="cs_gender" value="male" value="male" ${dto.cs_gender eq 'male' ? 'checked' : ''} required> 남성
+	                        <input type="radio" name="cs_gender" value="male" value="male" ${dtoCS.cs_gender eq 'male' ? 'checked' : ''} required> 남성
 	                    </label>
 	                    <label class="radio14">
-	                        <input type="radio" name="cs_gender" value="female" value="female" ${dto.cs_gender eq 'female' ? 'checked' : ''} required> 여성
+	                        <input type="radio" name="cs_gender" value="female" value="female" ${dtoCS.cs_gender eq 'female' ? 'checked' : ''} required> 여성
 	                    </label>
 	                </td>
 	            </tr>
@@ -77,7 +76,7 @@
 	            <tr>
 	                <th> 생년월일 <span class="requiredAll">*</span></th>
 	                <td>
-	                    <input type="Date" id="cs_birth" class="input" name="cs_birth" style="width:350px" value="${dto.cs_birth}" required>
+	                    <input type="Date" id="cs_birth" class="input" name="cs_birth" style="width:350px" value="${dtoCS.cs_birth}" required>
 	                    <br>
 	                    <p style="color:#729ea1; font-size:12px;">14세 미만은 가입이 불가합니다.</p>
 	                    <div class="red hide" id="birthChk" style="display:none">
@@ -89,7 +88,7 @@
 	            <tr>
 	                <th> 전화번호 <span class="requiredAll">*</span></th>
 	                <td>
-	                <c:set var="hpArr" value="${fn:split(dto.cs_phone,'-')}"/>
+	                <c:set var="hpArr" value="${fn:split(dtoCS.cs_phone,'-')}"/>
 						<select class="input2" name="user_hp1" style="width:80px" onchange="uniqueCheck('${path}', 'phone')">
 							<option value="0"> 선택해주세요 </option>
 							<option value="010" ${hpArr[0] eq '010' ? 'selected' : ''}> 010 </option>
@@ -113,7 +112,7 @@
 	            <tr>
 	                <th> 지역 전화번호 </th> 
 	                <td>
-	                <c:if test="${dto.cs_tel == null}">
+	                <c:if test="${dtoCS.cs_tel == null}">
 						<select class="input2" name="user_local1">
 							<option value=""> 지역번호</option>
 							<option value="02"> 02(서울) </option>
@@ -139,26 +138,26 @@
 	                    <input type = "text" class="input2" name="user_local3" maxlength="4">
 	                  </c:if>
 	                 
-	                 <c:if test="${dto.cs_tel != null}">
-						<c:set var="telArr" value="${fn:split(dto.cs_tel,'-')}"/>
+	                 <c:if test="${dtoCS.cs_tel != null}">
+						<c:set var="telArr" value="${fn:split(dtoCS.cs_tel,'-')}"/>
 							<select class="input2" name="user_local1">
-								<option value="0"> 선택해주세요 </option>
-								<option value="02" ${telArr[0] eq '02(서울)' ? 'selected' : ''}> 02 </option>
-								<option value="031" ${telArr[0] eq '031(경기)' ? 'selected' : ''}> 031 </option>
-								<option value="032" ${telArr[0] eq '032(인천)' ? 'selected' : ''}> 032 </option>
-								<option value="033" ${telArr[0] eq '033(강원)' ? 'selected' : ''}> 033 </option>
-								<option value="041" ${telArr[0] eq '041(충남)' ? 'selected' : ''}> 041 </option>
-								<option value="042" ${telArr[0] eq '042(대전)' ? 'selected' : ''}> 042 </option>
-								<option value="043" ${telArr[0] eq '043(충북)' ? 'selected' : ''}> 043 </option>
-								<option value="051" ${telArr[0] eq '051(부산)' ? 'selected' : ''}> 051 </option>
-								<option value="052" ${telArr[0] eq '052(울산)' ? 'selected' : ''}> 052 </option>
-								<option value="053" ${telArr[0] eq '053(대구)' ? 'selected' : ''}> 053 </option>
-								<option value="054" ${telArr[0] eq '054(경북)' ? 'selected' : ''}> 054 </option>
-								<option value="055" ${telArr[0] eq '055(경남)' ? 'selected' : ''}> 055 </option>
-								<option value="061" ${telArr[0] eq '061(전남)' ? 'selected' : ''}> 061 </option>
-								<option value="062" ${telArr[0] eq '062(광주)' ? 'selected' : ''}> 062 </option>
-								<option value="063" ${telArr[0] eq '063(전북)' ? 'selected' : ''}> 063 </option>
-								<option value="064" ${telArr[0] eq '064(제주)' ? 'selected' : ''}> 064 </option>
+								<option value=""> 선택해주세요 </option>
+								<option value="02" ${telArr[0] eq '02' ? 'selected' : ''}> 02(서울) </option>
+								<option value="031" ${telArr[0] eq '031' ? 'selected' : ''}> 031(경기) </option>
+								<option value="032" ${telArr[0] eq '032' ? 'selected' : ''}> 032(인천) </option>
+								<option value="033" ${telArr[0] eq '033' ? 'selected' : ''}> 033(강원) </option>
+								<option value="041" ${telArr[0] eq '041' ? 'selected' : ''}> 041(충남) </option>
+								<option value="042" ${telArr[0] eq '042' ? 'selected' : ''}> 042(대전) </option>
+								<option value="043" ${telArr[0] eq '043' ? 'selected' : ''}> 043(충북) </option>
+								<option value="051" ${telArr[0] eq '051' ? 'selected' : ''}> 051(부산) </option>
+								<option value="052" ${telArr[0] eq '052' ? 'selected' : ''}> 052(울산) </option>
+								<option value="053" ${telArr[0] eq '053' ? 'selected' : ''}> 053(대구) </option>
+								<option value="054" ${telArr[0] eq '054' ? 'selected' : ''}> 054(경북) </option>
+								<option value="055" ${telArr[0] eq '055' ? 'selected' : ''}> 055(경남) </option>
+								<option value="061" ${telArr[0] eq '061' ? 'selected' : ''}> 061(전남) </option>
+								<option value="062" ${telArr[0] eq '062' ? 'selected' : ''}> 062(광주) </option>
+								<option value="063" ${telArr[0] eq '063' ? 'selected' : ''}> 063(전북) </option>
+								<option value="064" ${telArr[0] eq '064' ? 'selected' : ''}> 064(제주) </option>
 							</select>
 							<span class="em">-</span>
 	                    <input type = "text" class="input2" name="user_local2" value="${telArr[1]}" maxlength="4">
@@ -175,7 +174,7 @@
 	            <tr>
 	                <th> 주소 <span class="requiredAll">*</span></th> 
 	                <td>
-		                <c:set var="addressArr" value="${fn:split(dto.cs_zip, ',')}"/>
+		                <c:set var="addressArr" value="${fn:split(dtoCS.cs_zip, ',')}"/>
 						<input type="button" id="sample4_postcode" style="width:219px" name="postcode" placeholder="우편번호" required value="${addressArr[0]}">
 						<input type="button" id="zip" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" id="sample4_roadAddress" class="input" name="road" placeholder="도로명주소" required value="${addressArr[1]}">
@@ -188,7 +187,7 @@
 	            <tr>
 	                <th> 이메일 <span class="requiredAll">*</span></th>
 	                <td>
-	                <c:set var="emailArr" value="${fn:split(dto.cs_email,'@')}"/>
+	                <c:set var="emailArr" value="${fn:split(dtoCS.cs_email,'@')}"/>
 						<input type="text" class="input2" name="user_email1" value="${emailArr[0]}" maxlength="20" oninput="uniqueCheck('${path}', 'email');" required>
 						<span class="em">@</span>
 						<input type="text" class="input2" name="user_email2" value="${emailArr[1]}" maxlength="20" oninput="checkCustomEmail(); uniqueCheck('${path}', 'email');" required>
@@ -215,15 +214,6 @@
 	                </td>
 	            </tr>
 	        </table>
-	        </c:if>
-	        
-	        <c:if test="${selectCnt != 1}">
-			<script type="text/javascript">
-				alert("비밀번호 불일치. 인증실패!")
-				window.location="${path}/modifyCustomer.do"
-			</script>
-			</c:if>
-	        
 	    </form>
 	</div>
 	 <!-- footer page -->
