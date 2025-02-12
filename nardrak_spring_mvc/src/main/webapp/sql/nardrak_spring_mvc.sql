@@ -184,3 +184,34 @@ SELECT COUNT(*)
   FROM admin_tb
  WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
 
+-- =================[회원 삭제(고객)]================================
+DROP TABLE customer_delete_tb CASCADE CONSTRAINTS;
+CREATE TABLE customer_delete_tb(
+    cs_id           VARCHAR2(10),                       -- 회원 ID(
+    cs_del_terms    VARCHAR2(8)     NOT NULL,           -- 탈퇴 동의 여부(Yes, No)
+    cs_drCode       VARCHAR2(1)     NOT NULL,           -- 탈퇴 사유 코드(A,B,C,D,E,F)
+    cs_etc_cmmt     VARCHAR2(250),                      -- 기타 사유(탈퇴 시 남기는 메시지)
+    cs_del_date     TIMESTAMP       DEFAULT sysdate,    -- 탈퇴 처리 일시
+    CONSTRAINT fk_cs_id FOREIGN KEY (cs_id) REFERENCES customer_tb(cs_id)
+    ON DELETE CASCADE
+);
+
+SELECT * FROM customer_delete_tb;
+
+-- 탈퇴 정보 customer_delete_tb에 추가 (sql)
+INSERT INTO customer_delete_tb(cs_id, cs_del_terms, cs_drCode, cs_etc_cmmt, cs_del_date)
+VALUES('dd123', 'yes', 'A', '탈퇴인서트', sysdate);
+
+-- 탈퇴 정보 customer_delete_tb에 추가 (spring)
+INSERT INTO customer_delete_tb(cs_id, cs_del_terms, cs_drCode, cs_etc_cmmt, cs_del_date)
+VALUES(#{cs_id}, #{cs_del_terms}, #{cs_drCode}, #{cs_etc_cmmt}, sysdate) 
+
+-- 회원정보 탈퇴 정보 처리 후, customer_tb에서 해당 회원 삭제(delete_status = 'Y')(sql)
+UPDATE customer_tb 
+   SET delete_status = 'Y' 
+ WHERE cs_id = 'dd123';
+
+-- 회원정보 탈퇴 정보 처리 후, customer_tb에서 해당 회원 삭제(delete_status = 'Y')(spring)
+UPDATE customer_tb 
+   SET delete_status = 'Y' 
+ WHERE cs_id = #{strId}
