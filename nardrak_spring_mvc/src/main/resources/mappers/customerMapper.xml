@@ -16,7 +16,7 @@
 	   	<select id="useridCheck" parameterType="String" resultType="int">
 	    	SELECT COUNT(*) 
 			  FROM customer_tb 
-			 WHERE cs_id = #{cs_id}
+			 WHERE cs_id = #{strId}
  		</select>
  		
  		<!-- 전화번호 중복확인 처리 -->
@@ -66,7 +66,7 @@
     	<update id="deleteCustomerRemove" parameterType="String">
        		UPDATE customer_tb 
        		SET delete_status = 'Y' 
-       		WHERE cs_id = #{cs_id}
+       		WHERE cs_id = #{strId}
     	</update>
     
    </mapper> 
