@@ -38,7 +38,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
         
         try {
             // 업로드된 파일을 서버의 지정된 디렉토리에 저장
-            file.transferTo(new File(saveDir, file.getOriginalFilename()));
+            file.transferTo(new File(saveDir + file.getOriginalFilename()));
 
             // 이미지 경로와 업로드 날짜 설정
             ImageUploadDTO dto = new ImageUploadDTO(); // 새로운 DTO 객체 생성
@@ -142,7 +142,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
             String fileName = existingFilePath.substring(existingFilePath.lastIndexOf("/") + 1); // 파일명 추출
 
             String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/admin/");
-            File existingFile = new File(saveDir, fileName);
+            File existingFile = new File(saveDir + fileName);
 
             // 기존 파일이 존재하면 삭제
             if (existingFile.exists()) { // 파일이 존재하면
