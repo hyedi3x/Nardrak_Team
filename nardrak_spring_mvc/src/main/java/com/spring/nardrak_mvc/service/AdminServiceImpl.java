@@ -170,6 +170,10 @@ public class AdminServiceImpl implements AdminService{
 	    System.out.println("Service adminModifyAction");
 	      
 	    dto.setAd_id((String)request.getSession().getAttribute("sessionID"));          // 아이디
+	    
+	    if(request.getParameter("ad_id") != null) {
+	    	dto.setAd_id(request.getParameter("ad_id"));
+		}
 	    dto.setAd_pwd(request.getParameter("ad_pwd"));          // 비밀번호
 	    dto.setAd_name(request.getParameter("ad_name"));        // 이름
 	      
@@ -261,8 +265,6 @@ public class AdminServiceImpl implements AdminService{
 		 
 		 map.put("startRow", paging.getStartRow());
 		 map.put("endRow", paging.getEndRow());
-		 System.out.println(map.get("startRow"));
-		 System.out.println(map.get("endRow"));
 		 model.addAttribute("list", dao.adminAccess(map));
 		 model.addAttribute("paging", paging);
 		 

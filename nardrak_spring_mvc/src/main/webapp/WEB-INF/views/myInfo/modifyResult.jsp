@@ -20,10 +20,19 @@
 			</c:if>
 
 			<c:if test="${sessionScope.login_session eq 'Admin'}">
-				<script type="text/javascript">
-				    alert("${sessionScope.sessionID}님 회원정보 인증 성공하였습니다.");
-					window.location="${path}/adminModify.do";
-				</script>
+				<c:if test="${strId != null}">
+				    <script type="text/javascript">
+					    alert("${strId}님 회원정보 페이지로 이동합니다.");
+					   
+						window.location="${path}/adminModify.do?strId=${strId}";
+					</script>
+				 </c:if>
+				 <c:if test="${strId == null}">
+					<script type="text/javascript">
+					    alert("${sessionScope.sessionID}님 회원정보 인증 성공하였습니다.");
+						window.location="${path}/adminModify.do";
+					</script>
+				</c:if>
 			</c:if>
 		</c:when>
 		

@@ -31,7 +31,12 @@ public class MyInfoServiceImpl implements MyInfoService{
 		// -------------[3단계] 화면에서 입력받은 값을 가져와서 파라미터로 담기 -------------
 		// 3-1단계. 세션에 저장된 ID를 가져와서 strId 변수에 담는다. 
 		String strId = (String)request.getSession().getAttribute("sessionID");
-
+		
+		// 관리자 수정 페이지에서 접근하면, get 방식으로 strId와 pwd가 넘어온다.
+		if(request.getParameter("strId") != null) {
+			strId = request.getParameter("strId");
+		}
+		System.out.println("strid" + strId);
 		// -------------[4단계] - 전역변수로 dto 선언-------------
 		// -------------[5단계] 세션 정보 조회-------------
 		// 세션 ID에 해당하는 dto 값들을 dao.MemberSelect 함수를 통해 info 변수에 저장한다. 
@@ -54,9 +59,17 @@ public class MyInfoServiceImpl implements MyInfoService{
 		// 3-1단계. 세션에 저장된 ID를 가져와서 strId 변수에 담는다. 
 		String strId = (String)request.getSession().getAttribute("sessionID");
 		
+		// 관리자 수정 페이지에서 접근하면, get 방식으로 strId와 pwd가 넘어온다
+		if(request.getParameter("user_id") != null) {
+			strId = request.getParameter("user_id");
+			model.addAttribute("strId", strId);
+		}
+		
 		// 3-2단계. 화면에서 입력받은 비밀번호를 strPwd에 변수에 담는다. 
 		String strPwd = request.getParameter("user_pwd");
 		
+		System.out.println("strId"+strId);
+		System.out.println("strpwd"+strPwd);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("strId", strId);   // key, value
 		map.put("strPwd", strPwd);
