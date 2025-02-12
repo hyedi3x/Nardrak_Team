@@ -64,9 +64,7 @@ public class CustomerDAOImpl implements CustomerDAO{
     public int updateCustomer(CustomerDTO dto) {
        System.out.println("CustomerDAOImpl - updateCustomer()");
       
-       int updateCnt = sqlSession.update(namespace + "updateCustomer", dto);
-     
-       return updateCnt;
+       return sqlSession.update(namespace + "updateCustomer", dto);
    }
 
     //======================= [회원정보 탈퇴 정보 처리] =======================
