@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+/* =======================[myInfo_left 메뉴 전체 설정]======================= */ 
+#myInfo_left {
+    display: flex;
+    width: 27%;   /* 요소 전체 폭 980px의 22% */
+    padding: 40px 15px;
+}
+
+/* ------------------------[myInfo_left.jsp의 css 설정]------------------------*/
+
+#left_menubar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;        /* 요소 높이 만큼만 fit됨 */
+    margin: 0;
+    padding: 0;
+    border: 1px solid #d9d9d9;  /* 메뉴 전체를 감싸는 테두리 */
+    border-radius: 5px;         /* 모서리 둥글게 */
+    overflow: hidden;           /* 내부 요소가 넘칠 경우 깔끔하게 정리 */
+}
+
+/* 개별 메뉴 아이템(li)을 감싸도록 border 추가 */
+#left_menubar > li {
+    border-bottom: 1px solid #ccc;  /* 하단 줄 추가 */
+    list-style: none;
+}
+
+/* 마지막 li의 하단 border 제거 */
+#left_menubar > li:last-child {
+    border-bottom: none;
+}
+
+/* h4 스타일 조정 */
+#left_menubar h4 {
+    display: flex;
+    justify-content: space-between;  /* 텍스트와 아이콘을 양 끝으로 배치 */
+    align-items: center;             /* 세로 중앙 정렬 */
+    margin: 0;
+    padding: 12px 15px;              /* 여백 조정 */
+    color: #333333;   
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 아이콘 스타일 */
+#left_menubar h4 i {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+/* info_menu (서브메뉴) */
+.info_menu {
+    padding: 0;
+    margin: 0;
+    display: none;  /* 기본적으로 숨김 */
+}
+
+/* 서브메뉴 스타일 */
+.info_menu li {
+    list-style: none;
+    padding: 8px 15px;
+    border-top: 1px solid #eeeeee;
+    background-color: #ffffff;
+}
+
+/* 서브메뉴 링크 스타일 */
+.on a {
+    color: #1b1b1c;  
+    text-decoration: none;  
+    font-size: 14px;
+    padding-left: 5px;
+    display: block;
+    cursor: pointer;
+}
+
+.on a:hover {
+    color: #729ea1; 
+}

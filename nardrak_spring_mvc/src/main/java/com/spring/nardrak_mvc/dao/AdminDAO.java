@@ -20,14 +20,11 @@ public interface AdminDAO {
 		// ======================= [회원정보 인증(아이디, 비번)] =======================
 		public int userIdPwdChk(Map<String, Object> map);
 
-		// 관리자 수정/삭제 페이지 비밀번호 확인
-		public AdminDTO adminModify(Map<String, Object> map);
-		
 		// 관리자 수정
 		public int adminModifyAction(AdminDTO dto);
 		
 		// 관리자 삭제
-		public int adminDeleteAction(Map<String, Object> map);
+		public int adminDeleteAction(String strId);
 		
 		// 관리자 요청 개수 카운트
 		public int AdminAccessCount();

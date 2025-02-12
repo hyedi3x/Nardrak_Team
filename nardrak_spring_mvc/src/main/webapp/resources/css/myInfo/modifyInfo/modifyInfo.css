@@ -1,0 +1,187 @@
+/* [modifyWrap 전체 컨테이너] */
+#modifyWrap {
+	display: flex;
+	flex-direction: column;
+}
+
+/* =======================[modifyContainer의 요소]======================= */
+#modifyContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto; /* 요소들 페이지 가운데 정렬 */
+  	width: 768px;  /* 전체 너비 768px */
+}
+
+/* [modifyTitle 요소] */
+#modifyTitle {
+	margin-top: 20px;
+	padding: 0px 30px;   /* 상하 좌우 */
+}
+
+#modifyTitle h2 {
+	margin: 0;
+	padding: 20px 0px;
+	border-bottom: 1px solid #ebebeb;  /* 테두리 아래쪽 연한 그레이*/
+} 
+
+/* [section 요소 - form 요소들] */
+.section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;  /* align-items : 수직정렬 요소 / 현재 디스플레이 방향이 세로이므로, 수평 가운데 정렬*/
+}
+
+.sectionForm {
+	display: flex;
+	flex-direction: column;
+}
+
+/* ======================= [기본 정보 체크 영역] ======================= */
+.infoText {
+	display: flex;
+	justify-content: space-between;  /* .infoText 요소들을 일정 간격으로 양끝에 배치 */
+	padding: 25px 0px 5px 0px;   /* 상 우 하 좌 */
+}
+
+.titleText {   /* 기본정보, 부가정보 텍스트 스타일 */
+	color: #333533;  /* 채도가 낮은 진한 그레이 */
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.requiredText {  /* 필수사항 텍스트 스타일 */
+	color: #ED3125;  /* red*/
+	font-size: 13px;
+	margin-right: 23px;
+}
+
+.infoInput {
+	display: flex;
+	margin: 7px 0px;  /* 상하 좌우 */
+}
+
+/* ----------------------[아이디 중복 체크 영역]---------------------- */
+.inputText {  /* 아이디 부분 */
+	display: flex;
+	width: 120px;
+	padding: 10px 10px 10px 0px;
+	align-items: center; 
+	font-size: 15px;
+}
+
+/* ----------------------[그 외 영역]---------------------- */
+.requiredAll {  /* 필수사항 텍스트 스타일 */
+	color: #ED3125;  /* red*/
+	font-size: 14px;
+	padding-left: 5px;
+}
+
+.inputType {  /* 아이디, 비밀번호, 이름, 생년월일, 핸드폰번호 부분*/
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 15px;
+    gap: 5px;  /* 요소 간 간격 5px*/
+}
+
+/* ----------------------[테두리 요소]---------------------- */
+.input1, .input2, .input3, .input4, .input5, select {
+	border: 1px solid #a5a5a5; /* 연한 그레이  */
+	border-radius: 3px;
+	outline: none;   /* 그림자(윤곽선) 없음*/
+} 
+
+/* focus */
+input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, select:focus {
+	border: 1px solid #ffb3c1;  /* 연핑크 */
+	border-radius: 3px;
+	outline: none;
+} 
+
+/* ----------------------[input 입력 크기 요소]---------------------- */
+.input1, .input2, .input3, .input4, .input5 {
+	padding: 8px 10px; 
+}
+
+.input1 {   /* 아이디, 비밀번호 */
+	width: 400px;
+}
+
+.input2 {   /* 이름, 생년월일 */
+	width: 160px; 
+}
+
+.input3 {  /* 핸드폰 번호, 전화번호  */
+	width: 100px; 
+}
+
+.input4 {  /* 이메일 */
+	width: 140px;
+}
+
+.input5 {  /* 주소 */
+	width: 185px;
+}
+
+/* ----------------------[input 버튼 요소]---------------------- */
+#areaNumber input[type="button"] { /* 주소 찾기 버튼 */
+    font-size: 13px;
+    height: 30px;
+    background-color: #fb4357;  /* 쨍한 핑크 */
+    color: #ffffff; /* white */
+    border: 1px solid #fb4357; 
+    border-radius: 3px ;
+}
+
+.inputType input[type="button"] {
+	margin-left: 5px;
+}
+
+/* ----------------------[주소 input 요소 설정]----------------------  */
+.inputType2 {   
+	display: flex;
+	flex-direction: column;
+	margin-top: 6px;
+	gap: 5px;    /* 요소 간 간격 5px*/
+}
+
+#areaNumber {  /* 우편번호 찾기 영역 */ 
+	display: flex;
+	align-items: center;
+	gap: 10px;  /* 요소 간 간격 10px*/
+}
+
+/* ======================= [선택사항 입력 폼 영역] ======================= */
+.chooseText {   /* 선택사항 텍스트 스타일 */
+	color: #a5a5a5;  /* 옅은 그레이 */
+	font-size: 13px;
+	margin-right: 80px;
+}
+
+/* ======================= [제출 폼 영역] ======================= */
+#inputSubmit {
+	display: flex;
+	margin: 20px 0px 50px 0px;
+}
+
+.inputButton2 {
+	display: flex;
+	flex-direction: column;
+	width: 555px;	
+	height: 35px;
+	background-color: #fb4357;  /* 쨍한 핑크 */
+    color: #ffffff; /* white */
+    border: 1px solid #fb4357;
+    border-radius: 4px ;
+}
+
+/* select 태그 스타일*/
+select {
+	height: 34px; 
+	padding: 8px;
+}
+
+.inputType2 #detailExtra {  
+	display: flex;
+	justify-content: space-between;
+}

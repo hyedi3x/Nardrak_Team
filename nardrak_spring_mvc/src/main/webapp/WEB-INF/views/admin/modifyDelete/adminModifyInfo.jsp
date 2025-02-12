@@ -31,20 +31,6 @@
 
 <div class="wrap">
 <div class="container">
-
-<!-- actionResult로 가기에는 dto를 가진게 너무 많아서 임시 위치 -->
-<c:if test="${dto != null}">
-		<script type="text/javascript">
-		alert("관리자 수정페이지로 이동합니다.");
-	</script>
-</c:if>
-<c:if test="${dto == null}">
-	<script type="text/javaScript">
-		alert("비밀번호가 일치하지 않습니다.");
-		window.location= "${path}/pwdCheck.ad";
-	</script>
-</c:if>
-	
 	<form action="${path}/adminModifyAction.ad" method="post" name="joinForm" onsubmit="return submitChk()">
 	
 		<!-- id 중복확인(생략 =1), 약관 필수1,2 체크(생략 =1), 비밀번호 아이콘, id 값확인, 비밀번호 값확인, 이메일 값확인, 생년월일 값 확인 -->		
@@ -76,7 +62,7 @@
 			</tr>
 			<tr class="width100">	
 				<td>
-					<input type="text" id="modifyId" name="ad_id" value="${dto.ad_id}" maxlength="10" readonly>
+					<input type="text" id="modifyId" name="ad_id" value="${dtoAD.ad_id}" maxlength="10" readonly>
 			</td>
 				
 			</tr>
@@ -86,7 +72,7 @@
 			</tr>
 			<tr class="width100">	
 				<td class="pwd_class">
-					<input type="password" id="ad_pwd" class="ad_pwd" name="ad_pwd" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" value="${dto.ad_pwd}" autofocus required >
+					<input type="password" id="ad_pwd" class="ad_pwd" name="ad_pwd" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" value="${dtoAD.ad_pwd}" autofocus required >
 						<i id="pwdIcon1" class="fa-regular fa-eye-slash" onclick="pwdShow(0)"></i>
 						<i id="pwdIcon2" class="fa-regular fa-eye" onclick="pwdShow(1)"></i>
 					<div class="red" id="pwdStr1"><div class="font14">8글자 이상, 영문, 숫자, 특수문자(@$!%*#?&)를 작성하세요.</div></div>				
@@ -98,7 +84,7 @@
 			<tr>
 			<tr class="width100">		
 				<td>
-					<input type="password" id="pwdChk" class="pwdChk" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" value="${dto.ad_pwd}" required>
+					<input type="password" id="pwdChk" class="pwdChk" placeholder="영어, 숫자, 특수문자 조합 8~16자리" maxlength="16" value="${dtoAD.ad_pwd}" required>
 					<div class="red" id="pwdStr2"><div class="font14">비밀번호가 일치하지 않습니다.</div></div>
 				</td>
 			</tr>
@@ -106,10 +92,10 @@
 				<th class="font16">이름</th>
 			</tr>
 			<tr class="width100">		
-				<td><input type="text" id="ad_name" class="ad_name" name="ad_name" placeholder="이름입력" value="${dto.ad_name}" maxlength="30" required></td>
+				<td><input type="text" id="ad_name" class="ad_name" name="ad_name" placeholder="이름입력" value="${dtoAD.ad_name}" maxlength="30" required></td>
 			</tr>
 			
-			<c:set var="birthJender" value="${fn:split(dto.ad_birth,'-')}" /> <!-- 배열로 저장 됨 -->
+			<c:set var="birthJender" value="${fn:split(dtoAD.ad_birth,'-')}" /> <!-- 배열로 저장 됨 -->
 			<c:set var="ad_birth" value="${birthJender[0]}" />
 			<c:set var="ad_jender" value="${birthJender[1]}" />
 			
@@ -130,7 +116,7 @@
 			</tr>
 			
 			<!-- 통신사 010-0000-0000 형식 데이터 나누기  -->
-			<c:set var="phone" value="${fn:split(dto.ad_phone,' ')}" />
+			<c:set var="phone" value="${fn:split(dtoAD.ad_phone,' ')}" />
 			<c:set var="ad_phone1" value="${phone[0]}" />
 			<c:set var="ad_phone2" value="" /> <!-- 초기화 -->
 			<c:forEach var="i" items="${fn:split(phone[1],'-')}">
@@ -159,7 +145,7 @@
 			</tr>
 			
 			<!-- 이메일 @ 기준으로 나눠담기 -->
-			<c:set var="email" value="${fn:split(dto.ad_email,'@')}" />
+			<c:set var="email" value="${fn:split(dtoAD.ad_email,'@')}" />
 			<c:set var="ad_email1" value="${email[0]}" />
 			<c:set var="ad_email2" value="${email[1]}" /> 
 			
@@ -186,7 +172,7 @@
 			</tr>
 			
 			<!-- 우편번호, 기본주소, 상세주소 순으로 나눠담기,  -->
-			<c:set var="zip" value="${fn:split(dto.ad_zip, ',')}" />
+			<c:set var="zip" value="${fn:split(dtoAD.ad_zip, ',')}" />
 			<c:set var="ad_zip1" value="${zip[0]}" />
 			<c:set var="ad_zip2" value="${zip[1]}" />
 			
@@ -207,7 +193,7 @@
 				<td><input type="text" class="input" name="ad_zip3" id="ad_zip3" size="20" value="${zip[2] != null ? zip[2] : ''}" placeholder="상세 주소 입력" maxlength="30" ></td>
 			</tr>
 			
-			<c:set var="ad_tel" value="${dto.ad_tel}" />
+			<c:set var="ad_tel" value="${dtoAD.ad_tel}" />
 			
 			<tr>
 				<th class="font16">사내 전화번호</th>
@@ -225,7 +211,7 @@
 				</td>
 			</tr>
 			
-			<c:set var="ad_empnum" value="${dto.ad_empnum}" />
+			<c:set var="ad_empnum" value="${dtoAD.ad_empnum}" />
 			
 			<tr>
 				<th class="font16">사번</th>
@@ -238,7 +224,7 @@
 				
 			</tr>
 			
-			<c:set var="ad_dep" value="${dto.ad_dep}" />
+			<c:set var="ad_dep" value="${dtoAD.ad_dep}" />
 			
 			<tr>
 				<th class="font16">부서 코드</th>
@@ -261,34 +247,34 @@
 				<th id="termsTh" class="font15"> ✓ 본인인증 약관동의</th>
 			</tr>
 			<tr>
-				<td><input type="checkbox" id="allCheck" name="allChk" class="chkList" ${fn:contains(dto.ad_terms, '1 2 3 4') ? 'checked':'' } onclick="chkListClick($('#allCheck'))"><b class="font15">전체동의 합니다.</b></td>
+				<td><input type="checkbox" id="allCheck" name="allChk" class="chkList" ${fn:contains(dtoAD.ad_terms, '1 2 3 4') ? 'checked':'' } onclick="chkListClick($('#allCheck'))"><b class="font15">전체동의 합니다.</b></td>
 			</tr>
 			
 			<tr >
-				<td><input type="checkbox" class="chkList" id="chkList1" name="chkList1" value="1" ${fn:contains(dto.ad_terms, '1') ? 'checked':'' } onclick="chkListClick($('#chkList1'))" required><b class="font15"><span class="check">[필수]</span>
+				<td><input type="checkbox" class="chkList" id="chkList1" name="chkList1" value="1" ${fn:contains(dtoAD.ad_terms, '1') ? 'checked':'' } onclick="chkListClick($('#chkList1'))" required><b class="font15"><span class="check">[필수]</span>
 					<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">본인 확인 서비스 이용 약관</a>에 동의합니다.</b></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" class="chkList" id="chkList2" name="chkList2" value="2" ${fn:contains(dto.ad_terms, '2') ? 'checked':'' } onclick="chkListClick($('#chkList2'))" required><b class="font15" ><span class="check">[필수]</span>
+				<td><input type="checkbox" class="chkList" id="chkList2" name="chkList2" value="2" ${fn:contains(dtoAD.ad_terms, '2') ? 'checked':'' } onclick="chkListClick($('#chkList2'))" required><b class="font15" ><span class="check">[필수]</span>
 						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">통신사 이용 약관</a>동의</b></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" class="chkList" id="chkList3" name="chkList3" value="3"  ${fn:contains(dto.ad_terms, '3') ? 'checked':'' }><b class="font15"><span class="choose">[선택]</span> 통신사/인증사의 
+				<td><input type="checkbox" class="chkList" id="chkList3" name="chkList3" value="3"  ${fn:contains(dtoAD.ad_terms, '3') ? 'checked':'' }><b class="font15"><span class="choose">[선택]</span> 통신사/인증사의 
 						<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">개인정보 이용 · 제공</a>에 <br> <span id="left-10px">동의합니다.</span></b></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" class="chkList" id="chkList4" name="chkList4" value="4" ${fn:contains(dto.ad_terms, '4') ? 'checked':'' } ><b class="font15"><span class="choose">[선택]</span> <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">고유식별 정보 처리</a>에 동의합니다.</b></td>
+				<td><input type="checkbox" class="chkList" id="chkList4" name="chkList4" value="4" ${fn:contains(dtoAD.ad_terms, '4') ? 'checked':'' } ><b class="font15"><span class="choose">[선택]</span> <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">고유식별 정보 처리</a>에 동의합니다.</b></td>
 			</tr>
 			
 			<tr>
 				<td>
-					<input type="submit" class="submitBTN" value="관리자 등록">
+					<input type="submit" class="submitBTN" value="관리자 수정">
 				</td>
 			</tr>
 			
 			<tr>
 				<td>
-					<input type="button" class="submitBTN" onclick="mainBTN('${path}')" value="가입 취소">
+					<input type="button" class="submitBTN" onclick="mainBTN('${path}')" value="수정 취소">
 				</td>
 			</tr>
 
