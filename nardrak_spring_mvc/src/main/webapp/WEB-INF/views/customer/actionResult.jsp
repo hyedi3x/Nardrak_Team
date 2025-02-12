@@ -9,6 +9,20 @@
 </head>
 <body>
 	
+	<!-- 회원 삭제 완료 후  -->
+	<c:if test="${deleteCnt == 1}">
+		<script type="text/javascript">
+			alert("회원삭제 성공!!");
+			window.location="${path}/main.do";
+		</script>
+	</c:if>
+	<c:if test="${deleteCnt == 0}">
+		<script type="text/javascript">
+			alert("회원삭제 실패!!");
+			window.location="${path}/deleteCustomer.do";
+		</script>
+	</c:if>
+	
 	<!-- 고객 회원가입 등록 -->
 	<c:if test="${signUpCnt == 1}">
 		<script type="text/javascript">
