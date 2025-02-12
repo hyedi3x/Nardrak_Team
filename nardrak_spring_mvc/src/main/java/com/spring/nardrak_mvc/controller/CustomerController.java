@@ -116,20 +116,6 @@ public class CustomerController {
 		return "customer/actionResult";
 	}
 	
-	
-	
-	
-	// ======================= [회원수정 - 상세페이지] =====================
-	@RequestMapping("/modifyInfo.do")
-	public String modifyDetailAction(HttpServletRequest request, HttpServletResponse response, Model model) 
-	 		throws ServletException, IOException {
-		logger.info("<<< url => /modifyInfo.do >>>");
-		   
-	 	service.modifyDetailAction(request, response, model);
-	 			
-	 	return "customer/modifyDelete/modifyInfo";
-	 }
-	   
 	// ======================= [회원수정 - 결과] =====================
 	@RequestMapping("/modifyCustomerAction.do")
 	public String modifyCustomerAction(HttpServletRequest request, HttpServletResponse response, Model model) 
