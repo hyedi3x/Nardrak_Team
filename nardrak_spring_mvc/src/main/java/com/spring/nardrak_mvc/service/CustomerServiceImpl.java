@@ -33,14 +33,14 @@ public class CustomerServiceImpl implements CustomerService{
 	      System.out.println("서비스 - idConfirmAction()");
 	      
 	      // 스트리트에서 get방식으로 넘긴 값을 가져온다.
-	      String cs_id = request.getParameter("cs_id");
+	      String strId = request.getParameter("cs_id");
 	         
 	      // ID 중복확인 처리
-	      int inConfirmCnt = dao.useridCheck(cs_id);
+	      int inConfirmCnt = dao.useridCheck(strId);
 	      
 	      // jsp로 처리결과 전달
 	      model.addAttribute("inConfirmCnt", inConfirmCnt);
-	      model.addAttribute("cs_id", cs_id);
+	      model.addAttribute("strId", strId);
 	   }
 	
 	// ======================= [전화번호 & 이메일 중복 확인] =======================
@@ -259,21 +259,21 @@ public class CustomerServiceImpl implements CustomerService{
 	      
 	      System.out.println("서비스 - deleteCustomer()");
 	      
-	      String cs_id = (String) request.getSession().getAttribute("sessionID"); // 세션에서 사용자 ID를 가져옴
+	      String strId = (String) request.getSession().getAttribute("sessionID"); // 세션에서 사용자 ID를 가져옴
 	      String cs_del_terms = request.getParameter("agree1"); //탈퇴 동의 여부
 	      String cs_drCode = request.getParameter("levCd"); // 탈퇴 사유 코드
 	      String cs_etc_cmmt = request.getParameter("etcCmmt"); // 기타 사유 (입력한 텍스트)
 	      
 	      //DTO 생성 후 파라미터 세팅
 	      CustomerDeleteDTO dto = new CustomerDeleteDTO();
-	      dto.setCs_id(cs_id);
+	      dto.setCs_id(strId);
 	      dto.setCs_del_terms(cs_del_terms);
 	      dto.setCs_drCode(cs_drCode);
 	      dto.setCs_etc_cmmt(cs_etc_cmmt);
 	      
 	      // DB 업데이트 처리: 탈퇴 사유와 기타 사유, 탈퇴 일시 업데이트
 	      dao.deleteCustomer(dto);
-	      int deleteCnt = dao.deleteCustomerRemove(cs_id);
+	      int deleteCnt = dao.deleteCustomerRemove(strId);
 	      
 	      // 세션 무효화 (삭제)
 	      request.getSession().invalidate();
