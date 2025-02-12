@@ -23,7 +23,7 @@
 
 </head>
 <!-- input 함수들에서 체크하는 값들을 초기값을 설정해준다. (변경안하면 0을 유지해서) -->
-<body onload="termsLoad('${dto.ad_terms}')">
+<body onload="termsLoad('${dtoAD.ad_terms}')">
 
 <!-- header_SessionScope.jsp : banner page & header page -->
 <%@ include file="/WEB-INF/views/common/header_SessionScope.jsp" %> 
@@ -31,29 +31,13 @@
 <div class="wrap">
 <div class="container">
 
-<!-- actionResult로 가기에는 dto를 가진게 너무 많아서 임시 위치 -->
-<c:if test="${dto != null}">
-		<script type="text/javascript">
-		alert("관리자 삭제페이지로 이동합니다.");
-	</script>
-</c:if>
-<c:if test="${dto == null}">
-	<script type="text/javaScript">
-		alert("비밀번호가 일치하지 않습니다.");
-		window.location= "${path}/pwdCheck.ad";
-	</script>
-</c:if>
-	
-	
 	<form action="${path}/adminDeleteAction.ad" method="post" name="joinForm" onsubmit="return deleteSubmit()">
-		<input type="hidden" name="ad_id" value="${dto.ad_id}">
-		<input type="hidden" name="ad_pwd" value="${dto.ad_pwd}">
 		<table>
 			<tr>
 				<td class="width100"></td>
 			</tr>
 			<tr>
-				<td><h3>${dto.ad_id}님의 관리자 권한 삭제</h3></td>
+				<td><h3>${dtoAD.ad_id}님의 관리자 권한 삭제</h3></td>
 			</tr>
 			<tr id="termsTr">
 				<th id="termsTh" class="font16"> ✓ 본인인증 약관동의 내역</th>

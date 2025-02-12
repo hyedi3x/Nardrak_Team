@@ -61,14 +61,6 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSession.selectOne(namespace  +"userIdPwdChk", map);  // 0, 1 결과 반환		
 	}
 
-	// 관리자 수정/삭제 페이지 비밀번호 확인
-	@Override
-	public AdminDTO adminModify(Map<String, Object> map) {
-		System.out.println("DAO adminModify");
-		
-		return sqlSession.selectOne(namespace+"adminModify",map);
-	}
-
 	// 관리자 수정
 	@Override
 	public int adminModifyAction(AdminDTO dto) {
@@ -79,10 +71,10 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	// 관리자 삭제
 	@Override
-	public int adminDeleteAction(Map<String, Object> map) {
+	public int adminDeleteAction(String strId) {
 		System.out.println("DAO adminModifyAction");
 		
-		return sqlSession.update(namespace+"adminDeleteAction", map);
+		return sqlSession.update(namespace+"adminDeleteAction", strId);
 	}
 
 	// 관리자 요청 총 갯수 카운트
