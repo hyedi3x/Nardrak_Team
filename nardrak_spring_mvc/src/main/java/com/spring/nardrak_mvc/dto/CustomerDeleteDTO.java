@@ -4,7 +4,8 @@ import java.sql.Timestamp;
 
 public class CustomerDeleteDTO {
 	
-	private String cs_id;         	// 회원 ID
+	private String cs_del_num;		// 회원 탈퇴 번호(PK)
+	private String cs_id;         	// 회원 ID(FK)
     private String cs_del_terms;    // 탈퇴 동의 여부
     private String cs_drCode;       // 탈퇴 사유 코드
     private String cs_etc_cmmt;     // 기타 사유
@@ -16,9 +17,10 @@ public class CustomerDeleteDTO {
 	}
 
     //매개변수 생성자
-	public CustomerDeleteDTO(String cs_id, String cs_del_terms, String cs_drCode, String cs_etc_cmmt,
+	public CustomerDeleteDTO(String cs_del_num, String cs_id, String cs_del_terms, String cs_drCode, String cs_etc_cmmt,
 			Timestamp cs_del_date) {
 		super();
+		this.cs_del_num = cs_del_num;
 		this.cs_id = cs_id;
 		this.cs_del_terms = cs_del_terms;
 		this.cs_drCode = cs_drCode;
@@ -27,6 +29,14 @@ public class CustomerDeleteDTO {
 	}
 
 	//getter, setter
+	public String getCs_del_num() {
+		return cs_del_num;
+	}
+
+	public void setCs_del_num(String cs_del_num) {
+		this.cs_del_num = cs_del_num;
+	}
+	
 	public String getCs_id() {
 		return cs_id;
 	}
@@ -70,8 +80,8 @@ public class CustomerDeleteDTO {
 	//toString
 	@Override
 	public String toString() {
-		return "CustomerDeleteDTO [cs_id=" + cs_id + ", cs_del_terms=" + cs_del_terms + ", cs_drCode=" + cs_drCode
-				+ ", cs_etc_cmmt=" + cs_etc_cmmt + ", cs_del_date=" + cs_del_date + "]";
+		return "CustomerDeleteDTO [cs_del_num=" + cs_del_num + ", cs_id=" + cs_id + ", cs_del_terms=" + cs_del_terms
+				+ ", cs_drCode=" + cs_drCode + ", cs_etc_cmmt=" + cs_etc_cmmt + ", cs_del_date=" + cs_del_date + "]";
 	}
 
 }
