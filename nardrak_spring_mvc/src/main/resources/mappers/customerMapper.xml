@@ -14,9 +14,12 @@
 			 
 		<!-- ID 중복확인 처리 -->
 	   	<select id="useridCheck" parameterType="String" resultType="int">
-	    	SELECT COUNT(*) 
-			  FROM customer_tb 
-			 WHERE cs_id = #{strId}
+		SELECT COUNT(*) 
+		  FROM (SELECT cs_id FROM customer_tb
+		  		UNION
+		  		SELECT ad_id FROM admin_tb 	
+		  ) a
+		 WHERE cs_id = #{strId}
  		</select>
  		
  		<!-- 전화번호 중복확인 처리 -->
