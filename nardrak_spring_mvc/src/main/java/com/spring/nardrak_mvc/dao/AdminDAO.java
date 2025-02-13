@@ -30,5 +30,9 @@ public interface AdminDAO {
 		public int AdminAccessCount();
 		
 		// 관리자 요청 조회
-		public List<AdminDTO>  adminAccess(Map<String, Object> map);
+		public List<AdminDTO> adminAccess(Map<String, Object> map);
+		
+		// 관리자 요청 조회
+		public int adminAccessAction(List<String> ad_ids);
+
 }

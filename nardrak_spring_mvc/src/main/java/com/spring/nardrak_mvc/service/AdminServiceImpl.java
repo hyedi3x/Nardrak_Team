@@ -257,7 +257,6 @@ public class AdminServiceImpl implements AdminService{
 		 
 		 // 전체 요청수를 매개 변수로 전달하여, 전체 페이지수, 시작 글 번호, 마지막 글 번호 설정, 블록 함수 실행
 		 int totalCount = dao.AdminAccessCount();
-		 System.out.println(totalCount);
 		 paging.setCount(totalCount);
 		 
 		 // 시작 글 번호, 끝 글번호만큼만 조회
@@ -269,5 +268,19 @@ public class AdminServiceImpl implements AdminService{
 		 model.addAttribute("paging", paging);
 		 
 		
+	}
+
+	@Override
+	public void adminAccessAction(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		 System.out.println("Service adminAccessAction");
+		 
+		 String strids = request.getParameter("ad_ids");
+		 String[] idarr = strids.split(",");
+		 List<String> idList = new ArrayList<String>();
+		 for(String index:idarr) {
+			 idList.add(index);
+		 }
+		 model.addAttribute("accessCnt",dao.adminAccessAction(idList));
 	}
 }

@@ -129,4 +129,14 @@ public class AdminController {
 		return "admin/accessList/accessList_admin";
 	}
 
+	// 관리자 등록 요청 조회 리스트
+	@RequestMapping("/adminAccessAction.ad")
+	public String adminAccessAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminAccessAction.ad >>" );
+		
+		service.adminAccessAction(request, response, model);
+		
+		return "admin/join/actionResult";
+	}
 }

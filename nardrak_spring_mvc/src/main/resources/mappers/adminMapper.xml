@@ -82,5 +82,17 @@
 		              ) ad
 		      )
 		WHERE rn BETWEEN #{startRow} AND #{endRow}
+		ORDER BY rn
 	</select>
+	
+	<!-- 관리자 권한 요청 승인 -->
+	<!-- item과 #{}변수명을 일치시킨다. collection은 자료형이 list여서 list open, close로 ()를 만들고 배열의, 로 구분한다. -->
+	<update id="adminAccessAction" >
+	    UPDATE admin_tb
+	    SET access_status = 'Y'
+	    WHERE ad_id IN 
+	   <foreach item="ad_id" collection="list" open="(" separator="," close=")">
+	        #{ad_id}
+	    </foreach>
+	</update>
 </mapper> 
