@@ -8,6 +8,14 @@ function signlnCheck() {
         document.inputform.cs_id.focus();
         return false;
     }
+    
+    // 중복확인 체크
+    const hiddenuserId = document.inputform.hiddenUserId.value;
+    if(hiddenuserId == "0"){
+    	alert("중복확인을 해주세요!");
+    	document.getElementById("inputIdConfirm").focus();
+    	return false;
+    }
 
     // 비밀번호 유효성 체크
     const password = document.inputform.cs_pwd.value;
@@ -30,6 +38,13 @@ function signlnCheck() {
     if (!phone || phone.length !== 8) {
         alert("전화번호 형식을 맞춰주세요!");
         document.inputform.user_hp2.focus();
+        return false;
+    }
+    
+    // 전화번호 중복 확인
+    const phoneChk = document.getElementById("phoneChk").innerText;
+    if (phoneChk.includes("등록된 전화번호")) {
+        alert("이미 등록된 전화번호입니다. 다른 번호를 사용하세요.");
         return false;
     }
 
@@ -65,6 +80,13 @@ function signlnCheck() {
     if (!pattern2.test(email2)) {
         alert("이메일 도메인 부분을 올바르게 입력해주세요!");
         document.inputform.user_email2.focus();
+        return false;
+    }
+    
+    // 이메일 중복 확인
+    const emailChk = document.getElementById("emailChk").innerText;
+    if (emailChk.includes("등록된 이메일")) {
+        alert("이미 등록된 이메일입니다. 다른 이메일을 사용하세요.");
         return false;
     }
 
