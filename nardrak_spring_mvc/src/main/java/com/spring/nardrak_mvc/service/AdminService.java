@@ -37,5 +37,8 @@ public interface AdminService {
 		public void adminAccess(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
 
+		// 관리자 요청 조회
+		public void adminAccessAction(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
 
 }
