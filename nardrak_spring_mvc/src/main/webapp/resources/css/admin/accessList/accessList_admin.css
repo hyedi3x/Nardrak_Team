@@ -87,14 +87,32 @@ table tr:last-child td:last-child{
 	justify-content: center;
 }
 
+.listTr a{
+	color: #000000;
+}
+
 #pagingTd a{
 	margin: 0 10px;
 	text-align: center;
-	line-height: 40px;  /* 요소의 크기와 동일하게 주면 수직 가운데 정렬 */
-	width: 60px;
-	height: 40px;
+	padding: 10px 20px;
 	border-radius:20px;
 	background-color: #9dbebb;
 	font-weight: bold;
 	color: #ffffff;
+}
+
+.BTNTd{
+	font-size
+}
+.chkLabel{
+	padding: 10px;
+}
+#accessBTN{
+	margin-left: 30px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #9dbebb;
+	border: none;
+	font-weight: bold;
+	color: #ffffff
 }

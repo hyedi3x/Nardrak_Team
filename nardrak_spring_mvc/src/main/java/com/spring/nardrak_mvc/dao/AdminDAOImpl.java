@@ -93,6 +93,14 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSession.selectList(namespace+"adminAccess", map);
 	}
 	
-	
+	// 관리자 권한 요청 승인
+	@Override
+	public int adminAccessAction(List<String> ad_ids) {
+		System.out.println("DAO adminAccessAction");
+		 for(String index:ad_ids) {
+			 System.out.println(index);
+		 }
+		return sqlSession.update(namespace+"adminAccessAction", ad_ids);
+	}
 	
 }
