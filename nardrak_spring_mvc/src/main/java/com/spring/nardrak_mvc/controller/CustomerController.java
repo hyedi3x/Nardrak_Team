@@ -69,6 +69,8 @@ public class CustomerController {
 		// 세션 삭제
 		request.getSession().invalidate();
 		
+		uploadService.getImages(request, response, model);
+		
 		return "common/main";	
 	}
 	
