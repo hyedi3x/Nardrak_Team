@@ -30,20 +30,20 @@
 	         <div class="swiper-wrapper">
                 <!-- 각 슬라이드에 텍스트 오버레이 추가 -->
                 <c:choose>
-		        <c:when test="${not empty images}">
-		            <c:forEach var="image" items="${images}">
-		                <div class="swiper-slide">
-		                    <div class="image-container">
-		                        <img src="${image.image_path}" alt="${image.image_path}">
-		                        <div class="slide-text">${image.image_detail}</div>
-		                    </div>
-		                </div>
-		            </c:forEach>
-		        </c:when>
-		        <c:otherwise>
-		            <p>현재 등록된 사진이 없습니다.</p>
-		        </c:otherwise>
-		     </c:choose>
+			        <c:when test="${not empty images}">
+			            <c:forEach var="image" items="${images}">
+			                <div class="swiper-slide">
+			                    <div class="image-container">
+			                        <img src="${image.image_path}" alt="${image.image_path}">
+			                        <div class="slide-text">${image.image_detail}</div>
+			                    </div>
+			                </div>
+			            </c:forEach>
+			        </c:when>
+			        <c:otherwise>
+			            <p>현재 등록된 사진이 없습니다.</p>
+			        </c:otherwise>
+		     	</c:choose>
             </div>
 	
             <!-- 페이지네이션 (점) -->
