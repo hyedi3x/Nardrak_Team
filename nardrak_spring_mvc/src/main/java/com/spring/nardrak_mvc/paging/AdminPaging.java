@@ -32,7 +32,6 @@ public class AdminPaging {
 		
 		startRow = (currentPage-1) * pageSize + 1;
 		endRow = (currentPage) * pageSize;
-		System.out.println("고객 리스트 : "+startRow+"~"+endRow);
 		
 		pageCalculator();
 	}
@@ -50,9 +49,7 @@ public class AdminPaging {
 			else {
 				startBlock = (currentPage/pageBlock-1)*pageBlock +1;
 			}
-			System.out.println("startBlock"+startBlock);
 			endBlock = startBlock + pageBlock-1;
-			System.out.println("endBlock"+endBlock);
 			// 마지막 블록이 전체 페이지 보다 커지면 동일하게
 			if(endBlock > pageNum) endBlock = pageNum;
 

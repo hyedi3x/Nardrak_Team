@@ -150,26 +150,6 @@ SET delete_status = 'N'
 WHERE ad_id = 'test1'
 AND ad_pwd='tester1234!';
 
--- 관리자 권한 승인
-UPDATE admin_tb
-SET access_status = 'Y'
-WHERE ad_id = 'test1';
-
-UPDATE admin_tb
-   SET access_status = 'Y'
-WHERE ad_id in ('test21', 'test22', 'test23');
-
--- 관리자 요청 수 조회
-SELECT *
-  FROM(
-      SELECT ROWNUM rn, ad.*
-        FROM (SELECT *
-                FROM admin_tb
-              WHERE access_status = 'N'
-              ) ad
-      )
-WHERE rn BETWEEN 1 AND 10;
-
 -- 회원 초기화
 DELETE FROM admin_tb;
 
@@ -203,6 +183,23 @@ BEGIN
 END;
 /
 COMMIT;
+
+-- 관리자 요청 수 조회
+SELECT *
+  FROM(
+      SELECT ROWNUM rn, ad.*
+        FROM (SELECT *
+                FROM admin_tb
+              WHERE access_status = 'N'
+              ) ad
+      )
+WHERE rn BETWEEN 1 AND 10
+ORDER BY rn;
+
+-- 관리자 권한 승인
+UPDATE admin_tb
+   SET access_status = 'Y'
+WHERE ad_id in ('test21', 'test22', 'test23');
 
 -- 등록 확인
 SELECT * FROM admin_tb;
