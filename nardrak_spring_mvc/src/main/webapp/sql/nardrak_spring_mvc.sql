@@ -115,11 +115,97 @@ SELECT * FROM admin_tb;
 COMMIT;
 
 -- 관리자 등록 시 아이디 중복 확인
-SELECT COUNT(*) FROM admin_tb
-WHERE ad_id = 'hyeri';
+SELECT COUNT(*) 
+FROM (SELECT cs_id, cs_pwd, login_session, delete_status FROM customer_tb 
+      UNION 
+      SELECT ad_id, ad_pwd, login_session, delete_status FROM admin_tb)
+WHERE cs_id='test' AND cs_pwd='test1234!' AND delete_status='N'AND login_session='Admin';
 
--- 관리자 등록 시 아이디 중복 확인(DAO 구문)
-SELECT COUNT(*) FROM admin_tb WHERE ad_id = #{ad_id};
+-- 전화번호, 이메일, 사번에 관한 유니크 조회
+SELECT COUNT(*)
+FROM admin_tb
+WHERE ad_email ='f@naver.com';
+
+-- 핸드폰은 통신사 빼고 조회
+--  처음으로 만나는 0부터 끝까지 ad_phone의 문자열을 추출하여 입력 받은 값과 비교하겠다.
+SELECT COUNT(*)
+FROM admin_tb
+WHERE ad_phone LIKE '%010-1234-5678%'
+AND LENGTH(ad_phone) >= 11;
+
+-- 비밀번호 확인
+SELECT *
+FROM admin_tb
+WHERE ad_id = 'test'
+AND ad_pwd='testtest!1';
+
+-- 관리자 수정
+UPDATE admin_tb
+SET ad_pwd='', ad_name='', ad_birth='', ad_phone='', ad_email='', ad_zip='', ad_tel='', ad_empnum='', ad_dep='', ad_terms=''
+WHERE ad_id = '';
+
+-- 관리자 삭제
+UPDATE admin_tb
+SET delete_status = 'N'
+WHERE ad_id = 'test1'
+AND ad_pwd='tester1234!';
+
+-- 관리자 권한 승인
+UPDATE admin_tb
+SET access_status = 'Y'
+WHERE ad_id = 'test1';
+
+UPDATE admin_tb
+   SET access_status = 'Y'
+WHERE ad_id in ('test21', 'test22', 'test23');
+
+-- 관리자 요청 수 조회
+SELECT *
+  FROM(
+      SELECT ROWNUM rn, ad.*
+        FROM (SELECT *
+                FROM admin_tb
+              WHERE access_status = 'N'
+              ) ad
+      )
+WHERE rn BETWEEN 1 AND 10;
+
+-- 회원 초기화
+DELETE FROM admin_tb;
+
+-- 회원 생성
+DECLARE
+    i NUMBER:= 1;
+    k NUMBER:= 10;
+    j NUMBER:= 21;
+BEGIN
+    WHILE i <= 9 LOOP
+        INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
+        VALUES('test' || i, 'test1234!' || i, '테스터' || i, '010101-3', 'L 010-1234-000' || i, 'test' || i || '@visit.com', i || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || i, 'IT005', '1 2 3 4', 'Admin');
+        UPDATE admin_tb
+           SET access_status = 'Y'
+        WHERE ad_id = 'test' || i;
+        i := i+1;
+    END LOOP;
+    WHILE k <= 20 LOOP
+        INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
+        VALUES('test' || k, 'test1234!' || k, '테스터' || k, '010101-3', 'L 010-1234-000' || k, 'test' || k || '@visit.com', k || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || k, 'IT005', '1 2 3 4', 'Admin');
+        UPDATE admin_tb
+           SET access_status = 'Y'
+        WHERE ad_id = 'test' || k;
+        k := k+1;
+    END LOOP;
+    WHILE j <= 127 LOOP
+        INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
+        VALUES('test' || j, 'test1234!' || j, '테스터' || j, '010101-3', 'L 010-1234-00' || j, 'test' || j || '@visit.com', j || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || j, 'IT005', '1 2 3 4', 'Admin');
+        j := j+1;
+    END LOOP;
+END;
+/
+COMMIT;
+
+-- 등록 확인
+SELECT * FROM admin_tb;
 
 -- ==================[고객 회원가입 테이블]=====================
 DROP TABLE customer_tb CASCADE CONSTRAINTS;
