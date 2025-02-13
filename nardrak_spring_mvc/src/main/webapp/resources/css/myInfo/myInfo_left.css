@@ -3,7 +3,7 @@
 /* =======================[myInfo_left 메뉴 전체 설정]======================= */ 
 #myInfo_left {
     display: flex;
-    width: 27%;   /* 요소 전체 폭 980px의 22% */
+    width: 25%;
     padding: 40px 15px;
 }
 
