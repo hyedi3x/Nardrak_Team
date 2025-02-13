@@ -10,8 +10,11 @@
 	<!--  id 중복 확인, 고객 & 관리자 모두 검사  -->
 	<select id="adminIdConfirm" parameterType="String" resultType="int">
 		SELECT COUNT(*) 
-		  FROM admin_tb 
-		 WHERE ad_id = #{ad_id}
+		  FROM (SELECT cs_id FROM customer_tb
+		  		UNION
+		  		SELECT ad_id FROM admin_tb 	
+		  ) a
+		 WHERE cs_id = #{ad_id}
 	</select>
 	
 	<!--  관리자 회원가입  -->
