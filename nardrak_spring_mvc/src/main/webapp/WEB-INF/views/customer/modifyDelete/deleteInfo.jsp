@@ -192,7 +192,7 @@
 					<!-- 버튼 -->
 					<div class="btn_area">
 						<button type="submit" id="btnok" class="btn_cof" value="탈퇴하기">탈퇴하기</button>
-						<button type="button" id="btncancel" class="btn_cof" value="취소" onclick="window.location='${path}/mypage.do'">취소</button>
+						<button type="button" id="btncancel" class="btn_cof" value="취소" onclick="window.location='${path}/myInfo.do'">취소</button>
 					</div>
 					
 					</div>
