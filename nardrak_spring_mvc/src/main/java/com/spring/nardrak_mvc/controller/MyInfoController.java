@@ -116,4 +116,13 @@ public class MyInfoController {
 	    
 	    return "customer/modifyDelete/deleteInfo";
 	}
+	
+	// 1:1 문의하기 가이드 페이지 
+	@RequestMapping("/qnaGuide.do")
+	public String qnaGuide(HttpServletRequest request, HttpServletResponse response, Model model) 
+	        throws ServletException, IOException {
+	    logger.info("<< url : qnaGuide.do >>");
+
+	    return "myInfo/myInfo_Inquiry/qnaGuide"; 
+	}
 }
