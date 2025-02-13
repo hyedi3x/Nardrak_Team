@@ -42,8 +42,6 @@
 			 VALUES(#{cs_id},#{cs_pwd},#{cs_name},#{cs_gender},#{cs_birth},#{cs_phone},#{cs_zip},#{cs_email},#{cs_tel}, TO_CHAR((SELECT NVL(MAX(cs_user_num)+1,1) FROM customer_tb)), #{cs_regDate}, #{cs_terms}, DEFAULT, 'Customer')
 		</insert>
 		
-		
-   
 	   <!-- 회원정보 수정처리 -->
 		<update id="updateCustomer" parameterType="com.spring.nardrak_mvc.dto.CustomerDTO">
 			UPDATE customer_tb
@@ -61,8 +59,8 @@
 		
 		<!-- 회원정보 탈퇴 정보 처리 -->
 		<insert id="deleteCustomer" parameterType="com.spring.nardrak_mvc.dto.CustomerDeleteDTO">
-			INSERT INTO customer_delete_tb(cs_id, cs_del_terms, cs_drCode, cs_etc_cmmt, cs_del_date)
-	        VALUES(#{cs_id}, #{cs_del_terms}, #{cs_drCode}, #{cs_etc_cmmt}, sysdate)
+		INSERT INTO customer_delete_tb(cs_del_num, cs_id, cs_del_terms, cs_drCode, cs_etc_cmmt, cs_del_date)
+			VALUES(TO_CHAR((SELECT NVL(MAX(cs_del_num)+1,1)FROM customer_delete_tb)), #{cs_id}, #{cs_del_terms}, #{cs_drCode}, #{cs_etc_cmmt}, sysdate) 
     	</insert>
     	
     	<!-- 회원정보 탈퇴 정보 처리 후, 고객 테이블에서 해당 회원 삭제 -->
