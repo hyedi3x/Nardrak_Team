@@ -14,7 +14,7 @@
 		  		UNION
 		  		SELECT ad_id FROM admin_tb 	
 		  ) a
-		 WHERE ad_id = #{ad_id}
+		 WHERE cs_id = #{ad_id}
 	</select>
 	
 	<!--  관리자 회원가입  -->
