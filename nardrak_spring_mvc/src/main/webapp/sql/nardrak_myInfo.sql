@@ -19,6 +19,9 @@ VALUES (RAWTOHEX(SYS_GUID()),'부산에 대한 이미지 변경 부탁드려요'
 
 COMMIT;
 
+--inquiryCS_tb 조회
+SELECT * FROM inquiryCS_tb;
+
 -- =================[ 1:1 문의 내역 (고객ver)  + Customer 테이블 조인]================================
 -- 외래키인 cs_id를 join하여, 문의내역과 사용자 정보를 불러온다. 
 SELECT CS.cs_id,  
@@ -50,11 +53,19 @@ CREATE TABLE inquiryAD_tb(
     ON DELETE CASCADE
 );
 
--- =================[ 1:1 문의 답변 내역 (관리자ver) insert (sql) ]================================
+-- =================[ 1:1 문의 답변 내역 (관리자ver-마케팅 부서 담당) insert (sql) ]================================
 INSERT INTO inquiryAD_tb 
-VALUES (RAWTOHEX(SYS_GUID()),'oo으로 이미지 변경 완료하였습니다. 추가적으로 변경을 다시 하고 싶으시면, 다시 문의해주세요.', DEFAULT, 'pending', 'EDFEB0E2D03E4898B42BB522F10DD697', 'test1');
+VALUES (RAWTOHEX(SYS_GUID()),'oo으로 이미지 변경 완료하였습니다. 추가적으로 변경을 다시 하고 싶으시면, 다시 문의해주세요.', DEFAULT, 'pending', '6070865DEFC94D4F8CD1A6594B952262', 'test1');
 
 COMMIT;
+
+-- 마케팅 부서 관리자 조회  
+SELECT * 
+  FROM admin_tb
+  WHERE ad_dep = 'CS004';
+
+-- inquiryAD_tb 조회
+SELECT * FROM inquiryAD_tb;
 
 -- =======[ 1:1 문의 내역 테이블(고객ver) + Customer 테이블 조인 + 1:1 문의 답변 내역 (관리자ver) + Admin 테이블 조인 ]================================
 -- 문의내역과 답변 내역을 모두 조회하는 구문, 해당 구문에서 매퍼에서 필요한 데이터만 select해서 dto에 뿌릴 예정
