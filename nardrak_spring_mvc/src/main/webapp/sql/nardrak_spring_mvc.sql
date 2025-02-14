@@ -157,40 +157,48 @@ DELETE FROM admin_tb;
 DECLARE
     i NUMBER:= 1;
     k NUMBER:= 10;
-    j NUMBER:= 21;
+    j NUMBER:= 100;
 BEGIN
     WHILE i <= 9 LOOP
         INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
-        VALUES('test' || i, 'test1234!' || i, '테스터' || i, '010101-3', 'L 010-1234-000' || i, 'test' || i || '@visit.com', i || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || i, 'IT005', '1 2 3 4', 'Admin');
+        VALUES('test' || i, 'test1234!' || i, '테스터' || i, '010101-3', 'L 010-1234-000' || i, 'test' || i || '@visit.com', i || ', 기본주소, 상세주소', '02-888-9999', 'No_test' || i, 'CS004', '1 2 3 4', 'Admin');
+        i := i+1;
+    END LOOP;
+    WHILE k <= 99 LOOP
+        INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
+        VALUES('test' || k, 'test1234!' || k, '테스터' || k, '010101-3', 'L 010-1234-00' || k, 'test' || k || '@visit.com', k || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || k, 'IT005', '1 2 3 4', 'Admin');
+        k := k+1;
+    END LOOP;
+   
+   i := 1;  -- i를 1로 초기화
+    WHILE i <= 20 LOOP
         UPDATE admin_tb
            SET access_status = 'Y'
         WHERE ad_id = 'test' || i;
         i := i+1;
     END LOOP;
-    WHILE k <= 20 LOOP
+    
+    WHILE j <= 147 LOOP
         INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
-        VALUES('test' || k, 'test1234!' || k, '테스터' || k, '010101-3', 'L 010-1234-000' || k, 'test' || k || '@visit.com', k || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || k, 'IT005', '1 2 3 4', 'Admin');
-        UPDATE admin_tb
-           SET access_status = 'Y'
-        WHERE ad_id = 'test' || k;
-        k := k+1;
-    END LOOP;
-    WHILE j <= 127 LOOP
-        INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
-        VALUES('test' || j, 'test1234!' || j, '테스터' || j, '010101-3', 'L 010-1234-00' || j, 'test' || j || '@visit.com', j || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || j, 'IT005', '1 2 3 4', 'Admin');
+        VALUES('test' || j, 'test1234!' || j, '테스터' || j, '010101-3', 'L 010-1234-0' || j, 'test' || j || '@visit.com', j || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || j, 'IT005', '1 2 3 4', 'Admin');
         j := j+1;
     END LOOP;
 END;
 /
 COMMIT;
 
--- 관리자 요청 수 조회
+-- 등록 확인
+SELECT * FROM admin_tb
+ORDER BY ad_phone; -- 등록 시간이 동일해서 임시정렬
+
+-- 관리자 요청 수 조회 (페이지)
 SELECT *
   FROM(
       SELECT ROWNUM rn, ad.*
         FROM (SELECT *
                 FROM admin_tb
               WHERE access_status = 'N'
+              ORDER BY ad_regdate
               ) ad
       )
 WHERE rn BETWEEN 1 AND 10
@@ -200,9 +208,36 @@ ORDER BY rn;
 UPDATE admin_tb
    SET access_status = 'Y'
 WHERE ad_id in ('test21', 'test22', 'test23');
+rollback;
+-- 승인 관리자 목록 조회 (전체)
+SELECT *
+  FROM(
+      SELECT ROWNUM rn, ad.*
+        FROM (SELECT *
+                FROM admin_tb
+              WHERE access_status = 'Y'
+              ) ad
+      )
+ORDER BY rn;
 
--- 등록 확인
-SELECT * FROM admin_tb;
+-- 삭세 회원 카운트 (페이징)
+SELECT COUNT(*)
+  FROM customer_tb
+ WHERE delete_status = 'Y';
+-- 삭제 회원 조회 (오래된 순)
+SELECT *
+		  FROM(
+		      SELECT ROWNUM rn, cs.cs_id as ad_id, cs.cs_pwd as ad_pwd
+		        FROM (SELECT *
+		                FROM customer_tb
+		              WHERE delete_status = 'Y'
+		              ORDER BY cs_regDate
+		              ) cs
+		      )
+		WHERE rn BETWEEN 1 AND 10
+		ORDER BY rn;
+
+
 
 -- ==================[고객 회원가입 테이블]=====================
 DROP TABLE customer_tb CASCADE CONSTRAINTS;
@@ -298,8 +333,8 @@ UPDATE customer_tb
 -- 회원정보 탈퇴 정보 처리 후, customer_tb에서 해당 회원 삭제(delete_status = 'Y')(spring)
 UPDATE customer_tb 
    SET delete_status = 'Y' 
- WHERE cs_id = #{strId}
- 
+ WHERE cs_id = #{strId};
+
 -- =================[ 1:1 문의 내역 테이블 ]================================
 DROP TABLE inquiry_tb CASCADE CONSTRAINTS;
 CREATE TABLE inquiry_tb( 

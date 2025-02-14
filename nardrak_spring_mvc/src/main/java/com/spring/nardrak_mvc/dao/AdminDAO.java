@@ -27,7 +27,7 @@ public interface AdminDAO {
 		public int adminDeleteAction(String strId);
 		
 		// 관리자 요청 개수 카운트
-		public int AdminAccessCount();
+		public int AdminAccessCount(String listId);
 		
 		// 관리자 요청 조회
 		public List<AdminDTO> adminAccess(Map<String, Object> map);

@@ -51,7 +51,9 @@ public class AdminPaging {
 			}
 			endBlock = startBlock + pageBlock-1;
 			// 마지막 블록이 전체 페이지 보다 커지면 동일하게
-			if(endBlock > pageNum) endBlock = pageNum;
+			if(endBlock > pageNum) {
+				endBlock = pageNum;
+			}
 
 			// 이전버튼 :  시작 블록이 블록수 보다 클때만 크면  시작 블록 -= 블록수 
 			if(startBlock > pageBlock){
@@ -66,6 +68,16 @@ public class AdminPaging {
 			}
 			else{
 				next = pageNum;
+			}
+			// 받아온 현재페이지가 총 페이지 보다 작을 때 next를 누르면
+			if(pageNum < currentPage) {
+				// 현제페이지는 마지막 페이지
+				currentPage = pageNum;
+				// 리스트 조회
+				startRow = (currentPage-1) * pageSize + 1;
+				endRow = (currentPage) * pageSize;
+				// 블록 초기화
+				startBlock = pageNum;
 			}
 			
 		}

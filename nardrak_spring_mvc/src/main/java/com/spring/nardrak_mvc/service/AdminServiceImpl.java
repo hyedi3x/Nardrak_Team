@@ -256,14 +256,25 @@ public class AdminServiceImpl implements AdminService{
 		 AdminPaging paging = new AdminPaging(request.getParameter("page"));
 		 
 		 // 전체 요청수를 매개 변수로 전달하여, 전체 페이지수, 시작 글 번호, 마지막 글 번호 설정, 블록 함수 실행
-		 int totalCount = dao.AdminAccessCount();
-		 paging.setCount(totalCount);
+		 // 이거 get 방식으로 넘겨주자
+		 String listId = request.getParameter("listId");
+		 
+		 int totalCount = 0;
+		 totalCount = dao.AdminAccessCount(listId);
+		
+			 paging.setCount(totalCount);
 		 
 		 // 시작 글 번호, 끝 글번호만큼만 조회
 		 Map<String,Object> map = new HashMap<String, Object>();
 		 
 		 map.put("startRow", paging.getStartRow());
 		 map.put("endRow", paging.getEndRow());
+		 
+		
+		 System.out.println(listId);
+		 if( listId != null) {
+			 map.put("listId", listId);
+		 }
 		 model.addAttribute("list", dao.adminAccess(map));
 		 model.addAttribute("paging", paging);
 		 
