@@ -3,12 +3,12 @@
 DROP TABLE inquiryCS_tb CASCADE CONSTRAINTS;
 CREATE TABLE inquiryCS_tb( 
     i_num           VARCHAR2(36)    PRIMARY KEY,        -- 문의 ID (고유 ID - 중복되지 않는 UUID)
-    i_title         VARCHAR2(250)   NOT NULL,		    -- 문의 제목
+    i_title         VARCHAR2(250)   NOT NULL,		    -- 문의 제목 (한글기준 80자)
     i_category      VARCHAR2(50)    NOT NULL,           -- 문의 유형   
-	i_content       VARCHAR2(250)   NOT NULL,		    -- 문의 내용
-    i_imgUpload     VARCHAR2(250),                      -- 파일 첨부
-    i_writeDate     TIMESTAMP       DEFAULT sysdate,	    -- 작성일
-    cs_id           VARCHAR2(10)    NOT NULL,            -- 회원 ID(작성자)(FK)
+	i_content       VARCHAR2(600)   NOT NULL,		    -- 문의 내용 (한글기준 200자)
+    i_imgUpload     VARCHAR2(300),                      -- 파일 첨부 (한글기준 100자)
+    i_writeDate     TIMESTAMP       DEFAULT sysdate,	-- 작성일
+    cs_id           VARCHAR2(10)    NOT NULL,           -- 회원 ID(작성자)(FK)
     CONSTRAINT fk_inquiry_cs_id FOREIGN KEY (cs_id) REFERENCES customer_tb(cs_id)
     ON DELETE CASCADE
 );
@@ -39,9 +39,9 @@ WHERE CS.cs_id = 'hello2';
 DROP TABLE inquiryAD_tb CASCADE CONSTRAINTS;
 CREATE TABLE inquiryAD_tb( 
     adI_num           VARCHAR2(36)    PRIMARY KEY,        -- 답변 ID (고유 ID - 중복되지 않는 UUID)
-	adI_reply         VARCHAR2(250)   NOT NULL,		      -- 관리자 답변
+	adI_reply         VARCHAR2(600)   NOT NULL,		      -- 관리자 답변 내용 (한글기준 200자)
     adI_replyDate     TIMESTAMP       DEFAULT sysdate,    -- 관리자 답변 일시
-    adI_status        VARCHAR2(10)    NOT NULL,           -- 문의 상태(pending 대기중, answered 답변 완료, closed 종료)
+    adI_status        VARCHAR2(10)    NOT NULL,           -- 문의 상태(pending 대기중, answered 답변 완료)
     i_num             VARCHAR2(36)    NOT NULL,           -- 문의 ID (FK)
     ad_id             VARCHAR2(10)    NOT NULL,           -- 관리자 ID(작성자)(FK)
     CONSTRAINT fk_inum_inquiryCS_tb FOREIGN KEY (i_num) REFERENCES inquiryCS_tb(i_num)
@@ -52,7 +52,7 @@ CREATE TABLE inquiryAD_tb(
 
 -- =================[ 1:1 문의 답변 내역 (관리자ver) insert (sql) ]================================
 INSERT INTO inquiryAD_tb 
-VALUES (RAWTOHEX(SYS_GUID()),'oo으로 이미지 변경 완료하였습니다. 추가적으로 변경을 다시 하고 싶으시면, 다시 문의해주세요.', DEFAULT, 'pending', '705A55AC77F24B61871090CC74433D23', 'test1');
+VALUES (RAWTOHEX(SYS_GUID()),'oo으로 이미지 변경 완료하였습니다. 추가적으로 변경을 다시 하고 싶으시면, 다시 문의해주세요.', DEFAULT, 'pending', 'EDFEB0E2D03E4898B42BB522F10DD697', 'test1');
 
 COMMIT;
 
