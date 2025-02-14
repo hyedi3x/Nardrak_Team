@@ -104,7 +104,7 @@ public class AdminController {
 		
 		service.adminModifyAction(request, response, model);
 		
-		return "admin/join/actionResult";
+		return "admin/actionResultAdmin";
 	}
 	
 	// 관리자 삭제
@@ -115,7 +115,7 @@ public class AdminController {
 		
 		service.adminDeleteAction(request, response, model);
 		
-		return "admin/join/actionResult";
+		return "admin/actionResultAdmin";
 	}
 
 	// 관리자 등록 요청 조회 리스트
@@ -125,8 +125,12 @@ public class AdminController {
 		logger.info("<< url : adminAccess.ad >>" );
 		
 		service.adminAccess(request, response, model);
-		
-		return "admin/accessList/accessList_admin";
+		if(request.getParameter("listId").equals("ad")) {
+			return "admin/accessList/accessList_admin";
+		}
+		else{
+			return "admin/customerList/customerList_admin";
+		}
 	}
 
 	// 관리자 등록 요청 조회 리스트
@@ -137,6 +141,7 @@ public class AdminController {
 		
 		service.adminAccessAction(request, response, model);
 		
-		return "admin/join/actionResult";
+		return "admin/actionResultAdmin";
 	}
+	
 }

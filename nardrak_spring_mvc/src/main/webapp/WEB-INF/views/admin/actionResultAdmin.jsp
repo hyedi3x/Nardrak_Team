@@ -15,29 +15,58 @@
 		<c:when test="${insertCnt == 1}">
 			<script type="text/javascript">
 				alert("관리자 등록 성공");
-				window.location="${path}/main.do";
+				window.location="${path}/loginAdmin.ad";
 			</script>
 		</c:when>
 		<c:when test="${insertCnt == 0}">
 			<script type="text/javascript">
 				alert("관리자 등록 실패");
-				window.location="${path}/main.do";
+				window.location="${path}/loginAdmin.ad";
 			</script>
 		</c:when>
 		
 		<c:when test="${updateCnt == 1}">
 			<script type="text/javaScript">
 				alert("관리자 수정 성공");
-				window.location="${path}/main.do";
+				window.location="${path}/myInfo.do";
 			</script>
 		</c:when>
 		
 		<c:when test="${updateCnt == 0}">
 			<script type="text/javaScript">
 				alert("관리자 수정 실패");
+				window.location="${path}/myInfo.do";
+			</script>
+		</c:when>
+		
+		<c:when test="${deleteCnt == 1}">
+			<script type="text/javaScript">
+				alert("관리자 삭제 성공");
 				window.location="${path}/main.do";
 			</script>
 		</c:when>
+		
+		<c:when test="${deleteCnt == 0}">
+			<script type="text/javaScript">
+				alert("관리자 삭제 실패");
+				window.location="${path}/main.do";
+			</script>
+		</c:when>
+		
+		<c:when test="${accessCnt > 1 }">
+			<script type="text/javaScript">
+				alert("관리자 승인 완료");
+				window.location="${path}/adminAccess.ad";
+			</script>
+		</c:when>
+		<c:when test="${accessCnt == 0 }">
+			<script type="text/javaScript">
+				alert("관리자 승인 실패");
+				window.location="${path}/adminAccess.ad";
+			</script>
+			
+		</c:when>
+		
 	</c:choose>
 	
 	<!-- 권한별 로그인 성공 -->
@@ -56,7 +85,6 @@
 			</script>
 		</c:otherwise>
 	</c:choose>
-	
 	
 </body>
 </html>
