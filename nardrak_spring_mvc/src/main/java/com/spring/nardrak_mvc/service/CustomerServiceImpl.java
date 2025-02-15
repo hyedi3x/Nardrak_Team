@@ -186,6 +186,12 @@ public class CustomerServiceImpl implements CustomerService{
 	      // 3단계. 화면에서 입력받은 값을 가져와서 dto에 담는다.(id는 세션값)
 	      CustomerDTO dto = new CustomerDTO();
 	      dto.setCs_id((String)request.getSession().getAttribute("sessionID"));   //input 박스에서 입력받지 않고 세션ID를 사용
+	      
+	      // 관리자 페이지에서 접근하는 경우, sessionId가 아니라 dto id를 넘겨와서 사용
+	      if(request.getParameter("cs_id") != null) {
+		    	dto.setCs_id(request.getParameter("cs_id"));
+			}
+	      
 	      dto.setCs_pwd(request.getParameter("cs_pwd"));
 	      dto.setCs_name(request.getParameter("cs_name"));
 	      dto.setCs_gender(request.getParameter("cs_gender"));
