@@ -37,7 +37,7 @@
 				<c:forEach var="dto" items="${list}">
 					<tr class="listTr">	
 						<td>${dto.rn}</td>
-						<td><a href="${path}/pwdChkModify.do?user_id=${dto.ad_id}&user_pwd=${dto.ad_pwd}">${dto.ad_id} [정보 조회]</a></td>
+						<td><a href="${path}/pwdChkModify.do?admin_id=${dto.ad_id}&admin_pwd=${dto.ad_pwd}">${dto.ad_id} [정보 조회]</a></td>
 						<td>
 							<input type="checkbox" id="${dto.ad_id}" name="${dto.ad_id}" class="accessCheckbox" value="${dto.ad_id}">
 							<a href="#"><label class="chkLabel" for="${dto.ad_id}">${dto.access_status} [권한 승인]</label></a>

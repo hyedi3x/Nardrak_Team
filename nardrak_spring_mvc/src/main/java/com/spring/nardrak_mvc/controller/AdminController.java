@@ -118,7 +118,7 @@ public class AdminController {
 		return "admin/actionResultAdmin";
 	}
 
-	// 관리자 등록 요청 조회 리스트
+	// 관리자 등록 요청, 탈퇴요청 회원 조회 리스트
 	@RequestMapping("/adminAccess.ad")
 	public String adminAccess(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException{
@@ -133,13 +133,24 @@ public class AdminController {
 		}
 	}
 
-	// 관리자 등록 요청 조회 리스트
+	// 관리자 요청 승인
 	@RequestMapping("/adminAccessAction.ad")
 	public String adminAccessAction(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException{
 		logger.info("<< url : adminAccessAction.ad >>" );
 		
 		service.adminAccessAction(request, response, model);
+		
+		return "admin/actionResultAdmin";
+	}
+	
+	// 탈퇴 요청이 30일 지난 회원 삭제
+	@RequestMapping("/customerDelete.ad")
+	public String customerDelete(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : customerDelete.ad >>" );
+		
+		service.customerDelete(request, response, model);
 		
 		return "admin/actionResultAdmin";
 	}

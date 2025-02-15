@@ -100,8 +100,7 @@ public class AdminDAOImpl implements AdminDAO {
 			return sqlSession.selectList(namespace+"adminAccess", map);
 		}
 		else if(map.get("listId").equals("cs")) {
-			System.out.println(map.get("startRow"));
-			System.out.println(map.get("endRow"));
+
 			return  sqlSession.selectList(namespace+"customerDeleteList", map);
 		}
 		else {
@@ -117,6 +116,14 @@ public class AdminDAOImpl implements AdminDAO {
 			 System.out.println(index);
 		 }
 		return sqlSession.update(namespace+"adminAccessAction", ad_ids);
+	}
+	
+	// 탈퇴 요청 30일 지난 회원 삭제
+	@Override
+	public int customerDelete(List<String> cs_ids) {
+		System.out.println("DAO customerDelete");
+		
+		return sqlSession.delete(namespace+"customerDelete", cs_ids);
 	}
 	
 }

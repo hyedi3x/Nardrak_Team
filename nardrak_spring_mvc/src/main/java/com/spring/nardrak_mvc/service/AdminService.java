@@ -37,8 +37,12 @@ public interface AdminService {
 		public void adminAccess(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
 
-		// 관리자 요청 조회
+		// 관리자 요청 승인
 		public void adminAccessAction(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
-
+		
+		// 탈퇴 요청 30일 지난 회원 삭제
+		public void customerDelete(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
+		
 }

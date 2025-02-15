@@ -277,10 +277,9 @@ public class AdminServiceImpl implements AdminService{
 		 }
 		 model.addAttribute("list", dao.adminAccess(map));
 		 model.addAttribute("paging", paging);
-		 
 		
 	}
-
+	// 관리자 승인
 	@Override
 	public void adminAccessAction(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
@@ -293,5 +292,19 @@ public class AdminServiceImpl implements AdminService{
 			 idList.add(index);
 		 }
 		 model.addAttribute("accessCnt",dao.adminAccessAction(idList));
+	}
+
+	@Override
+	public void customerDelete(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("Service customerDelete");
+		
+		String cs_ids = request.getParameter("cs_ids");
+		String[] idarr = cs_ids.split(",");
+		List<String> idList = new ArrayList<String>();
+		 for(String index:idarr) {
+			 idList.add(index);
+		 }
+		model.addAttribute("csDeleteCnt", dao.customerDelete(idList));
 	}
 }
