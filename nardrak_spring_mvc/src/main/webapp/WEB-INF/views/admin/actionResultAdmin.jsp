@@ -53,18 +53,30 @@
 			</script>
 		</c:when>
 		
-		<c:when test="${accessCnt > 1 }">
+		<c:when test="${accessCnt >= 1 }">
 			<script type="text/javaScript">
 				alert("관리자 승인 완료");
-				window.location="${path}/adminAccess.ad";
+				window.location="${path}/adminAccess.ad?listId=ad";
 			</script>
 		</c:when>
 		<c:when test="${accessCnt == 0 }">
 			<script type="text/javaScript">
 				alert("관리자 승인 실패");
-				window.location="${path}/adminAccess.ad";
+				window.location="${path}/adminAccess.ad?listId=ad";
 			</script>
-			
+		</c:when>
+		
+		<c:when test="${csDeleteCnt > 1 }">
+			<script type="text/javaScript">
+				alert("회원 삭제 완료");
+				window.location="${path}/adminAccess.ad?listId=cs";
+			</script>
+		</c:when>
+		<c:when test="${csDeleteCnt == 0 }">
+			<script type="text/javaScript">
+				alert("회원 삭제 실패");
+				window.location="${path}/adminAccess.ad?listId=cs";
+			</script>
 		</c:when>
 		
 	</c:choose>

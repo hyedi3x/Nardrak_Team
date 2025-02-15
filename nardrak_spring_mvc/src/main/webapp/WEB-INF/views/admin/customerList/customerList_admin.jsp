@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>adminAccessList</title>
+<title>customerDeleteList</title>
 
 <!-- css -->
 <link rel="stylesheet" href="${path}/resources/css/admin/accessList/accessList_admin.css" />
@@ -26,9 +26,9 @@
 	
 	<div class="container">
 		
-		<form action="${path}/adminAccessAction.ad" method="post" name="joinForm" onsubmit="return csDelSubmitChk()">
+		<form action="${path}/customerDelete.ad" method="post" name="joinForm" onsubmit="return csDelSubmitChk()">
 			<!-- js에서 hidden에 선택된 값들을 배열로 담아서 hidden에 담는다. request.getP로 받으면 문자열 1,2,3형태가 된다. -->
-			<input type="hidden" id="ad_ids" name="ad_ids" value=""/>
+			<input type="hidden" id="cs_ids" name="cs_ids" value=""/>
 			<table>
 				<tr class="font20" >
 					<th id="noTh">no</th>
@@ -42,11 +42,11 @@
 				<c:forEach var="dto" items="${list}">
 					
 					<tr class="listTr">	
-						<td>dto.rn</td>
+						<td>${dto.rn}</td>
 						<td><a href="${path}/pwdChkModify.do?user_id=${dto.cs_id}&user_pwd=${dto.cs_pwd}">${dto.cs_id} [정보 조회]</a></td>
 						<td>
-							${dto.cs_regDate}<br>
-							<input type="checkbox" id="${dto.cs_id}" name="${dto.cs_id}" class="accessCheckbox" value="${dto.cs_id}" onclick="chkClick('${dto.cs_regDate}')">
+							경과일 : ${fn:substring(dto.timeDiff,0,2)}일<br>
+							<input type="checkbox" id="${dto.cs_id}" name="${dto.cs_id}" class="accessCheckbox" value="${dto.cs_id}" date="${fn:substring(dto.timeDiff,0,2)}" onchange="chkClick('${fn:substring(dto.timeDiff,0,2)}', '${dto.cs_id}')">
 							<a href="#"><label class="chkLabel" for="${dto.cs_id}">${dto.delete_status} [회원 삭제]</label></a>
 						</td>
 						<td>${fn:substring(dto.cs_regDate,0,10)}</td>
@@ -55,7 +55,7 @@
 				<tr>
 					<td class="BTNTd" colspan="4">
 						<input type="checkbox" id="checkedAll" onclick="allCheck()"><label for="checkedAll" class="font16" >전체 선택</label>
-						<input class="font16"  type="submit" id="accessBTN" value="권한주기"> 
+						<input class="font16"  type="submit" id="accessBTN" value="회원 삭제"> 
 					</td>
 				</tr>
 			</table>

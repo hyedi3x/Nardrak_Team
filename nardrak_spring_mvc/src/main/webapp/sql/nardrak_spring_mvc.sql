@@ -224,20 +224,37 @@ ORDER BY rn;
 SELECT COUNT(*)
   FROM customer_tb
  WHERE delete_status = 'Y';
--- 삭제 회원 조회 (오래된 순)
+
+-- 삭제 회원 조회, 임시로 삭제요청일이 아닌 계정 생성일로 실행 (오래된 순)
 SELECT *
-		  FROM(
-		      SELECT ROWNUM rn, cs.cs_id as ad_id, cs.cs_pwd as ad_pwd
-		        FROM (SELECT *
-		                FROM customer_tb
-		              WHERE delete_status = 'Y'
-		              ORDER BY cs_regDate
-		              ) cs
-		      )
-		WHERE rn BETWEEN 1 AND 10
-		ORDER BY rn;
+  FROM(
+      SELECT ROWNUM as rn, cs.*, (sysdate-cs_regDate) as timeDiff
+        FROM (SELECT *
+                FROM customer_tb
+              WHERE delete_status = 'Y'
+              ORDER BY cs_regDate
+              ) cs
+      )
+WHERE rn BETWEEN 1 AND 10
+ORDER BY rn;
 
+-- 생성 30일 넘는 회원으로 변경
+UPDATE customer_tb
+SET cs_regDate = '25/01/1 16:50:36.000000000'
+WHERE cs_id = 'customer1';
+COMMIT;
 
+-- 회원 삭제 요청
+UPDATE customer_tb
+SET delete_status = 'Y'
+WHERE cs_id = 'hello3';
+
+-- 회원 삭제
+DELETE customer_tb
+WHERE cs_id in ('hello', 'hello987@');
+
+SELECT *
+FROM customer_tb;
 
 -- ==================[고객 회원가입 테이블]=====================
 DROP TABLE customer_tb CASCADE CONSTRAINTS;
