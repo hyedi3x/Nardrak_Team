@@ -22,6 +22,8 @@ public class CustomerDTO {
 		private String cs_terms;		//약관 동의
 		private String delete_status;	//탈퇴자 여부(기본 N)
 		private String login_session;	//일반회원 세션(기본 Customer)
+		private String timeDiff;
+		private String rn;
 		
 		//기본 생성자
 		public CustomerDTO() {
@@ -29,9 +31,10 @@ public class CustomerDTO {
 		}
 
 		//매개변수 생성자
-		public CustomerDTO(String cs_id, String cs_pwd, String cs_name, String cs_gender, Date cs_birth, String cs_phone,
-				String cs_zip, String cs_email, String cs_tel, String cs_user_num, Timestamp cs_regDate, String cs_terms,
-				String delete_status, String login_session) {
+		public CustomerDTO(String cs_id, String cs_pwd, String cs_name, String cs_gender, Date cs_birth,
+				String cs_phone, String cs_zip, String cs_email, String cs_tel, String cs_user_num,
+				Timestamp cs_regDate, String cs_terms, String delete_status, String login_session, String timeDiff,
+				String rn) {
 			super();
 			this.cs_id = cs_id;
 			this.cs_pwd = cs_pwd;
@@ -47,6 +50,8 @@ public class CustomerDTO {
 			this.cs_terms = cs_terms;
 			this.delete_status = delete_status;
 			this.login_session = login_session;
+			this.timeDiff = timeDiff;
+			this.rn = rn;
 		}
 
 		//getter setter
@@ -162,13 +167,30 @@ public class CustomerDTO {
 			this.login_session = login_session;
 		}
 		
+		public String getTimeDiff() {
+			return timeDiff;
+		}
+
+		public void setTimeDiff(String timeDiff) {
+			this.timeDiff = timeDiff;
+		}
+
+		public String getRn() {
+			return rn;
+		}
+
+		public void setRn(String rn) {
+			this.rn = rn;
+		}
+		
 		//toString
 		@Override
 		public String toString() {
 			return "CustomerDTO [cs_id=" + cs_id + ", cs_pwd=" + cs_pwd + ", cs_name=" + cs_name + ", cs_gender="
-					+ cs_gender + ", cs_birth=" + cs_birth + ", cs_phone=" + cs_phone + ", cs_zip=" + cs_zip + ", cs_email="
-					+ cs_email + ", cs_tel=" + cs_tel + ", cs_user_num=" + cs_user_num + ", cs_regDate=" + cs_regDate
-					+ ", cs_terms=" + cs_terms + ", delete_status=" + delete_status + ", login_session=" + login_session
-					+ "]";
+					+ cs_gender + ", cs_birth=" + cs_birth + ", cs_phone=" + cs_phone + ", cs_zip=" + cs_zip
+					+ ", cs_email=" + cs_email + ", cs_tel=" + cs_tel + ", cs_user_num=" + cs_user_num + ", cs_regDate="
+					+ cs_regDate + ", cs_terms=" + cs_terms + ", delete_status=" + delete_status + ", login_session="
+					+ login_session + ", timeDiff=" + timeDiff + ", rn=" + rn + "]";
 		}
+		
 }

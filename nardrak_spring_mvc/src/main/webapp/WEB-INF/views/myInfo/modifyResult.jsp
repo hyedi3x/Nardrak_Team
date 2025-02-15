@@ -20,18 +20,27 @@
 			</c:if>
 
 			<c:if test="${sessionScope.login_session eq 'Admin'}">
-				<c:if test="${strId != null}">
+				<c:if test="${admin_id != null}">
 				    <script type="text/javascript">
-					    alert("${strId}님 회원정보 페이지로 이동합니다.");
+					    alert("${admin_id}님 회원정보 페이지로 이동합니다.");
 					   
-						window.location="${path}/adminModify.do?strId=${strId}";
+						window.location="${path}/adminModify.do?strId=${admin_id}";
 					</script>
 				 </c:if>
-				 <c:if test="${strId == null}">
-					<script type="text/javascript">
-					    alert("${sessionScope.sessionID}님 회원정보 인증 성공하였습니다.");
-						window.location="${path}/adminModify.do";
-					</script>
+				 <c:if test="${admin_id == null}">
+					 <c:if test="${user_id != null}">
+						<script type="text/javascript">
+						    alert("${user_id}님 회원정보 페이지로 이동합니다.");
+						   
+							window.location="${path}/customerModify.do?strId=${user_id}";
+						</script>
+					</c:if>
+					 <c:if test="${user_id == null}">
+						<script type="text/javascript">
+						    alert("${sessionScope.sessionID}님 회원정보 인증 성공하였습니다.");
+							window.location="${path}/adminModify.do";
+						</script>
+					</c:if>
 				</c:if>
 			</c:if>
 		</c:when>
