@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ include file="/WEB-INF/views/common/settings.jsp" %>
 
 <!DOCTYPE html>
@@ -9,6 +8,7 @@
 
 <title>1:1 문의 가이드 페이지</title>
 
+<!-- css -->
 <link href="${path}/resources/css/myInfo/myInfo_Inquiry/qnaGuide.css" rel="stylesheet">
 
 </head>

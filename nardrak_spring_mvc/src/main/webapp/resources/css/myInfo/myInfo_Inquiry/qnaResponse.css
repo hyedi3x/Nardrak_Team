@@ -1,0 +1,92 @@
+
+/* 전체 페이지 */
+#wrap {
+	display: flex;
+	width: 100%;
+}
+
+/* container 설정 */
+#container {
+	display: flex;
+	flex-direction: column;
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+}
+
+/* 현재 페이지 내비게이션 */
+#page_nav {
+	display: flex;
+	justify-content: flex-end;   /* 오른쪽 정렬*/
+    gap: 7px;  /* 요소 간의 간격 (display: flex일 때만 적용)*/
+    margin: 10px 0px;
+}
+
+/* .page_nav 네비게이션의 li 설정 */
+#page_nav li{
+	display: inline-block;
+	font-size: 14px;
+	color: #222222;   
+}
+
+/* .page_nav 네비게이션의 li a링크 설정 */
+#page_nav li a{
+   color: #555555;
+}
+
+/* 메뉴바 + 본문 내용 박스 */
+#content {
+	display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* 메뉴바 오른쪽 본문 내용 박스 */
+#contentRight {
+	display: flex;
+	flex-direction: column;
+	width: 72%;	
+	padding-top: 37px;
+}
+
+/* 타이틀 */
+#contentRight h1 {
+	padding-bottom: 20px;
+    border-bottom: 2px solid #222222;
+    margin: 0;
+}
+
+/* response_status 버튼에 대한 박스 */
+#res_A {
+	display: flex;
+    margin: 10px 4px;
+}
+
+/* a 태그 디자인 */
+#res_A a {
+    width: 80px;
+    margin: 0px 3px;
+    padding: 7px;
+    background-color: #64A0ff;
+    color: #ffffff;
+    text-align: center;
+    font-size: 13px;
+    border: 1px solid #64A0ff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* a 태그 hover 디자인 */
+#res_A a:hover {
+    width: 80px;
+    margin: 0px 3px;
+    padding: 7px;
+    background-color: #1E82ff;
+    color: #ffffff;
+    text-align: center;
+    font-size: 13px;
+    border: 1px solid #1E82ff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
