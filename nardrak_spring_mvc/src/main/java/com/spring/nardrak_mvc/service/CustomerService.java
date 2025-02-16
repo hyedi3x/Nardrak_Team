@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public interface CustomerService {
 	
@@ -34,11 +33,5 @@ public interface CustomerService {
 	//======================= [회원정보 탈퇴처리] =======================
 	public void deleteCustomer(HttpServletRequest request,HttpServletResponse response, Model model) 
 			throws ServletException, IOException;
-	
-	//======================= [1:1문의 등록처리] =======================
-	public void insertInquiry(MultipartHttpServletRequest request,HttpServletResponse response, Model model) 
-			throws ServletException, IOException;
-	
-	
 
 }
