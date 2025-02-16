@@ -1,5 +1,8 @@
 package com.spring.nardrak_mvc.service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -13,10 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.nardrak_mvc.dao.CustomerDAO;
 import com.spring.nardrak_mvc.dto.CustomerDTO;
 import com.spring.nardrak_mvc.dto.CustomerDeleteDTO;
+import com.spring.nardrak_mvc.dto.InquiryDTO;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -26,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Override
 	
-	//ID 중복확인 처리
+	//======================= [ID 중복확인 처리] =======================
 	public void inConfirmAction(HttpServletRequest request, HttpServletResponse response, Model model)
 	        throws ServletException, IOException {
 	      
@@ -66,14 +72,12 @@ public class CustomerServiceImpl implements CustomerService{
 	    response.getWriter().write(jsonResponse);
 	}
 
-	
 	// ======================= [회원가입 처리 페이지] =======================
 	   @Override
 	   public void signUpAction(HttpServletRequest request,HttpServletResponse response, Model model)
 	         throws ServletException, IOException {
 	      
 	      System.out.println("서비스 - signInAction()");
-	      
 	      
 	      // DTO 생성 (생년월일 검증 성공 시 회원가입 처리 계속 진행)
 	      CustomerDTO dto = new CustomerDTO();
@@ -103,8 +107,6 @@ public class CustomerServiceImpl implements CustomerService{
 	      String detail_ad = request.getParameter("detail");      // 상세주소
 	      String extra_ad = request.getParameter("extra");        // 참고항목
 	       
-	      
-	      
 	      // 상세주소가 없을 경우
 	      if(detail_ad.equals("")) {
 	    	  user_addr = postcode_ad + road_ad + jibun_ad + extra_ad;
@@ -147,7 +149,6 @@ public class CustomerServiceImpl implements CustomerService{
 	      model.addAttribute("signUpCnt", signUpCnt);
 	   }
 	
-	
 	// ======================= [로그인 성공 처리 페이지] =======================
 	public void loginResult(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
@@ -173,8 +174,6 @@ public class CustomerServiceImpl implements CustomerService{
 			request.getSession().setAttribute("login_session", "Customer"); // 사용자 유형 저장
 		}
 	}
-	
-	
 	
 	   //======================= [회원정보 수정처리] =======================
 	   @Override
@@ -282,5 +281,65 @@ public class CustomerServiceImpl implements CustomerService{
 	      model.addAttribute("deleteCnt", deleteCnt);
 	  
 	   }
-
+	   
+	    //======================= [ 1:1문의 등록 처리 ] =======================
+		@Override
+		public void insertInquiry(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException {
+			
+			System.out.println("서비스 - insertInquiry()");
+			
+			String strId = (String) request.getSession().getAttribute("sessionID");
+			
+			MultipartFile file = request.getFile("i_imgUpload");
+			System.out.println("file" + file);
+			
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/myInfo/myInfo_Inquiry/");
+			System.out.println("saveDir" + saveDir);
+			
+			String realDir = "C:\\DEV\\team_개인\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\myInfo\\myInfo_Inquiry\\";
+			System.out.println("realDir :" + realDir);
+			
+			FileInputStream fis = null;
+			FileOutputStream fos = null;
+			
+			try{
+				file.transferTo(new File(saveDir + file.getOriginalFilename()));
+				fis = new FileInputStream(saveDir + file.getOriginalFilename());
+				fos = new FileOutputStream(realDir + file.getOriginalFilename());
+				
+				int data = 0;
+				while((data = fis.read()) != -1) {
+					fos.write(data);
+				}
+				
+			// 화면에서 입력받은 값을 가져와서 dto에 담는다.(id는 세션값, 이름, 휴대폰 번호, 이메일가져옴)
+			InquiryDTO dto = new InquiryDTO();
+			dto.setCs_id(strId);
+			dto.setI_title(request.getParameter("i_title"));
+			
+	        String category1 = request.getParameter("i_category1");
+	        String category2 = request.getParameter("i_category2");
+		    
+	        String category = category1 + "," + category2;
+		      
+			dto.setI_category(category);
+			
+			dto.setI_content(request.getParameter("i_content"));
+			
+			String p_img1 = "/nardrak_spring_mvc/resources/upload/myInfo/myInfo_Inquiry/" + file.getOriginalFilename();
+			System.out.println("p_img1" + p_img1);
+			dto.setI_imgUpload(p_img1);
+		
+	        int inserCnt = dao.insertInquiry(dto);
+	      
+	        model.addAttribute("insertCnt", inserCnt);
+	        
+			}catch(IOException e){
+				e.printStackTrace();
+			}finally {
+				if(fis != null) fis.close();
+				if(fos != null) fos.close();
+			}
+		}
 }
