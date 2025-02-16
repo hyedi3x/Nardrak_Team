@@ -184,3 +184,14 @@ SELECT COUNT(*)
   FROM admin_tb
  WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
 
+-- 여행지 찜하기 테이블 (favorites_list)
+DROP TABLE favorites_list;
+CREATE TABLE favorites_list (
+    ad_id          VARCHAR2(10),                        -- 어드민 ID (외래키)
+    dest_id        VARCHAR2(10)    PRIMARY KEY,         -- 여행지 ID
+    dest_name      VARCHAR2(100)   NOT NULL,            -- 여행지 이름
+    image_url      VARCHAR2(255),                       -- 여행지 이미지 URL
+    description    VARCHAR2(1000),                      -- 여행지 설명
+    added_date     TIMESTAMP DEFAULT sysdate,           -- 찜한 날짜
+    CONSTRAINT fk_admin_tb FOREIGN KEY (ad_id) REFERENCES admin_tb(ad_id) ON DELETE CASCADE  -- 외래키 제약 (admin_tb)
+);
