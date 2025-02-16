@@ -23,4 +23,7 @@ public interface MyInfoService {
 	public void insertInquiry(MultipartHttpServletRequest request,HttpServletResponse response, Model model) 
 			throws ServletException, IOException;
 	
+	// ======================= [1:1 문의 내역 불러오기] =======================
+	public void inquiryResponse(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException;
 }
