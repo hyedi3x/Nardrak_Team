@@ -46,8 +46,8 @@
 		        	
 		        	<!-- response_status 버튼에 대한 박스 -->
 		        	<div id="res_A">
-						<a onclick="load('${path}/res_pending.do')">진행중</a>
-						<a onclick="load('${path}/res_complete.do')">답변완료</a>
+						<a onclick="load('${path}/res_pending.do?status=pending')">진행중</a>
+						<a onclick="load('${path}/res_complete.do?status=complete')">답변완료</a>
 		        	</div>
 		        	<!-- 진행 중, 답변 완료 버튼 클릭에 대한 Ajax 결과 페이지 -->
 		        	<div id="result">
