@@ -32,8 +32,21 @@ public class FavoriteController {
         return "customer/choose/choose";   
      }
 	
+	// ======================= [선호 여행지 목록 조회] =======================
+	@RequestMapping("/getUserFavorites.fa")
+	public String getUserFavorites(HttpServletRequest request,HttpServletResponse response , Model model)
+			throws ServletException, IOException{
+		logger.info("<< url = getUserfavorites.fa");
+		
+		// 선호 여행지 추가/해제 로직을 Service에 위임
+		service.favoriteList(request,response,model);
+		
+		// 선호 여행지 처리 후, 'choose' 페이지로 이동
+		return "customer/choose/choose"; 
+	}
+	
 	// ======================= [선호 여행지 정보등록] =======================
-	@RequestMapping("/choose.fa")
+	@RequestMapping("/favorite.fa")
 	public String favorite(HttpServletRequest request,HttpServletResponse response , Model model)
 			throws ServletException, IOException{
 		logger.info("<< url = favorite.fa");
