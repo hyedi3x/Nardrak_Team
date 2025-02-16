@@ -16,44 +16,45 @@
 
 </head>
 <body>
-   <!-- 주요 콘텐츠 영역 감싸는 컨테이너 역할 -->
-   <!-- header_SessionScope.jsp : banner page & header page -->
+    <!-- header_SessionScope.jsp : banner page & header page -->
 	<%@ include file="/WEB-INF/views/common/header_SessionScope.jsp" %>
 	
-   <div id="wrap"> 
-      <div id="container">
-         <ul id="page_nav">
-            <li>
-				<a href="${path}/main.do">홈</a> >
-			</li>
-			<li>
-				<a href="${path}/myInfo.do">마이페이지</a> >
-			</li>
-			<li>
-				<a href="${path}/qnaResponse.do">1:1 문의 내역</a>
-			</li>
-         </ul>
-         
-      <div id="content"> <!-- 메뉴바 + 본문 내용 들어갈 박스 -->
-         <!-- 왼쪽 메뉴바 -->
-         <div id="myInfo_left">
-            <%@ include file="/WEB-INF/views/myInfo/leftMenuTab/toggle_left.jsp" %>
-         </div>
-            
-         <!-- 본문 -->
-            <div id="contentRight">
-               <h1>1:1 문의</h1>
+	<!-- 주요 콘텐츠 영역 감싸는 컨테이너 역할 -->
+	<div id="wrap"> 
+		<div id="container">
+			<ul id="page_nav">
+				<li>
+					<a href="${path}/main.do">홈</a> >
+				</li>
+				<li>
+					<a href="${path}/myInfo.do">마이페이지</a> >
+				</li>
+				<li>
+					<a href="${path}/qnaResponse.do">1:1 문의</a>
+				</li>
+			</ul>
+	      
+			<div id="content"> <!-- 메뉴바 + 본문 내용 들어갈 박스 -->
+				<!-- 왼쪽 메뉴바 -->
+				<div id="myInfo_left">
+					<%@ include file="/WEB-INF/views/myInfo/leftMenuTab/toggle_left.jsp" %>
+				</div>
+	         
+				<!-- 본문 -->
+				<div id="contentRight">
+		        	<h1>1:1 문의</h1>
+
 				
-				<p class="txt_tbl_info">
-					<span class="required">*</span> 는 필수 입력 정보입니다.
-				</p>
+					<p class="txt_tb_info">
+						<span class="required">*</span> 는 필수 입력 정보입니다.
+					</p>
 				
-				<form name="qnaForm" id="qnaForm" action="inquiryAction.do" method="post" onsubmit="return requestInCheck()" enctype="multipart/form-data">
-					<table class="tbl_basic">
+					<form name="qnaForm" id="qnaForm" action="inquiryResult.do" method="post" onsubmit="return requestInCheck()" enctype="multipart/form-data">
+						<table class="tb_basic">
 							<tr>
 								<th>
 									<label for="i_title">
-										<span class="required">*</span>문의 제목
+										문의 제목 <span class="required">*</span>
 									</label>
 								</th>
 								<td>
@@ -64,7 +65,7 @@
 							<tr>
 								<th>
 									<label for="cs_name">
-										<span class="required">*</span>이름
+										이름 <span class="required">*</span>
 									</label>
 								</th>
 								<td>
@@ -75,7 +76,7 @@
 							<tr>
 								<th>
 									<label for="cs_phone">
-										<span class="required">*</span>휴대폰 번호
+										휴대폰 번호 <span class="required">*</span>
 									</label>
 								</th>
 								<td>
@@ -86,7 +87,7 @@
 							<tr>
 								<th>
 									<label for="i_category">
-										<span class="required">*</span>문의 유형
+										문의 유형 <span class="required">*</span>
 									</label>
 								</th>
 								
@@ -125,7 +126,7 @@
 							<tr>
 								<th>
 									<label for="cs_email">
-										<span class="required">*</span>이메일
+										이메일 <span class="required">*</span>
 									</label>
 								</th>
 								<td>
@@ -136,7 +137,7 @@
 							<tr>
 								<th>
 									<label for="i_content">
-										<span class="required">*</span>문의 내용
+										문의 내용 <span class="required">*</span>
 									</label>
 								</th>
 								<td>
@@ -151,29 +152,29 @@
 									<label for="i_imgUpload">파일 첨부</label>
 								</th>
 								<td>
+									<!-- accept="image/*" : 모든 이미지 파일 (PNG, JPG, GIF 등) -->
 									<input type="file" name="i_imgUpload" id="i_imgUpload" placeholder="파일 첨부" accept="image/*">
 								</td>
 							</tr>
-					</table>
-					
-				
-				<ul class="tbl_info_list">
-					<li>이름과 휴대폰 번호, 이메일은 수정하실 수 없습니다.</li>
-					<li>수정하고 싶다면, <a href="/nardrak_mvc/myInfo.do" class="btn_go_page">마이페이지</a>에서 수정하실 수 있습니다.</li>
-					<li>주민번호나 여권번호 등 개인정보는 작성에 유의하시기 바랍니다.</li>
-				</ul>
-					<!-- 버튼 -->
-					<div class="btn_area">
-						<input type="submit" id="req_button" class="req_button" value="문의하기">
-					</div>
-				</form>
+						</table>
+						
+						<!-- 사용자 정보 수정사항 권고 -->
+						<ul class="tb_info_list">
+							<li>※ 이름과 휴대폰 번호, 이메일은 수정하실 수 없습니다.</li>
+							<li>※ 수정하고 싶다면, <a href="/nardrak_mvc/myInfo.do" class="btn_go_page">마이페이지</a>에서 수정하실 수 있습니다.</li>
+							<li>※ 주민번호나 여권번호 등 개인정보는 작성에 유의하시기 바랍니다.</li>
+						</ul>
+						<!-- 버튼 -->
+						<div class="btn_area">
+							<input type="submit" id="req_button" class="req_button" value="문의하기">
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 	<!-- footer start -->
-		<%@ include file="/WEB-INF/views/common/footer.jsp" %>   
-	<!-- footer end -->
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>   
 </body>
 </html>
