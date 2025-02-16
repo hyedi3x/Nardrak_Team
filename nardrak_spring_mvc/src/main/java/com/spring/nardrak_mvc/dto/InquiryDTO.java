@@ -5,11 +5,13 @@ import java.sql.Timestamp;
 public class InquiryDTO {
 	
 	// 멤버 변수 : customer inquiry (inquiryCS_tb)
+	private String rn;              // 문의글 번호 정렬 위한 rowNum
     private String i_title;         // 문의 제목
     private String i_category;      // 문의 유형
     private String i_content;       // 문의 내용
     private String i_imgUpload;     // 파일 첨부 (이미지)
     private Timestamp i_writeDate;  // 작성일
+    private String i_status;        // 답변 상태
     private String cs_id;           // 고객 ID(FK)
 
     // 멤버 변수 : admin response (inquiryAD_tb)
@@ -25,15 +27,17 @@ public class InquiryDTO {
 	}
 
 	//매개변수 생성자
-	public InquiryDTO(String i_title, String i_category, String i_content, String i_imgUpload,
-			Timestamp i_writeDate, String cs_id, String adI_reply, Timestamp adI_replyDate,
+	public InquiryDTO(String rn, String i_title, String i_category, String i_content, String i_imgUpload,
+			Timestamp i_writeDate, String i_status, String cs_id, String adI_reply, Timestamp adI_replyDate,
 			String adI_status, String ad_id, String ad_dep) {
 		super();
+		this.rn = rn;
 		this.i_title = i_title;
 		this.i_category = i_category;
 		this.i_content = i_content;
 		this.i_imgUpload = i_imgUpload;
 		this.i_writeDate = i_writeDate;
+		this.i_status = i_status;
 		this.cs_id = cs_id;
 		this.adI_reply = adI_reply;
 		this.adI_replyDate = adI_replyDate;
@@ -41,8 +45,16 @@ public class InquiryDTO {
 		this.ad_id = ad_id;
 		this.ad_dep = ad_dep;
 	}
-
+	
 	//getter setter
+	public String getRn() {
+		return rn;
+	}
+
+	public void setRn(String rn) {
+		this.rn = rn;
+	}
+
 	public String getI_title() {
 		return i_title;
 	}
@@ -81,6 +93,14 @@ public class InquiryDTO {
 
 	public void setI_writeDate(Timestamp i_writeDate) {
 		this.i_writeDate = i_writeDate;
+	}
+
+	public String getI_status() {
+		return i_status;
+	}
+
+	public void setI_status(String i_status) {
+		this.i_status = i_status;
 	}
 
 	public String getCs_id() {
@@ -134,9 +154,10 @@ public class InquiryDTO {
 	//toString
 	@Override
 	public String toString() {
-		return "InquiryDTO [i_title=" + i_title + ", i_category=" + i_category + ", i_content="
-				+ i_content + ", i_imgUpload=" + i_imgUpload + ", i_writeDate=" + i_writeDate + ", cs_id=" + cs_id
-				+ ", adI_reply=" + adI_reply + ", adI_replyDate=" + adI_replyDate
-				+ ", adI_status=" + adI_status + ", ad_id=" + ad_id + ", ad_dep=" + ad_dep + "]";
+		return "InquiryDTO [rn=" + rn + ", i_title=" + i_title + ", i_category=" + i_category + ", i_content="
+				+ i_content + ", i_imgUpload=" + i_imgUpload + ", i_writeDate=" + i_writeDate + ", i_status=" + i_status
+				+ ", cs_id=" + cs_id + ", adI_reply=" + adI_reply + ", adI_replyDate=" + adI_replyDate + ", adI_status="
+				+ adI_status + ", ad_id=" + ad_id + ", ad_dep=" + ad_dep + "]";
 	}
+
 }
