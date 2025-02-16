@@ -1,0 +1,213 @@
+
+/* 전체 페이지 */
+#wrap {
+   display: flex;
+   width: 100%;
+}
+
+/* container 설정 */
+#container {
+   display: flex;
+   flex-direction: column;
+   width: 1000px;
+   margin: auto;
+   mid-width: 1000px;
+}
+
+/* 현재 페이지 내비게이션 */
+#page_nav {
+   display: flex;
+   justify-content: flex-end;   /* 오른쪽 정렬*/
+   gap: 7px;  /* 요소 간의 간격 (display: flex일 때만 적용)*/
+   margin: 10px 0px;
+}
+
+/* .page_nav 네비게이션의 li 설정 */
+#page_nav li{
+   display: inline-block;
+   font-size: 14px;
+   color: #222222;   
+}
+
+/* .page_nav 네비게이션의 li a링크 설정 */
+#page_nav li a{
+   color: #555555;
+}
+
+/* 메뉴바 + 본문 내용 박스 */
+#content {
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+   mid-width: 1000px;
+}
+
+/* 메뉴바 오른쪽 본문 내용 박스 */
+#contentRight {
+   display: flex;
+   flex-direction: column;
+   width: 72%;   
+   padding-top: 37px;
+}
+
+/* 타이틀 */
+#contentRight h1 {
+   padding-bottom: 20px;
+    border-bottom: 2px solid #222222;
+    margin: 0;
+}
+
+p.txt_tbl_info {
+    margin-bottom: 20px;
+    line-height: 1;
+    font-size: 14px;
+    text-align: right;
+}
+
+.required {
+    color: red;
+    font-weight: bold;
+    padding-right: 3px;
+}
+
+/* 타이틀 제외 본문 (form 태그) */
+#qnaForm {
+	margin: 0;
+    padding: 0;
+    font-weight: normal;	/* 폰트 굵기 노말 */
+}
+
+/* 기본 테이블 */
+table {
+	table-layout: fixed; 	/* 셀 너비를 고정 */
+    width: 100%;        	/* 표 전체 너비 지정 */
+    border-spacing: 0;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    mid-width: 1000px;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+th {
+    width: 150px;       		/* th의 고정 너비 */
+    overflow: hidden;    		/* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; 	/* 넘치는 내용은 생략(...) 처리 */
+    white-space: nowrap; 		/* 줄바꿈 방지 */
+  }
+
+table.tbl_basic th {
+    height: 60px;
+    padding: 0 20px;
+    border-bottom: 1px solid #ddd;
+    background: #f7f7f7;
+    color: #222;
+    vertical-align: middle;
+    text-align: left;
+}
+
+table.tbl_basic td {
+    height: 50px;
+    padding: 5px 20px;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+    text-align: left;
+}
+
+/* 문의 내용 박스 */
+textarea {
+    height: 180px;
+    width: 530px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    color: #222;
+    resize: none;
+    font-family: 'pr-font-regular', Sans-serif;
+    font-size: 15px;
+}
+
+ul.tbl_info_list {
+    margin-top: 10px;
+}
+
+ul.tbl_info_list li {
+    line-height: 22px;
+    font-size: 13px;
+    color: #555555;
+}
+
+.btn_go_page {
+    display: inline-block;
+    text-decoration: underline;
+    color: #555555;
+}
+
+/* 버튼 div */
+.btn_area {
+    margin: 40px 0;
+    text-align: center;
+}
+
+input[type="submit"]{
+	width: 140px;
+	height: 50px;
+	padding: 8px;
+    background-color: #64A0ff;
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    border: 0 none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	width: 140px;
+	height: 50px;
+	padding: 8px;
+    background-color: #1E82ff;
+    color: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #1E82ff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* input 박스 설정 */
+input[type="text"] {
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+}
+
+select#i_category1 {
+	width: 150px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+}
+
+select#i_category2 {
+	width: 150px;
+    height: 38px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+}
+
+/* 파일 첨부 박스 */
+input#i_imgUpload {
+	border: 1px solid #ddd;
+	width: 530px;
+    height: 38px;
+    padding: 6px 10px;
+}
