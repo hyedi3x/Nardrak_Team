@@ -69,11 +69,5 @@
        		SET delete_status = 'Y' 
        		WHERE cs_id = #{strId}
     	</update>
-    	
-    	<!-- 1:1 문의 등록 처리 -->
-    	<insert id="insertInquiry" parameterType="com.spring.nardrak_mvc.dto.InquiryDTO">
-    	INSERT INTO inquiryCS_tb(i_num, i_title, i_category, i_content, i_imgUpload, i_writeDate, cs_id)
-			VALUES (RAWTOHEX(SYS_GUID()),#{i_title}, #{i_category}, #{i_content}, #{i_imgUpload}, DEFAULT, #{cs_id})
-    	</insert>
     
    </mapper> 

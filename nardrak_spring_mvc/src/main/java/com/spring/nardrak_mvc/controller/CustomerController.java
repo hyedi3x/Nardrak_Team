@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.nardrak_mvc.service.CustomerService;
 
@@ -147,16 +145,5 @@ public class CustomerController {
 		   
 		 return "customer/actionResult";
 	  }
-	 
-	// ======================= [ 1:1 문의 등록 처리하고 완료메시지 ] =====================
-	@RequestMapping("/inquiryAction.do")
-	public String inquiryAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
-	 		throws ServletException, IOException {
-		logger.info("<<< url => /inquiryAction.do >>>");
-		   
-	 	service.insertInquiry(request, response, model);
-
-	 	return "myInfo/myInfo_Inquiry/inquiryAction";
-	 }
-	
+	 	
 }

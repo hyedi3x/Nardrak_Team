@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.nardrak_mvc.dto.CustomerDTO;
 import com.spring.nardrak_mvc.dto.CustomerDeleteDTO;
-import com.spring.nardrak_mvc.dto.InquiryDTO;
 
 @Repository
 public class CustomerDAOImpl implements CustomerDAO{
@@ -82,14 +81,6 @@ public class CustomerDAOImpl implements CustomerDAO{
 		System.out.println("CustomerDAOImpl - deleteCustomerRemove()");
 		
 		return sqlSession.update(namespace + "deleteCustomerRemove", strId);
-	}
-
-	//======================= [ 1:1문의 등록 ] =======================
-	@Override
-	public int insertInquiry(InquiryDTO dto) {
-		System.out.println("CustomerDAOImpl - insertInquiry()");
-		
-		return sqlSession.insert(namespace + "insertInquiry", dto);
 	}
 
 }
