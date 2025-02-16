@@ -8,6 +8,7 @@ CREATE TABLE inquiryCS_tb(
 	i_content       VARCHAR2(600)   NOT NULL,		    -- 문의 내용 (한글기준 200자)
     i_imgUpload     VARCHAR2(300),                      -- 파일 첨부 (한글기준 100자)
     i_writeDate     TIMESTAMP       DEFAULT sysdate,	-- 작성일
+    i_status        VARCHAR2(10)    DEFAULT 'pending',    -- 문의 상태 기본 값 : 대기중
     cs_id           VARCHAR2(10)    NOT NULL,           -- 회원 ID(작성자)(FK)
     CONSTRAINT fk_inquiry_cs_id FOREIGN KEY (cs_id) REFERENCES customer_tb(cs_id)
     ON DELETE CASCADE
@@ -15,7 +16,7 @@ CREATE TABLE inquiryCS_tb(
 
 -- =================[ 1:1 문의 내역 (고객ver) insert 예시(sql) ]================================
 INSERT INTO inquiryCS_tb 
-VALUES (RAWTOHEX(SYS_GUID()),'부산에 대한 이미지 변경 부탁드려요', '찜한 상품', '이미지가 구려요, 다른 걸로 변경해주세요', '/nardrak_mvc/resources/upload/myInfo/myInfo_Inquiry/스크린샷 2025-02-14 113950.png', DEFAULT, 'hello2');
+VALUES (RAWTOHEX(SYS_GUID()),'부산에 대한 이미지 변경 부탁드려요', '찜한 상품', '이미지가 구려요, 다른 걸로 변경해주세요', '/nardrak_mvc/resources/upload/myInfo/myInfo_Inquiry/스크린샷 2025-02-14 113950.png', DEFAULT, DEFAULT, 'hello2');
 
 COMMIT;
 
@@ -32,11 +33,35 @@ SELECT CS.cs_id,
        iCS.i_category,
        iCS.i_content,
        iCS.i_imgUpload,
-       iCS.i_writeDate
+       iCS.i_writeDate,
+       ics.i_status
 FROM customer_tb CS
 INNER JOIN inquiryCS_tb iCS
 ON CS.cs_id = iCS.cs_id  
-WHERE CS.cs_id = 'hello2';
+WHERE CS.cs_id = 'hello7' AND i_status='pending';
+
+-- =================[ 1:1 문의 내역 불러오기(고객ver) + Customer 테이블 조인 + 답변여부 상태 (spring)]================================
+SELECT *
+FROM (
+    SELECT ROWNUM as rn, cs.*
+    FROM (
+        SELECT CS.cs_id, CS.cs_email, CS.cs_phone, iCS.i_num, iCS.i_title, iCS.i_category,
+               iCS.i_content, iCS.i_imgUpload, iCS.i_writeDate, ics.i_status
+        FROM customer_tb CS
+        INNER JOIN inquiryCS_tb iCS ON CS.cs_id = iCS.cs_id
+        WHERE CS.cs_id = #{strId}
+        <choose>
+            <when test="status == 'pending'">
+                AND i_status = 'pending'
+            </when>
+            <when test="status == 'complete'">
+                AND i_status = 'complete'
+            </when>
+        </choose>
+    ) cs
+)
+WHERE rn BETWEEN #{startRow} AND #{endRow}
+ORDER BY rn;
 
 -- =================[ 1:1 문의 답변 내역 (관리자ver) 테이블 ]================================
 DROP TABLE inquiryAD_tb CASCADE CONSTRAINTS;
@@ -93,6 +118,3 @@ JOIN admin_tb AD
   ON AD.ad_id = iAD.ad_id
 WHERE CS.cs_id = 'hello2'
   AND AD.ad_id = 'test1';
-
-
-  
