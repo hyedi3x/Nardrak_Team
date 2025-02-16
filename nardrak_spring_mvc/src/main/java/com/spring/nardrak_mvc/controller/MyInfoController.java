@@ -127,33 +127,6 @@ public class MyInfoController {
 	    return "myInfo/myInfo_Inquiry/qnaGuide"; 
 	}
 	
-	// 1:1 문의내역 페이지
-	@RequestMapping("/qnaResponse.do")
-	public String qnaResponse(HttpServletRequest request, HttpServletResponse response, Model model) 
-	        throws ServletException, IOException {
-	    logger.info("<< url : qnaResponse.do >>");
-
-	    return "myInfo/myInfo_Inquiry/qnaResponse/qnaResponse"; 
-	}
-
-	// 진행 중인 1:1 문의내역
-	@RequestMapping("/res_pending.do")
-	public String res_pending(HttpServletRequest request, HttpServletResponse response, Model model) 
-	        throws ServletException, IOException {
-	    logger.info("<< url : res_pending.do >>");
-
-	    return "myInfo/myInfo_Inquiry/qnaResponse/res_pending"; 
-	}
-	
-	// 완료된 1:1 문의내역
-	@RequestMapping("/res_complete.do")
-	public String res_complete(HttpServletRequest request, HttpServletResponse response, Model model) 
-	        throws ServletException, IOException {
-	    logger.info("<< url : res_complete.do >>");
-
-	    return "myInfo/myInfo_Inquiry/qnaResponse/res_complete"; 
-	}
-	
 	// 1:1 문의 등록 페이지
 	@RequestMapping("/qnaRequest.do")
 	public String qnaRequest(HttpServletRequest request, HttpServletResponse response, Model model) 
@@ -175,5 +148,37 @@ public class MyInfoController {
 
 	 	return "myInfo/myInfo_Result";
 	 }
+	
+	// 1:1 문의내역 페이지
+	@RequestMapping("/qnaResponse.do")
+	public String qnaResponse(HttpServletRequest request, HttpServletResponse response, Model model) 
+	        throws ServletException, IOException {
+	    logger.info("<< url : qnaResponse.do >>");
+
+	    
+	    return "myInfo/myInfo_Inquiry/qnaResponse/qnaResponse"; 
+	}
+
+	// 진행 중인 1:1 문의내역
+	@RequestMapping("/res_pending.do")
+	public String res_pending(HttpServletRequest request, HttpServletResponse response, Model model) 
+	        throws ServletException, IOException {
+	    logger.info("<< url : res_pending.do >>");
+	    
+	    service.inquiryResponse(request, response, model);   // 1:1 문의 내역 불러오기
+
+	    return "myInfo/myInfo_Inquiry/qnaResponse/res_pending"; 
+	}
+	
+	// 완료된 1:1 문의내역
+	@RequestMapping("/res_complete.do")
+	public String res_complete(HttpServletRequest request, HttpServletResponse response, Model model) 
+	        throws ServletException, IOException {
+	    logger.info("<< url : res_complete.do >>");
+	    
+	    service.inquiryResponse(request, response, model);  // 1:1 문의 내역 불러오기
+
+	    return "myInfo/myInfo_Inquiry/qnaResponse/res_complete"; 
+	}
 
 }
