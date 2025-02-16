@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ import com.spring.nardrak_mvc.dao.MyInfoDAO;
 import com.spring.nardrak_mvc.dto.AdminDTO;
 import com.spring.nardrak_mvc.dto.CustomerDTO;
 import com.spring.nardrak_mvc.dto.InquiryDTO;
+import com.spring.nardrak_mvc.paging.AdminPaging;
 
 @Service
 public class MyInfoServiceImpl implements MyInfoService{
@@ -134,7 +136,7 @@ public class MyInfoServiceImpl implements MyInfoService{
 			dto.setI_content(request.getParameter("i_content"));   // 문의 내용
 			
 			// 데이터베이스에 저장할 이미지 파일의 경로를 생성
-			String p_img = "/nardrak_spring_mvc/resources/upload/myInfo/myInfo_Inquiry/" + file.getOriginalFilename();
+			String p_img = "/nardrak_mvc/resources/upload/myInfo/myInfo_Inquiry/" + file.getOriginalFilename();
 			dto.setI_imgUpload(p_img);
 		
 	        int inquiryImgs = dao.insertInquiry(dto);
@@ -148,5 +150,40 @@ public class MyInfoServiceImpl implements MyInfoService{
 			if(fos != null) fos.close();
 		}
 	}
+	
+	@Override
+	// ======================= [1:1 문의 내역 불러오기] =======================
+	public void inquiryResponse(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("MyInfoServiceImpl - inquiryResponse()");
+
+		// -------------[3단계] 화면에서 입력받은 값을 가져와서 파라미터로 담기 -------------
+		// 3-1단계. 세션에 저장된 ID를 가져와서 strId 변수에 담는다. 
+		String strId = (String)request.getSession().getAttribute("sessionID");
+		
+		// 페이지 번호 파라미터 가져오기
+	    String pageNum = request.getParameter("page");
+	    AdminPaging paging = new AdminPaging(pageNum);
+	    
+	    // 답변여부 상태를 불러옴 
+	    String status = request.getParameter("status");
+
+	    // 전체 게시글 수 설정
+	    Map<String, Object> maps = new HashMap<>();
+	    maps.put("strId", strId);
+	    maps.put("status", status); // status 파라미터 추가
+	    
+	    int totalCount = dao.inquiryResListCnt(maps);
+	    paging.setCount(totalCount);
+
+	    maps.put("startRow", paging.getStartRow());
+	    maps.put("endRow", paging.getEndRow());
+
+	    // 페이징된 게시글 목록 가져오기
+	    List<InquiryDTO> inquiryResList = dao.inquiryResList(maps);
+
+	    model.addAttribute("inquiryRes", inquiryResList);
+	    model.addAttribute("paging", paging); // 페이징 객체 모델에 추가
+	}	
 	
 }
