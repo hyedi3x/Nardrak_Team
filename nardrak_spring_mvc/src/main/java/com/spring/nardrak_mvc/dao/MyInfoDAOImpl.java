@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.nardrak_mvc.dto.AdminDTO;
 import com.spring.nardrak_mvc.dto.CustomerDTO;
+import com.spring.nardrak_mvc.dto.InquiryDTO;
 
 @Repository
 public class MyInfoDAOImpl implements MyInfoDAO{
@@ -41,4 +42,13 @@ public class MyInfoDAOImpl implements MyInfoDAO{
 		
 		return sqlSession.selectOne(namespace  +"userPwdChk", map);  // 0, 1 결과 반환		
 	}
+	
+	//======================= [ 1:1문의 등록 ] =======================
+	@Override
+	public int insertInquiry(InquiryDTO dto) {
+		System.out.println("CustomerDAOImpl - insertInquiry()");
+		
+		return sqlSession.insert(namespace + "insertInquiry", dto);
+	}
+
 }

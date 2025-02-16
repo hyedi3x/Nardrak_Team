@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.nardrak_mvc.service.MyInfoService;
 
@@ -163,5 +164,16 @@ public class MyInfoController {
 
 	    return "myInfo/myInfo_Inquiry/qnaRequest"; 
 	}
+	
+	// ======================= [ 1:1 문의 등록 처리하고 완료메시지 ] =====================
+	@RequestMapping("/inquiryResult.do")
+	public String inquiryResult(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
+	 		throws ServletException, IOException {
+		logger.info("<<< url => /inquiryResult.do >>>");
+		   
+	 	service.insertInquiry(request, response, model);
+
+	 	return "myInfo/myInfo_Result";
+	 }
 
 }
