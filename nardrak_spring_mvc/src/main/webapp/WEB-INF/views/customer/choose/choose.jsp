@@ -25,6 +25,9 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> <!-- Swiper 적용 -->
 <script src="${path}/resources/js/admin/choose.js" defer></script>
 
+<!-- 로그인 여부를 jquery로 작성해서 변수에 대입 -->
+<script> var isLogin = ${sessionScope.sessionID != null ? 'true' : 'false'}; </script>
+
  <!-- swiner styles -->
 
 </head>
@@ -131,7 +134,13 @@
 	                <div class="card-body">
 	                    <h5 class="card-title" style="align:center">서울</h5>
 	                    <p class="card-text">전통과 현대가 조화로운 대한민국의 수도</p>
-	                    <a href="${path}/WEB-INF/views/customer/choose/Se" class="btn-primary">자세히 보기</a>
+	                    <!-- 추가한 부분 -->
+	                    <input type="hidden" class="dest-id" value="Seoul">
+	                    <input type="checkbox" class="heart-checkbox">
+			            <label class="heart-label">
+			                <i class="fa-regular fa-heart"></i>  <!-- Font Awesome 하트 아이콘 -->
+			            </label>
+	                    <a href="#" class="btn-primary">자세히 보기</a>
 	                </div>
 	            </div>
 	        </div>
@@ -142,6 +151,12 @@
 	                <div class="card-body">
 	                      <h5 class="card-title">대구</h5>
 	                    <p class="card-text">역사와 전통, 그리고 맛있는 음식이 가득한 도시</p>
+	                    <!-- 추가한 부분 -->
+	                    <input type="hidden" class="dest-id" value="Daegu">
+	                    <input type="checkbox" class="heart-checkbox">
+			            <label class="heart-label">
+			                <i class="fa-regular fa-heart"></i>  <!-- Font Awesome 하트 아이콘 -->
+			            </label>
 	                    <a href="#" class="btn-primary">자세히 보기</a>
 	                </div>
 	            </div>
@@ -152,6 +167,12 @@
 	                <div class="card-body">
 	                    <h5 class="card-title">경주</h5>
 	                    <p class="card-text">천년을 이어온 유적지와 문화유산의 고도</p>
+	                    <!-- 추가한 부분 -->
+	                    <input type="hidden" class="dest-id" value="Gyeongju">
+	                    <input type="checkbox" class="heart-checkbox">
+			            <label class="heart-label">
+			                <i class="fa-regular fa-heart"></i>  <!-- Font Awesome 하트 아이콘 -->
+			            </label>
 	                    <a href="#" class="btn-primary">자세히 보기</a>
 	                </div>
 	            </div>
@@ -163,6 +184,12 @@
 	                <div class="card-body">
 	                    <h5 class="card-title">제주</h5>
 	                    <p class="card-text">자연의 신비와 평화로운 풍경이 어우러진 섬</p>
+	                    <!-- 추가한 부분 -->
+	                    <input type="hidden" class="dest-id" value="Jeju">
+	                    <input type="checkbox" class="heart-checkbox">
+			            <label class="heart-label">
+			                <i class="fa-regular fa-heart"></i>  <!-- Font Awesome 하트 아이콘 -->
+			            </label>
 	                    <a href="#" class="btn-primary">자세히 보기</a>
 	                </div>
 	            </div>
@@ -174,6 +201,12 @@
 	                <div class="card-body">
 	                    <h5 class="card-title">부산</h5>
 	                    <p class="card-text">해양문화와 활기 넘치는 항구도시, 해변의 낭만</p>
+	                    <!-- 추가한 부분 -->
+	                    <input type="hidden" class="dest-id" value="Busan">
+	                    <input type="checkbox" class="heart-checkbox">
+			            <label class="heart-label">
+			                <i class="fa-regular fa-heart"></i>  <!-- Font Awesome 하트 아이콘 -->
+			            </label>
 	                    <a href="#" class="btn-primary">자세히 보기</a>
 	                </div>
 	            </div>
@@ -185,6 +218,12 @@
 	                <div class="card-body">
 	                    <h5 class="card-title">광주</h5>
 	                    <p class="card-text">민주화운동의 역사적 의미와 풍부한 문화유산</p>
+	                    <!-- 추가한 부분 -->
+	                    <input type="hidden" class="dest-id" value="Gwangju">
+	                    <input type="checkbox" class="heart-checkbox">
+			            <label class="heart-label">
+			                <i class="fa-regular fa-heart"></i>  <!-- Font Awesome 하트 아이콘 -->
+			            </label>
 	                    <a href="#" class="btn-primary">자세히 보기</a>
 	                </div>
 	            </div>
@@ -213,7 +252,25 @@
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>   
 <!-- footer 종료 -->
 
-
+<!-- 여행지 상세정보 모달 -->
+<div class="modal fade" id="travelInfoModal" tabindex="-1" aria-labelledby="travelInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="travelInfoModalLabel">여행지 정보</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="여행지 이미지" class="img-fluid">
+        <h5 id="modalTitle"></h5>
+        <p id="modalDescription"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
