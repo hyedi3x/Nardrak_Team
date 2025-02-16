@@ -12,62 +12,62 @@
 
 </head>
 <body>
-<div id="tableWrap">
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">NO</th>
-				<th scope="col">이미지</th>
-				<th scope="col">문의 제목</th>
-				<th scope="col">카테고리</th>
-				<th scope="col">답변 여부</th>
-				<th scope="col">등록일</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:choose>
-				<c:when test="${empty qnaRequestList}">
-					<tr>
-						<td colspan="6">등록된 게시물이 없습니다.</td>
-					</tr>
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="dto" items="${qnaRequestList}">
-						<tr>
-							<td>${dto.rn}</td>
-							<td><img src="${dto.i_imgUpload}" alt="이미지 없음" width="50"/></td>
-							<td>${dto.i_title}</td>
-							<td>${dto.i_category}</td>
-							<td>${dto.adI_reply}</td>
-							<td>${dto.i_writeDate}</td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</tbody>
-	</table>
+    <div id="tableWrap">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 50px">NO</th>
+                    <th scope="col" style="width: 90px">이미지</th>
+                    <th scope="col"style="width: 200px">문의 제목</th>
+                    <th scope="col" style="width: 130px">카테고리</th>
+                    <th scope="col" style="width: 120px">답변 여부</th>
+                    <th scope="col" style="width: 130px">등록일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:choose>
+                    <c:when test="${empty inquiryRes}">
+                        <tr>
+                            <td colspan="7">등록된 게시물이 없습니다.</td>
+                        </tr>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="dto" items="${inquiryRes}">
+                            <tr>
+                                <td style="width: 50px">${dto.rn}</td>
+                                <td style="width: 90px"><img src="${dto.i_imgUpload}" alt="img x" width="50px" /></td>
+                                <td style="width: 200px">${dto.i_title}</td>
+                                <td style="width: 130px">${dto.i_category}</td>
+								<td style="width: 120px">${dto.i_status}</td>
+                                <td style="width: 130px">${fn:substring(dto.i_writeDate, 0, 10)}</td>
+                            </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+            </tbody>
+        </table>
 
-	<%-- 페이징 처리 --%>
-	<div id="pagingTd" class="font20">
-		<c:if test="${paging.startBlock > paging.pageBlock}">
-			<a href="${path}/qnaResponse.do?page=${paging.prev}"> << 이전 </a>
-		</c:if>
+		<%-- 페이징 처리 --%>
+        <div id="pagingTd" class="font20">
+            <c:if test="${paging.prev > 0}">
+                <a href="${path}/qnaResponse.do?page=${paging.prev}"> &lt;&lt; 이전 </a>
+            </c:if>
 
-		<c:forEach var="num" begin="${paging.startBlock}" end="${paging.endBlock}">
-			<c:choose>
-				<c:when test="${num == paging.currentPage}">
-					<strong>${num}</strong>
-				</c:when>
-				<c:otherwise>
-					<a href="${path}/qnaResponse.do?page=${num}">${num}</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
+            <c:forEach var="num" begin="${paging.startBlock}" end="${paging.endBlock}">
+                <c:choose>
+                    <c:when test="${num == paging.currentPage}">
+                        <strong>${num}</strong>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="${path}/qnaResponse.do?page=${num}">${num}</a>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
 
-		<c:if test="${paging.endBlock < paging.pageNum}">
-			<a href="${path}/qnaResponse.do?page=${paging.next}"> 다음 >> </a>
-		</c:if>
-	</div>
-</div>
+            <c:if test="${paging.next <= paging.pageNum}">
+                <a href="${path}/qnaResponse.do?page=${paging.next}"> 다음 &gt;&gt; </a>
+            </c:if>
+        </div>
+    </div>
 </body>
 </html>
