@@ -152,5 +152,16 @@ public class MyInfoController {
 
 	    return "myInfo/myInfo_Inquiry/qnaResponse/res_complete"; 
 	}
+	
+	// 1:1 문의 등록 페이지
+	@RequestMapping("/qnaRequest.do")
+	public String qnaRequest(HttpServletRequest request, HttpServletResponse response, Model model) 
+	        throws ServletException, IOException {
+	    logger.info("<< url : qnaRequest.do >>");
+	    
+	    service.myInfo(request, response, model); // 사용자 정보 메서드
+
+	    return "myInfo/myInfo_Inquiry/qnaRequest"; 
+	}
 
 }
