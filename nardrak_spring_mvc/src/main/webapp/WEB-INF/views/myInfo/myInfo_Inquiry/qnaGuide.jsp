@@ -22,7 +22,7 @@
 			<h3 id="guideH4">1:1 문의입니다.</h3>
 			<p id="guideMent"> 고객님의 문의사항에 대한 신속한 해결을 위해 최선을 다하겠습니다.</p>
 			<div id="guideButton">
-				<input type="button" value="1:1 문의하기" onclick="window.location='${path}/qnaWrite.do'">	
+				<input type="button" value="1:1 문의하기" onclick="window.location='${path}/qnaRequest.do'">	
 				<input type="button" value="답변 보기" onclick="window.location='${path}/qnaResponse.do'">	
 			</div>
 		</div>
