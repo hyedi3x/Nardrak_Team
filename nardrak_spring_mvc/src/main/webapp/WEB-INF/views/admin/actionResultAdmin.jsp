@@ -66,7 +66,7 @@
 			</script>
 		</c:when>
 		
-		<c:when test="${csDeleteCnt > 1 }">
+		<c:when test="${csDeleteCnt >= 1 }">
 			<script type="text/javaScript">
 				alert("회원 삭제 완료");
 				window.location="${path}/adminAccess.ad?listId=cs";
