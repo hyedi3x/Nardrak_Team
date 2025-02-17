@@ -48,7 +48,7 @@
 				<li>
 					<h4> 회원 관리 </h4>
 					<ul class="info_menu">
-						<li class="on"><a onclick="load('${path}/adminAccess.ad?listId=cs')">☞ 탈퇴 회원 정보 관리 </a></li>
+						<li class="on"><a onclick="window.location='${path}/adminAccess.ad?listId=cs'">☞ 탈퇴 회원 정보 관리 </a></li>
 					</ul>
 				</li>
 				
@@ -75,7 +75,7 @@
 					<ul class="info_menu">					
 			            <li class="on"><a onclick="load('${path}/certifyInfo.do?certify=modify')">☞ 개인정보 설정</a></li>
 			            <li class="on"><a onclick="load('${path}/certifyInfo.do?certify=delete')">☞ 회원 탈퇴</a></li>
-						<li class="on"><a onclick="load('${path}/adminAccess.ad?listId=ad')">☞ 관리자 승인 요청 조회 </a></li>
+						<li class="on"><a onclick="window.location='${path}/adminAccess.ad?listId=ad'">☞ 관리자 승인 요청 조회 </a></li>
 					</ul>
 				</li>	
 			</ul>
