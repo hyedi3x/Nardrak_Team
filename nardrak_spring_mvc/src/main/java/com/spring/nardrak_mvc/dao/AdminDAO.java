@@ -27,12 +27,14 @@ public interface AdminDAO {
 		public int adminDeleteAction(String strId);
 		
 		// 관리자 요청 개수 카운트
-		public int AdminAccessCount();
+		public int AdminAccessCount(String listId);
 		
 		// 관리자 요청 조회
 		public List<AdminDTO> adminAccess(Map<String, Object> map);
 		
-		// 관리자 요청 조회
+		// 관리자 요청 승인
 		public int adminAccessAction(List<String> ad_ids);
-
+		
+		// 탈퇴 요청 30일 지난 회원 삭제
+		public int customerDelete(List<String> cs_ids);
 }
