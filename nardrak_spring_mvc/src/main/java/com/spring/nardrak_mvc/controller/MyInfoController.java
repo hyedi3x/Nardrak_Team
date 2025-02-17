@@ -34,44 +34,40 @@ public class MyInfoController {
 	    return "myInfo/myInfo";
 	}
 
-	// 개인정보 설정 탭 클릭시 오른쪽에 표현되는 페이지 
+	// 개인정보 설정 탭 클릭시 오른쪽에 표현되는 페이지 (수정, 삭제 비밀번호 입력란)
 	@RequestMapping("/certifyInfo.do")
 	public String certifyInfo(HttpServletRequest request, HttpServletResponse response, Model model) 
 	        throws ServletException, IOException {
 	    logger.info("<< url : certifyInfo.do >>");
 	    
-	    return "myInfo/leftMenuTab/pwdChkModify"; 
-	}
-	
-	// 회원 탈퇴 탭 클릭시 오른쪽에 표현되는 페이지 
-	@RequestMapping("/certifyDelete.do")
-	public String certifyDelete(HttpServletRequest request, HttpServletResponse response, Model model) 
-	        throws ServletException, IOException {
-	    logger.info("<< url : certifyDelete.do >>");
-	    
-	    return "myInfo/leftMenuTab/pwdChkDelete";
+	    String certify = request.getParameter("certify");   // ${path}/certifyInfo.do?certify=
+	    model.addAttribute("certify", certify); // certify 파라미터 값을 모델에 추가
+
+	    return "myInfo/leftMenuTab/pwdChk";
 	}
 	
 	// 수정 전 비밀번호 체크 페이지
 	@RequestMapping("/pwdChkModify.do")
-	public String pwdChkModify(HttpServletRequest request, HttpServletResponse response, Model model) 
+	public String pwdChkModify(HttpServletRequest request, HttpServletResponse response, Model model)
 	        throws ServletException, IOException {
 	    logger.info("<< url : pwdChkModify.do >>");
-	    
-	    service.pwdChk(request, response, model);    // 비밀번호 인증 
 
-	    return "myInfo/modifyResult"; 
+	    service.pwdChk(request, response, model);
+	    model.addAttribute("resultType", "modify"); // 결과 타입 추가
+
+	    return "myInfo/myInfo_Result";
 	}
-	
+
 	// 탈퇴 전 비밀번호 체크 페이지
 	@RequestMapping("/pwdChkDelete.do")
-	public String pwdChkDelete(HttpServletRequest request, HttpServletResponse response, Model model) 
+	public String pwdChkDelete(HttpServletRequest request, HttpServletResponse response, Model model)
 	        throws ServletException, IOException {
 	    logger.info("<< url : pwdChkDelete.do >>");
-	    
-	    service.pwdChk(request, response, model);    // 비밀번호 인증 
 
-	    return "myInfo/deleteResult";
+	    service.pwdChk(request, response, model);
+	    model.addAttribute("resultType", "delete"); // 결과 타입 추가
+
+	    return "myInfo/myInfo_Result";
 	}
 	
 	// 수정 버튼 클릭 시 이동할 페이지 (수정 정보 페이지)
@@ -138,7 +134,7 @@ public class MyInfoController {
 	    return "myInfo/myInfo_Inquiry/qnaRequest"; 
 	}
 	
-	// ======================= [ 1:1 문의 등록 처리하고 완료메시지 ] =====================
+	// 1:1 문의 등록 처리하고 완료메시지
 	@RequestMapping("/inquiryResult.do")
 	public String inquiryResult(MultipartHttpServletRequest request, HttpServletResponse response, Model model) 
 	 		throws ServletException, IOException {
@@ -154,12 +150,11 @@ public class MyInfoController {
 	public String qnaResponse(HttpServletRequest request, HttpServletResponse response, Model model) 
 	        throws ServletException, IOException {
 	    logger.info("<< url : qnaResponse.do >>");
-
-	    
+   
 	    return "myInfo/myInfo_Inquiry/qnaResponse/qnaResponse"; 
 	}
 	
-	// 1:1 문의내역
+	// 1:1 문의내역 (status가 pending인지, complete인지 구분)
 	@RequestMapping("/res_status.do")
 	public String res_status(HttpServletRequest request, HttpServletResponse response, Model model)
 	        throws ServletException, IOException {
