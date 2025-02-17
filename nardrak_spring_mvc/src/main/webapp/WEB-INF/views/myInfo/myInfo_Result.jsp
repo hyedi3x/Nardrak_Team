@@ -73,25 +73,23 @@
                     </c:otherwise>
                 </c:choose>
             </c:when>
-            <%-- 1:1 문의 등록 결과 --%>
-            <c:when test="${resultType == 'inquiry'}">
-                <c:choose>
-                    <c:when test="${inquiryImgs == 0}">
-                        <script type="text/javascript">
-                            alert("1:1 문의등록 실패!!");
-                            window.location="${path}/qnaRequest.do";
-                        </script>
-                    </c:when>
-                    <c:otherwise>
-                        <script type="text/javascript">
-                            alert("1:1 문의등록 성공!!");
-                            window.location="${path}/myInfo.do";
-                        </script>
-                    </c:otherwise>
-                </c:choose>
-            </c:when>
             <c:otherwise>
                 <p>잘못된 접근입니다.</p>
+            </c:otherwise>
+        </c:choose>
+        <%-- 1:1 문의 등록 결과 --%>
+        <c:choose>
+            <c:when test="${inquiryImgs == 0}">
+                <script type="text/javascript">
+                    alert("1:1 문의등록 실패!!");
+                    window.location="${path}/qnaRequest.do";
+                </script>
+            </c:when>
+            <c:otherwise>
+                <script type="text/javascript">
+                    alert("1:1 문의등록 성공!!");
+                    window.location="${path}/myInfo.do";
+                </script>
             </c:otherwise>
         </c:choose>
     </div>
