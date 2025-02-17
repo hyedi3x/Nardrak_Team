@@ -95,29 +95,24 @@
 									<div id="selectData">
 										<select title="문의 유형 선택" name="i_category1" id="i_category1">
 											<option value="">선택하세요</option>
-											<option value="A">국내여행</option>
+											<option value="국내여행">국내여행</option>
 										</select>
 									
 										<select title="지역 선택" name="i_category2" id="i_category2">
 											<option value="">선택하세요</option>
-											<option value="00">전국</option>
-											<option value="11">서울특별시</option>
-											<option value="21">부산광역시</option>
-											<option value="22">대구광역시</option>
-											<option value="23">인천광역시</option>
-											<option value="24">광주광역시</option>
-											<option value="25">대전광역시</option>
-											<option value="26">울산광역시</option>
-											<option value="29">세종특별자치시</option>
-											<option value="31">경기도</option>
-											<option value="32">강원도</option>
-											<option value="33">충청북도</option>
-											<option value="34">충청남도</option>
-											<option value="35">전라북도</option>
-											<option value="36">전라남도</option>
-											<option value="37">경상북도</option>
-											<option value="38">경상남도</option>
-											<option value="39">제주특별자치도</option>
+											<option value="수도권">수도권</option>
+											<option value="강원">강원</option>
+											<option value="충북">충북</option>
+											<option value="충남">충남</option>
+											<option value="경북">경북</option>
+											<option value="경남">경남</option>
+											<option value="전북">전북</option>
+											<option value="전남">전남</option>
+										</select>
+										
+										<select title="지역 선택" name="i_category3" id="i_category3">
+											<option value="">선택하세요</option>
+											<!-- 초기 옵션은 "선택하세요"로 설정 -->
 										</select>
 									</div>
 								</td>
