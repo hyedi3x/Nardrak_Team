@@ -77,6 +77,7 @@
 					<ul class="info_menu">
 			            <li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 개인정보 설정</a></li>
 			            <li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 회원 탈퇴</a></li>
+			            <li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 관리자 승인 요청 조회 </a></li>
 					</ul>
 				</li>	
 			</ul>
