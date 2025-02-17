@@ -5,14 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>진행 중인 1:1 문의내역</title>
+<title>1:1 문의내역</title>
 
 <!-- css -->
 <link href="${path}/resources/css/myInfo/myInfo_Inquiry/res_status.css" rel="stylesheet">
 
 </head>
 <body>
-		<c:set var="status" value="${param.status == 'complete' ? 'complete' : 'pending'}" scope="request"/>	<c:choose>
+	<c:set var="status" value="${param.status == 'complete' ? 'complete' : 'pending'}" scope="request"/>	
+	<c:choose>
 	    <c:when test="${param.status == 'pending'}">
 	        <div id="tableWrap">
 	            <table>
