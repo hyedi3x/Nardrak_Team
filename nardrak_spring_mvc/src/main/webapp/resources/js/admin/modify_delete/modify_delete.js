@@ -60,3 +60,9 @@ function deleteSubmit(){
 		return confirm('정말 삭제하시겠습니까?');
 	}
 }
+
+function myInfoBTN(path){
+	if(confirm('마이페이지로 돌아가시겠습니까?')){
+		window.location=path+"/myInfo.do";
+	}
+}
