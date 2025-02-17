@@ -1,5 +1,6 @@
 package com.spring.nardrak_mvc.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.nardrak_mvc.dto.AdminDTO;
 import com.spring.nardrak_mvc.dto.CustomerDTO;
+import com.spring.nardrak_mvc.dto.InquiryDTO;
 
 @Repository
 public class MyInfoDAOImpl implements MyInfoDAO{
@@ -40,5 +42,29 @@ public class MyInfoDAOImpl implements MyInfoDAO{
 		System.out.println("MyInfoDAOImpl - userPwdChk()");
 		
 		return sqlSession.selectOne(namespace  +"userPwdChk", map);  // 0, 1 결과 반환		
+	}
+	
+	//======================= [ 1:1 문의 등록 ] =======================
+	@Override
+	public int insertInquiry(InquiryDTO dto) {
+		System.out.println("CustomerDAOImpl - insertInquiry()");
+		
+		return sqlSession.insert(namespace + "insertInquiry", dto);
+	}
+	
+	//======================= [ 1:1 문의 내역 불러오기] =======================
+	@Override
+	public List<InquiryDTO> inquiryResList(Map<String, Object> maps) {
+	    System.out.println("CustomerDAOImpl - inquiryResList()");
+
+	    return sqlSession.selectList(namespace + "inquiryResList", maps);
+	}
+
+	//======================= [ 1:1 문의 내역 전체 게시글 수를 반환 ] =======================
+	@Override
+	public int inquiryResListCnt(Map<String, Object> maps) {
+	    System.out.println("CustomerDAOImpl - inquiryResListCount()");
+	    
+	    return sqlSession.selectOne(namespace + "inquiryResListCount", maps);
 	}
 }

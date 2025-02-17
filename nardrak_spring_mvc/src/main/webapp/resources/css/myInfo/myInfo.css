@@ -5,7 +5,7 @@
 	display: flex;
     flex-direction: column;
     margin: auto;  /* 페이지 가운데로 요소 정렬 */
-    width: 850px;    
+    width: 1000px;    
 }
 
 /* [myInfoTitle 요소] */
@@ -26,7 +26,7 @@
 	margin: auto;  /* 페이지 가운데로 요소 정렬 */
 	padding: 0px 20px;   /* 상하 여백 */
     width: 100%;    
-    height: 600px;
+    height: 800px;
     justify-content: center;
 }
 
@@ -81,9 +81,9 @@
 #personInfo h3 {
 	display: flex;
 	align-items: flex-end;
-	width: 30%;
+	width: 23%;
 	margin: 0;
-	color: #342929;  /* 진한 회색 */
+	color: #222222;  /* 진한 회색 */
 }
 
 /* 아이디 */
@@ -92,8 +92,8 @@
     align-items: flex-end;
     font-size: 15px;
     margin-right: 8px;
-    color: #9dbebb;
-    border-bottom: 1px solid #9dbebb;
+    color: #222222;
+    border-bottom: 1px solid #222222;
 }
 
 /* 가입일 */
@@ -103,13 +103,13 @@
     margin: 0;
     justify-content: flex-end;
     font-size: 14px;
-    width: 53%;
-    color: #729ea1;
+    width: 60%;
+    color: #222222;
 }
 
 /* 이메일 */
 #personEmail span {
 	font-size: 16px;
-	color: #729ea1; 
+	color: #555555; 
 }
 

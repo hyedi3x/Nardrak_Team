@@ -1,0 +1,48 @@
+
+#tableWrap {
+	width: 100%;	
+}
+
+#tableWrap table {
+	table-layout: fixed; 	/* 셀 너비를 고정 */
+    width: 100%;        	/* 표 전체 너비 지정 */
+    border-spacing: 0;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, .149);
+}
+
+#tableWrap th {
+    height: 45px;
+    border-bottom: 1px solid #ddd;
+    background: #f7f7f7;
+    color: #222;
+    text-align: center;
+    font-size: 15px;
+}
+
+#tableWrap td {
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+    text-align: center;
+}
+
+#pagingTd {
+	display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0px
+}
+
+#pagingTd a {
+	font-size: 15px;
+    color: #64A0ff;
+    margin-right: 6px;
+}
+
+#pagingTd strong {
+	font-size: 15px;
+    color: #64A0ff;
+    margin-right: 6px;
+}

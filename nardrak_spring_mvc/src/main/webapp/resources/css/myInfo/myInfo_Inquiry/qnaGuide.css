@@ -10,13 +10,12 @@
     margin: 20px 0px;
 }
 
-#myInfoDetail h3 {
+#guideHeader {
 	margin: 0;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #ebebeb;  /* 테두리 아래쪽 연한 그레이*/
 }
 
-/* ---- 비밀번호 인증 처리에 대한 설정 ---- */
 /* input 태그들을 자동으로 세로 배치 */
 #myInfoDetail form {
 	display: flex;
@@ -26,61 +25,67 @@
   	justify-content: center; /* 자식 요소를 수평 중앙 정렬 */
 }
 
-#certification {
+/* guide 묶음 너비*/
+#content_guide {
 	display: flex;
 	flex-direction: column;
 	margin-top: 10px;
 }
 
-#certification p {
-	font-size: 16px;
-	font-weight: 500;
-	margin-bottom: 16px;
+/*이미지 */
+#myInfoDetail img {
+    width: 140px;
+    height: 140px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* h4 */
+#guideH4 {
+	margin: 15px 0px 5px 0px;
+    text-align: center;
+    color: #211c1c;
+}
+
+/* guide 멘트 */
+#guideMent {
+	font-size: 13px;
+	color: #555555;
 	text-align: center;
 }
 
-#pwdInput {
+/* 버튼을 묶은 컨테이너*/
+#guideButton {
 	display: flex;
 	width: 100%;
+	margin: 15px 0px;
+	justify-content: center;
 }
 
-/* ----------------------[비밀번호 인증 버튼 설정]---------------------- */
-#pwdInput input[type="password"]{
-	width: 250px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin: 0px;
-    border: 1px solid #d9d9d9;
-}
-
-#pwdInput input[type="submit"] {
-	width: 50px;
-    margin-left: 8px;
-    padding: 8px;
+input[type="button"] {
+	width: 100px;
+    margin-left: 10px;
+    padding: 10px;
     background-color: #64A0ff;
     color: #ffffff;
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     border: 1px solid #64A0ff;
     border-radius: 6px;
     cursor: pointer;
 }
 
-#pwdInput input[type="submit"]:hover  {
-	width: 50px;
-    margin-left: 8px;
-    padding: 8px;
+input[type="button"]:hover {
+	width: 100px;
+    margin-left: 10px;
+    padding: 10px;
     background-color: #1E82ff;
     color: #ffffff;
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     border: 1px solid #1E82ff;
     border-radius: 6px;
     cursor: pointer;
 }
 
-/* focus */
-#pwdInput input[type="password"]:focus {
-	border: 1px solid #729ea1;  /* 연핑크 */
-	outline: none;
-} 
+
