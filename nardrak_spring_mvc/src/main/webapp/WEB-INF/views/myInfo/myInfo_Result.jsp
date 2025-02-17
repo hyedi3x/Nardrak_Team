@@ -22,10 +22,16 @@
                         </c:if>
                         <c:if test="${sessionScope.login_session == 'Admin'}">
                             <c:choose>
-                                <c:when test="${strId != null}">
+                                <c:when test="${admin_id != null}">
                                     <script type="text/javascript">
-                                        alert("${strId}님 회원정보 페이지로 이동합니다.");
-                                        window.location="${path}/adminModify.do?strId=${strId}";
+                                        alert("${admin_id}님 관리자정보 페이지로 이동합니다.");
+                                        window.location="${path}/adminModify.do?strId=${admin_id}";
+                                    </script>
+                                </c:when>
+                                 <c:when test="${user_id != null}">
+                                    <script type="text/javascript">
+                                        alert("${user_id}님 회원정보 페이지로 이동합니다.");
+                                        window.location="${path}/customerModify.do?strId=${user_id}";
                                     </script>
                                 </c:when>
                                 <c:otherwise>
