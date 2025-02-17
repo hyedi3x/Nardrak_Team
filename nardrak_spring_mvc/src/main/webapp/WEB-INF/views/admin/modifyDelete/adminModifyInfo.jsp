@@ -274,7 +274,7 @@
 			
 			<tr>
 				<td>
-					<input type="button" class="submitBTN" onclick="mainBTN('${path}')" value="수정 취소">
+					<input type="button" class="submitBTN" onclick="myInfoBTN('${path}')" value="수정 취소">
 				</td>
 			</tr>
 
