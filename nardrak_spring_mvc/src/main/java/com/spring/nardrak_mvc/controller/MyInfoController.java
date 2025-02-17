@@ -158,27 +158,16 @@ public class MyInfoController {
 	    
 	    return "myInfo/myInfo_Inquiry/qnaResponse/qnaResponse"; 
 	}
-
-	// 진행 중인 1:1 문의내역
-	@RequestMapping("/res_pending.do")
-	public String res_pending(HttpServletRequest request, HttpServletResponse response, Model model) 
-	        throws ServletException, IOException {
-	    logger.info("<< url : res_pending.do >>");
-	    
-	    service.inquiryResponse(request, response, model);   // 1:1 문의 내역 불러오기
-
-	    return "myInfo/myInfo_Inquiry/qnaResponse/res_pending"; 
-	}
 	
-	// 완료된 1:1 문의내역
-	@RequestMapping("/res_complete.do")
-	public String res_complete(HttpServletRequest request, HttpServletResponse response, Model model) 
+	// 1:1 문의내역
+	@RequestMapping("/res_status.do")
+	public String res_status(HttpServletRequest request, HttpServletResponse response, Model model)
 	        throws ServletException, IOException {
-	    logger.info("<< url : res_complete.do >>");
-	    
-	    service.inquiryResponse(request, response, model);  // 1:1 문의 내역 불러오기
+	    logger.info("<< url : res_status.do >>");
 
-	    return "myInfo/myInfo_Inquiry/qnaResponse/res_complete"; 
+	    service.inquiryResponse(request, response, model);
+
+        return "myInfo/myInfo_Inquiry/qnaResponse/res_status";
 	}
 
 }
