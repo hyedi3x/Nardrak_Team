@@ -135,7 +135,7 @@ AND LENGTH(ad_phone) >= 11;
 
 -- 비밀번호 확인
 SELECT *
-FROM admin_tb
+FROM admin_tb;
 WHERE ad_id = 'test'
 AND ad_pwd='testtest!1';
 
@@ -241,13 +241,13 @@ ORDER BY rn;
 -- 생성 30일 넘는 회원으로 변경
 UPDATE customer_tb
 SET cs_regDate = '25/01/1 16:50:36.000000000'
-WHERE cs_id = 'customer1';
+WHERE cs_id = 'hello1';
 COMMIT;
 
 -- 회원 삭제 요청
 UPDATE customer_tb
 SET delete_status = 'Y'
-WHERE cs_id = 'hello3';
+WHERE cs_id = 'hello1';
 
 -- 회원 삭제
 DELETE customer_tb
