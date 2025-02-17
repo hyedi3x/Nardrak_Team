@@ -1,3 +1,37 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const iCategory2 = document.getElementById('i_category2');
+    const iCategory3 = document.getElementById('i_category3');
+    
+    // 각 지역에 맞는 하위 지역 목록을 정의
+    const regions = {
+        '수도권': ['서울', '경기', '인천'],
+        '강원': ['강원'],
+        '충북': ['충북'],
+        '충남': ['세종','대전'],
+        '경북': ['대구'],
+        '경남': ['울산','부산'],
+        '전북': ['전북'],
+        '전남': ['광주']
+    };
+
+    // i_category2 값이 변경되면 i_category3을 업데이트
+    iCategory2.addEventListener('change', function() {
+        const selectedRegion = iCategory2.value;
+        
+        // i_category3을 비우기 (기존 선택값을 제거)
+        iCategory3.innerHTML = '<option value="">선택하세요</option>';
+
+        if (selectedRegion && regions[selectedRegion]) {
+            // 선택한 지역에 맞는 하위 지역을 추가
+            regions[selectedRegion].forEach(function(subRegion) {
+                const option = document.createElement('option');
+                option.value = subRegion;
+                option.textContent = subRegion;
+                iCategory3.appendChild(option);
+            });
+        }
+    });
+});
 
 // 한글 글자 수 계산 함수 (한글/영어 각각 다른 계산)
 function getKoreanLength(str) {
@@ -19,6 +53,7 @@ function requestInCheck() {
     var title = document.getElementById("i_title").value.trim();
     var category1 = document.getElementById("i_category1").value.trim();
     var category2 = document.getElementById("i_category2").value.trim();
+    var category3 = document.getElementById("i_category3").value.trim();
     var content = document.getElementById("i_content").value.trim();
 
 	// 글자 수 제한(한글 기준)
@@ -50,9 +85,16 @@ function requestInCheck() {
     }
 
     // 첫 번째 유형이 "국내여행"일 때, 두 번째 유형도 선택해야 하므로 체크
-    if (category1 === "A" && !category2) {
+    if (category1 === "국내여행" && !category2 && !category3) {
         alert("두 번째 유형을 선택해주세요.");
         document.getElementById("i_category2").focus();
+        return false;
+    }
+    
+    // 첫 번째 유형과 두 번째  유형을 선택한 후 세 번째 선택을 해야하므로
+    if (category1 === "국내여행" && !category3) {
+        alert("세 번째 유형을 선택해주세요.");
+        document.getElementById("i_category3").focus();
         return false;
     }
     
