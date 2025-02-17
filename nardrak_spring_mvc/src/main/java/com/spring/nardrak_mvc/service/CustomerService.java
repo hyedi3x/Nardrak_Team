@@ -26,7 +26,6 @@ public interface CustomerService {
 	public void loginResult(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
 	
-	
 	//======================= [회원정보 수정처리] =======================
 	public void modifyCustomerInAction(HttpServletRequest request,HttpServletResponse response, Model model) 
 	        throws ServletException, IOException;

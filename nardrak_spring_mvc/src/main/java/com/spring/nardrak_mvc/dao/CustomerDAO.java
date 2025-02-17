@@ -26,6 +26,6 @@ public interface CustomerDAO {
 	public int deleteCustomer(CustomerDeleteDTO dto);
 	
 	//======================= [회원정보 탈퇴 처리 후, 고객 테이블에서 해당 회원 삭제] =======================
-	public int deleteCustomerRemove(String strId);	
+	public int deleteCustomerRemove(String strId);
 
 }

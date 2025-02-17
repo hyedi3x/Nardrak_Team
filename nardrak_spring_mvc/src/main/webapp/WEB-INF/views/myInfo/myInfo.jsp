@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ include file="/WEB-INF/views/common/settings.jsp" %>
 
 <!DOCTYPE html>
@@ -9,8 +8,12 @@
 
 <title>마이페이지</title>
 
+<!-- css -->
 <link href="${path}/resources/css/myInfo/myInfo.css" rel="stylesheet">
 <link href="${path}/resources/css/myInfo/myInfo_left.css" rel="stylesheet">
+
+<!-- js -->
+<script src="${path}/resources/js/myInfo/myInfoToggle.js" defer></script>
 
 </head>
 <body>
@@ -28,7 +31,7 @@
 		 			<c:when test="${sessionScope.login_session eq 'Customer'}">
 						<!-- 왼쪽 메뉴바 -->
 						<div id="myInfo_left">
-							<%@ include file="/WEB-INF/views/myInfo/myInfo_leftCS.jsp" %>
+							<%@ include file="/WEB-INF/views/myInfo/leftMenuTab/Ajax_left.jsp" %>
 						</div>
 						<!-- 오른쪽 화면 -->
 						<div id="myInfo_right">
@@ -60,7 +63,7 @@
 		 			<c:when test="${sessionScope.login_session eq 'Admin'}">
 						<!-- 왼쪽 메뉴바 -->
 						<div id="myInfo_left">
-							<%@ include file="/WEB-INF/views/myInfo/myInfo_leftAD.jsp" %>
+							<%@ include file="/WEB-INF/views/myInfo/leftMenuTab/Ajax_left.jsp" %>
 						</div>
 						<!-- 오른쪽 화면 -->
 						<div id="myInfo_right">

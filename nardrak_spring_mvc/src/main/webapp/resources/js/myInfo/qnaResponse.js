@@ -1,3 +1,4 @@
+
 // AJAX 요청 함수
 function sendRequest(callback, url, method, params) {
     // 서버와 비동기 통신을 수행 
@@ -26,12 +27,12 @@ function sendRequest(callback, url, method, params) {
 // 왼쪽 메뉴 탭 로드 
 function load(url){
 	// sendRequest(callback, url, method, params) {}
-	sendRequest(load_infoMenu, url, "GET", "");
+	sendRequest(load_result, url, "GET", "");
 };
 
 // 콜백 함수 
-function load_infoMenu(httpRequest) {
-	let infoMenu = document.getElementById("infoMenu");
-			infoMenu.innerHTML = httpRequest.responseText;   // responseText: 서버에서 응답한 HTML 문자열
+function load_result(httpRequest) {
+	let result = document.getElementById("result");
+	result.innerHTML = httpRequest.responseText;   // responseText: 서버에서 응답한 HTML 문자열
 };
 
