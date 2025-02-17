@@ -42,7 +42,7 @@
 	         
 				<!-- 본문 -->
 				<div id="contentRight">
-		        	<h1>1:1 문의</h1>
+		        	<h1>1:1 문의 내역</h1>
 		        	
 		        	<!-- response_status 버튼에 대한 박스 -->
 		        	<div id="res_A">
