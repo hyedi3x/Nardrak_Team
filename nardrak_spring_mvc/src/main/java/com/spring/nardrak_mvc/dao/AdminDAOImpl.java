@@ -79,18 +79,33 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// 관리자 요청 총 갯수 카운트
 	@Override
-	public int AdminAccessCount() {
+	public int AdminAccessCount(String listId) {
 		System.out.println("DAO AdminAccessCount");
 		
-		return sqlSession.selectOne(namespace+"AdminAccessCount");
+		if(listId.equals("ad")) {
+			return sqlSession.selectOne(namespace+"adminAccessCount");
+		 }
+		 else if(listId.equals("cs")) {
+			 return sqlSession.selectOne(namespace+"customerDeletConut");
+		 }
+		return 0;
 	}
 	
 	// 관리자 등록 요청 조회
 	@Override
 	public List<AdminDTO> adminAccess(Map<String, Object> map) {
 		System.out.println("DAO adminAccess");
+		if(map.get("listId").equals("ad")) {
 		
-		return sqlSession.selectList(namespace+"adminAccess", map);
+			return sqlSession.selectList(namespace+"adminAccess", map);
+		}
+		else if(map.get("listId").equals("cs")) {
+
+			return  sqlSession.selectList(namespace+"customerDeleteList", map);
+		}
+		else {
+			return null;
+		}
 	}
 	
 	// 관리자 권한 요청 승인
@@ -101,6 +116,14 @@ public class AdminDAOImpl implements AdminDAO {
 			 System.out.println(index);
 		 }
 		return sqlSession.update(namespace+"adminAccessAction", ad_ids);
+	}
+	
+	// 탈퇴 요청 30일 지난 회원 삭제
+	@Override
+	public int customerDelete(List<String> cs_ids) {
+		System.out.println("DAO customerDelete");
+		
+		return sqlSession.delete(namespace+"customerDelete", cs_ids);
 	}
 	
 }

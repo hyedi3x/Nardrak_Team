@@ -65,7 +65,7 @@
 	</update>
 	
 	<!-- 관리자 요청 카운트 -->
-	<select id="AdminAccessCount" resultType="int">
+	<select id="adminAccessCount" resultType="int">
 		SELECT COUNT(*)
 		  FROM admin_tb
 		WHERE access_status = 'N'
@@ -79,6 +79,7 @@
 		        FROM (SELECT *
 		                FROM admin_tb
 		              WHERE access_status = 'N'
+		              ORDER BY ad_regdate
 		              ) ad
 		      )
 		WHERE rn BETWEEN #{startRow} AND #{endRow}
@@ -95,4 +96,35 @@
 	        #{ad_id}
 	    </foreach>
 	</update>
+	
+	<!-- 탈퇴 회원 카운트 -->
+	<select id="customerDeletConut" resultType="int">
+		SELECT COUNT(*)
+		  FROM customer_tb
+		WHERE delete_status = 'Y'
+	</select>
+	
+	<!-- 탈퇴 요청 회원 조회 -->
+	<select id="customerDeleteList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.CustomerDTO">
+		SELECT *
+		  FROM(
+		      SELECT ROWNUM as rn, cs.*, (sysdate-cs_regDate) as timeDiff
+		        FROM (SELECT *
+		                FROM customer_tb
+		              WHERE delete_status = 'Y'
+		              ORDER BY cs_regDate
+		              ) cs
+		      )
+		WHERE rn BETWEEN #{startRow} AND #{endRow}
+		ORDER BY rn
+	</select>
+	
+	<!-- 탈퇴 요청 30일 지난 회원 삭제 -->
+	<delete id="customerDelete">
+		DELETE customer_tb
+		 WHERE cs_id IN
+	   <foreach item="cs_id" collection="list" open="(" separator="," close=")">
+	        #{cs_id}
+	    </foreach>
+	</delete>
 </mapper> 

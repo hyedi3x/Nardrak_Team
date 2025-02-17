@@ -23,6 +23,9 @@
 		<h2 align="center">회원정보 수정 페이지</h2>
 	    <form name="inputform" action="modifyCustomerAction.do" method="post" onsubmit="return signlnCheck()">
 	        
+	        <!-- 관리자 페이지에서 회원 정보 조회/ 수정에 접근할 때 필요한 id, Session에는 admin이 들어있어서 해당 id 사용 -->
+	        <input type="hidden" name="cs_id" value="${dtoCS.cs_id}">
+	        
 	        <!-- 2-1 중복확인 -->
 	        <input type="hidden" name="hiddenUserId" value="0">
 	        
