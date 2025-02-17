@@ -130,7 +130,8 @@ public class MyInfoServiceImpl implements MyInfoService{
 			
 	        String category1 = request.getParameter("i_category1");
 	        String category2 = request.getParameter("i_category2");
-	        String category = category1 + "," + category2;		      
+	        String category3 = request.getParameter("i_category3");
+	        String category = category1 + "," + category2 + "," + category3;		      
 			dto.setI_category(category);   // 선택한 문의 유형 
 			
 			dto.setI_content(request.getParameter("i_content"));   // 문의 내용
