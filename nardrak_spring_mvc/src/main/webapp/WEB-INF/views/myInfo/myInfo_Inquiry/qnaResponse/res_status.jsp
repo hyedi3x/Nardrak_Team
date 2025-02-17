@@ -23,6 +23,7 @@
 	                        <th scope="col" style="width: 90px">이미지</th>
 	                        <th scope="col" style="width: 200px">문의 제목</th>
 	                        <th scope="col" style="width: 130px">카테고리</th>
+	                        <th scope="col" style="width: 120px">답변 여부</th>
 	                        <th scope="col" style="width: 130px">등록일</th>
 	                    </tr>
 	                </thead>
@@ -40,6 +41,7 @@
 	                                    <td style="width: 90px"><img src="${dto.i_imgUpload}" alt="img x" width="50px" /></td>
 	                                    <td style="width: 200px">${dto.i_title}</td>
 	                                    <td style="width: 130px">${dto.i_category}</td>
+	                                    <td style="width: 120px">${dto.i_status}</td>
 	                                    <td style="width: 130px">${fn:substring(dto.i_writeDate, 0, 10)}</td>
 	                                </tr>
 	                            </c:forEach>
