@@ -20,7 +20,7 @@
 				<li>
 					<h4> 고객 문의</h4>
 					<ul class="info_menu">
-						<li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 1:1 문의 내역 </a></li>
+						<li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 1:1 문의 </a></li>
 						<li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 자주하는 질문 </a></li>
 					</ul>
 				</li>
