@@ -87,4 +87,24 @@ public class AdminController {
 
 		return "admin/actionResultAdmin";
 	}
+	
+	@RequestMapping("/locationDetail.ad")
+	public String locationDetail(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		logger.info("<< url - locationDetail.ad >>");
+			
+		//service.loginResult(request, response, model);
+
+		return "customer/local/locationDetail";
+	}
+	
+	@RequestMapping("/locationDetailPage.ad")
+	public String locationDetailPage(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		logger.info("<< url - locationDetailPage.ad >>");
+			
+		//service.loginResult(request, response, model);
+
+		return "customer/local/locationDetailPage";
+	}
 }
