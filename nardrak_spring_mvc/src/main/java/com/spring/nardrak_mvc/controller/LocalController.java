@@ -52,7 +52,7 @@ public class LocalController {
 		
 		service.addTour(request, response, model);
 		
-		return "customer/local/local";
+		return "redirect:local.tr";
 	}
 	
 	// 국내여행 상세정보 페이지
