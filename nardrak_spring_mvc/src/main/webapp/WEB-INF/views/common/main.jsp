@@ -34,7 +34,7 @@
 			            <c:forEach var="image" items="${images}">
 			                <div class="swiper-slide">
 			                    <div class="image-container">
-			                        <img src="${image.image_path}" alt="${image.image_path}">
+			                        <img src="${pageContext.request.contextPath}${image.image_path}" alt="img x"/>
 			                        <div class="slide-text">${image.image_detail}</div>
 			                    </div>
 			                </div>
