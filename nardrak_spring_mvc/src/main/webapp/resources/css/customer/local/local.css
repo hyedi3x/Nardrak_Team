@@ -7,28 +7,25 @@ body {
 }
 
 .name {
-	max-width: 1100px;
-	margin: auto;
+    max-width: 950px;
+    margin: auto;
 }
 
 .name_tag {
-	font-size : 30px;
+    font-size: 30px;
 }
 
-
-/* 컨테이너 설정: 여행지 목록과 태그 박스를 가로 정렬 */
-.container {
-    display: flex;
-    align-items: flex-start;
-    max-width: 1100px;
+/* 컨테이너 설정 */
+.div1 {
+    width: 950px;
     margin: auto;
-    flex-wrap: nowrap;
-    padding: 20px 0;
+    overflow: hidden; /* float 적용 시 부모 요소가 내용을 감싸도록 설정 */
 }
 
 /* 여행지 목록 스타일 */
 .place-list {
-    width: 92%;
+    width: 74%; /* 여행지 목록 너비 조정 */
+    float: left; /* 왼쪽 정렬 */
 }
 
 /* 개별 여행지 스타일 */
@@ -75,32 +72,27 @@ body {
 
 /* 태그 박스 스타일 */
 .tag-box {
-    width: 22%;	/* 태그 박스 크기 */
+    width: 24%; /* 태그 박스 크기 */
     background: #f9f9f9;
-    padding: 10px; /* 내부 여백 */
+    padding: 15px;
     border-radius: 10px;
-    height: fit-content;
+    float: right; /* 태그 박스를 오른쪽으로 이동 */
     min-width: 200px;
 }
 
-.tag-box h4 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: bold;
-}
-
+/* 태그 스타일 */
 .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;  /* 태그 간격 */
+    gap: 6px; /* 태그 간격 */
     margin-top: 8px;
 }
 
 .tag-list span {
     background: #eee;
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 15px;
-    font-size: 12px;
+    font-size: 13px;
     color: #333;
     cursor: pointer;
     transition: background 0.3s;
@@ -112,50 +104,22 @@ body {
 
 /* 구분선 스타일 */
 .divider {
-    border-top: 1px solid #ddd;
+    border-top: 2px solid #ddd;
     margin: 20px 0;
 }
 
-/* 페이지네이션 스타일 */
-.pagination {
-    text-align: center;
-    margin-top: 20px;
+.divider1 {
+    border-top: 4px solid #ddd;
+    margin: 20px 0;
 }
 
-.pagination a {
-    margin: 0 5px;
-    text-decoration: none;
-    padding: 6px 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    color: #333;
-    transition: background 0.3s;
-}
-
-.pagination a:hover,
-.pagination a.active {
-    background-color: #007bff;
-    color: white;
-}
-
-/* 푸터 스타일 */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-}
-
+/* 페이징 스타일 */
 .paging-container {
     width: 100%;
-    text-align: center; /* 가운데 정렬 */
-    margin-top: 30px; /* 위쪽 여백 추가 */
+    text-align: center;
+    margin-top: 30px;
     padding-top: 10px;
-    border-top: 1px solid #ddd; /* 구분선 추가 */
+    border-top: 1px solid #ddd;
 }
 
 .pagination {
@@ -163,7 +127,7 @@ footer {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 8px; /* 버튼 사이 간격 */
+    gap: 8px;
 }
 
 .pagination li {
@@ -184,6 +148,3 @@ footer {
     color: white;
     font-weight: bold;
 }
-
-
-
