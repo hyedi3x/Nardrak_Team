@@ -145,7 +145,7 @@ public class MyInfoServiceImpl implements MyInfoService{
 			dto.setI_content(request.getParameter("i_content"));   // 문의 내용
 			
 			// 데이터베이스에 저장할 이미지 파일의 경로를 생성
-			String p_img = "/nardrak_mvc/resources/upload/myInfo/myInfo_Inquiry/" + file.getOriginalFilename();
+			String p_img = "/resources/upload/myInfo/myInfo_Inquiry/" + file.getOriginalFilename();
 			dto.setI_imgUpload(p_img);
 		
 	        int inquiryImgs = dao.insertInquiry(dto);
