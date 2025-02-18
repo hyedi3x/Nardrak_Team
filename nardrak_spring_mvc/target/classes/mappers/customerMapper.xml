@@ -14,9 +14,12 @@
 			 
 		<!-- ID 중복확인 처리 -->
 	   	<select id="useridCheck" parameterType="String" resultType="int">
-	    	SELECT COUNT(*) 
-			  FROM customer_tb 
-			 WHERE cs_id = #{cs_id}
+		SELECT COUNT(*) 
+		  FROM (SELECT cs_id FROM customer_tb
+		  		UNION
+		  		SELECT ad_id FROM admin_tb 	
+		  ) a
+		 WHERE cs_id = #{strId}
  		</select>
  		
  		<!-- 전화번호 중복확인 처리 -->
@@ -38,5 +41,33 @@
 		  INSERT INTO customer_tb(cs_id, cs_pwd, cs_name, cs_gender, cs_birth, cs_phone, cs_zip, cs_email, cs_tel, cs_user_num, cs_regDate, cs_terms, delete_status, login_session)
 			 VALUES(#{cs_id},#{cs_pwd},#{cs_name},#{cs_gender},#{cs_birth},#{cs_phone},#{cs_zip},#{cs_email},#{cs_tel}, TO_CHAR((SELECT NVL(MAX(cs_user_num)+1,1) FROM customer_tb)), #{cs_regDate}, #{cs_terms}, DEFAULT, 'Customer')
 		</insert>
+		
+	   <!-- 회원정보 수정처리 -->
+		<update id="updateCustomer" parameterType="com.spring.nardrak_mvc.dto.CustomerDTO">
+			UPDATE customer_tb
+				SET cs_pwd= #{cs_pwd}
+				,cs_name= #{cs_name}
+				,cs_gender= #{cs_gender}
+				,cs_birth= #{cs_birth}
+				,cs_zip= #{cs_zip}
+				,cs_phone= #{cs_phone}
+				,cs_tel= #{cs_tel}
+				,cs_email= #{cs_email}
+				,cs_regDate= #{cs_regDate}
+				WHERE cs_id= #{cs_id}
+		</update>
+		
+		<!-- 회원정보 탈퇴 정보 처리 -->
+		<insert id="deleteCustomer" parameterType="com.spring.nardrak_mvc.dto.CustomerDeleteDTO">
+		INSERT INTO customer_delete_tb(cs_del_num, cs_id, cs_del_terms, cs_drCode, cs_etc_cmmt, cs_del_date)
+			VALUES(TO_CHAR((SELECT NVL(MAX(cs_del_num)+1,1)FROM customer_delete_tb)), #{cs_id}, #{cs_del_terms}, #{cs_drCode}, #{cs_etc_cmmt}, sysdate) 
+    	</insert>
+    	
+    	<!-- 회원정보 탈퇴 정보 처리 후, 고객 테이블에서 해당 회원 삭제 -->
+    	<update id="deleteCustomerRemove" parameterType="String">
+       		UPDATE customer_tb 
+       		SET delete_status = 'Y' 
+       		WHERE cs_id = #{strId}
+    	</update>
     
    </mapper> 

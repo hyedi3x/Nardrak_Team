@@ -41,7 +41,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="${path}/myInfoAdmin.do">
+					<a href="${path}/myInfo.do">
 						<i class="fa-regular fa-user"></i> 마이페이지
 					</a>
 				</li>
@@ -78,7 +78,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="${path}/myInfoAdmin.do">
+						<a href="${path}/myInfo.do">
 							<i class="fa-regular fa-user"></i> 마이페이지
 						</a>
 					</li>

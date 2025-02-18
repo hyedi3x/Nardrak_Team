@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+/* =======================[myInfo.jsp의 css 설정]======================= */
+#myInfo_container {
+	display: flex;
+    flex-direction: column;
+    margin: auto;  /* 페이지 가운데로 요소 정렬 */
+    width: 1000px;    
+}
+
+/* [myInfoTitle 요소] */
+#myInfoTitle {
+	margin-top: 30px;
+	padding: 0px 20px;   /* 상하 여백 */
+}
+
+#myInfoTitle h2 {
+	margin: 0;
+	padding: 20px 30px;
+	border-bottom: 1px solid #d9d9d9;
+    box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
+} 
+
+#myInfo_article {
+	display: flex;
+	margin: auto;  /* 페이지 가운데로 요소 정렬 */
+	padding: 0px 20px;   /* 상하 여백 */
+    width: 100%;    
+    height: 800px;
+    justify-content: center;
+}
+
+/* =======================[마이페이지 안의 정보 오류 수정 전체 설정]======================= */ 
+
+#myInfo_right {
+	display: flex;
+	flex-direction: column;
+	width: 70%;  
+	padding: 40px 30px;
+}
+
+
+/* =======================[안의정보 요소들에 대한 설정]======================= */
+#myInfo {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .149);
+}
+
+#myInfo_Box {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;     /* 요소 전체 폭 980px */
+	margin: 20px;
+}
+
+#myInfoIcon{
+	display: flex;
+    align-items: center;
+}
+
+#myInfoIcon i {
+	font-size: 75px;
+	color: #e5e7eb;    /* 연한 회색 */
+}
+
+#personInfoAll {
+	width: 78%;  /* 요소 전체 폭 980px의 78% */
+}
+
+#personInfo {
+	display: flex;
+	margin-bottom: 12px;
+    padding-bottom: 15px;
+	border-bottom: 1px solid #ebebeb;  /* 테두리 아래쪽 얇은 회색 선 */
+}
+
+/* 이름 */
+#personInfo h3 {
+	display: flex;
+	align-items: flex-end;
+	width: 23%;
+	margin: 0;
+	color: #222222;  /* 진한 회색 */
+}
+
+/* 아이디 */
+#personInfo span {
+	display: flex;
+    align-items: flex-end;
+    font-size: 15px;
+    margin-right: 8px;
+    color: #222222;
+    border-bottom: 1px solid #222222;
+}
+
+/* 가입일 */
+#csRegdate {
+	display: flex;
+    align-items: flex-end;
+    margin: 0;
+    justify-content: flex-end;
+    font-size: 14px;
+    width: 60%;
+    color: #222222;
+}
+
+/* 이메일 */
+#personEmail span {
+	font-size: 16px;
+	color: #555555; 
+}
+
