@@ -1,3 +1,8 @@
+function myInfoBTN(path){
+	if(confirm('마이페이지로 돌아가시겠습니까?')){
+		window.location=path+"/myInfo.do";
+		}
+	}
 
 // 회원가입 submit 체크 함수
 function signlnCheck() {
