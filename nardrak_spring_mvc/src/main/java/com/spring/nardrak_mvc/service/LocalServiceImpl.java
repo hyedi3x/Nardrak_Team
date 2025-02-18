@@ -38,7 +38,7 @@ public class LocalServiceImpl implements LocalService {
         String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/local/");
         
         // 로컬 디스크에서 사용할 경로 설정
-        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\local";
+        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\local\\";
 		
         // 파일 입출력을 위한 스트림 초기화
         FileInputStream fis = null;
@@ -59,16 +59,15 @@ public class LocalServiceImpl implements LocalService {
             
             LocalDTO dto = new LocalDTO();
         	
-            dto.setLocalTitle(request.getParameter("local_title"));
+            dto.setLocal_title(request.getParameter("local_title"));
             dto.setRegion(request.getParameter("region"));
             dto.setDescription(request.getParameter("description"));
-            dto.setTags(request.getParameter("local_tags"));
-            dto.setLocalDetail(request.getParameter("local_detail"));
-            String localImage = "/resources/upload/local" + file.getOriginalFilename();
-            dto.setLocalImage(localImage);
+            dto.setLocal_tags(request.getParameter("local_tags"));
+            dto.setLocal_detail(request.getParameter("local_detail"));
+            String localImage = "/resources/upload/local/" + file.getOriginalFilename();
+            dto.setLocal_image(localImage);
             dto.setLatitude(Double.parseDouble(request.getParameter("latitude")));
             dto.setLongitude(Double.parseDouble(request.getParameter("longitude")));
-            dto.setApi_name(request.getParameter("api_name"));
             
             dao.InsertTour(dto);
             
@@ -103,6 +102,7 @@ public class LocalServiceImpl implements LocalService {
       map.put("end", end);
       
       List<LocalDTO> list = dao.localList(map);
+      System.out.println(list);
       
       model.addAttribute("paging", paging);
       model.addAttribute("locals", list);
