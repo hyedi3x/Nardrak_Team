@@ -1,6 +1,12 @@
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
 
+### Added ###
+target/
+Tomcat v9.0 Server at localhost-config/
+.metadata/.plugins/org.eclipse.wst.server.core/servers.xml
+.metadata/.plugins/org.eclipse.wst.server.core/tmp0/logs
+
 ### Eclipse ###
 .classpath
 .project
