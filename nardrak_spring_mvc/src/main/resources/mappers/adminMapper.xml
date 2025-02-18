@@ -10,8 +10,11 @@
 	<!--  id 중복 확인, 고객 & 관리자 모두 검사  -->
 	<select id="adminIdConfirm" parameterType="String" resultType="int">
 		SELECT COUNT(*) 
-		  FROM admin_tb 
-		 WHERE ad_id = #{ad_id}
+		  FROM (SELECT cs_id FROM customer_tb
+		  		UNION
+		  		SELECT ad_id FROM admin_tb 	
+		  ) a
+		 WHERE cs_id = #{ad_id}
 	</select>
 	
 	<!--  관리자 회원가입  -->
@@ -27,7 +30,7 @@
 		WHERE ad_phone LIKE '%' || #{ad_phone} || '%'
 	</select>
 	<!-- 유니크 값 검사 이메일 -->
-	<select id="uniqueCheckEmail" parameterType="java.util.Map" resultType="int">
+	<select id="uniqueCheckEmail" parameterType="String" resultType="int">
 		SELECT COUNT(*)
 		  FROM admin_tb
 		 WHERE ad_email = #{value}
@@ -47,4 +50,81 @@
 		 WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
 	</select>
 	
+	<!-- 관리자 수정 -->
+	<update id="adminModifyAction" parameterType="com.spring.nardrak_mvc.dto.AdminDTO">
+		UPDATE admin_tb
+		   SET ad_pwd= #{ad_pwd}, ad_name= #{ad_name}, ad_birth= #{ad_birth}, ad_phone= #{ad_phone}, ad_email= #{ad_email}, ad_zip= #{ad_zip}, ad_tel= #{ad_tel}, ad_empnum= #{ad_empnum}, ad_dep= #{ad_dep}, ad_terms= #{ad_terms}
+		 WHERE ad_id = #{ad_id}
+	</update>
+	
+	<!-- 관리자 삭제 -->
+	<update id="adminDeleteAction" parameterType="java.util.Map">
+		UPDATE admin_tb
+		   SET delete_status = 'Y'
+		 WHERE ad_id = #{ad_id}
+	</update>
+	
+	<!-- 관리자 요청 카운트 -->
+	<select id="adminAccessCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM admin_tb
+		WHERE access_status = 'N'
+	</select>
+	
+	<!-- 관리자 등록 요청 조회 -->
+	<select id="adminAccess" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
+		SELECT *
+		  FROM(
+		      SELECT ROWNUM rn, ad.*
+		        FROM (SELECT *
+		                FROM admin_tb
+		              WHERE access_status = 'N'
+		              ORDER BY ad_regdate
+		              ) ad
+		      )
+		WHERE rn BETWEEN #{startRow} AND #{endRow}
+		ORDER BY rn
+	</select>
+	
+	<!-- 관리자 권한 요청 승인 -->
+	<!-- item과 #{}변수명을 일치시킨다. collection은 자료형이 list여서 list open, close로 ()를 만들고 배열의, 로 구분한다. -->
+	<update id="adminAccessAction" >
+	    UPDATE admin_tb
+	    SET access_status = 'Y'
+	    WHERE ad_id IN 
+	   <foreach item="ad_id" collection="list" open="(" separator="," close=")">
+	        #{ad_id}
+	    </foreach>
+	</update>
+	
+	<!-- 탈퇴 회원 카운트 -->
+	<select id="customerDeletConut" resultType="int">
+		SELECT COUNT(*)
+		  FROM customer_tb
+		WHERE delete_status = 'Y'
+	</select>
+	
+	<!-- 탈퇴 요청 회원 조회 -->
+	<select id="customerDeleteList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.CustomerDTO">
+		SELECT *
+		  FROM(
+		      SELECT ROWNUM as rn, cs.*, (sysdate-cs_regDate) as timeDiff
+		        FROM (SELECT *
+		                FROM customer_tb
+		              WHERE delete_status = 'Y'
+		              ORDER BY cs_regDate
+		              ) cs
+		      )
+		WHERE rn BETWEEN #{startRow} AND #{endRow}
+		ORDER BY rn
+	</select>
+	
+	<!-- 탈퇴 요청 30일 지난 회원 삭제 -->
+	<delete id="customerDelete">
+		DELETE customer_tb
+		 WHERE cs_id IN
+	   <foreach item="cs_id" collection="list" open="(" separator="," close=")">
+	        #{cs_id}
+	    </foreach>
+	</delete>
 </mapper> 
