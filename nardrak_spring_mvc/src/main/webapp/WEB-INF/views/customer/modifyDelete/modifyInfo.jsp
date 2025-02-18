@@ -13,6 +13,7 @@
     <script src="${path}/resources/js/customer/join.js" defer></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="${path}/resources/js/customer/daumAPI.js" defer></script>
+
 </head>
 
 <body>
@@ -213,7 +214,7 @@
 	            <tr>
 	                <td colspan="2" style="border-bottom:none">
                         <input class="inputButton" type="submit" value="회원수정"> 
-                        <input class="inputButton" type="reset" value="돌아가기" onclick="window.location='${path}/main.do'"> 
+                        <input class="inputButton" type="reset" value="돌아가기" onclick="myInfoBTN('${path}')"> 
 	                </td>
 	            </tr>
 	        </table>
