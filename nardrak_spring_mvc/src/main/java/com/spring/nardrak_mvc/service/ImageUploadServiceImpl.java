@@ -111,7 +111,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
         String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/admin/");
         
         // 로컬 디스크에서 사용할 샘플 경로 설정 (테스트용)
-        String realDir = "D:\\DEV\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\";
+        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\";
 
         FileInputStream fis = null;
 		FileOutputStream fos = null;
@@ -139,7 +139,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
                 		fos.write(data); // 파일을 로컬에 저장
                 	}
 
-                    upload_img = "/nardrak_mvc/resources/upload/admin/" + file.getOriginalFilename();
+                    upload_img = "/resources/upload/admin/" + file.getOriginalFilename();
                 }
             } catch (Exception e) {
                 e.printStackTrace(); // 예외 처리
@@ -182,7 +182,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
             String fileName = existingFilePath.substring(existingFilePath.lastIndexOf("/") + 1); // 파일명 추출
 
             // 로컬 디스크에 있는 기존 파일 경로 설정
-            String realDir = "D:\\DEV\\workspace_git_ict04\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\";
+            String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\";
             File existingFile = new File(realDir + fileName); // 기존 파일 객체 생성
 
             // 기존 파일이 존재하면 삭제
