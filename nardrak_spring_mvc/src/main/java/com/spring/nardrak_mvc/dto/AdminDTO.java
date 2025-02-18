@@ -15,18 +15,19 @@ public class AdminDTO {
 	private String ad_tel; 			// 사내 전화번호
 	private String ad_empnum; 		// 사번
 	private String ad_dep; 			// 부서코드
-	private Timestamp ad_regDate; 		// 가입일
+	private Timestamp ad_regDate;   // 가입일
 	private String ad_terms; 		// 약관동의 항목
-	private String ad_permission; 	// 권한상태
+	private String ad_permission; 	// 삭제상태
 	private String l_session; 		// 계정권한 (admin)
-	
+	private String access_status;   // 관리자 권한
+	private String rn;              // 페이지에 사용되는 RowNum
 	// 디폴트 생성자
 	public AdminDTO() {}
 	
 	// 매개변수 생성자
 	public AdminDTO(String ad_id, String ad_pwd, String ad_name, String ad_birth, String ad_phone, String ad_email,
 			String ad_zip, String ad_tel, String ad_empnum, String ad_dep, Timestamp ad_regDate, String ad_terms,
-			String ad_permission, String l_session) {
+			String ad_permission, String l_session, String access_status, String rn) {
 		super();
 		this.ad_id = ad_id;
 		this.ad_pwd = ad_pwd;
@@ -42,6 +43,8 @@ public class AdminDTO {
 		this.ad_terms = ad_terms;
 		this.ad_permission = ad_permission;
 		this.l_session = l_session;
+		this.access_status = access_status;
+		this.rn = rn;
 	}
 
 	// getter, setter
@@ -157,12 +160,29 @@ public class AdminDTO {
 		this.l_session = l_session;
 	}
 	
+	public String getAccess_status() {
+		return access_status;
+	}
+
+	public void setAccess_status(String access_status) {
+		this.access_status = access_status;
+	}
+	
+	public String getRn() {
+		return rn;
+	}
+
+	public void setRn(String rn) {
+		this.rn = rn;
+	}
+	
 	// toString
 	@Override
 	public String toString() {
 		return "AdminDTO [ad_id=" + ad_id + ", ad_pwd=" + ad_pwd + ", ad_name=" + ad_name + ", ad_birth=" + ad_birth
 				+ ", ad_phone=" + ad_phone + ", ad_email=" + ad_email + ", ad_zip=" + ad_zip + ", ad_tel=" + ad_tel
 				+ ", ad_empnum=" + ad_empnum + ", ad_dep=" + ad_dep + ", ad_regDate=" + ad_regDate + ", ad_terms="
-				+ ad_terms + ", ad_permission=" + ad_permission + ", l_session=" + l_session + "]";
+				+ ad_terms + ", ad_permission=" + ad_permission + ", l_session=" + l_session + ","
+				+ " access_status=" + access_status + "rn=" + rn + "]";
 	}
 }

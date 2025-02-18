@@ -1,0 +1,151 @@
+/* [deleteInfoWrap 전체 컨테이너] */
+#deleteInfoWrap {
+	display: flex;
+	flex-direction: column;
+}
+
+p {
+	margin: 0;
+}
+
+
+/* =======================[deleteContainer의 요소]======================= */
+#deleteContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto; /* 요소들 페이지 가운데 정렬 */
+  	width: 964px;  /* 전체 너비 964px */
+}
+
+/* [deleteTitle 요소] */
+#deleteTitle {
+	margin-top: 30px;
+}
+
+#deleteTitle h2 {
+	margin: 0;
+	padding: 20px 0px;
+	border-bottom: 1px solid #ebebeb;  /* 테두리 아래쪽 연한 그레이*/
+}  
+
+/* =======================[section 요소 - form 요소들]======================= */
+.section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;  /* align-items : 수직정렬 요소 / 현재 디스플레이 방향이 세로이므로, 수평 가운데 정렬*/
+	width: 100%;
+}
+
+form {
+	width: 100%;
+}
+
+/* =======================[철회 안내]======================= */
+#deleteGuide {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background-color: #f8f9fa;   /* 초초 연한 회색 */	
+}
+
+.font24 {
+	font-size: 24px;
+	text-align: center;
+	margin-top: 35px;
+}
+
+.font15 {
+	font-size: 15px;
+	text-align: center;
+	margin: 20px 0px;
+}
+
+.font15 p {
+	padding: 4px 0px;
+}
+
+/* =======================[CJ ONE 서비스 이용약관 전문 안내]======================= */
+.font15 input[type="button"] {
+	margin: 15px 5px;
+	padding: 8px 10px;
+	font-size: 15px;
+	border: 2px solid #e5e5e5; /* 테두리 색상: 연한 그레이 */
+	border-radius: 3px;
+	background-color: #ffffff;
+}
+
+/* =======================[CJ ONE과 함께하는 브랜드]======================= */
+#delPlusGuide {
+	display: flex;
+	flex-direction: column;
+	width: 100%;	
+}
+
+#delPlusGuide .font24 p {
+	margin: 20px;
+}
+
+#delPlusGuide .font24{
+	border-bottom: 1px solid #ebebeb;  /* 테두리 아래쪽 연한 그레이*/
+}
+
+/* =======================[탈퇴 버튼]======================= */
+#delButton {
+	display: flex;
+	justify-content: center;
+	border-top: 1px solid #ebebeb;  /* 테두리 아래쪽 연한 그레이*/
+}
+
+#delButton input[type="button"], #delButton input[type="submit"] {
+	margin: 35px 7px;
+	padding: 12px 70px;
+	font-size: 16px;
+}
+
+#delButton input[type="submit"] {
+	border: 2px solid #333533; /* 채도가 낮은 진한 그레이 */
+	border-radius: 3px;
+	background-color: #333533;  /* 채도가 낮은 진한 그레이 */
+	color: #ffffff;
+}
+
+#delButton input[type="button"] {
+	border: 2px solid #333533;  /* 채도가 낮은 진한 그레이 */
+	border-radius: 3px;
+	background-color: #ffffff; 
+	color: #333533;  /* 채도가 낮은 진한 그레이 */
+}
+
+/* =======================[deleteGuide.jsp]======================= */
+#delGuideWrap{
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	margin: 0 auto;
+}
+
+#windowClose {
+	display: flex;
+	justify-content: space-between;
+}
+#windowClose input[type="button"] {
+	margin: 7px 0px;
+	padding: 2px 5px;
+	font-size: 13px;
+	border: 2px solid #333533; /* 채도가 낮은 진한 그레이 */
+	border-radius: 3px;
+	background-color: #333533;  /* 채도가 낮은 진한 그레이 */
+	color: #ffffff;
+}
+
+.bold16 {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 8px 3px;
+}
+
+.normal16 {
+	font-size: 16px;
+	padding: 8px 3px;
+	text-align: justify;
+}
