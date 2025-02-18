@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="styles.css"> <!-- 외부 스타일시트 링크 -->
     
     <!-- css -->
-	<link rel="stylesheet" href="${path}/resources/css/customer/local/여행.css">
+	<link rel="stylesheet" href="${path}/resources/css/customer/local/local.css">
+    
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     
     <!-- JS -->
     <script src="${path}/resources/js/customer/trable.js" defer></script> 
@@ -22,26 +26,33 @@
 
 <!-- header 시작 -->
 <%@ include file="/WEB-INF/views/common/header_SessionScope.jsp" %> 
-<!-- header 종료 -->
-<br><br>
-<div>
-<h3 align="center">총4000건 [el태그 적용예정]</h3>
 
- <div class="container">
-    <form action="submit.php" method="POST">
+<div>
+
+
+<div class="name">
+	<h3><i class="fa-solid fa-leaf"></i> 여행지 </h3>
+	<div class="name_tag">
+		<h align="left">#전체</h>
+	</div>
+</div>
+<form action="submit.php" method="POST">
+	 <div class="container">
         <div class="content">
             <div class="place-list">
-                <div class="place">
-                    <div class="place-img">
-                        <img src="${path}/resources/image/customer/국내여행/명동.jpg" alt="명동">
-                    </div>
-                    <div class="place-text">
-                        <h3>명동</h3>
-                        <p>서울 종로구</p>
-                        <p>전세계인들의 관광지 1순위</p>
-                        <p class="tags">#관광지 #맛집 #쇼핑</p>
-                    </div>
-                </div>
+                <a href="${path}/myeongdongPage.tr">
+	                <div class="place">
+	                    <div class="place-img">
+	                        <img src="${path}/resources/image/customer/국내여행/명동.jpg" alt="명동">
+	                    </div>
+	                    <div class="place-text">
+	                        <h3>명동</h3>
+	                        <p>서울 종로구</p>
+	                        <p>전세계인들의 관광지 1순위</p>
+	                        <p style="color:4361ee;">#관광지 #맛집 #쇼핑</p>
+	                    </div>
+	                </div>
+                </a>
 
                 <div class="divider"></div>
 
@@ -53,7 +64,7 @@
                         <h3>63빌딩</h3>
                         <p>서울시 영등포구 63로 50</p>
                         <p>서울의 대표적인 랜드마크로, 한강과 도심을 한눈에 조망할 수 있는 전망대</p>
-                        <p class="tags">#랜드마크 #서울야경 #전망대</p>
+                        <p style="color:4361ee;">#랜드마크 #서울야경 #전망대</p>
                     </div>
                 </div>
 
@@ -67,7 +78,7 @@
                         <h3>여의도공원</h3>
                         <p>서울시 영등포구 여의도동</p>
                         <p>서울 도심 속에서 자연을 즐길 수 있는 대규모 공원</p>
-                        <p class="tags">#도심속공원 #산책 #휴식</p>
+                        <p style="color:4361ee;">#도심속공원 #산책 #휴식</p>
                     </div>
                 </div>
                 
@@ -115,10 +126,13 @@
 				        <input type="hidden" name="place[]" value="광화문광장,서울시 종로구 세종대로 172,서울의 중심 역사 공간">
 				    </div>
             	</div>
-
-            <div class="tag-box">
-                <h4>태그</h4>
-                <div class="tag-list">
+        	</div>
+        </div>
+    </form>
+    
+       <div class="tag-box">
+           <h4>태그</h4>
+               <div class="tag-list">
                     <span>#전체</span>
                     <span>#서울</span>
                     <span>#부산</span>
@@ -136,14 +150,13 @@
                     <span>#쇼핑</span>
                     <span>#힐링</span>
                     <span>#자연</span>
-                </div>
-            </div>
-        </div>
-    </form>
+              </div>
+         </div>
+    </div>  
+</div>  
     
     <!-- 페이징 처리 -->
-    <tr>
-        <td colspan="11" align="center">
+   <div class="paging-container">
             <ul class="pagination">
                 <!-- 이전 버튼 -->
                 <c:if test="${paging.startPage > 10}">
@@ -162,10 +175,9 @@
                 <c:if test="${paging.endPage < paging.pageCount}">
                     <li><a href="${path}/ad_product_list.pd?pageNum=${paging.next}" class="nextPage">»</a></li>
                 </c:if>
-            </ul>
-        </td>
-    </tr>
-</div>
+           </ul>
+    </div>
+
 
 			
 <!-- footer 시작 -->
