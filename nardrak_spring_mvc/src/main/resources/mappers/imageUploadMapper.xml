@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="com.spring.nardrak_mvc.dao.ImageUploadDAO">
+    	<!-- 현재 등록된 사진 가져오기 -->
+    	<select id="getImages" resultType="com.spring.nardrak_mvc.dto.ImageUploadDTO">
+    		SELECT *
+    		  FROM admin_image_tb
+    		 WHERE image_show = 'Y'
+    		 ORDER BY image_id
+    	</select>
+    	
+    	<!-- 특정 이미지 ID로 이미지 가져오기 -->
+    	<select id="getImageById" parameterType="int" resultType="com.spring.nardrak_mvc.dto.ImageUploadDTO">
+    		SELECT *
+    		  FROM admin_image_tb
+    		 WHERE image_id = #{image_id}
+    	</select>
+    	
+    	<!-- 이미지 삽입 -->
+    	<insert id="insertImage" parameterType="com.spring.nardrak_mvc.dto.ImageUploadDTO">
+    		 INSERT INTO admin_image_tb(image_id, image_path, upload_date, image_show, image_uploader, image_detail)
+    		      VALUES((SELECT NVL(MAX(image_id)+1, 1) FROM admin_image_tb), #{image_path}, DEFAULT, DEFAULT, #{image_uploader}, #{image_detail})
+    	</insert>
+    	
+    	<!-- 이미지 정보 변경 -->
+    	<update id="updateImage" parameterType="com.spring.nardrak_mvc.dto.ImageUploadDTO">
+    		UPDATE admin_image_tb
+    		   SET image_path = #{image_path}
+    		     , image_detail = #{image_detail}
+    		 WHERE image_id = #{image_id}
+    	</update>
+    	
+    	<!-- 이미지 정보 삭제 -->
+    	<update id="deleteImage" parameterType="int">
+    		UPDATE admin_image_tb
+    		   SET image_show = 'N'
+    		 WHERE image_id = #{image_id}
+    	</update>
+    </mapper>
