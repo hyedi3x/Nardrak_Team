@@ -73,7 +73,7 @@
 			
 			<tr>
 				<td>
-					<input type="button" class="submitBTN" onclick="myInfoBTN('${path}')" value="권한 삭제 철회 [메인으로]">
+					<input type="button" class="submitBTN" onclick="myInfoBTN('${path}')" value="권한 삭제 철회">
 				</td>
 			</tr>
 
