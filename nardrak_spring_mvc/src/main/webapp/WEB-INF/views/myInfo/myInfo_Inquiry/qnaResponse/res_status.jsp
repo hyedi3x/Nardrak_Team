@@ -38,7 +38,7 @@
 	                            <c:forEach var="dto" items="${inquiryRes}">
 	                                <tr>
 	                                    <td style="width: 50px">${dto.rn}</td>
-	                                    <td style="width: 90px"><img src="${pageContext.request.contextPath}${dto.i_imgUpload}" alt="img x" width="50px" /></td>
+	                                    <td style="width: 90px"><img src="${path}${dto.i_imgUpload}" alt="img x" width="50px" /></td>
 	                                    <td style="width: 200px">${dto.i_title}</td>
 	                                    <td style="width: 130px">${dto.i_category}</td>
 	                                    <td style="width: 120px">${dto.i_status}</td>
@@ -75,7 +75,7 @@
 	                            <c:forEach var="dto" items="${inquiryRes}">
 	                                <tr>
 	                                    <td style="width: 50px">${dto.rn}</td>
-	                                    <td style="width: 90px"><img src="${pageContext.request.contextPath}${dto.i_imgUpload}" alt="img x" width="50px" /></td>
+	                                    <td style="width: 90px"><img src="${path}${dto.i_imgUpload}" alt="img x" width="50px" /></td>
 	                                    <td style="width: 200px">${dto.i_title}</td>
 	                                    <td style="width: 130px">${dto.i_category}</td>
 	                                    <td style="width: 120px">${dto.i_status}</td>
