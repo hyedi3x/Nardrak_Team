@@ -26,7 +26,7 @@ public class LocalServiceImpl implements LocalService {
 	@Autowired
 	private LocalDAO dao;
 	
-	// 관광지 정보 추가
+	// ======================= [국내 여행지 정보 추가] =======================
 	@Override
 	public void addTour(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
@@ -78,10 +78,10 @@ public class LocalServiceImpl implements LocalService {
 	}
 	
 	@Override
-   // ======================= [지역정보 목록 조회] =======================
+	// ======================= [국내 여행지 정보 목록 조회] =======================
    public void localList(HttpServletRequest request, HttpServletResponse response, Model model)
          throws ServletException, IOException {
-      System.out.println("CustomerSerivceImpl - nextPage()");
+      System.out.println("CustomerSerivceImpl - localList()");
    
       // 화면에서 입력받은값 파라미터로 담기
       String pageNum = request.getParameter("pageNum");
@@ -107,5 +107,24 @@ public class LocalServiceImpl implements LocalService {
       model.addAttribute("paging", paging);
       model.addAttribute("locals", list);
    }
+
+	// ======================= [국내 여행지 상세정보(1건) 조회] =======================
+	@Override
+	public void localInfo(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		System.out.println("CustomerSerivceImpl - localInfo()");
+		
+		// queryString값으로 받아온 PK값
+		String local_title = request.getParameter("local_title");
+		
+		LocalDTO dto = null;
+		
+		// 받아온 PK값이 존재하면 dao로 보내서 국내 여행지 정보를 조회(1건)
+		if(local_title != null) {
+			dto = dao.localInfo(local_title);
+		}
+		
+		model.addAttribute("dto", dto);
+	}
 	
 }
