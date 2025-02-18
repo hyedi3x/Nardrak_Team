@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	  
+<mapper namespace="com.spring.nardrak_mvc.dao.LocalDAO">
+
+	<!-- 지역정보 삽입 -->
+	<insert id="insertTour" parameterType="com.spring.nardrak_mvc.dto.LocalDTO">
+		INSERT INTO localTour_tb(local_title, region, local_detail, local_image, latitude, longitude, api_name)
+		VALUES #{localTitle}, #{region}, #{localDetail}, #{localImage}, #{latitude}, #{longitude}, #{api_name}
+	</insert>
+	
+	<!-- 목록 -->
+   <select id="localList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.LocalDTO">
+           
+        SELECT *
+        FROM 
+          (SELECT A.* 
+               , rownum 
+            FROM  
+                 (SELECT * FROM localTour_tb
+                    WHERE local_show = 'Y' 
+                  ORDER BY local_title DESC) A 
+           )
+      	WHERE rownum BETWEEN #{start} AND #{end} 
+      </select>
+      
+      <!-- 지역정보 총 개수 -->
+      <select id="localCnt" resultType="int">
+      	SELECT count(*)
+      	  FROM localTour_tb
+      </select>
+</mapper>
