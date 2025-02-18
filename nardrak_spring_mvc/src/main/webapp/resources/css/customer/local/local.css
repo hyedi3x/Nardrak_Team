@@ -1,52 +1,87 @@
-/* 기본 설정 */
+/* 기본 스타일 초기화 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
 
- /* 구분선 스타일 */
-.divider {
-    border-top: 1px solid #bbb;
-    margin: 20px 0;
+.name {
+	max-width: 1100px;
+	margin: auto;
+}
+
+.name_tag {
+	font-size : 30px;
 }
 
 
+/* 컨테이너 설정: 여행지 목록과 태그 박스를 가로 정렬 */
+.container {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: auto;
+    flex-wrap: nowrap;
+    padding: 20px 0;
+}
+
+/* 여행지 목록 스타일 */
+.place-list {
+    width: 92%;
+}
+
+/* 개별 여행지 스타일 */
 .place {
-    display: flex; /* 가로 정렬 */
-    align-items: center; /* 세로 중앙 정렬 */
-    padding: 10px; /* 내부 여백 */
-    max-width: 400px; /* 최대 너비 설정 */
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.place:hover {
+    transform: scale(1.02);
 }
 
 .place-img img {
-    width: 150px; /* 이미지 너비 */
-    height: 100px; /* 비율 유지 */
-    border-radius: 10px; /* 이미지 모서리 둥글게 */
+    width: 150px;
+    height: 120px;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .place-text {
-    padding-left: 15px; /* 이미지와 텍스트 사이 여백 */
+    padding-left: 15px;
+    font-size: 14px;
+    color: #333;
+    flex-grow: 1;
 }
 
 .place-text h3 {
-    margin: 0; /* 제목 마진 제거 */
-    font-size: 18px; /* 글자 크기 조정 */
+    margin: 0;
+    font-size: 18px;
+    color: #222;
 }
 
 .place-text p {
-    margin: 5px 0; /* 문단 여백 조정 */
+    margin: 5px 0;
     font-size: 13px;
-    color: #666; /* 글자색 */
+    color: #666;
 }
 
-
+/* 태그 박스 스타일 */
 .tag-box {
-    width: 30%;
+    width: 22%;	/* 태그 박스 크기 */
     background: #f9f9f9;
-    padding: 15px;
+    padding: 10px; /* 내부 여백 */
     border-radius: 10px;
     height: fit-content;
-    position: absolute;
-    right: 0;
-    top: 20px;
+    min-width: 200px;
 }
-
 
 .tag-box h4 {
     margin: 0;
@@ -57,33 +92,31 @@
 .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 6px;  /* 태그 간격 */
+    margin-top: 8px;
 }
 
 .tag-list span {
     background: #eee;
-    padding: 5px 10px;
-    border-radius: 20px;
+    padding: 4px 10px;
+    border-radius: 15px;
     font-size: 12px;
     color: #333;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+.tag-list span:hover {
+    background: #d1d1d1;
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1100px;
-    margin: auto;
-    flex-wrap: nowrap; /* 태그가 아래로 내려가지 않도록 */
+/* 구분선 스타일 */
+.divider {
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
 }
 
-
+/* 페이지네이션 스타일 */
 .pagination {
     text-align: center;
     margin-top: 20px;
@@ -92,99 +125,20 @@ body {
 .pagination a {
     margin: 0 5px;
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
     color: #333;
+    transition: background 0.3s;
 }
 
+.pagination a:hover,
 .pagination a.active {
-    font-weight: bold;
     background-color: #007bff;
     color: white;
 }
 
-
-/* 전체 컨테이너를 조정하여 태그 박스를 오른쪽으로 배치 */
-
-.container {
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 900px;
-    margin: auto;
-}
-
-
-
-/* 여행지 목록을 감싸는 영역 */
-.place-list {
-    width: 70%; /* 태그 박스와 균형 조정 */
-
-}
-
-
-
-.tag-box {
-    width: 30%;
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 10px;
-    height: fit-content;
-    position: static;
-    min-width: 250px; /* 태그 박스가 너무 작아지는 걸 방지 */
-}
-
-
-
-
-/* 장소 스타일 조정 */
-
-.place {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-}
-
-
-
-.place-img img {
-    width: 120px;
-    height: 80px;
-    border-radius: 10px;
-}
-
-
-
-.place-text {
-    padding-left: 10px;
-    font-size: 14px;
-    color: #333;
-}
-
-
-
-/* 태그 스타일 */
-
-.tag-list {
-    display: flex;
-    gap: 8px;
-}
-
-
-
-.tag-list span {
-    background: #eee;
-    padding: 5px 8px;
-    border-radius: 15px;
-    font-size: 12px;
-    color: #333;
-}
-
-/* 푸터를 화면 아래에 고정 */
-
+/* 푸터 스타일 */
 footer {
     position: fixed;
     bottom: 0;
@@ -196,6 +150,40 @@ footer {
     padding: 10px 0;
 }
 
+.paging-container {
+    width: 100%;
+    text-align: center; /* 가운데 정렬 */
+    margin-top: 30px; /* 위쪽 여백 추가 */
+    padding-top: 10px;
+    border-top: 1px solid #ddd; /* 구분선 추가 */
+}
+
+.pagination {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* 버튼 사이 간격 */
+}
+
+.pagination li {
+    display: inline-block;
+}
+
+.pagination a {
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.pagination a.active {
+    background-color: #4361ee;
+    color: white;
+    font-weight: bold;
+}
 
 
 
