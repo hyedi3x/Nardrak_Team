@@ -8,8 +8,8 @@
 
 	<!-- 지역정보 삽입 -->
 	<insert id="insertTour" parameterType="com.spring.nardrak_mvc.dto.LocalDTO">
-		INSERT INTO localTour_tb(local_title, region, local_detail, local_image, latitude, longitude, api_name)
-		VALUES #{localTitle}, #{region}, #{localDetail}, #{localImage}, #{latitude}, #{longitude}, #{api_name}
+		INSERT INTO localTour_tb(local_title, region, description, local_tags, local_detail, local_image, latitude, longitude, api_name)
+		VALUES #{localTitle}, #{region}, #{description}, #{tags}, #{localDetail}, #{localImage}, #{latitude}, #{longitude}, #{api_name}
 	</insert>
 	
 	<!-- 목록 -->
