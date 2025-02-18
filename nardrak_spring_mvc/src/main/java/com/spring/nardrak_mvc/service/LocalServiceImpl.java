@@ -61,6 +61,8 @@ public class LocalServiceImpl implements LocalService {
         	
             dto.setLocalTitle(request.getParameter("local_title"));
             dto.setRegion(request.getParameter("region"));
+            dto.setDescription(request.getParameter("description"));
+            dto.setTags(request.getParameter("local_tags"));
             dto.setLocalDetail(request.getParameter("local_detail"));
             String localImage = "/resources/upload/local" + file.getOriginalFilename();
             dto.setLocalImage(localImage);

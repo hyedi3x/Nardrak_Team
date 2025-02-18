@@ -3,6 +3,8 @@ package com.spring.nardrak_mvc.dto;
 public class LocalDTO {
 	private String localTitle;			// 관광지 이름(제목 - PK)
     private String region;				// 지역
+    private String description;			// 지역 부연설명
+    private String tags;				// 태그 메시지
     private String localDetail;			// 상세정보
     private String localImage;			// 이미지 URL
     private double latitude;			// 위도
@@ -20,6 +22,18 @@ public class LocalDTO {
 	}
 	public void setRegion(String region) {
 		this.region = region;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getTags() {
+		return tags;
+	}
+	public void setTags(String tags) {
+		this.tags = tags;
 	}
 	public String getLocalDetail() {
 		return localDetail;
@@ -54,9 +68,9 @@ public class LocalDTO {
 	
 	@Override
 	public String toString() {
-		return "LocalDTO [localTitle=" + localTitle + ", region=" + region + ", localDetail=" + localDetail
-				+ ", localImage=" + localImage + ", latitude=" + latitude + ", longitude=" + longitude + ", api_name="
-				+ api_name + "]";
+		return "LocalDTO [localTitle=" + localTitle + ", region=" + region + ", description=" + description + ", tags="
+				+ tags + ", localDetail=" + localDetail + ", localImage=" + localImage + ", latitude=" + latitude
+				+ ", longitude=" + longitude + ", api_name=" + api_name + "]";
 	}
     
     
