@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.nardrak_mvc.service.CustomerService;
+import com.spring.nardrak_mvc.service.ImageUploadService;
 
 @Controller
 public class CustomerController {
@@ -23,11 +24,17 @@ public class CustomerController {
 	@Autowired
 	private CustomerService service;
 	
+	@Autowired
+	private ImageUploadService uploadService;
+	
 
 	// ======================= [시작 홈페이지] =======================
 	@RequestMapping("main.do")
-    public String main() {
+    public String main(HttpServletRequest request, HttpServletResponse response, Model model) 
+    		throws ServletException, IOException {
 		logger.info("<< url - main.do >>");
+		
+		uploadService.getImages(request, response, model);
         
         return "common/main";
      }
@@ -60,7 +67,9 @@ public class CustomerController {
 		
 		// 세션 삭제
 		request.getSession().invalidate();
-
+		
+		uploadService.getImages(request, response, model);
+		
 		return "common/main";	
 	}
 	

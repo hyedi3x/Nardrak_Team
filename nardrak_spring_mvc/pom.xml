@@ -127,7 +127,7 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>5.3.24</version>
 		</dependency>
-		
+
 		<!-- fileupload 시작 : 상품등록, 수정시 필요함 -->
 	      <!-- https://mvnrepository.com/ => Apache Commons FileUpload 검색-->
 	      <dependency>
@@ -143,7 +143,7 @@
 	          <version>2.4</version>
 	      </dependency>
       	<!-- fileupload 끝 -->
-   
+
 		<!-- jdbc 설정 pom.xml에 추가  -->
 		<dependency> 
 			<groupId>com.oracle.database.jdbc</groupId>

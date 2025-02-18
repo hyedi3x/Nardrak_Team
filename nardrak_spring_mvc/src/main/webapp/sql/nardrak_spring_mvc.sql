@@ -317,6 +317,18 @@ SELECT COUNT(*)
  
 SELECT COUNT(*)
   FROM admin_tb
+ WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' ;
+
+-- ==================[관리자 이미지 등록 테이블]=====================
+DROP TABLE admin_image_tb;
+CREATE TABLE admin_image_tb (
+    image_id       NUMBER PRIMARY KEY,             -- 이미지 고유 ID
+    image_path     VARCHAR2(255) NOT NULL,         -- 이미지 경로
+    upload_date    TIMESTAMP DEFAULT sysdate,      -- 업로드 날짜
+    image_show     CHAR(1) DEFAULT 'Y' NOT NULL,   -- 표시 여부 (기본값 'Y')
+    image_uploader VARCHAR2(50) NOT NULL,          -- 이미지를 업로드한 사용자
+    image_detail   VARCHAR2(255) NOT NULL          -- 이미지에 대한 설명
+);
  WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
 
 -- =================[회원 삭제(고객)]================================
@@ -352,23 +364,3 @@ UPDATE customer_tb
    SET delete_status = 'Y' 
  WHERE cs_id = #{strId};
 
--- =================[ 1:1 문의 내역 테이블 ]================================
-DROP TABLE inquiry_tb CASCADE CONSTRAINTS;
-CREATE TABLE inquiry_tb( 
-    i_num           NUMBER(10)      PRIMARY KEY,		-- 글번호(PK)(자동으로 1씩 증가)
-    i_title         VARCHAR2(100)   NOT NULL,		    -- 문의 제목
-    i_category      VARCHAR2(10)    NOT NULL,           -- 문의 유형   
-	i_content       VARCHAR2(250)   NOT NULL,		    -- 문의 내용
-    i_writeDate     TIMESTAMP       DEFAULT sysdate,	-- 작성일
-    i_status        VARCHAR2(10)    NOT NULL,           -- 문의 상태(pending 대기중, answered 답변 완료, closed 종료)
-	i_admin_reply   VARCHAR2(250)   NOT NULL,           -- 관리자 답변
-    i_replyDate     TIMESTAMP       DEFAULT sysdate,    -- 관리자 답변 일시
-    cs_id           VARCHAR2(10)    NOT NULL            -- 회원 ID(작성자)(FK)
-    ad_id           VARCHAR2(10)    NOT NULL,           -- 관리자 ID(관리자)(FK)
-    CONSTRAINT fk_cs_id FOREIGN KEY (cs_id) REFERENCES customer_tb(cs_id)
-    ON DELETE CASCADE
-    CONSTRAINT fk_ad_id FOREIGN KEY (ad_id) REFERENCES admin_tb(ad_id)
-    ON DELETE CASCADE
-);
-
-SELECT * FROM inquiry_tb;
