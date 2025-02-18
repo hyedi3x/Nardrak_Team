@@ -100,12 +100,12 @@
 				
           	<div id="mapDiv"><div id="map" style="width:700px;height:300px;"></div></div>
 
-			<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79bbefa2809ba249c3001e13077fefda&libraries=services"></script>
+			<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey={카카오 API 키}&libraries=services"></script>
 			<script>
 			    var mapContainer = document.getElementById('map'),
 			        mapOption = {
 			            center: new kakao.maps.LatLng(37.5665, 126.9780),
-			            level: 7,
+			            level: 4,
 			            mapTypeId : kakao.maps.MapTypeId.ROADMAP
 			        };
 			
