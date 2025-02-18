@@ -23,7 +23,7 @@
             <!-- id가 중복일 때, id를 입력받아 다시 중복체크 -->
             <c:if test="${inConfirmCnt == 1}">
                 <div class="message">
-                    <span>입력하신 아이디 <span class="idValue">${cs_id}</span>는 사용할 수 없습니다.</span>
+                    <span>입력하신 아이디 <span class="idValue">${strId}</span>는 사용할 수 없습니다.</span>
                 </div>
                 
                 <table>
@@ -41,14 +41,14 @@
             <!-- id가 중복이 아닐 때 -->
             <c:if test="${inConfirmCnt != 1}">
                 <div class="message">
-                    <span>입력하신 아이디 <span class="idValue">${cs_id}</span>는 사용할 수 있습니다.</span>
+                    <span>입력하신 아이디 <span class="idValue">${strId}</span>는 사용할 수 있습니다.</span>
                 </div>
 
                 <table>
                     <tr>
                         <td colspan="2">
                             <div align="center">
-                                <input class="inputButton" type="button" value="확인" onclick="setUserid('${cs_id}')"> 
+                                <input class="inputButton" type="button" value="확인" onclick="setUserid('${strId}')"> 
                             </div>
                         </td>
                     </tr>    

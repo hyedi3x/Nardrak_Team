@@ -15,7 +15,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">[필수] 본인 확인 서비스 이용 약관</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel1">[필수] 본인 확인 서비스 이용 약관</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -53,7 +53,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">[필수] 통신사 이용 약관</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel2">[필수] 통신사 이용 약관</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -99,7 +99,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">[선택] 개인정보 이용 · 제공</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel3">[선택] 개인정보 이용 · 제공</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -155,7 +155,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">[선택] 고유식별 정보 처리</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel4">[선택] 고유식별 정보 처리</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

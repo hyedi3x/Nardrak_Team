@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+/* 가장 바깥 div 가운데 맞춤 */
+.wrap{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: auto;
+}
+
+/* 로고와 테이블 교차축 가운데 정렬 */
+.container{
+	display: flex;
+	margin: auto;
+}
+
+/* 내부 요소 가운데 정렬 */
+form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 30px auto;
+	padding: 20px;
+}
+
+/* 테이블 크기, boder-sppacing = cellspacing  */
+table{
+	width: 900px;
+	border-spacing: 0px;
+	text-align: center;
+}
+
+/* th 크기, 색상 */
+th{
+	background-color: #9dbebb ;
+	height: 50px;
+	color: #ffffff;	
+	border: 1px solid #d9d9d9;
+}
+
+td{
+	padding: 10px;
+	border: 1px solid #d9d9d9;
+	
+}
+
+/* 폰트 크기 */
+.font20{
+	font-size: 20px;
+}
+.font16{
+	font-size: 16px;
+}
+
+/* th 간격 조정 */
+#noTh{
+	width: 100px;
+}
+#idTh{
+	width: 300px;
+}
+#accTh{
+	width: 300px;
+}
+#dateTh{
+	width: 200px;
+}
+
+/* 테이블 테두리 radius */
+tr th:first-child{
+	border-radius: 15px 0 0 0;
+}
+tr th:last-child{
+	border-radius: 0 15px 0 0;
+}
+.BTNTd{
+	border-radius: 0 0 15px 15px;
+}
+
+/* 페이징  */
+#pagingTd{
+	padding: 20px 10px 10px 10px ;
+	display: flex;
+	justify-content: center;
+}
+
+.listTr a{
+	color: #000000;
+}
+
+#pagingTd a{
+	margin: 0 10px;
+	text-align: center;
+	padding: 10px 20px;
+	border-radius:20px;
+	background-color: #9dbebb;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.BTNTd{
+	font-size
+}
+.chkLabel{
+	padding: 10px;
+}
+#accessBTN{
+	margin-left: 30px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #9dbebb;
+	border: none;
+	font-weight: bold;
+	color: #ffffff
+}

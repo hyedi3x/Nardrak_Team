@@ -115,11 +115,146 @@ SELECT * FROM admin_tb;
 COMMIT;
 
 -- 관리자 등록 시 아이디 중복 확인
-SELECT COUNT(*) FROM admin_tb
-WHERE ad_id = 'hyeri';
+SELECT COUNT(*) 
+FROM (SELECT cs_id, cs_pwd, login_session, delete_status FROM customer_tb 
+      UNION 
+      SELECT ad_id, ad_pwd, login_session, delete_status FROM admin_tb)
+WHERE cs_id='test' AND cs_pwd='test1234!' AND delete_status='N'AND login_session='Admin';
 
--- 관리자 등록 시 아이디 중복 확인(DAO 구문)
-SELECT COUNT(*) FROM admin_tb WHERE ad_id = #{ad_id};
+-- 전화번호, 이메일, 사번에 관한 유니크 조회
+SELECT COUNT(*)
+FROM admin_tb
+WHERE ad_email ='f@naver.com';
+
+-- 핸드폰은 통신사 빼고 조회
+--  처음으로 만나는 0부터 끝까지 ad_phone의 문자열을 추출하여 입력 받은 값과 비교하겠다.
+SELECT COUNT(*)
+FROM admin_tb
+WHERE ad_phone LIKE '%010-1234-5678%'
+AND LENGTH(ad_phone) >= 11;
+
+-- 비밀번호 확인
+SELECT *
+FROM admin_tb;
+WHERE ad_id = 'test'
+AND ad_pwd='testtest!1';
+
+-- 관리자 수정
+UPDATE admin_tb
+SET ad_pwd='', ad_name='', ad_birth='', ad_phone='', ad_email='', ad_zip='', ad_tel='', ad_empnum='', ad_dep='', ad_terms=''
+WHERE ad_id = '';
+
+-- 관리자 삭제
+UPDATE admin_tb
+SET delete_status = 'N'
+WHERE ad_id = 'test1'
+AND ad_pwd='tester1234!';
+
+-- 회원 초기화
+DELETE FROM admin_tb;
+
+-- 회원 생성
+DECLARE
+    i NUMBER:= 1;
+    k NUMBER:= 10;
+    j NUMBER:= 100;
+BEGIN
+    WHILE i <= 9 LOOP
+        INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
+        VALUES('test' || i, 'test1234!' || i, '테스터' || i, '010101-3', 'L 010-1234-000' || i, 'test' || i || '@visit.com', i || ', 기본주소, 상세주소', '02-888-9999', 'No_test' || i, 'CS004', '1 2 3 4', 'Admin');
+        i := i+1;
+    END LOOP;
+    WHILE k <= 99 LOOP
+        INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
+        VALUES('test' || k, 'test1234!' || k, '테스터' || k, '010101-3', 'L 010-1234-00' || k, 'test' || k || '@visit.com', k || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || k, 'IT005', '1 2 3 4', 'Admin');
+        k := k+1;
+    END LOOP;
+   
+   i := 1;  -- i를 1로 초기화
+    WHILE i <= 20 LOOP
+        UPDATE admin_tb
+           SET access_status = 'Y'
+        WHERE ad_id = 'test' || i;
+        i := i+1;
+    END LOOP;
+    
+    WHILE j <= 147 LOOP
+        INSERT INTO admin_tb(ad_id, ad_pwd, ad_name, ad_birth, ad_phone, ad_email, ad_zip, ad_tel, ad_empnum, ad_dep, ad_terms, login_session)
+        VALUES('test' || j, 'test1234!' || j, '테스터' || j, '010101-3', 'L 010-1234-0' || j, 'test' || j || '@visit.com', j || ', 기본주소, 상세주소', '02-000-0000', 'No_test' || j, 'IT005', '1 2 3 4', 'Admin');
+        j := j+1;
+    END LOOP;
+END;
+/
+COMMIT;
+
+-- 등록 확인
+SELECT * FROM admin_tb
+ORDER BY ad_phone; -- 등록 시간이 동일해서 임시정렬
+
+-- 관리자 요청 수 조회 (페이지)
+SELECT *
+  FROM(
+      SELECT ROWNUM rn, ad.*
+        FROM (SELECT *
+                FROM admin_tb
+              WHERE access_status = 'N'
+              ORDER BY ad_regdate
+              ) ad
+      )
+WHERE rn BETWEEN 1 AND 10
+ORDER BY rn;
+
+-- 관리자 권한 승인
+UPDATE admin_tb
+   SET access_status = 'Y'
+WHERE ad_id in ('test21', 'test22', 'test23');
+rollback;
+-- 승인 관리자 목록 조회 (전체)
+SELECT *
+  FROM(
+      SELECT ROWNUM rn, ad.*
+        FROM (SELECT *
+                FROM admin_tb
+              WHERE access_status = 'Y'
+              ) ad
+      )
+ORDER BY rn;
+
+-- 삭세 회원 카운트 (페이징)
+SELECT COUNT(*)
+  FROM customer_tb
+ WHERE delete_status = 'Y';
+
+-- 삭제 회원 조회, 임시로 삭제요청일이 아닌 계정 생성일로 실행 (오래된 순)
+SELECT *
+  FROM(
+      SELECT ROWNUM as rn, cs.*, (sysdate-cs_regDate) as timeDiff
+        FROM (SELECT *
+                FROM customer_tb
+              WHERE delete_status = 'Y'
+              ORDER BY cs_regDate
+              ) cs
+      )
+WHERE rn BETWEEN 1 AND 10
+ORDER BY rn;
+
+-- 생성 30일 넘는 회원으로 변경
+UPDATE customer_tb
+SET cs_regDate = '25/01/1 16:50:36.000000000'
+WHERE cs_id = 'hello1';
+COMMIT;
+
+-- 회원 삭제 요청
+UPDATE customer_tb
+SET delete_status = 'Y'
+WHERE cs_id = 'hello1';
+
+-- 회원 삭제
+DELETE customer_tb
+WHERE cs_id in ('hello', 'hello987@');
+
+SELECT *
+FROM customer_tb;
 
 -- ==================[고객 회원가입 테이블]=====================
 DROP TABLE customer_tb CASCADE CONSTRAINTS;
@@ -184,3 +319,56 @@ SELECT COUNT(*)
   FROM admin_tb
  WHERE ad_id=#{strId} AND ad_pwd=#{strPwd} AND login_session='Admin' AND delete_status='N' AND access_status='Y' 
 
+-- =================[회원 삭제(고객)]================================
+DROP TABLE customer_delete_tb CASCADE CONSTRAINTS;
+CREATE TABLE customer_delete_tb(
+    cs_del_num      VARCHAR2(30)    PRIMARY KEY,        -- 회원 탈퇴 번호(PK)(자동으로 1씩 증가)
+    cs_id           VARCHAR2(10),                       -- 회원 ID(FK)
+    cs_del_terms    VARCHAR2(8)     NOT NULL,           -- 탈퇴 동의 여부(Yes, No)
+    cs_drCode       VARCHAR2(1)     NOT NULL,           -- 탈퇴 사유 코드(A,B,C,D,E,F)
+    cs_etc_cmmt     VARCHAR2(250),                      -- 기타 사유(탈퇴 시 남기는 메시지)
+    cs_del_date     TIMESTAMP       DEFAULT sysdate,    -- 탈퇴 처리 일시
+    CONSTRAINT fk_cs_id FOREIGN KEY (cs_id) REFERENCES customer_tb(cs_id)
+    ON DELETE CASCADE
+);
+COMMIT;
+SELECT * FROM customer_delete_tb;
+
+-- 탈퇴 정보 customer_delete_tb에 추가 (sql)
+INSERT INTO customer_delete_tb(cs_del_num, cs_id, cs_del_terms, cs_drCode, cs_etc_cmmt, cs_del_date)
+VALUES(TO_CHAR((SELECT NVL(MAX(cs_del_num)+1,1)FROM customer_delete_tb)), 'hello6', 'on', 'B', '탈퇴인서트', sysdate);
+
+-- 탈퇴 정보 customer_delete_tb에 추가 (spring)
+INSERT INTO customer_delete_tb(cs_del_num, cs_id, cs_del_terms, cs_drCode, cs_etc_cmmt, cs_del_date)
+VALUES(TO_CHAR((SELECT NVL(MAX(cs_del_num)+1,1)FROM customer_delete_tb)), #{cs_id}, #{cs_del_terms}, #{cs_drCode}, #{cs_etc_cmmt}, sysdate) 
+
+-- 회원정보 탈퇴 정보 처리 후, customer_tb에서 해당 회원 삭제(delete_status = 'Y')(sql)
+UPDATE customer_tb 
+   SET delete_status = 'Y' 
+ WHERE cs_id = 'hello6';
+
+-- 회원정보 탈퇴 정보 처리 후, customer_tb에서 해당 회원 삭제(delete_status = 'Y')(spring)
+UPDATE customer_tb 
+   SET delete_status = 'Y' 
+ WHERE cs_id = #{strId};
+
+-- =================[ 1:1 문의 내역 테이블 ]================================
+DROP TABLE inquiry_tb CASCADE CONSTRAINTS;
+CREATE TABLE inquiry_tb( 
+    i_num           NUMBER(10)      PRIMARY KEY,		-- 글번호(PK)(자동으로 1씩 증가)
+    i_title         VARCHAR2(100)   NOT NULL,		    -- 문의 제목
+    i_category      VARCHAR2(10)    NOT NULL,           -- 문의 유형   
+	i_content       VARCHAR2(250)   NOT NULL,		    -- 문의 내용
+    i_writeDate     TIMESTAMP       DEFAULT sysdate,	-- 작성일
+    i_status        VARCHAR2(10)    NOT NULL,           -- 문의 상태(pending 대기중, answered 답변 완료, closed 종료)
+	i_admin_reply   VARCHAR2(250)   NOT NULL,           -- 관리자 답변
+    i_replyDate     TIMESTAMP       DEFAULT sysdate,    -- 관리자 답변 일시
+    cs_id           VARCHAR2(10)    NOT NULL            -- 회원 ID(작성자)(FK)
+    ad_id           VARCHAR2(10)    NOT NULL,           -- 관리자 ID(관리자)(FK)
+    CONSTRAINT fk_cs_id FOREIGN KEY (cs_id) REFERENCES customer_tb(cs_id)
+    ON DELETE CASCADE
+    CONSTRAINT fk_ad_id FOREIGN KEY (ad_id) REFERENCES admin_tb(ad_id)
+    ON DELETE CASCADE
+);
+
+SELECT * FROM inquiry_tb;
