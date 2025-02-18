@@ -30,6 +30,8 @@ public class LocalController {
 			throws ServletException, IOException{
 		logger.info("url => local.tr");
 		
+		service.localList(request, response, model);
+		
 		return "customer/local/local";
 	}
 	
@@ -58,6 +60,8 @@ public class LocalController {
 	public String locationDetailPage(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException{
 		logger.info("url => locationDetailPage.tr");
+		
+		service.localInfo(request, response, model);
 		
 		return "customer/local/locationDetailPage";
 	}
