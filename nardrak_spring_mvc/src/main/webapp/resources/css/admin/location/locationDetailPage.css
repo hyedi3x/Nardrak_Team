@@ -17,18 +17,34 @@
 	flex-direction: column;
 }
 
-.width100{
+.divWidth100{
 	margin: auto;
-	padding: 20px 0;
 	width: 700px;
 	text-align: center;
 }
 
+.local_title{
+	padding-top: 20px;
+}
+
+#region{
+	padding-bottom: 20px;
+	font-size: 20px;
+	color: #666666;
+}
+
+#local_tags{
+	padding-bottom: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #666666;
+}
 .local_image{
 	width: 500px;
 }
 
 .detailDiv{
+	padding-top: 20px;
 	width: 700px;
 	margin: auto;
 	text-align: left;
@@ -36,13 +52,21 @@
 }
 
 .detailDiv2{
+	padding: 20px 0;
 	width: 700px;
 	margin: auto;
-	text-align: center;
+	text-align: left;
 }
 
 .pageMap{
-	margin-top: 20px;
+	margin: 20px 0 40px 0;
 	width: 700px;
 	height: 300px;
+}
+
+#mapDiv{
+	display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    
 }
