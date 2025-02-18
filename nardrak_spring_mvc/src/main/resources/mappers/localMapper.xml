@@ -13,7 +13,7 @@
 	</insert>
 	
 	<!-- 목록 -->
-   <select id="localList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.LocalDTO">
+    <select id="localList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.LocalDTO">
            
         SELECT *
         FROM 
@@ -31,5 +31,12 @@
       <select id="localCnt" resultType="int">
       	SELECT count(*)
       	  FROM localTour_tb
+      </select>
+      
+      <!-- 국내 여행지 상세정보 조회(1건) -->
+      <select id="localInfo" parameterType="String" resultType="com.spring.nardrak_mvc.dto.LocalDTO">
+      	SELECT *
+      	  FROM localTour_tb
+      	 WHERE local_title = #{local_title}
       </select>
 </mapper>
