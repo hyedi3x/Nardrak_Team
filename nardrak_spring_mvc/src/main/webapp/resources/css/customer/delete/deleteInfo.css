@@ -1,13 +1,6 @@
 @charset "UTF-8";
 /* 회원 탈퇴 안내 페이지 css (노랑풍선 참고) */
 
-/* 기본 스타일 설정 */
-body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, figure, figcaption {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-}
-
 /* body 설정 */
 body {
     position: relative; /* relative: 해당 요소를 기준으로 다른 절대 위치 요소(absolute)들이 위치할 수 있도록 함 */
@@ -21,7 +14,6 @@ body {
 /* form 요소*/
 form {
     display: block;
-    margin-top: 0em;	/* 위쪽 여백 */
     unicode-bidi: isolate;	/* 텍스트이 방향을 독립적으로 설정 */
 }
 
@@ -33,7 +25,8 @@ form {
 
 /* container 설정 */
 #container {
-	padding-bottom: 100px;
+	width: 1100px;
+    padding-bottom: 100px;
     margin: auto;
 }
 
@@ -51,9 +44,8 @@ a {
 /********************************************************************/
 /* 네비게이션 태그 */
 .page_navigation {
-    width: 1200px;
+    width: 100%;
     height: 50px;
-    margin: auto;
     text-align: right;
     padding-top: 30px;
 }
@@ -66,22 +58,15 @@ a {
 /* 메뉴바 + 본문 내용 박스 */
 .content_block {
     position: relative;
-    width: 1200px;
-    min-height: 600px;
-}
-
-/* 본문 */
-.content {
-	float: right;
-    width: 910px;
-    min-height: 800px;
+    margin: auto;
 }
 
 /* 타이틀 */
 .content>.big_title {
 	padding: 10px 0 20px 0;
-    border-bottom: 2px solid #222;	/* 타이틀과 본문 나누는 선 */
+    border-bottom: 1px solid #222;	/* 타이틀과 본문 나누는 선 */
     font-weight: bold;
+    box-shadow: 0 6px 3px -3px rgba(0, 0, 0, 0.1);
 }
 
 .big_title {
@@ -138,6 +123,7 @@ em {
     border: 1px solid #ddd;
     box-sizing: border-box;
     background: #fff;
+    text-align: center;
 }
 
 .detailContent .box_guide .bg_1_1 {
@@ -237,7 +223,7 @@ input[type="checkbox"]+label {
 /* 회원탈퇴 사유 선택 안내*/
 .detailContent .txt_check {
     position: relative;
-    padding-left: 180px;
+    padding-left: 225px;
     margin: 54px 0;
     font-size: 18px;
     color: #222;
@@ -246,7 +232,6 @@ input[type="checkbox"]+label {
 .detailContent .txt_check:before {
     position: absolute;
     left: 100px;
-    display: block;
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     content: '\f575';
@@ -269,19 +254,20 @@ input[type="checkbox"]+label {
 
 /* 탈퇴 사유 체크 박스*/
 .detailContent .list_align_category {
+	text-align: center;
     padding: 10px 0 20px 20px;
-    margin: 19px 0 0;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
 
 .detailContent .list_align_category li {
-    width: 300px;
+    width: 350px;
 }
 
 ul.list_align_category li {
     display: inline-block;
     margin-top: 10px;
+    text-align: left;
 }
 
 .form_block {
@@ -313,12 +299,8 @@ p.txt_nor_info {
     text-align: right;
 }
 
-.detailContent .tf_wish {
-    width: 910px;
-}
-
 textarea {
-    width: 700px;
+    width: 100%;
     height: 200px;
     padding: 10px;
     border: 1px solid #ddd;
@@ -331,8 +313,6 @@ textarea {
 .align_ctr {
     text-align: center !important;
 }
-
-
 
 .stit_con_mix {
     line-height: 36px;
@@ -363,10 +343,17 @@ button {
     height: 50px;
     line-height: 50px;
     margin: 0 4px;
-    background: #555;
+    background: #64A0ff;
     font-size: 18px;
     color: #fff;
     vertical-align: top;
     text-align: center;
+    border-radius: 6px;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
 }
+
+.btn_cof:hover {
+    background: #1E82ff;
+}
+
 

@@ -12,7 +12,7 @@ h2 {
     max-width: 768px;
     text-align: center;
     padding-bottom: 15px;
-    border-bottom: 1px solid #729ea1;
+    border-bottom: 1px solid #222222;
     box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
     margin-bottom: 20px;
 }
@@ -41,7 +41,7 @@ td {
 /* 필수 체크 input에 대한 *표시 컬러 */
 .requiredAll{
 	font-size: 15px;
-    color: #40798c;
+    color: #1E82ff;
 }
 
 /* 아이디 입력 필드 속성 */
@@ -60,13 +60,14 @@ td {
 input[type="button"]#inputIdConfirm {
 	margin-left: 5px;
 	padding: 8px 15px;
-    background-color: #9dbebb;
+    background-color: #64A0ff;
     border: none;
     color: #ffffff;
     font-size: 14px;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
 }
 
 .font13{
@@ -85,7 +86,7 @@ input[type="button"]#inputIdConfirm {
 /* 비밀번호 아이콘 절대 위치 설정 */
 #togglePassword {
     font-size: 19px;
-    color: #9dbebb;
+    color: #64A0ff;
     cursor: pointer;
     position: absolute;
     top: 24;
@@ -127,27 +128,28 @@ input[type="button"]#inputIdConfirm {
 .em {
 	font-size: 14px;
 	font-weight: bold;
-	color: #9dbebb;
+	color: #64A0ff;
 }
 
 /* 우편주소 찾기 버튼 속성 */
 input[type="button"]#zip {
 	margin-left: 5px;
 	padding: 8px 15px;
-    background-color: #9dbebb;
+    background-color: #64A0ff;
     border: none;
     color: #ffffff;
     font-size: 14px;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
 }
 
 /* 회원가입 및 회원 가입 초기화*/
  input[type="submit"], input[type="reset"] {
  	width: 492px;
     padding: 10px 20px;
-    background-color: #9dbebb;
+    background-color: #64A0ff;
     border: none;
     color: white;
     font-size: 14px;
@@ -155,11 +157,12 @@ input[type="button"]#zip {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin: 12px 10px 5px 50px;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
 }
 
 input[type="button"]#inputIdConfirm:hover, input[type="button"]#zip:hover,
 input[type="submit"]:hover, input[type="reset"]:hover {
-    background-color: #729ea1;
+    background-color: #1E82ff;
 }
 
 .radio14 {
@@ -170,7 +173,7 @@ input[type="submit"]:hover, input[type="reset"]:hover {
 /* focus는 outline 검정색에서 변경*/
 input:focus,
 select:focus {
-	border: 2px solid #9dbebb;
+	border: 2px solid #64A0ff;
 	outline: none;
 }
 
@@ -197,8 +200,8 @@ select:focus {
 	    width: 768px;
 	    text-align: center;
 	    padding-bottom: 15px;
-	    border-bottom: 1px solid #729ea1;
-	    box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
+	    border-bottom: 1px solid #222222;
+	    box-shadow: 0 6px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
 	    margin-bottom: 20px;
 	}
 }
