@@ -39,7 +39,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
         String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/admin/");
         
         // 로컬 디스크에서 사용할 샘플 경로 설정 (테스트용)
-        String realDir = "D:\\DEV\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\";
+        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\";
 
         // 파일 입출력을 위한 스트림 초기화
         FileInputStream fis = null;
@@ -61,7 +61,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
             
             // 이미지 경로와 업로드 날짜 설정
             ImageUploadDTO dto = new ImageUploadDTO(); // 새로운 DTO 객체 생성
-            String image_path = "/nardrak_mvc/resources/upload/admin/" + file.getOriginalFilename(); // 상대 경로로 설정
+            String image_path = "/resources/upload/admin/" + file.getOriginalFilename(); // 상대 경로로 설정
             dto.setImage_path(image_path); // 이미지 경로 설정
 
             // 현재 시간을 업로드 날짜로 설정
