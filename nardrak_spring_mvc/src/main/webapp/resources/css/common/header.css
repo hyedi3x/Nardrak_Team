@@ -112,9 +112,9 @@
     color: #232323;     /* 햄버거 메뉴 아이콘 색상 */
     padding: 10px;    /* 내부 여백 설정 */
     position: fixed;  /* 화면 고정 위치 */
-    top: 20px;        /* 상단에서 20px 떨어짐 */
+    top: 35px;        /* 상단에서 35px 떨어짐 */
     right: 20px;      /* 오른쪽에서 20px 떨어짐 */
-    font-size: 20px;  /* 검색 아이콘 크기 설정 */
+    font-size: 23px;
 }
 
 /* 메뉴바 스타일 */
