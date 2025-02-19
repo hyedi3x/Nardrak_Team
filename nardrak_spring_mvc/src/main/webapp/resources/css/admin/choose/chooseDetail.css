@@ -1,0 +1,107 @@
+/* 기본 스타일 */
+body {
+  font-family: 'Arial', sans-serif; /* 기본 폰트 설정 */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.choose {
+  width: 750px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.swiper-slide {
+  position: relative;
+}
+
+.slide-content {
+  position: relative;
+}
+
+.back_ground {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 750px;
+  height: 500px; /* 이미지 높이 설정 */
+  margin-bottom: 20px; /* 이미지와 텍스트 사이 여백 */
+}
+
+.back_ground img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* 이미지 모서리 둥글게 */
+}
+
+/* 텍스트 스타일 */
+.slide-text1, .slide-text2, .slide-text3, .slide-text4 {
+  color: #333;
+  font-family: 'Verdana', sans-serif; /* 이쁜 폰트 설정 */
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.slide-text1 {
+  font-size: 24px;
+  font-weight: bold; /* 첫 번째 텍스트는 강조 */
+}
+
+.slide-text2 {
+  font-size: 20px;
+}
+
+.slide-text3, .slide-text4 {
+  font-size: 18px;
+  color: #555;
+}
+
+.choose_text .explanation {
+  font-family: 'Georgia', serif; /* 이쁜 serif 폰트 설정 */
+  font-size: 16px;
+  color: #666;
+  margin-top: 20px;
+  line-height: 1.6;
+  text-align: center; /* 설명 텍스트도 가운데 정렬 */
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+  .choose {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .back_ground {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* 두 번째 Swiper2 */
+.mySwiper2 {
+  width: 1320px;  /* 두 번째 스와이퍼의 너비를 100%로 설정 */
+  height: 300px;  /* 두 번째 스와이퍼의 높이를 300px로 설정 */
+}
+
+.mySwiper2 .swiper-slide {
+  display: flex;  /* 슬라이드 내의 요소들을 flex로 설정 */
+  justify-content: center;  /* 슬라이드 내부 요소들을 가로로 중앙 정렬 */
+  align-items: center;  /* 슬라이드 내부 요소들을 세로로 중앙 정렬 */
+}
+
+.mySwiper2 .swiper-slide img {
+  width: 100%;  /* 이미지 너비를 슬라이드 너비에 맞게 100%로 설정 */
+  height: 100%;  /* 이미지 높이를 슬라이드 높이에 맞게 100%로 설정 */
+  object-fit: cover;  /* 이미지가 슬라이드 영역에 맞게 잘리거나 확대/축소되어 꽉 차도록 설정 */
+  border-radius: 12px;  /* 이미지의 모서리를 둥글게 설정 */
+}
