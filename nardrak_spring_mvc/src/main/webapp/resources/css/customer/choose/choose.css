@@ -32,7 +32,7 @@ body {
 
 .swiper-min {
 	width: 100%;
-	height: 800px;
+	height: 650px;
 	margin: auto;         /* 위 아래 마진 추가 */
 	
 }
@@ -238,7 +238,7 @@ body {
 
 /* 세 번째 Swiper3 */
 .mySwiper3 {
-  width: 100%;  /* 두 번째 스와이퍼의 너비를 100%로 설정 */
+  width: 80%;  /* 두 번째 스와이퍼의 너비를 100%로 설정 */
   max-width: 1320px; /* 최대 너비를 1400px로 제한 */
   height: 400px;  /* 두 번째 스와이퍼의 높이를 500px로 설정 */
   overflow: hidden;  /* 이미지나 콘텐츠가 넘칠 경우 숨김 처리 */
@@ -262,7 +262,7 @@ body {
 
 /* 각 슬라이드의 인덱스에 해당하는 배경색을 지정 */
 div[data-swiper-slide-index="0"] {
-    background-color: ddb892; /* 첫 번째 슬라이드 배경색 설정 */
+    background-color: #ddb892; /* 첫 번째 슬라이드 배경색 설정 */
     visibility: visible; /* 첫 번째 슬라이드 보이도록 설정 */
 }
 
@@ -272,27 +272,27 @@ div[data-swiper-slide-index="0"] .slide-text2 {
 }
 
 div[data-swiper-slide-index="1"] {
-    background-color: a3c4f3; /* 두 번째 슬라이드 배경색 설정 */
+    background-color: #a3c4f3; /* 두 번째 슬라이드 배경색 설정 */
     visibility: visible; /* 두 번째 슬라이드 보이도록 설정 */
 }
 
 /* 두 번째 슬라이드에 포함된 텍스트 색상 변경 */
 div[data-swiper-slide-index="1"] .slide-text1 {
-	color: f0ebd8;
+	color: #f0ebd8;
 }
 div[data-swiper-slide-index="1"] .slide-text2 {
-	color: ecf39e;
+	color: #ecf39e;
 }
 
 
 div[data-swiper-slide-index="2"] {
-    background-color: 04395e; /* 세 번째 슬라이드 배경색 설정 */
+    background-color: #04395e; /* 세 번째 슬라이드 배경색 설정 */
     visibility: visible; /* 세 번째 슬라이드 보이도록 설정 */
 }
 
 /* 세 번째 슬라이드에 포함된 텍스트 색상 변경 */
 div[data-swiper-slide-index="2"] .slide-text2 {
-	color: 353535;
+	color: #353535;
 }
 
 div[data-swiper-slide-index="3"] {
