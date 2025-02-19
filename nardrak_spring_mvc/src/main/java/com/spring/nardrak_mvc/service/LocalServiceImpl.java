@@ -102,7 +102,6 @@ public class LocalServiceImpl implements LocalService {
       map.put("end", end);
       
       List<LocalDTO> list = dao.localList(map);
-      System.out.println(list);
       
       model.addAttribute("paging", paging);
       model.addAttribute("locals", list);
