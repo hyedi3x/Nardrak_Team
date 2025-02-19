@@ -12,6 +12,14 @@
 .container{
 	display: flex;
 	margin: auto;
+	flex-direction: column;
+}
+
+/* 제목 */
+.page_title{
+	padding-bottom: 20px;
+	border-bottom: 1px solid #222222;
+	box-shadow: 0 6px 3px -3px rgba(0, 0, 0, 0.1);
 }
 
 /* 내부 요소 가운데 정렬 */
@@ -19,11 +27,17 @@ form{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin: 30px auto;
 	padding: 20px;
 }
 
-/* 테이블 크기, boder-sppacing = cellspacing  */
+.page-title {
+    font-size: 36px;  /* 제목 크기 */
+    color: #333;      /* 제목 색상 */
+    text-align: center; /* 중앙 정렬 */
+    margin-bottom: 20px; /* 아래 여백 */
+}
+
+/* 테이블 크기, boder-spacing = cellspacing  */
 table{
 	width: 900px;
 	border-spacing: 0px;
@@ -32,7 +46,7 @@ table{
 
 /* th 크기, 색상 */
 th{
-	background-color: #9dbebb ;
+	background-color: #64A0ff;
 	height: 50px;
 	color: #ffffff;	
 	border: 1px solid #d9d9d9;
@@ -41,7 +55,6 @@ th{
 td{
 	padding: 10px;
 	border: 1px solid #d9d9d9;
-	
 }
 
 /* 폰트 크기 */
@@ -93,9 +106,14 @@ tr th:last-child{
 	text-align: center;
 	padding: 10px 20px;
 	border-radius:20px;
-	background-color: #9dbebb;
+	background-color: #64A0ff;
 	font-weight: bold;
 	color: #ffffff;
+	box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
+}
+
+#pagingTd a:hover{
+    background-color: #1E82ff;
 }
 
 .BTNTd{
@@ -108,8 +126,13 @@ tr th:last-child{
 	margin-left: 30px;
 	padding: 10px;
 	border-radius: 5px;
-	background-color: #9dbebb;
+	background-color: #64A0ff;
 	border: none;
 	font-weight: bold;
-	color: #ffffff
+	color: #ffffff;
+	box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
+}
+
+#accessBTN:hover{
+	background-color: #1E82ff;
 }

@@ -24,8 +24,8 @@ form{
 
 #signUpTitle {
 	margin: 10px 0px;
-	border-bottom: 1px solid #729ea1;
-    box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
+	border-bottom: 1px solid #222222;
+    box-shadow: 0 6px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
 }
 
 #ad_title{
@@ -53,7 +53,7 @@ input{
 	padding: 10px 15px;
 	border-radius: 5px;
 	margin: 0px;
-	border: 1px solid  #d9d9d9;
+	border: 1px solid  #ddd;
 	margin-bottom: 10px;
 }
 /* select 설정 */
@@ -69,13 +69,13 @@ select{
 /* 입력란 hover 색 변경 */
 input:hover, 
 select:hover {
-	border-color: #729ea1;
+	border-color: #1E82ff;
 }
 
 /* focus는 outline 검정색에서 변경*/
 input:focus, 
 select:focus {
-	border-color: #9dbebb;
+	border-color: #64A0ff;
 	outline: 3px solid rgba(45, 62, 63, 0.2);
 }
 
@@ -95,12 +95,17 @@ select:focus {
 }
 
 input[type="button"], input[type="submit"]{
-	background-color: #9dbebb;
+	background-color: #64A0ff;
 	color: white;
 	font-size: 16px;
 	border: none;
 	border-radius:5px;
 	text-align: center;
+	box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
+}
+
+input[type="button"]:hover, input[type="submit"]:hover{
+	background-color: #1E82ff;
 }
 
 /*
@@ -149,7 +154,7 @@ input[type="number"]::-webkit-inner-spin-button {
 	right: 15px;
 	top: 14px;
 	font-size: 19px;
-	color: #9dbebb;
+	color: #64A0ff;
 }
 
 /* 생년월일 입력창 */
@@ -187,7 +192,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .emailIcon{
  font-size: 19px;
- color: #9dbebb; 
+ color: #64A0ff;
  font-weight: bold;
 }
 
@@ -208,7 +213,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 /* 생년월일 도트 아이콘 */
 #dot{
-	color: #9dbebb;
+	color: #64A0ff;
 	font-size: 16px;
 	padding-left: 3px;
 }
@@ -221,13 +226,13 @@ input[type="number"]::-webkit-inner-spin-button {
 /* 약관 제목 설정 */
 #termsTh{
 	padding: 15px 3px;
-	color: #15616d;
+	color: #004080;
     font-weight: bold;
 }
 
 /* 약관 링크를 클릭 하더라도 색상변경 없음 */
 a:link, a:visited {
-	color: #729ea1;
+	color: #004080;
 	font-weight: normal;
 }
 
@@ -239,12 +244,12 @@ a:link, a:visited {
 
 /* [필수] 약관 글 색상 변경 */
 .check{
-	color: #468189;
+	color: #004080;
 }
 
 /* [선택] 약관 글 색상 변경 */
 .choose {
-	color: #729ea1;
+	color: #004080;
 }
 
 /* [선택] 약관 글 넘어간 부분 설정 ('다') */
@@ -253,7 +258,7 @@ a:link, a:visited {
 }
 
 .submitBTN:hover{
-	background-color:#729ea1;
+	background-color:#004080;
 }
 
 .submitBTN { 
