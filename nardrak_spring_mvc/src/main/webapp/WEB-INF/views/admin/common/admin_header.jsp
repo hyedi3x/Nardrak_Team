@@ -14,7 +14,9 @@
 <body>
 	<div id="header">
 		<div class="main-logo">
-			<img src="${path}/resources/image/common/logo.png" alt="로고">
+			<a href="${path}/main.do">
+				<img src="${path}/resources/image/common/logo.png" alt="로고">
+			</a>
 		</div>
 		
 		<div class="travel">
