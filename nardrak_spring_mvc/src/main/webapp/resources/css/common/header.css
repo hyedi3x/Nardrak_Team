@@ -56,26 +56,37 @@
 }
 
 /* ----------------------------[검색창 스타일] -----------------------*/
-.search{
-	background: #EFEFEF;
-	border-radius: 10px;
-	width: 20%;
-	min-width: 160px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 10px;
+.search {
+    display: flex;
+	align-items: center;
+    background: #EFEFEF;
+    border-radius: 15px;
+    width: 25%;
+    min-width: 160px;
+    padding: 7px 10px;
+}
+
+/* ----------------------------[검색창 아이콘] -----------------------*/
+.fa-solid.fa-magnifying-glass {
+	display: flex;
+    margin-right: 10px;
 }
 
 /* 검색 쪽 스타일 */
 #search-text{
 	border: none;
-	background: none;
-	width: 80%;
+    background: none;
+    width: 80%;
+    display: flex;
 }
 
 /* placeholder 글씨 크기 축소 */
 #search-text::placeholder{
 	font-size: 11px;
+}
+
+.fa-regular, .far, .fa-solid, .fas {
+    font-size: 17px;
 }
 
 /* ------------------[사용자 메뉴 헤더 스타일(로그인, 회원가입)]---------------------- */
@@ -147,6 +158,10 @@
     color: white;
 }
 
+.side-travel a:hover {
+    color: #64A0ff;
+}
+
 /* 슬라이드 메뉴 내 사용자 관련 메뉴 스타일 */
 .side-user-menu ul {
     display: inline; /* 항목들을 가로로 배치 */
@@ -161,12 +176,12 @@
     font-size: 1rem; /* 글자 크기 설정 */
 }
 
-.side-user-menu a{
-	color: white;
+.side-user-menu a {
+	color: #ffffff;
 }
 
 .side-user-menu a:hover{
-	color: #b1f2d8;
+	color: #64A0ff;
 }
 
 /* 슬라이드 메뉴 닫기 버튼 스타일 */

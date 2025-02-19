@@ -17,3 +17,7 @@ a {
 *{		
     box-sizing: border-box;
 }
+
+textarea {
+    font-family: 'Noto Sans KR', 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif; /* 폰트 적용 */
+}
