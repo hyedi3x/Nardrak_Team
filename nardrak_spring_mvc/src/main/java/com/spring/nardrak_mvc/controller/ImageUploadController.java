@@ -25,23 +25,23 @@ public class ImageUploadController {
 	private static final Logger logger = LoggerFactory.getLogger(ImageUploadController.class);
 	
 	// 사진 등록 및 수정 페이지
-	@RequestMapping("/uploadImage.img")
+	@RequestMapping("/uploadImage.do")
 	public String editUploadImage(HttpServletRequest request, HttpServletResponse response, Model model)
 		throws ServletException, IOException{
 		
-		logger.info("<< url : editUploadImage.ad >>" );
+		logger.info("<< url : editUploadImage.do >>" );
 		
 		service.getImages(request, response, model);
 		
-		return "admin/image/imageUpload";
+		return "admin/imageUP/imageUpload";
 	}
 	
 	// 사진 등록 및 수정 처리
-	@RequestMapping("/uploadImageAction.img")
+	@RequestMapping("/uploadImageAction.do")
 	public String uploadImageAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException{
 		
-		logger.info("<< url : uploadImageAction.ad >>" );
+		logger.info("<< url : uploadImageAction.do >>" );
 		
 		service.uploadImage(request, response, model);  // Service에서 업로드 처리
 		
@@ -49,11 +49,11 @@ public class ImageUploadController {
 	}
 	
 	// 이미지 수정 처리
-	@RequestMapping("/updateImage.img")
+	@RequestMapping("/updateImage.do")
 	public String updateImage(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
 		
-		logger.info("<< url : updateImage.ad >>");
+		logger.info("<< url : updateImage.do >>");
 		
 		service.updateImage(request, response, model);  // Service에서 수정 처리
 		
@@ -61,11 +61,11 @@ public class ImageUploadController {
 	}
 	
 	// 이미지 삭제 처리
-	@RequestMapping("/deleteImage.img")
+	@RequestMapping("/deleteImage.do")
 	public String deleteImage(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
 		
-		logger.info("<< url : deleteImage.ad >>");
+		logger.info("<< url : deleteImage.do >>");
 		
 		service.deleteImage(request, response, model);  // Service에서 삭제 처리
 		
