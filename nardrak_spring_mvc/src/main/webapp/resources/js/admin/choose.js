@@ -4,7 +4,7 @@
  
  /* 첫번째 Swiper 초기화 */
     const swiper1 = new Swiper(".mySwiper1", { // .mySwiper에 html 요소 적용
-	   loop: true, // 루프 모드
+	   loop: true,  // 무한 루프 설정
 	   slidesPerView: 1, // 한 번에 보이는 슬라이드 개수
 	   spaceBetween: 600, // 각 슬라이드 사이 간격
 	   pagination: {
@@ -13,7 +13,7 @@
 	   },   
 	   loop: true,  // 무한 루프 설정
        autoplay: {
-          delay: 5000,  // 2초마다 자동으로 슬라이드 이동
+          delay: 5000,  // 5초마다 자동으로 슬라이드 이동
           disableOnInteraction: false,  // 사용자가 슬라이드를 조작해도 자동 재생을 멈추지 않도록 설정
        },   
 	   navigation: {
