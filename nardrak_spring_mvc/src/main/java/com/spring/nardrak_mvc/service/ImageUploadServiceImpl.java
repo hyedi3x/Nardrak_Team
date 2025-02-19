@@ -36,10 +36,10 @@ public class ImageUploadServiceImpl implements ImageUploadService {
         MultipartFile file = request.getFile("ad_img");
 
         // 저장될 디렉토리 경로 설정 (서버의 resources/upload/admin 폴더)
-        String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/admin/");
+        String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/admin/main/");
         
         // 로컬 디스크에서 사용할 샘플 경로 설정 (테스트용)
-        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\";
+        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\main\\";
 
         // 파일 입출력을 위한 스트림 초기화
         FileInputStream fis = null;
@@ -61,7 +61,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
             
             // 이미지 경로와 업로드 날짜 설정
             ImageUploadDTO dto = new ImageUploadDTO(); // 새로운 DTO 객체 생성
-            String image_path = "/resources/upload/admin/" + file.getOriginalFilename(); // 상대 경로로 설정
+            String image_path = "/resources/upload/admin/main/" + file.getOriginalFilename(); // 상대 경로로 설정
             dto.setImage_path(image_path); // 이미지 경로 설정
 
             // 현재 시간을 업로드 날짜로 설정
@@ -108,10 +108,10 @@ public class ImageUploadServiceImpl implements ImageUploadService {
         String hiddenPath = request.getParameter("hiddenPath"); // 기존 이미지 경로
         
         // 저장될 디렉토리 경로 설정 (서버의 resources/upload/admin 폴더)
-        String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/admin/");
+        String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/admin/main/");
         
         // 로컬 디스크에서 사용할 샘플 경로 설정 (테스트용)
-        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\";
+        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\main\\";
 
         FileInputStream fis = null;
 		FileOutputStream fos = null;
@@ -139,7 +139,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
                 		fos.write(data); // 파일을 로컬에 저장
                 	}
 
-                    upload_img = "/resources/upload/admin/" + file.getOriginalFilename();
+                    upload_img = "/resources/upload/admin/main/" + file.getOriginalFilename();
                 }
             } catch (Exception e) {
                 e.printStackTrace(); // 예외 처리
@@ -182,7 +182,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
             String fileName = existingFilePath.substring(existingFilePath.lastIndexOf("/") + 1); // 파일명 추출
 
             // 로컬 디스크에 있는 기존 파일 경로 설정
-            String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\";
+            String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\main\\";
             File existingFile = new File(realDir + fileName); // 기존 파일 객체 생성
 
             // 기존 파일이 존재하면 삭제
