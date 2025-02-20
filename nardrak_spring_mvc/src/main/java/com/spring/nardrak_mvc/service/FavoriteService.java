@@ -18,8 +18,8 @@ public interface FavoriteService {
 	public void favoriteAction(HttpServletRequest request,HttpServletResponse response,Model model)  
 		    throws ServletException, IOException;
 	
-	// ======================= [선호 여행지 목록 조회] =======================
-	public List<FavoriteDTO> favoriteList(HttpServletRequest request,HttpServletResponse response,Model model)  
+	// ======================= [찜한 여행지 목록 조회] =======================
+	public void favoriteList(HttpServletRequest request,HttpServletResponse response,Model model)  
 			throws ServletException, IOException;
 
 }
