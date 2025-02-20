@@ -42,8 +42,8 @@
 						</div>
 					</div>
 				</form>
-				<div id="login_ad">
-					<a href="#"><img src="${path}/resources/image/customer/login/korea-travel-poster.jpg" alt="korea-travel-poster"></a>
+				<div id="login_adPoster">
+					<a href="#"><img src="${path}/resources/image/customer/login/7979161.jpg" alt="korea-travel-poster"></a>
 				</div>
 			</div>
 		</div>

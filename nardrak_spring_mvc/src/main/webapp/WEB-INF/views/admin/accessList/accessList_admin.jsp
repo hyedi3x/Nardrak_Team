@@ -28,13 +28,14 @@
 				<!-- js에서 hidden에 선택된 값들을 배열로 담아서 hidden에 담는다. request.getP로 받으면 문자열 1,2,3형태가 된다. -->
 				<input type="hidden" id="ad_ids" name="ad_ids" value=""/>
 				<table>
-					<tr class="font20" >
-						<th id="noTh">no</th>
-						<th id="idTh">아이디</th>
-						<th id="accTh">권한상태</th>
-						<th id="dateTh">요청일</th>
-					</tr>
-					
+					<thead>
+						<tr class="font18" >
+							<th id="noTh">no</th>
+							<th id="idTh">아이디</th>
+							<th id="accTh">권한상태</th>
+							<th id="dateTh">요청일</th>
+						</tr>
+					</thead>
 					<c:forEach var="dto" items="${list}">
 						<tr class="listTr">	
 							<td>${dto.rn}</td>
@@ -54,7 +55,7 @@
 					</tr>
 				</table>
 				
-				<div id="pagingTd" class="font20">
+				<div id="pagingTd" class="font18">
 					<c:if test="${paging.startBlock > paging.pageBlock}">
 						<a href="${path}/adminAccess.ad?page=${paging.prev}&listId=ad"> << </a>
 					</c:if>

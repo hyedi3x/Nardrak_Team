@@ -44,8 +44,10 @@
 									<!-- 컨트롤러에서 담은 request.setAttribute("info", info) 데이터 정보를 el 태그로 불러온다. -->
 									<div id="personInfoAll">
 										<div id="personInfo">
-											<h3>${dtoCS.cs_name}님</h3>
-											<span>${dtoCS.cs_id}</span>
+											<div id="nameId">
+												<h3>${dtoCS.cs_name}님</h3>
+												<span>${dtoCS.cs_id}</span>
+											</div>
 											<p id="csRegdate">가입일 : ${fn:substring(dtoCS.cs_regDate, 0, 10)}</p>
 										</div>
 										<div id="personEmail">
@@ -76,8 +78,10 @@
 									<!-- 컨트롤러에서 담은 request.setAttribute("info", info) 데이터 정보를 el 태그로 불러온다. -->
 									<div id="personInfoAll">
 										<div id="personInfo">
-											<h3>${dtoAD.ad_name}님</h3>
-											<span>${dtoAD.ad_id}</span>
+											<div id="nameId">
+												<h3>${dtoAD.ad_name}님</h3>
+												<span>${dtoAD.ad_id}</span>
+											</div>
 											<p id="csRegdate">가입일 : ${fn:substring(dtoAD.ad_regDate, 0, 10)}</p>
 										</div>
 										<div id="personEmail">

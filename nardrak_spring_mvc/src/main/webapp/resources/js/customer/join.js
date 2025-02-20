@@ -167,7 +167,7 @@ function checkPasswordStrength(password) {
     if (regexStrong.test(password)) {
         strength.style.display = "block";
         strength.innerText = "강력한 비밀번호입니다.";
-        strength.style.color = "#50858b";
+        strength.style.color = "#64A0ff";
 		strength.style.fontSize = "13px"; 
 		strength.style.paddingTop = "4px"; 
     } else if (regexMedium.test(password)) {
@@ -280,9 +280,9 @@ function uniqueCheck(path, type) {
 	        }
 	
 	        if (response.count === 0) {
-	            resultElement.find(".font14").css("color", "#50858b").text(successMessage);
+	            resultElement.find(".font13").css("color", "#64A0ff").text(successMessage);
 	        } else {
-	            resultElement.find(".font14").css("color", "rgba(255, 0, 0)").text(errorMessage);
+	            resultElement.find(".font13").css("color", "rgba(255, 0, 0)").text(errorMessage);
 	        }
         },
         error: function() {
