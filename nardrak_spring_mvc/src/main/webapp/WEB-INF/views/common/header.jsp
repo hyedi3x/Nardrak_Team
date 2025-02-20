@@ -21,11 +21,34 @@
 		
 		<div class="travel">
 			<ul>
-				<li>
-					<a href="#">국내여행</a>
+				<li class="menu-item">
+					<a href="${path}/local.tr">국내여행</a>
+					<ul class="sub-menu">
+					    <li>
+					    	<a href="${path}/local.tr?region=서울">서울</a>
+					    </li>
+					    <li>
+					    	<a href="${path}/local.tr?region=경기">경기</a>
+					    </li>
+					    <li>
+					    	<a href="${path}/local.tr?region=강원">강원</a>
+					    </li>
+					    <li>
+					    	<a href="${path}/local.tr?region=충청">충청</a>
+					    </li>
+					    <li>
+					    	<a href="${path}/local.tr?region=경상">경상</a>
+					    </li>
+					    <li>
+					    	<a href="${path}/local.tr?region=전라">전라</a>
+					    </li>
+					    <li>
+					    	<a href="${path}/local.tr?region=제주">제주</a>
+					    </li>
+					</ul>
 				</li>
 				<li>
-					<a href="#">추천여행지</a>
+					<a href="${path}/choose.ch">추천여행지</a>
 				</li>
 			</ul>
 		</div>
@@ -65,10 +88,10 @@
 	        <div class="side-travel">
 		        <ul>
 		            <li>
-		            	<a href="#">국내여행</a>
+		            	<a href="${path}/local.tr">국내여행</a>
 		            </li>
 		            <li>
-		            	<a href="#">추천여행지</a>
+		            	<a href="${path}/choose.ch">추천여행지</a>
 		            </li>
 		        </ul>
 	        </div>
