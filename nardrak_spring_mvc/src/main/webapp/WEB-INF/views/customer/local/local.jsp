@@ -53,6 +53,11 @@
 	                       </div>
 	                   </div>
 	               </a>
+	               <c:if test="${sessionScope.login_session eq 'Admin'}">
+					    <a href="${path}/locationDetailModify.tr?local_title=${place.local_title}">
+					        수정하기
+					    </a>
+					</c:if>
 	               <div class="divider"></div>
 	           </c:forEach>
 	        </div>
@@ -83,6 +88,7 @@
 	</div>
 </div>
 
+
 <!-- 페이징 처리 -->
 <div class="paging-container">
     <ul class="pagination">
@@ -102,6 +108,9 @@
         </c:if>
     </ul>
 </div>
+
+
+
 
 <!-- footer 시작 -->
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
