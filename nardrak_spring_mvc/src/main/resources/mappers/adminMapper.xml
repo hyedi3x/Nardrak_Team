@@ -144,4 +144,13 @@
 		ORDER BY rn
 	</select>
 	
+	<!-- 탈퇴 요청 30일 지난 관리자 삭제 -->
+	<delete id="adminDelete">
+		DELETE admin_tb
+		 WHERE ad_id IN
+	   <foreach item="ad_id" collection="list" open="(" separator="," close=")">
+	        #{ad_id}
+	    </foreach>
+	</delete>
+	
 </mapper> 

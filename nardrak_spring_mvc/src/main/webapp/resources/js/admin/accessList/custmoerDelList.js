@@ -75,8 +75,8 @@
  	});
  	if(checks[0] != null){
 	 	// 담은 배열의 값을 1,2,3,5..형태로 hidden input에 저장하여 전달
-	 	if(confirm('삭제할 회원 목록\n'+checks+'\n삭제하시겠습니까?')){
-			$('#as_ids').val(checks);
+	 	if(confirm('삭제할 관리자 목록\n'+checks+'\n삭제하시겠습니까?')){
+			$('#ad_ids').val(checks);
 			return true;
 	 	}
 	 	else{
