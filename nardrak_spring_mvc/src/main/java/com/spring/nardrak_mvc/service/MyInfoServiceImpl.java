@@ -103,62 +103,83 @@ public class MyInfoServiceImpl implements MyInfoService{
     //======================= [ 1:1문의 등록 처리 ] =======================
 	@Override
 	public void insertInquiry(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException {
-		
-		System.out.println("MyInfoServiceImpl - insertInquiry()");
-		
-		String strId = (String) request.getSession().getAttribute("sessionID");  // 접속 아이디를 세션으로 받아옴 
-		
-		MultipartFile file = request.getFile("i_imgUpload");   // fileorg.springframework.web.multipart.commons.CommonsMultipartFile
-		
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/myInfo/myInfo_Inquiry/");   // 톰갯 서버에 이미지 파일 업로드		
-		String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\myInfo\\myInfo_Inquiry\\";  // 이미지를 불러오기 위해서 절대경로 필요. 팀원들과 통일
-		
-		FileInputStream fis = null;
-		FileOutputStream fos = null;
-		
-		try {
-			// transferTo() 함수 : MultipartFile 인터페이스에서 제공하는 메서드로, 업로드된 파일을 지정된 경로에 저장하는 역할
-			// getOriginalFilename  : 업로드된 이미지의 기존 파일명 
-			file.transferTo(new File(saveDir + file.getOriginalFilename()));
-			fis = new FileInputStream(saveDir + file.getOriginalFilename());   // FileInputStream : 파일 읽기
-			fos = new FileOutputStream(realDir + file.getOriginalFilename());  // FileOutputStream : 복사할 경로에 파일 생성 
-			
-			int data = 0;
-			// 저장된 파일을 읽어와 realDir 경로에 복사
-			while((data = fis.read()) != -1) {
-				fos.write(data);
-			}
-			
-			// 화면에서 입력받은 값을 가져와서 dto에 담는다.(기존 사용자 정보 호출 : cs_id(세션값), 이름, 휴대폰 번호, 이메일 가져옴)
-			InquiryDTO dto = new InquiryDTO();
-			dto.setCs_id(strId);
-			
-			dto.setI_title(request.getParameter("i_title"));  // 문의 제목
-			
-	        String category1 = request.getParameter("i_category1");
-	        String category2 = request.getParameter("i_category2");
-	        String category3 = request.getParameter("i_category3");
-	        String category = category1 + "," + category2 + "," + category3;		      
-			dto.setI_category(category);   // 선택한 문의 유형 
-			
-			dto.setI_content(request.getParameter("i_content"));   // 문의 내용
-			
-			// 데이터베이스에 저장할 이미지 파일의 경로를 생성
-			String p_img = "/resources/upload/myInfo/myInfo_Inquiry/" + file.getOriginalFilename();
-			dto.setI_imgUpload(p_img);
-		
-	        int inquiryImgs = dao.insertInquiry(dto);
-	      
-	        model.addAttribute("inquiryImgs", inquiryImgs);
-        
-		} catch(IOException e){
-			e.printStackTrace();
-		} finally {
-			if(fis != null) fis.close();
-			if(fos != null) fos.close();
-		}
+	        throws ServletException, IOException {
+
+	    System.out.println("MyInfoServiceImpl - insertInquiry()");
+	    
+	    // 세션에서 사용자 ID 가져오기
+	    String strId = (String) request.getSession().getAttribute("sessionID");
+	    
+	    // 업로드된 파일 가져오기
+	    MultipartFile file = request.getFile("i_imgUpload");
+
+	    // 저장될 경로 설정
+	    String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/myInfo/myInfo_Inquiry/");
+	    String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\myInfo\\myInfo_Inquiry\\";
+	    
+	    // 저장할 디렉토리가 존재하지 않으면 생성
+	    File saveDirectory = new File(saveDir);
+	    if (!saveDirectory.exists()) {
+	        saveDirectory.mkdirs();
+	    }
+	    
+	    // 원본 파일명 및 확장자 분리
+	    String originalFileName = file.getOriginalFilename();   // getOriginalFilename : 기존 파일명 추출
+	    String fileExtension = "";   // 확장자를 저장할 변수 선언(초기화)
+	    int dotIndex = originalFileName.lastIndexOf(".");    // lastIndexOf : 파일명에서 마지막 .(점)의 위치 인덱스로 반환, 확장자가 있으면 1이상 값 반환
+	    
+	    // 확장자가 없는 경우(즉, dotIndex == -1) 실행되지 않도록 방지
+	    if (dotIndex > 0) {
+	        fileExtension = originalFileName.substring(dotIndex); // 확장자 추출후 저장 
+	        originalFileName = originalFileName.substring(0, dotIndex); // 파일명 전체(0번부터)에서 확장자 제외한 파일명 추출
+	    }
+	    
+	    // 중복되지 않는 파일명 생성
+	    String newFileName = originalFileName + fileExtension;
+	    int count = 1;
+	    File newFile = new File(saveDir + newFileName);
+	    while (newFile.exists()) {   // 동일한 파일명이 존재할 때
+	        newFileName = originalFileName + "(" + count + ")" + fileExtension;
+	        newFile = new File(saveDir + newFileName);
+	        count++;
+	    }
+	    
+	    // 파일을 지정된 경로에 저장
+	    file.transferTo(newFile);
+	    
+	    // 저장된 파일을 실제 경로에도 복사
+	    try (FileInputStream fis = new FileInputStream(newFile);   // 파일을 읽기 위한 스트림을 생성
+	         FileOutputStream fos = new FileOutputStream(realDir + newFileName)) {    // 파일을 쓰기 위한 스트림을 생성
+
+	        int data;
+	        while ((data = fis.read()) != -1) {  // fis.read() → 파일에서 1바이트씩 데이터를 읽음, 파일 끝이 -1이 되기 전까지만 읽음 
+	            fos.write(data);   // 읽은 데이터를 출력 스트림(fos)을 통해 새 파일에 씀
+	        }
+	    }
+	    
+	    // DTO 객체 생성 후 데이터 설정
+	    InquiryDTO dto = new InquiryDTO();
+	    dto.setCs_id(strId); // 사용자 ID 설정
+	    dto.setI_title(request.getParameter("i_title")); // 문의 제목 설정
+	    
+	    // 선택한 문의 유형 설정
+	    String category = String.join(",", 
+	        request.getParameter("i_category1"), 
+	        request.getParameter("i_category2"), 
+	        request.getParameter("i_category3"));
+	    dto.setI_category(category);
+	    
+	    dto.setI_content(request.getParameter("i_content")); // 문의 내용 설정
+	    
+	    // DB에 저장할 이미지 파일 경로 설정
+	    String p_img = "/resources/upload/myInfo/myInfo_Inquiry/" + newFileName;
+	    dto.setI_imgUpload(p_img);
+	    
+	    // 문의 데이터 저장
+	    int inquiryImgs = dao.insertInquiry(dto);
+	    model.addAttribute("inquiryImgs", inquiryImgs);
 	}
+
 	
 	@Override
 	// ======================= [1:1 문의 내역 불러오기] =======================
