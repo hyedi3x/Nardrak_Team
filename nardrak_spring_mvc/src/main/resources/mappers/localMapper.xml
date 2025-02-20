@@ -14,23 +14,35 @@
 	
 	<!-- 목록 -->
     <select id="localList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.LocalDTO">
-           
-        SELECT *
-        FROM 
-          (SELECT A.* 
-               , rownum 
-            FROM  
-                 (SELECT * FROM localTour_tb
-                    WHERE local_show = 'Y' 
-                  ORDER BY local_title DESC) A 
-           )
-      	WHERE rownum BETWEEN #{start} AND #{end} 
-      </select>
+	    SELECT *
+	    FROM (
+	        SELECT A.*, ROWNUM AS rnum
+	        FROM (
+	            SELECT * FROM localTour_tb
+	            WHERE local_show = 'Y'
+	            <if test="region != null and region != ''">
+	                AND region = #{region}
+	            </if>
+	            ORDER BY local_title DESC
+	        ) A
+	        WHERE ROWNUM <![CDATA[ <= ]]> #{end}
+	    )
+	    WHERE rnum <![CDATA[ >= ]]> #{start}
+	</select>
       
       <!-- 지역정보 총 개수 -->
       <select id="localCnt" resultType="int">
       	SELECT count(*)
       	  FROM localTour_tb
+      	 WHERE local_show = 'Y'
+      </select>
+      
+      <!-- 지역정보 총 개수 -->
+      <select id="regionLocalCnt" parameterType="String" resultType="int">
+      	SELECT count(*)
+      	  FROM localTour_tb
+      	 WHERE local_show = 'Y'
+      	   AND region = #{region}
       </select>
       
       <!-- 국내 여행지 상세정보 조회(1건) -->
@@ -39,4 +51,11 @@
       	  FROM localTour_tb
       	 WHERE local_title = #{local_title}
       </select>
+      
+      <!-- 조회 유니크 -->
+	   <select id="checkTitle" parameterType="String" resultType="int">
+	      SELECT COUNT(*) 
+	        FROM localtour_tb
+	       WHERE local_title =#{local_title}
+	   </select>
 </mapper>
