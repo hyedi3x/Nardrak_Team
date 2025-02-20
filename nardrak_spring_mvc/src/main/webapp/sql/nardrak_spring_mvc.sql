@@ -195,3 +195,4 @@ CREATE TABLE favorites_list (
     added_date     TIMESTAMP DEFAULT sysdate,           -- 찜한 날짜
     CONSTRAINT fk_admin_tb FOREIGN KEY (ad_id) REFERENCES admin_tb(ad_id) ON DELETE CASCADE  -- 외래키 제약 (admin_tb)
 );
+

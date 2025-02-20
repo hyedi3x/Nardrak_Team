@@ -1,0 +1,73 @@
+@charset "UTF-8"; /* CSS 문자 인코딩을 UTF-8로 설정 */
+
+
+.btnTr{
+	display: flex;
+	justify-content: center;
+}
+
+/* 가장 바깥 div 가운데 맞춤 */
+.wrap{
+	display: flex;
+	justify-content: center;
+}
+
+/* 로고와 테이블 교차축 가운데 정렬 */
+.container{
+	display: flex;
+	flex-direction: column;
+}
+
+.divWidth100{
+	margin: auto;
+	width: 700px;
+	text-align: center;
+}
+
+.local_title{
+	padding-top: 20px;
+}
+
+#region{
+	padding-bottom: 20px;
+	font-size: 20px;
+	color: #666666;
+}
+
+#local_tags{
+	padding-bottom: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #666666;
+}
+.local_image{
+	width: 500px;
+}
+
+.detailDiv{
+	padding-top: 20px;
+	width: 700px;
+	margin: auto;
+	text-align: left;
+	border-bottom:  2px solid #000000;
+}
+
+.detailDiv2{
+	padding: 20px 0;
+	width: 700px;
+	margin: auto;
+	text-align: left;
+}
+
+.pageMap{
+	margin: 20px 0 40px 0;
+	width: 700px;
+	height: 300px;
+}
+
+#mapDiv{
+	display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    
+}
