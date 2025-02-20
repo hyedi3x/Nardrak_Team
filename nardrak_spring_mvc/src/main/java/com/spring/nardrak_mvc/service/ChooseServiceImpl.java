@@ -17,10 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.nardrak_mvc.dao.ChooseDAO;
-import com.spring.nardrak_mvc.dao.LocalDAO;
 import com.spring.nardrak_mvc.dto.ChooseDTO;
-import com.spring.nardrak_mvc.dto.LocalDTO;
-import com.spring.nardrak_mvc.page.Paging;
+
 
 @Service
 public class ChooseServiceImpl implements ChooseService {
@@ -40,7 +38,7 @@ public class ChooseServiceImpl implements ChooseService {
         String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/choose/");
         
         // 로컬 디스크에서 사용할 경로 설정
-        String realDir = "D:\\DEV\\git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\choose\\";
+        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\choose\\";
 		
         // 파일 입출력을 위한 스트림 초기화
         FileInputStream fis = null;
@@ -109,4 +107,66 @@ public class ChooseServiceImpl implements ChooseService {
 		model.addAttribute("dto", dto);
 	}
 
+	// ==================== [국내 여행지 상세정보 수정] ===================
+	@Override
+	public void modifyUpdate(MultipartHttpServletRequest request, HttpServletResponse reponse, Model model)
+			throws ServletException, IOException {
+	
+		// 기존 이미지 주소
+		String ch_title1 = request.getParameter("ch_title1");
+		
+		// 저장할 이미지 주소
+		String chImage = "";
+		
+		// 업로드한 파일을 MultipartFile 객체로 저장
+		MultipartFile file = request.getFile("ch_image");
+		System.out.println("file :" +  file);
+		
+		// 서버에 저장될 디렉토리 경로 설정
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/choose");
+		
+		// 로컬 디크스 경로
+		String localDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\choose\\";
+		
+		// 파일 입출력을 위한 스트림 초기화
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		
+		// 상세페이지에 있는 이미지 수정할경우 기존 try문을 잘라서 if문 내부에 넣기
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			try {
+				file.transferTo(new File(saveDir + file.getOriginalFilename())); // File 객체는 java.io에 있다.
+				fis = new FileInputStream(saveDir + file.getOriginalFilename());
+				fos = new FileOutputStream(localDir + file.getOriginalFilename());
+				chImage = "/resources/upload/choose/"+file.getOriginalFilename();
+				int data = 0;
+				while((data = fis.read()) != -1) { // .read()가 더 이상 읽을 데이터가 없으면 -1을 반환
+					fos.write(data);
+				}
+			} catch(IOException e){
+				e.printStackTrace();
+			} finally {
+				if(fis != null) fis.close();
+				if(fos != null) fos.close();
+			}
+			
+		}
+		else { 
+			// 기존 이미지 사용(이미지 수정 없을경우 기존꺼 사용)
+			chImage = ch_title1;
+			System.out.println("ch_image" + ch_title1);
+		}
+		
+		ChooseDTO dto = new ChooseDTO();
+		
+		dto.setCh_title1(request.getParameter("ch_title1"));
+        dto.setCh_title2(request.getParameter("ch_title2"));
+        String ch_image = chImage;
+        dto.setCh_image(ch_image);
+        dto.setCh_tags1(request.getParameter("ch_tags1"));
+        dto.setCh_tags2(request.getParameter("ch_tags2"));
+        dto.setCh_detail(request.getParameter("ch_detail"));
+        
+        dao.updateChoose(dto);
+	}
 }
