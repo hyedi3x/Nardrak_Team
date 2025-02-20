@@ -127,4 +127,20 @@
 	        #{cs_id}
 	    </foreach>
 	</delete>
+	
+	<!-- 관리자 철회 요청 조회 -->
+	<select id="adminDeleteList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
+		SELECT *
+		  FROM(
+		      SELECT ROWNUM rn, ad.*, (sysdate-ad_regDate) as timeDiff
+		        FROM (SELECT *
+		                FROM admin_tb
+		               WHERE delete_status = 'Y'
+		              ORDER BY ad_regDate
+		              ) ad
+		      )
+		WHERE rn BETWEEN #{startRow} AND #{endRow}
+		ORDER BY rn
+	</select>
+	
 </mapper> 

@@ -128,8 +128,14 @@ public class AdminController {
 		if(request.getParameter("listId").equals("ad")) {
 			return "admin/accessList/accessList_admin";
 		}
-		else{
+		else if(request.getParameter("listId").equals("cs")){
 			return "admin/customerList/customerList_admin";
+		}
+		else if(request.getParameter("listId").equals("adDel")) {
+			return "admin/accessList/deleteList_admin";
+		}
+		else {
+			return null;
 		}
 	}
 
