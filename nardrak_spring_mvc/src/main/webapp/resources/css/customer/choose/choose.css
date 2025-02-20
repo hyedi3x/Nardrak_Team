@@ -5,15 +5,15 @@
 	object-fit: cover; /* 이미지 비율을 유지하면서 지정된 크기에 맞게 잘라냄 */
 }
 .col-md-4 {
+	width: 1050px;
 	margin-bottom: 35px;
 }
 
 /* 부트스트랩 박스 크기 */
 .row {
-    width: 100%;            /* 너비는 100%로 설정하여 화면 크기에 맞추기 */
-    max-width: 1500px;      /* 최대 너비를 1500px로 제한 */
-    margin: 0 auto;         /* 수평 가운데 정렬 */
-    padding: 0 15px;        /* 좌우 여백을 약간 추가 (optional) */
+    max-width: 1070px;
+    margin: auto !important;     /* 기존 부트스트랩 css 무시하고 수평 가운데 정렬 */
+    
 }
 
 html,body {
@@ -30,9 +30,15 @@ body {
 	padding: 0;
 }
 
+.min {
+	margin: auto;
+    width: 80%;
+	
+}
+
 .swiper-min {
 	width: 100%;
-	height: 650px;
+	height: 600px;
 	margin: auto;         /* 위 아래 마진 추가 */
 	
 }
@@ -53,7 +59,7 @@ body {
 
 /* "선호 여행지를 선택해주세요" 문구 스타일 */
 .choose-text {
-    font-size: 33px;           /* 글자 크기 설정 */
+    font-size: 27px;           /* 글자 크기 설정 */
     font-weight: bold;         /* 굵은 글씨로 설정 */
     color: #2c3e50;            /* 글자 색상 설정 (검은색) */
     text-align: center;        /* 텍스트를 가운데 정렬 */
@@ -62,7 +68,8 @@ body {
     background-color: eaf2d7;  /* 나드락 배경 색상(민트) */
     border-radius: 8px;        /* 둥근 모서리 설정 */
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1); /* 미세한 그림자 효과 */
-    max-width: 1320px;          /* 최대 너비 1500px로 설정 */
+    max-width: 1050px;          /* 최대 너비 1500px로 설정 */
+    height: 115px;
     box-sizing: border-box;    /* padding과 border를 포함한 너비 계산 */
 }
 
@@ -76,7 +83,7 @@ body {
 }
 
 .dest-card{
-	font-size: 33px;		  /* 글자 크기 설정 */
+	font-size: 27px;		  /* 글자 크기 설정 */
 	font-weight: bold;  	  /* 굵은 글씨로 설정 */
 	color:  #2c3e50;    	  /* 글자 색상 설정 (검은색) */
 	text-align: center;	 	  /* 텍스트를 가운데 정렬 */
@@ -85,7 +92,8 @@ body {
 	background-color: eaf2d7; /* 나드락 배경 색상(민트) */
 	border-radius: 8px;	 	  /* 둥근 모서리 설정 */
 	box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1); /* 미세한 그림자 효과 */
-	max-width: 1320px;          /* 최대 너비 1500px로 설정 */
+	max-width: 1050px;          /* 최대 너비 1500px로 설정 */
+	height: 115px;
     box-sizing: border-box;    /* padding과 border를 포함한 너비 계산 */
 	
 }
@@ -102,7 +110,7 @@ body {
 /* 별 모양 스타일 */
 .choose-text::before {
     content: "★";             /* 별모양을 텍스트로 삽입 */
-    font-size: 36px;           /* 별 크기 설정 */
+    font-size: 23px;           /* 별 크기 설정 */
     color: #ffcc00;            /* 노란색으로 설정 */
     margin-right: 10px;        /* 별과 텍스트 사이 간격 */
 }
@@ -119,13 +127,14 @@ body {
   height: 600px;  /* 첫 번째 스와이퍼의 높이를 600px로 설정 */
   position: relative; /* 부모 요소에 상대 위치 설정 */
 }
-
-
+  
+}
 .mySwiper1 .swiper-slide img {
   width: 135%; /* 이미지 너비를 슬라이드 너비에 맞게 설정 */
   height: 100%; /* 이미지 높이를 슬라이드 높이에 맞게 자동으로 설정 */
-  /*object-fit: cover; 이미지가 슬라이드 크기에 맞게 잘리거나 확대/축소되도록 설정 */
+  overflow: hidden;
 }
+
 
 .mySwiper1 .slide-text1 {
   position: absolute;  /* 텍스트를 절대 위치로 배치 */
@@ -186,8 +195,8 @@ body {
 
 /* 두 번째 Swiper2 */
 .mySwiper2 {
-  width: 1320px;  /* 두 번째 스와이퍼의 너비를 100%로 설정 */
-  height: 400px;  /* 두 번째 스와이퍼의 높이를 500px로 설정 */
+  width: 1050px;  /* 두 번째 스와이퍼의 너비를 100%로 설정 */
+  height: 320px;  /* 두 번째 스와이퍼의 높이를 500px로 설정 */
 }
 
 .mySwiper2 .swiper-slide {
@@ -199,7 +208,7 @@ body {
 .mySwiper2 .swiper-slide img {
   width: 100%;  /* 이미지 너비를 슬라이드 너비에 맞게 100%로 설정 */
   height: 100%;  /* 이미지 높이를 슬라이드 높이에 맞게 100%로 설정 */
-  object-fit: cover;  /* 이미지가 슬라이드 영역에 맞게 잘리거나 확대/축소되어 꽉 차도록 설정 */
+  /* object-fit: cover; */  /* 이미지가 슬라이드 영역에 맞게 잘리거나 확대/축소되어 꽉 차도록 설정 */
   border-radius: 12px;  /* 이미지의 모서리를 둥글게 설정 */
 }
 
@@ -238,10 +247,8 @@ body {
 
 /* 세 번째 Swiper3 */
 .mySwiper3 {
-  width: 80%;  /* 두 번째 스와이퍼의 너비를 100%로 설정 */
-  max-width: 1320px; /* 최대 너비를 1400px로 제한 */
-  height: 400px;  /* 두 번째 스와이퍼의 높이를 500px로 설정 */
-  overflow: hidden;  /* 이미지나 콘텐츠가 넘칠 경우 숨김 처리 */
+  max-width: 1050px; /* 최대 너비를 1050px로 제한 */
+  height: 250px;  /* 세 번째 스와이퍼의 높이를 250px로 설정 */
 }
 
 /* 슬라이드 내부 이미지 스타일 */
