@@ -56,7 +56,7 @@ public class ChooseController {
 		
 		service.ChooseAction(request, response, model);
 		
-		return "redirect:choose.ch";
+		return "customer/choose/choose";
 	}
 
 	// 추천여행지 상세 페이지
