@@ -22,4 +22,8 @@ public interface LocalService {
 	// ======================= [국내 여행지 상세정보(1건) 조회] =======================
 	public void localInfo(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException;
+	
+	// ======================= [여행지 이름 유니크 값 체크] =======================
+    public void checkTitle(HttpServletRequest request, HttpServletResponse response, Model model)
+          throws ServletException, IOException;
 }
