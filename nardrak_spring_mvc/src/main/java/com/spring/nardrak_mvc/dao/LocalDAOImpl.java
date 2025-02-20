@@ -19,7 +19,6 @@ public class LocalDAOImpl implements LocalDAO {
 	
 	// ======================= [국내 여행지 정보 등록] =======================
 	@Override
-	
 	public int InsertTour(LocalDTO dto) {
 		System.out.println("LocalDAO - InsertTour()");
 		
@@ -41,6 +40,14 @@ public class LocalDAOImpl implements LocalDAO {
 	     
 	    return sqlSession.selectOne(namespace + "localCnt");       
 	}
+	
+	// ======================= [특정 지역 국내 여행지 정보 전체 개수] =======================
+	@Override
+	public int regionLocalCnt(String region) {
+		System.out.println("LocalDAO - regionLocalCnt()");
+		
+		return sqlSession.selectOne(namespace + "regionLocalCnt", region);
+	}
 
 	// ======================= [국내 여행지 상세정보 조회(1건)] =======================
 	@Override
@@ -49,5 +56,12 @@ public class LocalDAOImpl implements LocalDAO {
 
 		return sqlSession.selectOne(namespace + "localInfo", local_title);
 	}
-	
+
+	// ======================= [여행지 이름 유니크 값 체크] =======================
+   @Override
+   public int checkTitle(String local_title) {
+      System.out.println("CustomerDAOImpl - checkTitle()");
+      System.out.println("dao"+local_title);
+      return sqlSession.selectOne(namespace+"checkTitle", local_title);
+   }
 }

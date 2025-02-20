@@ -15,7 +15,13 @@ public interface LocalDAO {
 	
 	// ======================= [국내 여행지 정보 전체 개수] =======================
 	public int localCnt();
+	
+	// ======================= [특정 지역 국내 여행지 정보 전체 개수] =======================
+	public int regionLocalCnt(String region);
 
 	// ======================= [국내 여행지 상세정보 조회(1건)] =======================
 	public LocalDTO localInfo(String local_title);
+	
+	// 
+	public int checkTitle(String local_title);
 }
