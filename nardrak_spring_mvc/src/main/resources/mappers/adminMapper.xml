@@ -60,7 +60,7 @@
 	<!-- 관리자 삭제 -->
 	<update id="adminDeleteAction" parameterType="java.util.Map">
 		UPDATE admin_tb
-		   SET delete_status = 'Y'
+		   SET delete_status = 'Y', ad_regDate = sysdate
 		 WHERE ad_id = #{ad_id}
 	</update>
 	
@@ -90,7 +90,7 @@
 	<!-- item과 #{}변수명을 일치시킨다. collection은 자료형이 list여서 list open, close로 ()를 만들고 배열의, 로 구분한다. -->
 	<update id="adminAccessAction" >
 	    UPDATE admin_tb
-	    SET access_status = 'Y'
+	    SET access_status = 'Y', ad_regDate = sysdate
 	    WHERE ad_id IN 
 	   <foreach item="ad_id" collection="list" open="(" separator="," close=")">
 	        #{ad_id}
@@ -128,6 +128,13 @@
 	        #{cs_id}
 	    </foreach>
 	</delete>
+	
+	<!-- 탈퇴 관리자 카운트 -->
+	<select id="adminDeletConut" resultType="int">
+		SELECT COUNT(*)
+		  FROM admin_tb
+		WHERE delete_status = 'Y'
+	</select>
 	
 	<!-- 관리자 철회 요청 조회 -->
 	<select id="adminDeleteList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
