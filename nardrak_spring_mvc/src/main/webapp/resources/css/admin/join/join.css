@@ -232,7 +232,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 /* 약관 링크를 클릭 하더라도 색상변경 없음 */
 a:link, a:visited {
-	color: #004080;
+	color: #0064ff;
 	font-weight: normal;
 }
 
@@ -244,12 +244,12 @@ a:link, a:visited {
 
 /* [필수] 약관 글 색상 변경 */
 .check{
-	color: #004080;
+	color: #0064ff;
 }
 
 /* [선택] 약관 글 색상 변경 */
 .choose {
-	color: #004080;
+	color: #0064ff;
 }
 
 /* [선택] 약관 글 넘어간 부분 설정 ('다') */
@@ -268,4 +268,8 @@ a:link, a:visited {
 /* id , email1, emial2, 비밀번호 확인 값 확인 */
 #idStr, #email1Str, #email2Str, #pwdStr1, #pwdStr2, #jenderChk{
 	display: none;
+}
+
+.fa-solid.fa-minus::before {
+	color: #64A0ff;
 }

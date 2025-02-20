@@ -107,23 +107,35 @@
 
 
 /* ---- 광고 포스터에 대한 설정(img) ---- */
-#login_ad {
+#login_adPoster {
 	display: flex;
 	flex-direction: column; 
-	width: 280px;
+	width: 300px;
 	margin: 20px 0px;
+	align-items: center;      /* 자식 요소를 수직 중앙으로 정렬 */
+    justify-content: center;  /* 자식 요소를 수평 중앙 정렬 */
 }
 
-#login_ad a {
-  display: flex;
-  align-items: center;      /* 자식 요소를 수직 중앙으로 정렬 */
-  justify-content: center;  /* 자식 요소를 수평 중앙 정렬 */
-}
-
-#login_ad img {
+#login_adPoster img {
 	display: flex;
 	width: 90%; /*.login_ad 클래스의 너비 80% 상속 */
 }
+
+
+#login_admin {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin: 20px 0px 20px 50px;
+    font-size: 12px;
+    align-items: flex-end;
+}
+
+#login_admin a {
+    color: #1E82ff;
+    border-bottom: 1px solid #1E82ff;
+}
+
 
 #utility {
 	width: 350px;
@@ -158,18 +170,4 @@
     display: inline-block;
     color: #667084;
     border-bottom: 1px solid #667084;
-}
-
-#login_ad {
-    display: flex;
-    flex-direction: column;
-    width: 350px;
-    margin: 20px 0px 20px 50px;
-    font-size: 12px;
-    align-items: flex-end;
-}
-
-#login_ad a {
-    color: #1E82ff;
-    border-bottom: 1px solid #1E82ff;
 }
