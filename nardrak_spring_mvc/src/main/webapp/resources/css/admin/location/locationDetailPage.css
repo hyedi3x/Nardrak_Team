@@ -9,6 +9,7 @@
 /* 가장 바깥 div 가운데 맞춤 */
 .wrap{
 	display: flex;
+	justify-content: center;
 }
 
 /* 로고와 테이블 교차축 가운데 정렬 */
