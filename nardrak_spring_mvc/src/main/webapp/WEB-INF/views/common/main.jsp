@@ -34,8 +34,19 @@
 			            <c:forEach var="image" items="${images}">
 			                <div class="swiper-slide">
 			                    <div class="image-container">
-			                        <img src="${path}${image.image_path}" alt="img x"/>
-			                        <div class="slide-text">${image.image_detail}</div>
+			                    	<a href="#">
+			                        	<img src="${path}${image.image_path}" alt="img x"/>
+			                        </a>
+			                        <div class="slide-text">
+			                        	<a href="#">
+											<c:set var="detailText" value="${image.image_detail}" />
+											<c:set var="detailLines" value="${fn:split(detailText, ',')}" />
+											<c:forEach var="detailLine" items="${detailLines}" varStatus="status">
+											    ${detailLine}<c:if test="${!status.last}">,<br></c:if>
+											</c:forEach>
+										</a>
+			                        </div>
+			                        
 			                    </div>
 			                </div>
 			            </c:forEach>
@@ -51,7 +62,7 @@
 	    </div>
 	    <c:if test="${login_session == 'Admin'}">
 		    <div class="imageButtons">
-			    <input type="button" id="ImageOptionBtn" value="전체 사진 보기" onclick="location.href='${path}/uploadImage.img'">
+			    <input type="button" id="ImageOptionBtn" value="전체 사진 보기" onclick="location.href='${path}/uploadImage.do'">
 			</div>
 	    </c:if>
 	</div>
