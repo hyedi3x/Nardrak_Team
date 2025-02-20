@@ -6,21 +6,32 @@
 	  
 <mapper namespace="com.spring.nardrak_mvc.dao.FavoriteDAO">
 
+	<!-- 선호 여행지 선호 여부 -->
+	<select id="favoriteSelectCnt" parameterType="java.util.Map" resultType="int">
+		SELECT count(*)
+		  FROM favorites_list
+		 WHERE dest_name = #{dest_name} 
+        	   AND cs_id = #{cs_id}
+	</select>
+
     <!-- 선호 여행지 추가 -->
     <insert id="addFavorite" parameterType="com.spring.nardrak_mvc.dto.FavoriteDTO">
-        INSERT INTO favorites_list(dest_id, ad_id, dest_name, image_url, description, added_date)
-        VALUES(#{dest_id}, #{ad_id}, #{dest_name}, #{image_url}, #{description}, DEFAULT)
+        INSERT INTO favorites_list(dest_id, cs_id, dest_name, image_url, description, added_date)
+        VALUES((SELECT NVL(max(dest_id) + 1, 1) FROM favorites_list), 
+        #{cs_id}, #{dest_name}, #{image_url}, #{description}, DEFAULT)
     </insert>
 
     <!-- 선호 여행지 제거 -->
     <delete id="removeFavorite" parameterType="java.util.HashMap">
-        DELETE FROM favorites_list WHERE dest_id = #{dest_id} AND ad_id = #{ad_id}
+        DELETE FROM favorites_list 
+       	 WHERE dest_name = #{dest_name} 
+       	   AND cs_id = #{cs_id}
     </delete>
     
     <!-- 선호 여행지 목록 조회 -->
 	<select id="getFavoriteList" parameterType="String" resultType="com.spring.nardrak_mvc.dto.FavoriteDTO">
 		SELECT *
 		  FROM favorites_list
-		 WHERE ad_id = #{ad_id}
+		 WHERE cs_id = #{cs_id}
 	</select>
 </mapper>
