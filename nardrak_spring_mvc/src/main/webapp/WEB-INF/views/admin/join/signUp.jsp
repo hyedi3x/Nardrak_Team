@@ -16,8 +16,7 @@
 <!-- 부트 스트랩 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 <!-- 우편번호 API -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -31,6 +30,7 @@
 
 <!-- main 시작 -->
 <div class="wrap">
+	
 	<div class="container">
 		
 		<form action="${path}/adminSignUpAction.ad" method="post" name="joinForm" onsubmit="return submitChk()">
@@ -43,15 +43,21 @@
 			<input type="hidden" id="idValCheck" value="0">
 			<input type="hidden" id="pwdValCheck" value="0">
 			<input type="hidden" id="emailVal1Check" value="0">
-			<input type="hidden" id="emailVal2Check" value="1">
-			<input type="hidden" id="brithValCheck" value="1">
+			<input type="hidden" id="emailVal2Check" value="0">
+			<input type="hidden" id="brithValCheck" value="0">
+			
+			<!-- ajax가 실행되면 결과에따라 변경될 값들(중복 없음 = 1, 중복 있음 =0), 기본은 0이고 값을 변경하면 수정될 것. -->
+			<input id="uniquePhone" type="hidden" value="1">
+			<input id="uniqueEmail" type="hidden" value="1">
+			<input id="uniqueEmpnum" type="hidden" value="1">
 			
 			<div id="signUpTitle">
 				<p id="ad_title"> 관리자 회원가입 </p>
 				<p> 회원 가입 시, 관리자의 승인이 있어야 로그인이 가능합니다.</p>			
 			</div>
-			<!-- id 10자리, 비밀번호(확인) 16자리, 이름 30자리, 생년월일 6자리, 핸드폰 13자리, [ 이메일1 15자리, (@) 이메일 2 14자리 : 총 30자 ], [ 상세주소 30자 : 총 30자 ], 사번 20자리  --> 	
+			<!-- id 10자리, 비밀번호(확인) 16자리, 이름 30자리, 생년월일 6자리, 핸드폰 13자리, [ 이메일1 15자리, (@) 이메일 2 14자리 : 총 30자 ], [ 상세주소 30자 : 총 30자 ], 사번 20자리  --> 
 			<table>
+				
 				<tr>
 					<th class="font16">아이디</th>
 				</tr>
@@ -61,7 +67,6 @@
 						<input type="button" class="idChkBTN" onclick="idConfirm1('${path}')" value="중복확인">
 						<div class="red" id="idStr"><div class="font14">영소문자 필수, 숫자 포함가능, 4~10 글자로 작성하세요.</div></div>
 				</td>
-					
 				</tr>
 				
 				<tr>
@@ -99,7 +104,7 @@
 					<td>
 						<input type="number" id="ad_birth" class="ad_birth" name="ad_birth" maxlength="6" placeholder="생년월일 6자리" required>
 						<span class="birthIcon"><i class="fa-solid fa-minus"></i></span>
-						<input type="number" id="ad_jender" class="ad_jender" name="ad_jender" maxlength="1" required oninput="jenderChk()">
+						<input type="number" id="ad_jender" class="ad_jender" name="ad_jender" maxlength="1" required oninput="jender()">
 						<c:forEach begin="1" end="6">
 							<i class="fa-solid fa-circle" id="dot"></i>
 						</c:forEach>
@@ -194,7 +199,6 @@
 					
 				</tr>
 				
-				<!-- 태영 수정 -->
 				<tr>
 					<th class="font16">부서 코드</th>
 				</tr>
