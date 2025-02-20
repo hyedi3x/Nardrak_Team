@@ -25,4 +25,8 @@ public interface ChooseService {
 	// ==================== [국내 여행지 상세정보] ===================
 	public void ChooseInfo(HttpServletRequest request, HttpServletResponse reponse, Model model)
 		throws ServletException, IOException;
+	
+	// ==================== [국내 여행지 상세정보 수정] ===================
+	public void modifyUpdate(MultipartHttpServletRequest request, HttpServletResponse reponse, Model model)
+			throws ServletException, IOException;
 }
