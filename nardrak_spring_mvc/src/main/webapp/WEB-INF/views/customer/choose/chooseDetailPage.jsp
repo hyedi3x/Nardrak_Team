@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 
 <!-- css -->
-<link rel="stylesheet" href="${path}/resources/css/admin/chooseDetail/chooseDetail.css">
+<link rel="stylesheet" href="${path}/resources/css/admin/choose/chooseDetail.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> <!-- Swiper 적용-->
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- 글씨체 적용(js)  -->
 
@@ -25,10 +25,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> <!-- Swiper 적용 -->
 <script src="${path}/resources/js/admin/choose.js" defer></script>
 
-<!-- 로그인 여부를 jquery로 작성해서 변수에 대입 -->
-<script> var isLogin = ${sessionScope.sessionID != null ? 'true' : 'false'}; </script>
-
- <!-- swiner styles -->
 
 </head>
 <body>
@@ -51,14 +47,16 @@
 	    	</div>
 	 	</div>
 	 	
+	 	<c:if test="${sessionScope.login_session eq 'Admin'}">
+			  <a href="${path}/chooseDetailModify.ch?ch_title1=${dto.ch_title1}">
+			      수정하기
+			  </a>
+		</c:if>
 	 	<div class="choose_text">
 	 		<div class="explanation">${dto.ch_detail}</div>
 	 	</div>
      </div>
 </div>
-
-
-
 
 
  <!-- 두번째 Swiper -->
