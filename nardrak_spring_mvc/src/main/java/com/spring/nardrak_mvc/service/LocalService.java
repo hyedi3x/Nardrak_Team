@@ -26,4 +26,8 @@ public interface LocalService {
 	// ======================= [여행지 이름 유니크 값 체크] =======================
     public void checkTitle(HttpServletRequest request, HttpServletResponse response, Model model)
           throws ServletException, IOException;
+    
+	// 국내 여행지 수정
+	public void modifyTour(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException;
 }
