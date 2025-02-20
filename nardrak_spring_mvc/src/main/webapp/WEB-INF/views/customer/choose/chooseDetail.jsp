@@ -8,7 +8,7 @@
 <title>join</title>
 
 <!-- css -->
-<link rel="stylesheet" href="${path}/resources/css/admin/choose/chooseDetail.css">
+<link rel="stylesheet" href="${path}/resources/css/admin/chooseDetail/chooseDetail.css">
 
 <!-- js -->
 <script type="text/javascript" src="${path}/resources/js/admin/choose/chooseDetail.js" defer></script>
