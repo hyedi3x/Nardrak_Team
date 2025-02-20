@@ -111,7 +111,7 @@
     display: none;    /* 기본적으로 햄버거 메뉴는 숨겨짐 */
     color: #232323;     /* 햄버거 메뉴 아이콘 색상 */
     padding: 10px;    /* 내부 여백 설정 */
-    position: fixed;  /* 화면 고정 위치 */
+    position: sticky;  /* 화면 고정 위치 */
     top: 35px;        /* 상단에서 35px 떨어짐 */
     right: 20px;      /* 오른쪽에서 20px 떨어짐 */
     font-size: 23px;
