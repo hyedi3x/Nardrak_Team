@@ -65,5 +65,15 @@ public class LocalController {
 		
 		return "customer/local/locationDetailPage";
 	}
+	
+	// 여행지 이름(ajax)
+	@RequestMapping("/checkTitle.tr")
+    public void checkTitle(HttpServletRequest request, HttpServletResponse response, Model model)
+         throws ServletException, IOException {
+      logger.info("<< url - checkTitle.tr >>");
+         
+      service.checkTitle(request, response, model);
+      
+    }
 
 }
