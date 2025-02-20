@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="${path}/resources/css/customer/join/join.css">
 
     <!-- join.js 주소 API -->
-    <script src="${path}/resources/js/customer/join.js" defer></script>
+    <script src="${path}/resources/js/myInfo/modifyInfo.js" defer></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="${path}/resources/js/customer/daumAPI.js" defer></script>
 
@@ -179,12 +179,12 @@
 	                <th> 주소 <span class="requiredAll">*</span></th> 
 	                <td>
 		                <c:set var="addressArr" value="${fn:split(dtoCS.cs_zip, ',')}"/>
-						<input type="button" id="sample4_postcode" style="width:219px" name="postcode" placeholder="우편번호" required value="${addressArr[0]}">
-						<input type="button" id="zip" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" id="sample4_roadAddress" class="input" name="road" placeholder="도로명주소" required value="${addressArr[1]}">
-						<input type="text" id="sample4_jibunAddress" class="input" name="jibun" placeholder="지번주소" value="${addressArr[2]}">
-						<input type="text" id="sample4_detailAddress" class="input3" name="detail" placeholder="상세주소" required value="${addressArr[3]}">
-						<input type="text" id="sample4_extraAddress" class="input3" name="extra" placeholder="참고항목" value="${addressArr[4]}">
+				        <input type="text" id="sample4_postcode" style="width:219px" name="postcode" placeholder="우편번호" value="${addressArr[0]}" required>
+				        <input type="button" id="zip" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+				        <input type="text" id="sample4_roadAddress" class="input" name="road" placeholder="도로명주소" value="${addressArr[1]}" required>
+				        <input type="text" id="sample4_jibunAddress" class="input" name="jibun" placeholder="지번주소" value="${!addressArr[2].isEmpty() ? addressArr[2] : ''}">
+				        <input type="text" id="sample4_detailAddress" class="input3" name="detail" placeholder="상세주소" value="${addressArr[3]}" required>
+				        <input type="text" id="sample4_extraAddress" class="input3" name="extra" placeholder="참고항목" value="${!addressArr[4].isEmpty() ? addressArr[4] : ''}">
 	                </td>
 	            </tr>
 	
