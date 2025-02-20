@@ -105,7 +105,7 @@
 	    <div class="row">
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Seoul.jpg" class="card-img-top" alt="서울">
+	                <img src="${path}/resources/image/admin/choose/서우울.jpg" class="card-img-top" alt="서울">
 	                <div class="card-body">
 	                    <h5 class="card-title" style="align:center">서울</h5>
 	                    <p class="card-text">전통과 현대가 조화로운 대한민국의 수도</p>
@@ -121,7 +121,7 @@
 	        
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Daegu.jpg" class="card-img-top" alt="대구">
+	                <img src="${path}/resources/image/admin/choose/대구우.jpg" class="card-img-top" alt="대구">
 	                <div class="card-body">
 	                      <h5 class="card-title">대구</h5>
 	                    <p class="card-text">역사와 전통, 그리고 맛있는 음식이 가득한 도시</p>
@@ -136,7 +136,7 @@
 	        </div>
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Gyeongju.jpg" class="card-img-top" alt="경주">
+	                <img src="${path}/resources/image/admin/choose/경주우.jpg" class="card-img-top" alt="경주">
 	                <div class="card-body">
 	                    <h5 class="card-title">경주</h5>
 	                    <p class="card-text">천년을 이어온 유적지와 문화유산의 고도</p>
@@ -152,7 +152,7 @@
 	        
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Jeju.jpg" class="card-img-top" alt="제주">
+	                <img src="${path}/resources/image/admin/choose/제에주.jpg" class="card-img-top" alt="제주">
 	                <div class="card-body">
 	                    <h5 class="card-title">제주</h5>
 	                    <p class="card-text">자연의 신비와 평화로운 풍경이 어우러진 섬</p>
@@ -168,7 +168,7 @@
 	        
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Busan.jpg" class="card-img-top" alt="부산">
+	                <img src="${path}/resources/image/admin/choose/부사안.jpg" class="card-img-top" alt="부산">
 	                <div class="card-body">
 	                    <h5 class="card-title">부산</h5>
 	                    <p class="card-text">해양문화와 활기 넘치는 항구도시, 해변의 낭만</p>
@@ -184,7 +184,7 @@
 	        
 	         <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/광주_n.png" class="card-img-top" alt="광주">
+	                <img src="${path}/resources/image/admin/choose/과앙주.png" class="card-img-top" alt="광주">
 	                <div class="card-body">
 	                    <h5 class="card-title">광주</h5>
 	                    <p class="card-text">민주화운동의 역사적 의미와 풍부한 문화유산</p>
@@ -232,7 +232,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Seoul.jpg" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/서우울.jpg" alt="여행지 이미지" class="img-fluid">
         <div>
            <br>
            <h3>서울</h3>
@@ -269,7 +269,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Daegu.jpg" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/대구우.jpg" alt="여행지 이미지" class="img-fluid">
         <div>
            <br>
            <h3>대구</h3>
@@ -306,7 +306,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Gyeongju.jpg" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/경주우.jpg" alt="여행지 이미지" class="img-fluid">
         <div>
            <br>
            <h3>경주</h3>
@@ -343,7 +343,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Jeju.jpg" alt="여행지 이미지1" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/제에주.jpg" alt="여행지 이미지1" class="img-fluid">
         <div>
            <br>
            <h3>제주</h3>
@@ -380,7 +380,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Busan.jpg" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/부사안.jpg" alt="여행지 이미지" class="img-fluid">
         <div>
            <br>
            <h3>부산</h3>
@@ -417,7 +417,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/광주_n.png" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/과앙주.png" alt="여행지 이미지" class="img-fluid">
       <div>
          광주 개요
          위치: 광주는 전라남도에 위치한 광역시로, 대한민국의 남서부에 자리잡고 있습니다.
