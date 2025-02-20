@@ -72,26 +72,31 @@
 
 #personInfo {
 	display: flex;
+	justify-content: space-between;;
 	margin-bottom: 12px;
     padding-bottom: 15px;
 	border-bottom: 1px solid #ebebeb;  /* 테두리 아래쪽 얇은 회색 선 */
 }
 
+#nameId {
+	display: flex;
+	width: 60%;
+}
+
 /* 이름 */
-#personInfo h3 {
+#nameId h3 {
 	display: flex;
 	align-items: flex-end;
-	width: 34%;
 	margin: 0;
 	color: #222222;  /* 진한 회색 */
 }
 
 /* 아이디 */
-#personInfo span {
+#nameId span {
 	display: flex;
     align-items: flex-end;
     font-size: 15px;
-    margin-right: 8px;
+    margin: 0px 10px;
     color: #222222;
     border-bottom: 1px solid #222222;
 }

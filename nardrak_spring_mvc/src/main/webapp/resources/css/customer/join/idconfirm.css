@@ -35,7 +35,7 @@ td {
 /* 필수 체크 input에 대한 *표시 컬러 */
 .requiredAll{
 	font-size: 15px;
-    color: #40798c;
+    color: #64A0ff;
 }
 
 /* 아이디 입력 필드 속성 */
@@ -51,21 +51,31 @@ td {
     box-sizing: border-box;
 }
 
+#inputId:focus {
+	border: 2px solid #64A0ff;
+	outline: none;
+}
+
 /* 중복 ID 속성 */
 input[type="submit"]#inputIdConfirm {
 	margin-left: 5px;
 	padding: 8px 15px;
-    background-color: #9dbebb;
+    background-color: #64A0ff;
     border: none;
     color: #ffffff;
     font-size: 14px;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
+}
+
+input[type="submit"]#inputIdConfirm:hover {
+    background-color: #1E82ff;
 }
 
 input[type="submit"]:hover, input[type="button"]:hover {
-    background-color: #729ea1;
+    background-color: #1E82ff;
 }
 
 .message {
@@ -77,7 +87,7 @@ input[type="submit"]:hover, input[type="button"]:hover {
 }
 
 .idValue {
-	color:#729ea1; 
+	color: #64A0ff; 
 	font-weight: bold;
 }
 
@@ -90,7 +100,7 @@ input[type="submit"]:hover, input[type="button"]:hover {
 
 input[type="button"] {
 	width: 100%;
-    background-color: #9dbebb;
+    background-color: #64A0ff;
     color: #ffffff;
     padding: 10px 20px;
     border: none;
@@ -100,5 +110,6 @@ input[type="button"] {
     transition: background-color 0.3s ease;
     margin-top: 15px;
     margin-left: 20px;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
 }
 
