@@ -161,4 +161,14 @@ public class AdminController {
 		return "admin/actionResultAdmin";
 	}
 	
+	// 탈퇴 요청이 30일 지난 관리자 삭제
+		@RequestMapping("/adminDelete.ad")
+		public String adminDelete(HttpServletRequest request, HttpServletResponse response, Model model) 
+				throws ServletException, IOException{
+			logger.info("<< url : adminDelete.ad >>" );
+			
+			service.adminDelete(request, response, model);
+			
+			return "admin/actionResultAdmin";
+		}
 }

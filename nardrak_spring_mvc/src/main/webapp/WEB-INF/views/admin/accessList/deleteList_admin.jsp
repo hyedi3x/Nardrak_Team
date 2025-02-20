@@ -26,7 +26,7 @@
 	
 	<div class="container">
 		
-		<form action="${path}/customerDelete.ad" method="post" name="joinForm" onsubmit="return adDelSubmitChk()">
+		<form action="${path}/adminDelete.ad" method="post" name="joinForm" onsubmit="return adDelSubmitChk()">
 			<!-- js에서 hidden에 선택된 값들을 배열로 담아서 hidden에 담는다. request.getP로 받으면 문자열 1,2,3형태가 된다. -->
 			<input type="hidden" id="ad_ids" name="ad_ids" value=""/>
 			<table>

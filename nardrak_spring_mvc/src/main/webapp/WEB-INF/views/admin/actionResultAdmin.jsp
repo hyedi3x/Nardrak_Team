@@ -79,6 +79,18 @@
 			</script>
 		</c:when>
 		
+		<c:when test="${adDeleteCnt >= 1 }">
+			<script type="text/javaScript">
+				alert("관리차 정보 삭제 완료");
+				window.location="${path}/adminAccess.ad?listId=adDel";
+			</script>
+		</c:when>
+		<c:when test="${adDeleteCnt == 0 }">
+			<script type="text/javaScript">
+				alert("관리자 정보 삭제 실패");
+				window.location="${path}/adminAccess.ad?listId=adDel";
+			</script>
+		</c:when>
 	</c:choose>
 	
 	<!-- 권한별 로그인 성공 -->

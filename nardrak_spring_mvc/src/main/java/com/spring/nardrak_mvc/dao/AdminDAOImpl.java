@@ -130,4 +130,11 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSession.delete(namespace+"customerDelete", cs_ids);
 	}
 	
+	// 탈퇴 요청 30일 지난 관리자 삭제
+		@Override
+		public int adminDelete(List<String> ad_ids) {
+			System.out.println("DAO adminDelete");
+			
+			return sqlSession.delete(namespace+"adminDelete", ad_ids);
+		}
 }
