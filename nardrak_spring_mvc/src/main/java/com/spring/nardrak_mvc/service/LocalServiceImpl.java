@@ -30,6 +30,7 @@ public class LocalServiceImpl implements LocalService {
 	@Override
 	public void addTour(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
+		System.out.println("LocalSerivceImpl - addTour()");
 		
 		 // 업로드된 이미지 파일을 MultipartFile 객체로 가져옴
         MultipartFile file = request.getFile("local_image");
@@ -76,19 +77,27 @@ public class LocalServiceImpl implements LocalService {
         }
 	}
 	
-	@Override
 	// ======================= [국내 여행지 정보 목록 조회] =======================
+	@Override
    public void localList(HttpServletRequest request, HttpServletResponse response, Model model)
          throws ServletException, IOException {
-      System.out.println("CustomerSerivceImpl - localList()");
+      System.out.println("LocalSerivceImpl - localList()");
    
       // 화면에서 입력받은값 파라미터로 담기
       String pageNum = request.getParameter("pageNum");
       
+      String region = request.getParameter("region");
+      
       Paging paging = new Paging(pageNum);
       
       // 지역정보 개수
-      int total = dao.localCnt();
+      int total = 0;
+      if(region == null || region.isEmpty()) {
+    	  total = dao.localCnt();
+      }
+      else {
+    	  total = dao.regionLocalCnt(region);	// 특정 지역에 있는 국내 여행지 전체 개수 조회
+      }
       
       // 지역정보 목록
       paging.setTotalCount(total);
@@ -100,18 +109,22 @@ public class LocalServiceImpl implements LocalService {
       Map<String,Object> map = new HashMap<String,Object>();
       map.put("start", start);
       map.put("end", end);
+      if (region != null && !region.isEmpty()) {
+          map.put("region", region);
+      }
       
       List<LocalDTO> list = dao.localList(map);
       
       model.addAttribute("paging", paging);
       model.addAttribute("locals", list);
+      model.addAttribute("selectedRegion", region);
    }
 
 	// ======================= [국내 여행지 상세정보(1건) 조회] =======================
 	@Override
 	public void localInfo(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws ServletException, IOException {
-		System.out.println("CustomerSerivceImpl - localInfo()");
+		System.out.println("LocalSerivceImpl - localInfo()");
 		
 		// queryString값으로 받아온 PK값
 		String local_title = request.getParameter("local_title");
@@ -125,5 +138,24 @@ public class LocalServiceImpl implements LocalService {
 		
 		model.addAttribute("dto", dto);
 	}
+	
+	// ======================= [여행지 이름 유니크 값 체크] =======================
+   @Override
+   public void checkTitle(HttpServletRequest request, HttpServletResponse response, Model model)
+         throws ServletException, IOException {
+      System.out.println("CustomerSerivceImpl - checkTitle()");
+      
+       String local_title = request.getParameter("value");
+       System.out.println(local_title);
+       int count = 0;
+       count = dao.checkTitle(local_title);
+       
+       // JSON 문자열을 직접 생성
+       String jsonResponse = "{ \"count\": " + count + " }"; // JSON 형식의 문자열을 저장 
+
+       response.setContentType("application/json");
+       response.setCharacterEncoding("UTF-8");
+       response.getWriter().write(jsonResponse);
+   }
 	
 }
