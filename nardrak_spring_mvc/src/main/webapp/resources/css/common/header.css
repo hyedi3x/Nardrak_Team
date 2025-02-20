@@ -195,6 +195,46 @@
     color: white; /* 버튼 색상 설정 */
 }
 
+/* 하위 메뉴 스타일 */
+.travel li.menu-item {
+    position: relative; /* 자식 요소인 하위 메뉴의 위치를 위한 기준 설정 */
+}
+
+.travel .sub-menu {
+    display: none; /* 기본적으로 하위 메뉴는 숨겨짐 */
+    position: absolute; /* 하위 메뉴를 부모 메뉴 항목 아래에 위치시킴 */
+    top: 100%; /* 부모 항목의 바로 아래에 위치 */
+    left: 0; /* 부모 항목의 왼쪽에 정렬 */
+    background-color: #fff; /* 배경색 설정 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+    width: 120px; /* 하위 메뉴의 너비 설정 */
+    padding: 10px 0; /* 하위 메뉴 항목 간의 여백 설정 */
+    z-index: 9999; /* 다른 요소보다 위에 보이도록 설정 */
+}
+
+/* 하위 메뉴 항목 스타일 */
+.travel .sub-menu li {
+    list-style: none; /* 글머리표 제거 */
+    padding: 5px 20px; /* 항목 간의 여백 설정 */
+}
+
+.travel .sub-menu li a {
+    color: #262323; /* 링크 색상 */
+    font-size: 14px; /* 글씨 크기 */
+    text-decoration: none; /* 링크 스타일 제거 */
+    display: block; /* 항목을 블록 형식으로 표시 */
+}
+
+/* 하위 메뉴에 마우스를 올리면 표시되도록 설정 */
+.travel li.menu-item:hover .sub-menu {
+    display: block; /* 하위 메뉴 표시 */
+}
+
+/* 하위 메뉴 항목에 마우스를 올리면 색상이 변경되도록 설정 */
+.travel .sub-menu li a:hover {
+    color: #007bff; /* 마우스 오버 시 링크 색상 */
+}
+
 /* 반응형 웹 스타일 */
 @media screen and (max-width : 1100px){
 	#header{
