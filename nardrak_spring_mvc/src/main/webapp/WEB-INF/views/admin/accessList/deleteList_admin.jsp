@@ -55,7 +55,7 @@
 				<tr>
 					<td class="BTNTd" colspan="4">
 						<input type="checkbox" id="checkedAll" onclick="allCheck()"><label for="checkedAll" class="font16" >전체 선택</label>
-						<input class="font16"  type="submit" id="accessBTN" value="회원 삭제"> 
+						<input class="font16"  type="submit" id="accessBTN" value="관리자 삭제"> 
 					</td>
 				</tr>
 			</table>
