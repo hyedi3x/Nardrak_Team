@@ -54,92 +54,95 @@
     
     /* 찜하기 관련 기능 */
     document.addEventListener("DOMContentLoaded", function () {
+    // 로그인 상태 확인 (isLogin 변수를 서버에서 전달받거나, 세션 상태 확인)
     
-    	// heart-checkbox 클래스를 가진 모든 체크박스 요소를 선택(값이 여러개라 배열로 나옴)
-    	const heartCheckboxes = document.querySelectorAll(".heart-checkbox");
-    	    
-    	// 각 체크박스에 대해 기능 반복
-	    heartCheckboxes.forEach((checkbox) => {
-	        const label = checkbox.nextElementSibling; // 체크박스 다음에 있는 <label> 요소 (하트 아이콘이 포함됨)
-	        const icon = label.querySelector("i"); // <label> 내에 있는 <i> 태그 (Font Awesome 하트 아이콘)
-	
-	        // 체크박스 상태가 변경될 때마다 실행되는 이벤트 리스너(체크 상태에 따라 하트 아이콘 모양 변경)
-	        checkbox.addEventListener("change", function (event) {
-	        
-	        	// 로그인 상태 확인
-	        	 if (!isLogin) {
-	                // 로그인되지 않은 상태라면 기본 동작을 막고, 경고 메시지 띄우기
-	                event.preventDefault(); // 이벤트의 기본 동작 취소
-	                alert("로그인 후 찜하기 기능을 사용할 수 있습니다.");
-	                window.location="/nardrak_mvc/login.do"; // 로그인 페이지로 리다이렉트
-	                return;	// 이후 코드를 실행하지 않고 함수 종료
-	            }
-	        
-	        	// 체크박스가 위치한 카드에서 필요한 데이터를 추출
-	        	var destId = $(this).closest('.card').find('.dest-id').val(); 			// 여행지 ID
-			    var destName = $(this).closest('.card').find('.card-title').text();		// 여행지 이름
-			    var imageUrl = $(this).closest('.card').find('img').attr('src');		// 여행지 이미지 URL
-			    var description = $(this).closest('.card').find('.card-text').text();	// 여행지 설명
-			    var isAdd = checkbox.checked;
-				
-	            // 하트 상태에 따라 찜하기 추가/삭제 AJAX 요청
-	            if (checkbox.checked) {
-	                // 찜하기 추가 요청
-	                $.ajax({
-	                    url: "/nardrak_mvc/favorite.fa",
-	                    method: "POST",
-	                    data: {
-	                    	dest_id: destId,
-	                        dest_name: destName,
-	                        image_url: imageUrl,
-	                        description: description,
-	                        isAdd: isAdd
-	                    },
-	                    success: function(response) {
-	                        alert("찜하기 추가 성공");
-	                    },
-	                    error: function(error) {
-	                        alert("찜하기 추가 실패");
-	                        console.log(error);
-	                    }
-	                });
-	            }
-	            else {
-				    // 찜하기 삭제
-				    $.ajax({
-				        url: "/nardrak_mvc/favorite.fa",
-				        method: "POST",
-				        data: {
-				            dest_id: destId,
-	                        dest_name: destName,
-	                        image_url: imageUrl,
-	                        description: description,
-	                        isAdd: false
-				        },
-				        success: function(response) {
-				            alert("찜하기 삭제 성공");
-				        },
-				        error: function(error) {
-				            alert("찜하기 삭제 실패", error);
-	                        console.log(error);
-				        }
-			    	});
-			    }
-	            
-	             // 하트 아이콘 색상 변경 : 체크 상태에 따라 하트 아이콘 스타일 변경
-	            if (checkbox.checked) {
-	                icon.classList.remove("fa-regular");
-	                icon.classList.add("fa-solid");
-	            } else {
-	                icon.classList.remove("fa-solid");
-	                icon.classList.add("fa-regular");
-	            }
-	        });
+    // 찜 목록을 서버에서 받아오기.
+    $.ajax({
+        url: "/nardrak_mvc/getFavoriteList.fa", // 찜 목록을 가져오는 requestMapping한 URL
+        method: "POST",
+        dataType: "json",
+        success: function(favorites) {
+            // 찜한 여행지 목록을 받아와서 해당하는 체크박스를 체크합니다.
+            favorites.forEach(function(favorite) {
+                // 찜한 여행지 이름을 기준으로 체크박스를 찾고 체크합니다.
+                document.querySelectorAll(".heart-checkbox").forEach(function(checkbox) {
+                    const label = checkbox.nextElementSibling; // 체크박스 다음에 있는 <label> 요소
+                    const icon = label.querySelector("i"); // 하트 아이콘
 
-	        // 라벨(하트 아이콘) 클릭 시 체크박스 상태 변경
-	        label.addEventListener("click", function () {
-	            checkbox.checked = !checkbox.checked;		// 체크박스 상태 반전
-	            checkbox.dispatchEvent(new Event("change")); // 상태 변경 이벤트 발생('change' 이벤트 리스너 실행)
-	        });
-    	});
+                    // 각 체크박스가 해당 여행지에 해당하는지 확인
+                    const destName = checkbox.closest('.card').querySelector('.card-title').textContent;
+
+                    if (destName === favorite.dest_name) {
+                        checkbox.checked = true; // 체크박스를 체크
+                        icon.classList.remove("fa-regular");
+                        icon.classList.add("fa-solid");
+                    }
+                });
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("찜 목록을 가져오는데 실패했습니다. 상태:", status, "오류:", error); // 디버깅용 출력
+            alert("찜 목록을 가져오는데 실패했습니다.");
+        }
+    });
+
+    // 하트 체크박스를 클릭할 때의 처리
+    const heartCheckboxes = document.querySelectorAll(".heart-checkbox");
+    heartCheckboxes.forEach((checkbox) => {
+        const label = checkbox.nextElementSibling;
+        const icon = label.querySelector("i");
+
+        checkbox.addEventListener("change", function (event) {
+            if (!isLogin) {
+                event.preventDefault();
+                alert("로그인 후 찜하기 기능을 사용할 수 있습니다.");
+                window.location = "/nardrak_mvc/login.do";
+                return;
+            }
+            
+            if(!isCustomer){
+            	event.preventDefault();
+            	alert("고객만 찜하기를 할 수 있습니다.");
+            	return;
+            }
+
+            const destName = $(this).closest('.card').find('.card-title').text();
+            const imageUrl = $(this).closest('.card').find('img').attr('src');
+            const description = $(this).closest('.card').find('.card-text').text();
+            const isAdd = checkbox.checked;
+
+            // 찜하기 추가/삭제 AJAX 요청
+            $.ajax({
+                url: "/nardrak_mvc/favorite.fa",
+                method: "POST",
+                data: {
+                    dest_name: destName,
+                    image_url: imageUrl,
+                    description: description,
+                    isAdd: isAdd
+                },
+                dataType: "json",
+                success: function(response) {
+                    alert(response.message);
+                },
+                error: function () {
+                    alert("에러입니다.");
+                }
+            });
+
+            // 하트 아이콘 스타일 변경
+            if (checkbox.checked) {
+                icon.classList.remove("fa-regular");
+                icon.classList.add("fa-solid");
+            } else {
+                icon.classList.remove("fa-solid");
+                icon.classList.add("fa-regular");
+            }
+        });
+
+        label.addEventListener("click", function () {
+            checkbox.checked = !checkbox.checked;
+            checkbox.dispatchEvent(new Event("change"));
+        });
+    });
 });
