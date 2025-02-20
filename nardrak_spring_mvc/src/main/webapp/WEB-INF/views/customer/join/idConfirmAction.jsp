@@ -30,7 +30,7 @@
 		            <tr>
 		                <th> 아이디 <span class="requiredAll">*</span></th> 
 		                <td>
-		                    <input type="text" id="inputId" name="cs_id" placeholder="영문, 숫자  4~10자 이내" oninput="checkId(this.value)" required autofocus> 
+		                    <input type="text" id="inputId" name="cs_id" maxlength="10" placeholder="영문, 숫자  4~10자 이내" oninput="checkId(this.value)" required autofocus> 
 		                    <input type="submit" id="inputIdConfirm" value="중복" onclick="confirmId('${path}')">
 		                    <div id="idChk"></div>
 		                </td>
