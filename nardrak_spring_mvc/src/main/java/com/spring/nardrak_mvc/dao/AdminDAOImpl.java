@@ -103,6 +103,10 @@ public class AdminDAOImpl implements AdminDAO {
 
 			return  sqlSession.selectList(namespace+"customerDeleteList", map);
 		}
+		else if(map.get("listId").equals("adDel")) {
+
+			return  sqlSession.selectList(namespace+"adminDeleteList", map);
+		}
 		else {
 			return null;
 		}
