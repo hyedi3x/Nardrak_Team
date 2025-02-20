@@ -80,9 +80,9 @@
 	                <td>
 	                    <input type="Date" id="cs_birth" class="input" name="cs_birth" style="width:350px" required>
 	                    <br>
-	                    <p style="color:#729ea1; font-size:12px;">14세 미만은 가입이 불가합니다.</p>
+	                    <p style="color:#64A0ff; font-size:13px;">14세 미만은 가입이 불가합니다.</p>
 	                    <div class="red hide" id="birthChk" style="display:none">
-	                        <div class="font14" style="color:red;">생년월일을 올바르게 입력해주세요.</div>
+	                        <div class="font13" style="color:red;">생년월일을 올바르게 입력해주세요.</div>
 	                    </div>
 	                </td>
 	            </tr>    
@@ -101,7 +101,7 @@
 	                    <span class="em">-</span>
 	                    <input type="text" class="input2" name="user_hp3" maxlength="4" required oninput="uniqueCheck('${path}', 'phone')"> 
 	               		 <div class="red hide" id="phoneChk" style="display:none">
-	                        <div class="font14" style="color:red;"></div>
+	                        <div class="font13" style="color:red;"></div>
 	                    </div>
 	                </td>
 	            </tr>
@@ -134,7 +134,7 @@
 	                    <input type="text" class="input2" name="user_local3" maxlength="4"> 
 	                    <br>
 	                    <div class="red hide" id="localPhoneChk" style="display:none">
-	                        <div class="font14" style="color:red;">지역 전화번호를 올바르게 입력해주세요.</div>
+	                        <div class="font13" style="color:red;">지역 전화번호를 올바르게 입력해주세요.</div>
 	                    </div>
 	                </td>
 	            </tr>    
@@ -165,7 +165,7 @@
 	                        <option value="nate.com"> nate.com </option>
 	                    </select>
 	                    <div class="red hide" id="emailChk" style="display:none">
-	                        <div class="font14" style="color:red;"></div>
+	                        <div class="font13" style="color:red;"></div>
 	                    </div>
 	                </td>
 	            </tr>  

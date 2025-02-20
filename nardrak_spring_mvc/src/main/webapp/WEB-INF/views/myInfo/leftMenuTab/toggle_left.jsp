@@ -63,11 +63,13 @@
 					</ul>
 				</li>
 				
-				<!-- 관심 상품 -->
+				<!-- 상품 관리 -->
 				<li>
-					<h4> 관심 상품</h4>
+					<h4> 상품 관리 </h4>
 					<ul class="info_menu">
-						<li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 찜한 상품</a></li>
+						<li class="on"><a href="#">☞ 찜한 상품</a></li>
+						<li class="on"><a onclick="window.location='${path}/locationDetail.tr'">국내여행지 정보 등록</a></li>
+						<li class="on"><a onclick="window.location='${path}/chooseDetail.ch'">추천 여행지 정보 등록</a></li>
 					</ul>
 				</li>				
 				

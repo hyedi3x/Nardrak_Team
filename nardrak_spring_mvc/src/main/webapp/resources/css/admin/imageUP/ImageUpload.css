@@ -14,7 +14,7 @@
     flex-direction: column; /* 세로로 배치 */
     align-items: center;  /* 중앙 정렬 */
     width: 100%;
-    max-width: 400px; /* 최대 너비 설정 */
+    max-width: 380px; /* 최대 너비 설정 */
     background: #f9f9f9;  /* 폼 배경색 */
     padding: 20px;
     border-radius: 10px;
@@ -45,14 +45,13 @@ textarea {
 }
 
 /* 전체 폼 스타일 */
-form {
-    background: white;
-    margin: 20px auto;
+.image-item form {
+	background: #ffffff;
+	margin: 0;
+    margin-top: 20px;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-    max-width: 500px;
-    text-align: center; /* 폼 내 텍스트 중앙 정렬 */
+    border-top: 1px solid #d9d9d9;
+    text-align: center;
     align-self: center;
 }
 
@@ -62,21 +61,27 @@ input[type="file"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: auto;  /* 가로 크기 자동 조절 */
+    width: 340px;
+    background-color: #ffffff;
     margin: 5px 0;
 }
 
 /* 기존 이미지 제목 */
 h3 {
-    text-align: center;
-    color: #262323;
+	width: 900px;
+    color: #333333;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #333333;
+    margin: auto;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 3px -3px rgba(0, 0, 0, 0.1);
 }
 
 /* 기존 이미지 컨테이너 */
 .image-container {
     display: flex;
     flex-wrap: wrap;   /* 가로로 여러 개 배치 */
-    gap: 15px;         /* 이미지 간격 */
+    gap: 20px;         /* 이미지 간격 */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -87,13 +92,15 @@ h3 {
 
 /* 개별 이미지 스타일 */
 .image-item {
+	width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
     border: 1px solid #ddd;
-    padding: 8px;
-    border-radius: 5px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.149);
 }
 
 /* 이미지 크기 조정 */
@@ -114,18 +121,14 @@ h3 {
 
 /* 버튼 스타일 */
 button {
-    background-color: #aed9e0;
-    color: #333;
-    border: none;
     padding: 8px;
+    background-color: #64A0ff;
+    color: #ffffff;
+    text-align: center;
     font-size: 14px;
-    font-weight: bold;
-    border-radius: 5px;
-    width: auto;  /* 가로 크기 자동 */
-}
-
-button:hover {
-    background-color: #2980b9;
+    border: 1px solid #64A0ff;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 /* 아이콘 버튼 */
@@ -138,5 +141,6 @@ button:hover {
 }
 
 button[type="submit"]:hover {
-    background-color: #1c5f81;
+    background-color: #1E82ff;
+    border: 1px solid #1E82ff;
 }

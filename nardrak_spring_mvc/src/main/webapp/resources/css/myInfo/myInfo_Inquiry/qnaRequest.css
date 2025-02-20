@@ -53,7 +53,7 @@
 /* 타이틀 */
 #contentRight h1 {
     padding-bottom: 20px;
-    border-bottom: 2px solid #222222;
+    border-bottom: 1px solid #222222;
     margin: 0;
     box-shadow: 0 6px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
 }
@@ -125,6 +125,13 @@ input[type="text"]#cs_name, input[type="text"]#cs_phone, select#i_category1, sel
     border-radius: 5px;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+	border: 2px solid #64A0ff;
+	outline: none;
+}
+
 /* 문의 내용 박스 */
 textarea {
     height: 180px;
@@ -191,15 +198,5 @@ input[type="submit"]{
 }
 
 input[type="submit"]:hover {
-    width: 100%;
-    height: 47px;
-	padding: 8px;
     background-color: #1E82ff;
-    color: #ffffff;
-    text-align: center;
-    font-size: 18px;
-    border: 0 none;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: 0 3px 2px rgba(0, 0, 0, .149);
 }
