@@ -29,6 +29,7 @@
 <script> 
 	var isLogin = ${sessionScope.sessionID != null ? 'true' : 'false'}; 
 	var isCustomer = ${sessionScope.login_session == "Customer" ? 'true' : 'false'};
+	var path = "${path}";
 </script>
 
  <!-- swiner styles -->
