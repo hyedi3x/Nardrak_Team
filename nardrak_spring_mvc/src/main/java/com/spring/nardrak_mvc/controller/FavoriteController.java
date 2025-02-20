@@ -23,14 +23,16 @@ public class FavoriteController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FavoriteController.class);
 	
-	// ==================== [ 선호 여행지 선택 홈페이지] =======================
-	@RequestMapping("/choose.fa")
-    public String choose(HttpServletRequest request,HttpServletResponse response , Model model) 
-			throws ServletException, IOException {
-		logger.info("<< url - choose.tr >>");
-        
-        return "customer/choose/choose";   
-     }
+	// ==================== [ 고객이 찜한 여행지 목록 조회 - ajax ] =======================
+	@RequestMapping("/getFavoriteList.fa")
+	public String getFavoriteList(HttpServletRequest request,HttpServletResponse response , Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url - getFavoriteList.fa >>");
+		
+		service.favoriteList(request, response, model);
+	
+		return "customer/choose/choose";
+	}
 	
 	// ======================= [선호 여행지 목록 조회] =======================
 	@RequestMapping("/getUserFavorites.fa")
