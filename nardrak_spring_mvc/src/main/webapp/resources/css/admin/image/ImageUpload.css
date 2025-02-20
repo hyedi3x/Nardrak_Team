@@ -1,0 +1,142 @@
+@charset "UTF-8";
+/* 이미지 업로드 컨테이너 스타일 */
+.image-upload-container {
+    margin-bottom: 20px;  /* 아래쪽 여백 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center;  /* 세로 중앙 정렬 */
+    width: 100%;
+}
+
+/* 이미지 업로드 폼 스타일 */
+.image-upload-container form {
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    align-items: center;  /* 중앙 정렬 */
+    width: 100%;
+    max-width: 400px; /* 최대 너비 설정 */
+    background: #f9f9f9;  /* 폼 배경색 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 이미지 업로드 폼 파일 선택 창 및 업로드 버튼 스타일 */
+.image-upload-container input[type="file"],
+.image-upload-container button[type="submit"]{
+    padding: 10px;
+}
+
+/* 설명 및 업로드한 사람 입력 스타일 */
+textarea, 
+.image-upload-container input[type="text"],
+.image-container input[type="text"] {
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+textarea {
+	resize: none;
+}
+
+/* 전체 폼 스타일 */
+form {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    text-align: center; /* 폼 내 텍스트 중앙 정렬 */
+    align-self: center;
+}
+
+/* 파일 입력 스타일 */
+input[type="file"] {
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: auto;  /* 가로 크기 자동 조절 */
+    margin: 5px 0;
+}
+
+/* 기존 이미지 제목 */
+h3 {
+    text-align: center;
+    color: #262323;
+}
+
+/* 기존 이미지 컨테이너 */
+.image-container {
+    display: flex;
+    flex-wrap: wrap;   /* 가로로 여러 개 배치 */
+    gap: 15px;         /* 이미지 간격 */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 15px auto;
+}
+
+/* 개별 이미지 스타일 */
+.image-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* 이미지 크기 조정 */
+.image-item img {
+    width: 250px;   /* 크기 줄이기 */
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* 버튼 그룹 (수정 & 삭제) */
+.btn-group {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* 버튼 스타일 */
+button {
+    background-color: #aed9e0;
+    color: #333;
+    border: none;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    width: auto;  /* 가로 크기 자동 */
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* 아이콘 버튼 */
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+
+button[type="submit"]:hover {
+    background-color: #1c5f81;
+}

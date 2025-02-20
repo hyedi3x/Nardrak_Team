@@ -58,14 +58,12 @@ public class AdminController {
 	
 	// 유니크 값 체크
 	@RequestMapping("/uniqueCheck.ad")
-	public String uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
+	public void uniqueCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException{
 		
 		logger.info("<< url : uniqueCheck.ad >>" );
 		
 		service.uniqueCheck(request, response, model);
-		
-		return "admin/actionResultAdmin";
 	}
 	
 	// ======================= [관리자 로그인 처리 페이지] =======================
@@ -86,25 +84,75 @@ public class AdminController {
 		service.loginResult(request, response, model);
 
 		return "admin/actionResultAdmin";
+
 	}
 	
-	@RequestMapping("/locationDetail.ad")
-	public String locationDetail(HttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException {
-		logger.info("<< url - locationDetail.ad >>");
-			
-		//service.loginResult(request, response, model);
-
-		return "customer/local/locationDetail";
+	// 마이페이지 - 수정/삭제 비밀번호 확인 페이지 이동
+	@RequestMapping("/pwdCheck.ad")
+	public String pwdCheck(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : pwdCheck.ad >>" );
+		
+		return "admin/modify_delete/pwdCheck";
+	}
+				
+	// 관리자 수정
+	@RequestMapping("/adminModifyAction.ad")
+	public String adminModifyAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminModifyAction.ad >>" );
+		
+		service.adminModifyAction(request, response, model);
+		
+		return "admin/actionResultAdmin";
 	}
 	
-	@RequestMapping("/locationDetailPage.ad")
-	public String locationDetailPage(HttpServletRequest request, HttpServletResponse response, Model model)
-			throws ServletException, IOException {
-		logger.info("<< url - locationDetailPage.ad >>");
-			
-		//service.loginResult(request, response, model);
-
-		return "customer/local/locationDetailPage";
+	// 관리자 삭제
+	@RequestMapping("/adminDeleteAction.ad")
+	public String adminDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminDeleteAction.ad >>" );
+		
+		service.adminDeleteAction(request, response, model);
+		
+		return "admin/actionResultAdmin";
 	}
+
+	// 관리자 등록 요청, 탈퇴요청 회원 조회 리스트
+	@RequestMapping("/adminAccess.ad")
+	public String adminAccess(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminAccess.ad >>" );
+		
+		service.adminAccess(request, response, model);
+		if(request.getParameter("listId").equals("ad")) {
+			return "admin/accessList/accessList_admin";
+		}
+		else{
+			return "admin/customerList/customerList_admin";
+		}
+	}
+
+	// 관리자 요청 승인
+	@RequestMapping("/adminAccessAction.ad")
+	public String adminAccessAction(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : adminAccessAction.ad >>" );
+		
+		service.adminAccessAction(request, response, model);
+		
+		return "admin/actionResultAdmin";
+	}
+	
+	// 탈퇴 요청이 30일 지난 회원 삭제
+	@RequestMapping("/customerDelete.ad")
+	public String customerDelete(HttpServletRequest request, HttpServletResponse response, Model model) 
+			throws ServletException, IOException{
+		logger.info("<< url : customerDelete.ad >>" );
+		
+		service.customerDelete(request, response, model);
+		
+		return "admin/actionResultAdmin";
+	}
+	
 }

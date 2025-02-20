@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+	<mapper namespace="com.spring.nardrak_mvc.dao.MyInfoDAO">  <!-- namespace="패키지명.인터페이스" -->
+		<!--  고객 테이블 정보 가지고 오기  -->
+		<select id="memberSelectCS" parameterType="String" resultType="com.spring.nardrak_mvc.dto.CustomerDTO"> 
+			SELECT *
+			  FROM customer_tb
+			 WHERE cs_id=#{strId}
+ 		</select>
+ 		
+		<!--  관리자 테이블 정보 가지고 오기  -->
+		<select id="memberSelectAD" parameterType="String" resultType="com.spring.nardrak_mvc.dto.AdminDTO"> 
+			SELECT *
+			  FROM admin_tb
+			 WHERE ad_id=#{strId}
+ 		</select>
+ 		
+		<!--  아이디, 패스워드 일치   -->
+		<select id="userPwdChk" parameterType="java.util.Map" resultType="int"> 
+			SELECT COUNT(*)
+			  FROM (SELECT cs_id, cs_pwd FROM customer_tb
+			         UNION
+			        SELECT ad_id, ad_pwd FROM admin_tb
+			        ) a
+			 WHERE cs_id=#{strId} AND cs_pwd=#{strPwd}
+ 		</select> 		
+
+    	<!-- 1:1 문의 등록 처리 -->
+    	<insert id="insertInquiry" parameterType="com.spring.nardrak_mvc.dto.InquiryDTO">
+	    	INSERT INTO inquiryCS_tb(i_num, i_title, i_category, i_content, i_imgUpload, i_writeDate, i_status, cs_id)
+				VALUES (RAWTOHEX(SYS_GUID()),#{i_title}, #{i_category}, #{i_content}, #{i_imgUpload}, DEFAULT, DEFAULT, #{cs_id})
+    	</insert>
+		    	
+    	<!-- 1:1 문의 내역 불러오기-->
+		<select id="inquiryResList" parameterType="map" resultType="com.spring.nardrak_mvc.dto.InquiryDTO">
+		    SELECT *
+		    FROM (
+		        SELECT ROWNUM as rn, cs.*
+		        FROM (
+		            SELECT CS.cs_id, CS.cs_email, CS.cs_phone, iCS.i_num, iCS.i_title, iCS.i_category,
+		                   iCS.i_content, iCS.i_imgUpload, iCS.i_writeDate, ics.i_status
+		            FROM customer_tb CS
+		            INNER JOIN inquiryCS_tb iCS ON CS.cs_id = iCS.cs_id
+		            WHERE CS.cs_id = #{strId}
+		            <choose>
+		                <when test="status == 'pending'">
+		                    AND i_status = 'pending'
+		                </when>
+		                <when test="status == 'complete'">
+		                    AND i_status = 'complete'
+		                </when>
+		            </choose>
+		        ) cs
+		    )
+		    WHERE rn BETWEEN #{startRow} AND #{endRow}
+		    ORDER BY rn
+		</select>
+
+		<!-- 1:1 문의 내역 전체 게시글 수를 반환-->
+		<select id="inquiryResListCount" parameterType="map" resultType="int">
+		    SELECT COUNT(*)
+		    FROM inquiryCS_tb
+		    WHERE cs_id = #{strId}
+		    <choose>
+		        <when test="status == 'pending'">
+		            AND i_status = 'pending'
+		        </when>
+		        <when test="status == 'complete'">
+		            AND i_status = 'complete'
+		        </when>
+		    </choose>
+		</select>
+   </mapper> 
