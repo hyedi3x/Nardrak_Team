@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- JS -->
-    <script src="${path}/resources/js/customer/trable.js" defer></script>
+    <%-- <script src="${path}/resources/js/customer/trable.js" defer></script> --%>
     
 </head>
 <body>
@@ -87,7 +87,7 @@
 <div class="paging-container">
     <ul class="pagination">
         <c:if test="${paging.startPage > 10}">
-            <li><a href="${path}/local.tr?pageNum=${paging.prev}" class="prevPage">[이전]</a></li>
+            <li><a href="${path}/local.tr?pageNum=${paging.prev}" class="prevPage">≪</a></li>
         </c:if>
 
         <c:forEach var="num" begin="${paging.startPage}" end="${paging.endPage}">
@@ -98,7 +98,7 @@
         </c:forEach>
 
         <c:if test="${paging.endPage < paging.pageCount}">
-            <li><a href="${path}/local.tr?pageNum=${paging.next}" class="nextPage">»</a></li>
+            <li><a href="${path}/local.tr?pageNum=${paging.next}" class="nextPage">≫</a></li>
         </c:if>
     </ul>
 </div>
