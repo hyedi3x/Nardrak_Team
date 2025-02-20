@@ -37,15 +37,18 @@
                
                <tr>
                    <th>지역</th> 
-               <td><select class="region" id="region" name="region">
-                  <option value="서울">서울</option>
-                  <option value="경기">경기</option>
-                  <option value="강원">강원</option>
-                  <option value="충청">충청</option>
-                  <option value="경상">경상</option>
-                  <option value="전라">전라</option>
-                  <option value="제주">제주</option>
-               </select></td>
+               <td>
+                   <select class="region" id="region" name="region" required>
+	                  <option value="">지역을 선택하세요</option>
+	                  <option value="서울">서울</option>
+	                  <option value="경기">경기</option>
+	                  <option value="강원">강원</option>
+	                  <option value="충청">충청</option>
+	                  <option value="경상">경상</option>
+	                  <option value="전라">전라</option>
+	                  <option value="제주">제주</option>
+               	   </select>
+               </td>
             </tr>
             
             <tr class="width100">

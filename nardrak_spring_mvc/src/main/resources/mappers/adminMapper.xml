@@ -108,13 +108,14 @@
 	<select id="customerDeleteList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.CustomerDTO">
 		SELECT *
 		  FROM(
-		      SELECT ROWNUM as rn, cs.*, (sysdate-cs_regDate) as timeDiff
-		        FROM (SELECT *
-		                FROM customer_tb
-		              WHERE delete_status = 'Y'
-		              ORDER BY cs_regDate
-		              ) cs
-		      )
+			   SELECT ROWNUM as rn, cs.*, (sysdate-dtb.cs_del_date) as timeDiff
+			     FROM (SELECT *
+			             FROM customer_tb
+			            WHERE delete_status = 'Y'
+			           ORDER BY cs_regDate
+			           ) cs, customer_delete_tb dtb
+			     WHERE cs.cs_id = dtb.cs_id
+			   )
 		WHERE rn BETWEEN #{startRow} AND #{endRow}
 		ORDER BY rn
 	</select>
