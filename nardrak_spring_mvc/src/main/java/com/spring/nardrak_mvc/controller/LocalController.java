@@ -95,7 +95,7 @@ public class LocalController {
 			
 			service.modifyTour(request, response, model);
 			
-			return "customer/local/local";
+			return "redirect:local.tr";
 		}
 
 }

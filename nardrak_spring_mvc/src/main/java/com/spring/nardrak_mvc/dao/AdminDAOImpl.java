@@ -88,6 +88,9 @@ public class AdminDAOImpl implements AdminDAO {
 		 else if(listId.equals("cs")) {
 			 return sqlSession.selectOne(namespace+"customerDeletConut");
 		 }
+		 else if(listId.equals("adDel")) {
+			 return sqlSession.selectOne(namespace+"adminDeletConut");
+		 }
 		return 0;
 	}
 	
