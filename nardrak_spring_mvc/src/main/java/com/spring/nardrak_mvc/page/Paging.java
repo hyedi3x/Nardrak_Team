@@ -2,7 +2,7 @@ package com.spring.nardrak_mvc.page;
 
 public class Paging {
 	
-	private int pageSize = 10;	// 1page당 게시글의 갯수를 지정
+	private int pageSize = 5;	// 1page당 게시글의 갯수를 지정
 	private int count;		// 전체글의 갯수를 저장하는 변수
 	private int number;		// 페이지번호
 	private String pageNum;     
