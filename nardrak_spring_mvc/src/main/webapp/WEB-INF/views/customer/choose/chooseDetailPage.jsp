@@ -48,7 +48,7 @@
 	 	</div>
 	 	
 	 	<c:if test="${sessionScope.login_session eq 'Admin'}">
-			  <a href="${path}/chooseDetailModify.ch?ch_title1=${dto.ch_title1}">
+			  <a href="${path}/chooseDetailModify.ch?ch_num=${dto.ch_num}">
 			      수정하기
 			  </a>
 		</c:if>
