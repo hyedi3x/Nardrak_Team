@@ -40,6 +40,25 @@ public class ImageUploadServiceImpl implements ImageUploadService {
         
         // 로컬 디스크에서 사용할 샘플 경로 설정 (테스트용)
         String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\main\\";
+        
+        String originalName = file.getOriginalFilename(); // 원래 파일 이름
+        String extension = ""; // 확장자
+        int lastDot = originalName.lastIndexOf(".");
+        
+        if(lastDot > 0) {
+        	extension = originalName.substring(lastDot);
+        	originalName = originalName.substring(0, lastDot);
+        }
+        
+        // 중복되지 않는 파일 이름
+        String newName = originalName + extension;
+        int count = 1;
+        File newFile = new File(saveDir + newName);
+        while(newFile.exists()) {
+        	newName = originalName + "(" + count + ")" + extension;
+        	newFile = new File(saveDir + newName);
+        	count++;
+        }
 
         // 파일 입출력을 위한 스트림 초기화
         FileInputStream fis = null;
@@ -47,11 +66,11 @@ public class ImageUploadServiceImpl implements ImageUploadService {
 
         try {
             // 업로드된 파일을 서버의 지정된 디렉토리에 저장
-            file.transferTo(new File(saveDir + file.getOriginalFilename()));
+            file.transferTo(newFile);
 
             // 저장된 파일을 로컬 디스크로 복사하기 위한 입력, 출력 스트림 초기화
-            fis = new FileInputStream(saveDir + file.getOriginalFilename());
-            fos = new FileOutputStream(realDir + file.getOriginalFilename());
+            fis = new FileInputStream(newFile);
+            fos = new FileOutputStream(realDir + newName);
 
             // 파일 내용을 한 바이트씩 읽고 로컬 파일에 복사
             int data = 0;
@@ -61,7 +80,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
             
             // 이미지 경로와 업로드 날짜 설정
             ImageUploadDTO dto = new ImageUploadDTO(); // 새로운 DTO 객체 생성
-            String image_path = "/resources/upload/admin/main/" + file.getOriginalFilename(); // 상대 경로로 설정
+            String image_path = "/resources/upload/admin/main/" + newName; // 상대 경로로 설정
             dto.setImage_path(image_path); // 이미지 경로 설정
 
             // 현재 시간을 업로드 날짜로 설정
@@ -113,13 +132,32 @@ public class ImageUploadServiceImpl implements ImageUploadService {
         // 로컬 디스크에서 사용할 샘플 경로 설정 (테스트용)
         String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\admin\\main\\";
 
-        FileInputStream fis = null;
-		FileOutputStream fos = null;
-		
 		String upload_img = "";
         
         // DB에서 기존 이미지 정보 가져오기
         ImageUploadDTO existingImage = dao.getImageById(imageId); // 기존 이미지 정보 조회
+        
+        String originalName = file.getOriginalFilename(); // 원래 파일 이름
+        String extension = ""; // 확장자
+        int lastDot = originalName.lastIndexOf(".");
+        
+        if(lastDot > 0) {
+        	extension = originalName.substring(lastDot);
+        	originalName = originalName.substring(0, lastDot);
+        }
+        
+        // 중복되지 않는 파일 이름
+        String newName = originalName + extension;
+        int count = 1;
+        File newFile = new File(saveDir + newName);
+        while(newFile.exists()) {
+        	newName = originalName + "(" + count + ")" + extension;
+        	newFile = new File(saveDir + newName);
+        	count++;
+        }
+        
+        FileInputStream fis = null;
+		FileOutputStream fos = null;
 
         // 이미지를 바꿀 경우
         if (file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
@@ -127,11 +165,11 @@ public class ImageUploadServiceImpl implements ImageUploadService {
             	// 기존 이미지가 존재하는 경우
                 if (existingImage != null) {
                 	// 업로드된 파일을 서버의 지정된 디렉토리에 저장
-                	file.transferTo(new File(saveDir + file.getOriginalFilename()));
+                	file.transferTo(newFile);
                 	
                 	// 저장된 파일을 로컬 디스크로 복사하기 위한 입력, 출력 스트림 초기화
-                	fis = new FileInputStream(saveDir + file.getOriginalFilename());
-                	fos = new FileOutputStream(realDir + file.getOriginalFilename());
+                    fis = new FileInputStream(newFile);
+                    fos = new FileOutputStream(realDir + newName);
                 	
                 	// 파일 내용을 한 바이트씩 읽고 로컬 파일에 복사
                 	int data = 0;
@@ -139,7 +177,7 @@ public class ImageUploadServiceImpl implements ImageUploadService {
                 		fos.write(data); // 파일을 로컬에 저장
                 	}
 
-                    upload_img = "/resources/upload/admin/main/" + file.getOriginalFilename();
+                    upload_img = "/resources/upload/admin/main/" + newName;
                 }
             } catch (Exception e) {
                 e.printStackTrace(); // 예외 처리
