@@ -68,20 +68,28 @@
 					<h4> 상품 관리 </h4>
 					<ul class="info_menu">
 						<li class="on"><a href="#">☞ 찜한 상품</a></li>
-						<li class="on"><a onclick="window.location='${path}/locationDetail.tr'">국내여행지 정보 등록</a></li>
-						<li class="on"><a onclick="window.location='${path}/chooseDetail.ch'">추천 여행지 정보 등록</a></li>
+						<li class="on"><a onclick="window.location='${path}/myInfo.do'">국내여행지 정보 등록</a></li>
+						<li class="on"><a onclick="window.location='${path}/myInfo.do'">추천 여행지 정보 등록</a></li>
 					</ul>
 				</li>				
 				
 				<!-- 관리자 정보  -->
 				<li>
 					<h4> 관리자 정보 </h4>
-					<ul class="info_menu">
-			            <li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 개인정보 설정</a></li>
-			            <li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 회원 탈퇴</a></li>
-			            <li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 관리자 승인 요청 조회 </a></li>
+					<ul class="info_menu">					
+			            <li class="on"><a onclick="load('${path}/myInfo.do')">☞ 개인정보 설정</a></li>
+			            <li class="on"><a onclick="load('${path}/myInfo.do')">☞ 회원 탈퇴</a></li>
 					</ul>
-				</li>	
+				</li>
+				<c:if test="${sessionScope.sessionID == 'ceo1'}">
+					<li>
+					<h4> 전체 관리자 관리 </h4>
+					<ul class="info_menu">					
+						<li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 관리자 승인 요청 조회 </a></li>
+						<li class="on"><a onclick="window.location='${path}/myInfo.do'">☞ 관리자 삭제 요청 조회 </a></li>
+					</ul>
+				</li>
+				</c:if>
 			</ul>
 		</c:when>		
 	</c:choose>	
