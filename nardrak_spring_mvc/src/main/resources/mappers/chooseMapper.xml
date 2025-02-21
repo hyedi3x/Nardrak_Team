@@ -6,22 +6,28 @@
 	  
 <mapper namespace="com.spring.nardrak_mvc.dao.ChooseDAO">
 
-	<!-- 정보 삽입 -->
-	<insert id="InsertChoose" parameterType="com.spring.nardrak_mvc.dao.ChooseDAO">
+	<!-- 추천 여행지 정보 삽입 -->
+	<insert id="InsertChoose" parameterType="com.spring.nardrak_mvc.dto.ChooseDTO">
 		INSERT INTO choose_tb(ch_title1,ch_title2,ch_image,ch_tags1,ch_tags2,ch_detail)
     		VALUES(#{ch_title1},#{ch_title2},#{ch_image},#{ch_tags1},#{ch_tags2},#{ch_detail})
 	</insert>
 	
-	 <!-- 목록조회 -->
+	 <!-- 추천 여행지 목록조회 -->
      <select id="ChooseList" resultType="com.spring.nardrak_mvc.dto.ChooseDTO">
       	SELECT * FROM choose_tb
       </select>
     
-    <!-- 추천 여행지 상세정보 조회 -->
+    <!-- 추천 여행지 상세정보 조회(1건) -->
       <select id="chooseInfo" parameterType="String" resultType="com.spring.nardrak_mvc.dto.ChooseDTO">
       	SELECT *
       	  FROM choose_tb
       	 WHERE ch_title1 = #{ch_title1}
       </select>
     
+    <!-- 추천야행지 정보 수정 -->
+    <update id="updateChoose" parameterType="com.spring.nardrak_mvc.dto.ChooseDTO">
+      	UPDATE choose_tb
+		   SET ch_title1=#{ch_title1}, ch_title2=#{ch_title2}, ch_image=#{ch_image}, ch_tags1=#{ch_tags1}, ch_tags2=#{ch_tags2}, ch_detail=#{ch_detail}
+		 WHERE ch_title1 = #{ch_title1}
+      </update>
 </mapper>

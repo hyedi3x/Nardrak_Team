@@ -40,7 +40,7 @@
 		
 		<div id="mapDiv"><div id="map" style="width:700px;height:300px;"></div></div>
 
-			<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
+			<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41c38302d9f4c82a17d46b1f3eeff982"></script>
 			<script>
 			    var mapContainer = document.getElementById('map'),
 			        mapOption = {
@@ -117,7 +117,7 @@
 			<!-- 로드뷰 -->
 			<div id="loadDiv"><div id="roadview" style="width:100%;height:300px;"></div></div>
 
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41c38302d9f4c82a17d46b1f3eeff982"></script>
 			<script>
 				var roadviewContainer = document.getElementById('roadview'); //로드뷰를 표시할 div
 				var roadview = new kakao.maps.Roadview(roadviewContainer); //로드뷰 객체
