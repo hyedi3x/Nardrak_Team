@@ -76,4 +76,26 @@ public class LocalController {
       
     }
 
+	// 국내여행 상세정보 수정 페이지
+			@RequestMapping("/locationDetailModify.tr")
+			public String locationDetailModify(HttpServletRequest request, HttpServletResponse response, Model model)
+					throws ServletException, IOException{
+				logger.info("url => locationDetailModify.tr");
+				
+				service.localInfo(request, response, model);
+				
+				return "customer/local/locationDetailModify";
+		}
+		
+		// 국내여행 상세정보 데이터 수정 처리
+		@RequestMapping("/modifyLocationDetailAction.tr")
+		public String modifyLocationDetailAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException{
+			logger.info("url => modifyLocationDetailAction.tr");
+			
+			service.modifyTour(request, response, model);
+			
+			return "redirect:local.tr";
+		}
+
 }

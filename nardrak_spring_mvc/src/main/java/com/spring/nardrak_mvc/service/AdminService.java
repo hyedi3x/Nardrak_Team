@@ -45,4 +45,7 @@ public interface AdminService {
 		public void customerDelete(HttpServletRequest request, HttpServletResponse response, Model model)
 				throws ServletException, IOException;
 		
+		// 탈퇴 요청 30일 지난 관리자 삭제
+		public void adminDelete(HttpServletRequest request, HttpServletResponse response, Model model)
+				throws ServletException, IOException;
 }
