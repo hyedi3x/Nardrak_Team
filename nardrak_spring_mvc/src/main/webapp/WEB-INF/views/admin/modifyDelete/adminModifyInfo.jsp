@@ -218,7 +218,7 @@
 			</tr>
 			<tr class="width100">	
 				<td>
-					<input type="text" id="ad_empnum" name="ad_empnum" placeholder="사번 입력" value="${ad_empnum}" maxlength="13" oninput="uniqueChk('${path}', '#empnumlUnique', '#ad_empnum')" required>
+					<input type="text" id="ad_empnum" name="ad_empnum" placeholder="사번 입력" value="${ad_empnum}" maxlength="13" oninput="uniqueChk('${path}', '#empnumlUnique', '#ad_empnum')" readonly>
 					<div id="empnumlUnique"></div>
 				</td>
 				
