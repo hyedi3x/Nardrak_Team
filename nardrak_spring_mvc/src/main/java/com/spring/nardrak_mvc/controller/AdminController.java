@@ -107,7 +107,7 @@ public class AdminController {
 		return "admin/actionResultAdmin";
 	}
 	
-	// 관리자 삭제
+	// 관리자 삭제 요청
 	@RequestMapping("/adminDeleteAction.ad")
 	public String adminDeleteAction(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException{
@@ -118,7 +118,7 @@ public class AdminController {
 		return "admin/actionResultAdmin";
 	}
 
-	// 관리자 등록 요청, 탈퇴요청 회원 조회 리스트
+	// 관리자 등록 요청, 탈퇴요청, 관리자 권한 철회요청 회원 조회 리스트
 	@RequestMapping("/adminAccess.ad")
 	public String adminAccess(HttpServletRequest request, HttpServletResponse response, Model model) 
 			throws ServletException, IOException{

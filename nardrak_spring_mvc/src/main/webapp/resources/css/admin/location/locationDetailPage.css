@@ -62,6 +62,12 @@
 #mapDiv{
    display: flex;
     justify-content: center;
-    margin: 20px 0 40px 0;
+    margin: 20px 0;
+    
+}
+#loadDiv{
+   display: flex;
+    justify-content: center;
+    margin: 40px 0;
     
 }

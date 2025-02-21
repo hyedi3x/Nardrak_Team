@@ -40,7 +40,7 @@
 		
 		<div id="mapDiv"><div id="map" style="width:700px;height:300px;"></div></div>
 
-			<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey={API 키}"></script>
+			<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
 			<script>
 			    var mapContainer = document.getElementById('map'),
 			        mapOption = {
@@ -70,7 +70,7 @@
 			    					+'<a href="https://map.kakao.com/link/map/${dto.local_title},${dto.latitude},${dto.longitude}" style="color:blue" target="_blank">큰지도보기</a>'
 			    					+' <a href="https://map.kakao.com/link/to/${dto.local_title},${dto.latitude},${dto.longitude}" style="color:blue" target="_blank">길찾기</a>'
 			    				+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+			    iwPosition = new kakao.maps.LatLng(${dto.latitude}, ${dto.longitude}); //인포윈도우 표시 위치입니다
 	
 				// 인포윈도우를 생성합니다
 				var infowindow = new kakao.maps.InfoWindow({
@@ -111,7 +111,26 @@
 				    });
 				});
 			</script>
-		
+			
+			<div class="detailDiv"><div><h3>${dto.local_title} 로드뷰</h3></div></div>
+			
+			<!-- 로드뷰 -->
+			<div id="loadDiv"><div id="roadview" style="width:100%;height:300px;"></div></div>
+
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
+			<script>
+				var roadviewContainer = document.getElementById('roadview'); //로드뷰를 표시할 div
+				var roadview = new kakao.maps.Roadview(roadviewContainer); //로드뷰 객체
+				var roadviewClient = new kakao.maps.RoadviewClient(); //좌표로부터 로드뷰 파노ID를 가져올 로드뷰 helper객체
+				
+				var position = new kakao.maps.LatLng(${dto.latitude}, ${dto.longitude});
+				
+				// 특정 위치의 좌표와 가까운 로드뷰의 panoId를 추출하여 로드뷰를 띄운다.
+				roadviewClient.getNearestPanoId(position, 50, function(panoId) {
+				    roadview.setPanoId(panoId, position); //panoId와 중심좌표를 통해 로드뷰 실행
+				});
+			</script>
+			
 	</div>
 </div>
 
