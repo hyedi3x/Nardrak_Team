@@ -100,19 +100,13 @@
 									
 										<select title="지역 선택" name="i_category2" id="i_category2">
 											<option value="">선택하세요</option>
-											<option value="수도권">수도권</option>
+											<option value="서울">서울</option>
+											<option value="경기">경기</option>
 											<option value="강원">강원</option>
-											<option value="충북">충북</option>
-											<option value="충남">충남</option>
-											<option value="경북">경북</option>
-											<option value="경남">경남</option>
-											<option value="전북">전북</option>
-											<option value="전남">전남</option>
-										</select>
-										
-										<select title="지역 선택" name="i_category3" id="i_category3">
-											<option value="">선택하세요</option>
-											<!-- 초기 옵션은 "선택하세요"로 설정 -->
+											<option value="충청">충청</option>
+											<option value="경상">경상</option>
+											<option value="전라">전라</option>
+											<option value="제주">제주</option>
 										</select>
 									</div>
 								</td>
