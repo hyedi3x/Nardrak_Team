@@ -64,4 +64,13 @@ public class LocalDAOImpl implements LocalDAO {
       System.out.println("dao"+local_title);
       return sqlSession.selectOne(namespace+"checkTitle", local_title);
    }
+
+   // ======================= [국내 여행지 정보 수정] =======================
+	@Override
+	public int updateTour(LocalDTO dto) {
+		System.out.println("LocalDAO - updateTour()");
+		
+		return sqlSession.update(namespace + "updateTour", dto);
+	}
+
 }

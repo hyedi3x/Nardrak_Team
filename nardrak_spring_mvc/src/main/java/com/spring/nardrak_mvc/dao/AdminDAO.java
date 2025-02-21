@@ -37,4 +37,7 @@ public interface AdminDAO {
 		
 		// 탈퇴 요청 30일 지난 회원 삭제
 		public int customerDelete(List<String> cs_ids);
+		
+		// 탈퇴 요청 30일 지난 관리자 삭제
+		public int adminDelete(List<String> cs_ids);
 }

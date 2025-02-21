@@ -58,4 +58,12 @@
 	        FROM localtour_tb
 	       WHERE local_title =#{local_title}
 	   </select>
+	   
+	   <!-- 지역정보 수정 -->
+      <update id="updateTour" parameterType="com.spring.nardrak_mvc.dto.LocalDTO">
+      	UPDATE localtour_tb
+		   SET region=#{region}, description=#{description}, local_tags=#{local_tags}, local_detail=#{local_detail}, local_image=#{local_image}, latitude=#{latitude}, longitude=#{longitude}
+		 WHERE local_title = #{local_title}
+      </update>
+	   
 </mapper>

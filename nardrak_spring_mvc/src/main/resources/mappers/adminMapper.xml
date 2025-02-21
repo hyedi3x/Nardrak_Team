@@ -60,7 +60,7 @@
 	<!-- 관리자 삭제 -->
 	<update id="adminDeleteAction" parameterType="java.util.Map">
 		UPDATE admin_tb
-		   SET delete_status = 'Y'
+		   SET delete_status = 'Y', ad_regDate = sysdate
 		 WHERE ad_id = #{ad_id}
 	</update>
 	
@@ -90,7 +90,7 @@
 	<!-- item과 #{}변수명을 일치시킨다. collection은 자료형이 list여서 list open, close로 ()를 만들고 배열의, 로 구분한다. -->
 	<update id="adminAccessAction" >
 	    UPDATE admin_tb
-	    SET access_status = 'Y'
+	    SET access_status = 'Y', ad_regDate = sysdate
 	    WHERE ad_id IN 
 	   <foreach item="ad_id" collection="list" open="(" separator="," close=")">
 	        #{ad_id}
@@ -108,13 +108,14 @@
 	<select id="customerDeleteList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.CustomerDTO">
 		SELECT *
 		  FROM(
-		      SELECT ROWNUM as rn, cs.*, (sysdate-cs_regDate) as timeDiff
-		        FROM (SELECT *
-		                FROM customer_tb
-		              WHERE delete_status = 'Y'
-		              ORDER BY cs_regDate
-		              ) cs
-		      )
+			   SELECT ROWNUM as rn, cs.*, (sysdate-dtb.cs_del_date) as timeDiff
+			     FROM (SELECT *
+			             FROM customer_tb
+			            WHERE delete_status = 'Y'
+			           ORDER BY cs_regDate
+			           ) cs, customer_delete_tb dtb
+			     WHERE cs.cs_id = dtb.cs_id
+			   )
 		WHERE rn BETWEEN #{startRow} AND #{endRow}
 		ORDER BY rn
 	</select>
@@ -127,4 +128,36 @@
 	        #{cs_id}
 	    </foreach>
 	</delete>
+	
+	<!-- 탈퇴 관리자 카운트 -->
+	<select id="adminDeletConut" resultType="int">
+		SELECT COUNT(*)
+		  FROM admin_tb
+		WHERE delete_status = 'Y'
+	</select>
+	
+	<!-- 관리자 철회 요청 조회 -->
+	<select id="adminDeleteList" parameterType="java.util.Map" resultType="com.spring.nardrak_mvc.dto.AdminDTO">
+		SELECT *
+		  FROM(
+		      SELECT ROWNUM rn, ad.*, (sysdate-ad_regDate) as timeDiff
+		        FROM (SELECT *
+		                FROM admin_tb
+		               WHERE delete_status = 'Y'
+		              ORDER BY ad_regDate
+		              ) ad
+		      )
+		WHERE rn BETWEEN #{startRow} AND #{endRow}
+		ORDER BY rn
+	</select>
+	
+	<!-- 탈퇴 요청 30일 지난 관리자 삭제 -->
+	<delete id="adminDelete">
+		DELETE admin_tb
+		 WHERE ad_id IN
+	   <foreach item="ad_id" collection="list" open="(" separator="," close=")">
+	        #{ad_id}
+	    </foreach>
+	</delete>
+	
 </mapper> 
