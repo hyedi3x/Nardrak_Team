@@ -14,7 +14,7 @@ function submitChk(){
  // 마이페이지 버튼
 function myInfoBTN(path){
    if(confirm('마이페이지로 돌아가시겠습니까?')){
-      window.location=path+"/myinfo.do";
+      window.location=path+"/myInfo.do";
    }
 }
 

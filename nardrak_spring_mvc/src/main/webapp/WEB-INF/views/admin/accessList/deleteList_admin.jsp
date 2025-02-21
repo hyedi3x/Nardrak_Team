@@ -25,6 +25,7 @@
 <div class="wrap">
 	
 	<div class="container">
+		<h2 class="page_title">관리자 권한 철회 요청 조회</h2>
 		
 		<form action="${path}/adminDelete.ad" method="post" name="joinForm" onsubmit="return adDelSubmitChk()">
 			<!-- js에서 hidden에 선택된 값들을 배열로 담아서 hidden에 담는다. request.getP로 받으면 문자열 1,2,3형태가 된다. -->
@@ -47,7 +48,7 @@
 						<td>
 							경과일 : ${fn:substring(dto.timeDiff,0,2)}일<br>
 							<input type="checkbox" id="${dto.ad_id}" name="${dto.ad_id}" class="accessCheckbox" value="${dto.ad_id}" date="${fn:substring(dto.timeDiff,0,2)}" onchange="chkClick('${fn:substring(dto.timeDiff,0,2)}', '${dto.ad_id}')">
-							<a href="#"><label class="chkLabel" for="${dto.ad_id}">${dto.delete_status} [회원 삭제]</label></a>
+							<a href="#"><label class="chkLabel" for="${dto.ad_id}">${dto.delete_status} [관리자 권한 철회]</label></a>
 						</td>
 						<td>${fn:substring(dto.ad_regDate,0,10)}</td>
 					</tr>
