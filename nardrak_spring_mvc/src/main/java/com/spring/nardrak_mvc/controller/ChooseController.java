@@ -35,9 +35,7 @@ public class ChooseController {
 		return "customer/choose/choose";
 	}
 
-
 	// ==================== [ 선호 여행지 목록 확인(관리자)] =======================
-	  
 	@RequestMapping("/ChooseDetail.ch") 
 	public String locationDetailPage(HttpServletRequest request, HttpServletResponse response,
 	Model model) throws ServletException, IOException{
@@ -69,5 +67,29 @@ public class ChooseController {
 		
 		return "customer/choose/chooseDetailPage"; 
 	}
+	
+	// 국내여행 상세정보 수정 페이지
+	@RequestMapping("/chooseDetailModify.ch")
+	public String chooseDetailModify(HttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => chooseDetailModify.ch");
+		
+		service.ChooseInfo(request, response, model);
+		
+		return "customer/choose/chooseDetailModify";
+	}
+	
+	// 추천 여행지 상세페이지 수정
+	@RequestMapping("/modifychooseDetailAction.ch")
+	public String modifychooseDetailAction(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException{
+		logger.info("url => modifychooseDetailAction.ch");
+		
+		service.modifyUpdate(request, response, model);
+		
+		return "customer/choose/choose";
+	}
+	
+	
 	
 }

@@ -103,21 +103,17 @@ body {
 }
 
 /* 구분선 스타일 */
-.divider {
-    border-top: 2px solid #ddd;
-    margin: 20px 0;
-}
-
 .divider1 {
     border-top: 4px solid #ddd;
-    margin: 20px 0;
+    margin: 20px auto;
+    max-width: 80%
 }
 
 /* 페이징 스타일 */
 .paging-container {
-    width: 100%;
+    max-width: 80%;
     text-align: center;
-    margin-top: 30px;
+    margin: 30px auto;
     padding-top: 10px;
     border-top: 1px solid #ddd;
 }

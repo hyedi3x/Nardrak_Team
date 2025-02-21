@@ -1,0 +1,170 @@
+@charset "UTF-8"; /* CSS 문자 인코딩을 UTF-8로 설정 */
+
+
+.btnTr{
+   display: flex;
+   justify-content: center;
+}
+
+/* 가장 바깥 div 가운데 맞춤 */
+.wrap{
+   display: flex;
+   justify-content: center;
+   margin:auto;
+   width: 100%;
+}
+
+/* 로고와 테이블 교차축 가운데 정렬 */
+.container{
+   display: flex;
+   flex-direction: column;
+   justiry-content: center;
+}
+
+/* 내부 요소 가운데 정렬 */
+form{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin: 30px auto;
+   padding: 20px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   border-radius: 10px;
+}
+
+#signUpTitle {
+   margin: 10px 0px;
+   border-bottom: 1px solid #729ea1;
+    box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.1);  /* 그림자 : x축, y축, 그림자 블러 수준, 각도*/
+}
+
+#ad_title{
+   font-size: 24px;   
+}
+
+/* 테이블 크기 */
+table{
+   width: 700px;
+}
+
+/* 제목 설정 */
+th{
+   font-weight: normal;
+   padding-bottom: 20px;
+   text-align: right;
+   padding-ri: 3px;
+}
+
+/* 요소 설정 */
+td{
+   padding-bottom: 20px;
+}
+
+/* input 설정 */
+input{
+   padding: 10px 15px;
+   border-radius: 5px;
+   margin: 0px;
+   border: 1px solid  #d9d9d9;
+}
+
+select{
+   padding: 10px 15px;
+   border-radius: 5px;
+   margin: 0px;
+   border: 1px solid  #d9d9d9;
+   margin-bottom: 10px;
+}
+
+/* 입력란 hover 색 변경 */
+input:hover, 
+select:hover {
+   border-color: #729ea1;
+}
+
+/* focus는 outline 검정색에서 변경*/
+input:focus, 
+select:focus {
+   border-color: #9dbebb;
+   outline: 3px solid rgba(45, 62, 63, 0.2);
+}
+
+/* 폰트 16 */
+.font16{
+   font-size: 16px;
+}
+
+/* 폰트 14 */
+.font14{
+   font-size: 14px;
+}
+
+/* 메세지 색상 */
+.red{
+   color: #ff0000;
+}
+
+input[type="button"], input[type="submit"]{
+   background-color: #9dbebb;
+   color: white;
+   font-size: 16px;
+   border: none;
+   border-radius:5px;
+   text-align: center;
+}
+
+/* id 필드 */
+.ad_id{
+   width: 297px;
+    margin-right: 5px;
+}
+
+/* 중복확인 버튼 */
+.idChkBTN{
+   width: 90px;
+}
+
+/* 비밀번호(확인), 이름, 휴대폰, 도로명주소, 상세주소, 사내전화번호, 사번 */
+.width100 input{
+   width: 100%;
+}
+
+.submitBTN:hover{
+   background-color:#729ea1;
+}
+.mapTd input{
+   width: 200px;
+    margin-right: 10px;
+}
+.submitBTN { 
+   width: 100%;
+}
+
+#mapDiv{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+.btnup{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+.btnDiv input{
+   margin: 10px;
+}
+
+.region{
+   width: 100%;
+}
+
+#locatMap{
+   width: 100%;
+}
+
+#keyword-search{
+   width: 470px;
+}
+#search-btn{
+   width: 110px;
+}
