@@ -92,9 +92,9 @@
 	    </c:when>
 	</c:choose>
 	
-	<div id="pagingTd" class="font20">
+	<div id="pagingTd">
 	    <c:if test="${paging.startBlock > paging.pageBlock}">
-	        <a onclick="load('${path}/res_status.do?page=${paging.prev}&status=${param.status}')"> &lt;&lt; 이전 </a>
+	        <a onclick="load('${path}/res_status.do?page=${paging.prev}&status=${param.status}')"> &lt;&lt; prev </a>
 	    </c:if>
 	
 		<c:forEach var="num" begin="${paging.startBlock}" end="${paging.endBlock}">
@@ -102,7 +102,7 @@
 		</c:forEach>
 	
 	    <c:if test="${paging.next <= paging.pageNum}">
-	        <a onclick="load('${path}/res_status.do?page=${paging.next}&status=${param.status}')"> 다음 &gt;&gt; </a>
+	        <a onclick="load('${path}/res_status.do?page=${paging.next}&status=${param.status}')"> next &gt;&gt; </a>
 	    </c:if>
 	</div>
 </body>
