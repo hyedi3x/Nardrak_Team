@@ -13,13 +13,9 @@ function submitChk(){
 }
  // 취소 버튼
 function myInfoBTN(path){
-<<<<<<< HEAD
+ HEAD
    if(confirm('마이페이지로 돌아가시겠습니까?')){
       window.location=path+"/myInfo.do";
-=======
-   if(confirm('이전 페이지로 돌아가시겠습니까?')){
-      window.location=path+"/local.tr";
->>>>>>> origin/admin_modify_dev3
    }
 }
 
