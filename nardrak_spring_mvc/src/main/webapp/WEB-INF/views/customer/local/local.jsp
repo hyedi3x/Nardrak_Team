@@ -67,7 +67,7 @@
 	<div class="tag-box">
 	    <h4>태그</h4>
 	    <div class="tag-list">
-	        <span><a href="${path}/local.tr?region=서울">>#서울</a></span>
+	        <span><a href="${path}/local.tr?region=서울">#서울</a></span>
 	        <span><a href="${path}/local.tr?region=경기">#경기</a></span>
 	        <span><a href="${path}/local.tr?region=강원">#강원</a></span>
 	        <span><a href="${path}/local.tr?region=충청">#충청</a></span>
