@@ -273,3 +273,11 @@ a:link, a:visited {
 .fa-solid.fa-minus::before {
 	color: #64A0ff;
 }
+
+input[readonly] {
+   background-color: #f8f9fa !important;
+    border: 1px solid #ccc !important;
+    color: #222 !important;
+    padding-left: 15px !important;
+    cursor: not-allowed !important;
+}
