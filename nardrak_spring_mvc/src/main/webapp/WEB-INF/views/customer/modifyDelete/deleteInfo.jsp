@@ -25,16 +25,16 @@
 		<div class="page_navigation">	<!-- 네비게이션 태그 -->
 			<ul class="page_nav">
 				<li>
-					<a href="/main.do">홈</a>
+					<a href="${path}/main.do">홈</a>
 				</li>
 				<li>
-					<a href="/myInfoAdmin.do"> > 마이페이지</a>
+					<a href="${path}/myInfo.do"> > 마이페이지</a>
 				</li>
 				<li>
 					<a href="#"> > 개인정보</a>
 				</li>
 				<li>
-					<a href="/deleteInfo.do"> > 회원 탈퇴</a>
+					<a href="${path}/deleteInfo.do"> > 회원 탈퇴</a>
 				</li>
 			</ul>
 		</div>
@@ -81,7 +81,7 @@
 									<a href="#" class="btn_go_page">자주하는 질문</a>
 								</span>
 								<span class="info">
-									<a href="#" class="btn_go_page">1:1 문의</a>
+									<a href="${path}/qnaResponse.do" class="btn_go_page">1:1 문의</a>
 								</span>
 								<span class="info">전화문의 1544-2288</span>
 							</p>
@@ -179,7 +179,8 @@
 							<p class="txt_nor_info">기타 사유나 나드락에 전달하실 내용이 있으시면 작성하세요.</p>
 						</div>
 					</div>
-					<textarea class="tf_wish" name="etcCmmt" id="etcCmmt" cols="30" rows="10" placeholder="내용을 입력하세요." title="기타 사유/나드락에 전달하실 내용"></textarea>
+					<textarea class="tf_wish" name="etcCmmt" id="etcCmmt" cols="30" rows="10" placeholder="내용을 입력하세요." title="기타 사유/나드락에 전달하실 내용" onkeyup="updateTxtCount()"></textarea>
+					<p id="txtCount"> 0 자 / 80 자 </p>
 					
 					<div class="block_tit_area align_ctr">
 						<h3 class="stit_con_mix">
