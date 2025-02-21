@@ -35,10 +35,10 @@ public class ChooseDAOImpl implements ChooseDAO {
 
 	// ================= [추천 여행지 상세정보 조회(1건)] ================
 	@Override
-	public ChooseDTO chooseInfo(String ch_title1) {
+	public ChooseDTO chooseInfo(int ch_num) {
 		System.out.println("ChooseDAO - chooseInfo()");
 
-		return sqlSession.selectOne(choose + "chooseInfo", ch_title1);
+		return sqlSession.selectOne(choose + "chooseInfo", ch_num);
 	}
 	
 	// ================= [국내 여행지 상세정보 수정] ====================
