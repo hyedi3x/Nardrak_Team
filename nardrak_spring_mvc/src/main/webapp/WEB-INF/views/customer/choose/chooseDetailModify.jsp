@@ -26,14 +26,15 @@
 
 <div class="wrap">
 	<div class="container">
-		<form name="inputform" action="${path}/modifychooseDetailAction.ch" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="ch_title1" value="${dto.ch_image}"> 
+		<form name="inputform" action="modifychooseDetailAction.ch" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="hidden_title1" value="${dto.ch_image}"> 
+			<input type="hidden" name="ch_number" value="${dto.ch_num}">
 			<!-- 이미지 추가선택 안할경우 원래 이미지 넘겨주기 위해 히든 사용 -->
 			<table>
 				<tr class="width100">
 					<th> 현재 이미지 </th>
 					<td>
-	                	<img src="${path}/${dto.ch_image}" style="width:600px">
+	                	<img src="${path}${dto.ch_image}" style="width:600px">
 	                </td>
 				</tr>
 				
