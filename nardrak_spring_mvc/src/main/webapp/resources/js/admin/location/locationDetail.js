@@ -19,11 +19,6 @@ function myInfoBTN(path){
    }
 }
 
-// 여행지 이름 input 시 지도 검색 동기화
-$('#local_title').on('input', function(){
-   $('#keyword-search').val($('#local_title').val());
-});
-
 // 유니크 컬럼들 ajax로 조회하기 
 // 매개변수 = (컨텍스트경로, 변경될 dev id, 입력한 input id)
 function checkTitle(path, elementId, inputId){
