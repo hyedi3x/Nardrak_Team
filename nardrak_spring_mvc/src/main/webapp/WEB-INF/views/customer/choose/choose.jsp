@@ -49,7 +49,7 @@
 	        <c:forEach var="choose" items="${list}">
 		        <div class="swiper-slide">
 		            <div class="slide-content">
-		                <a href="${path}/chooseDetailPage.ch?ch_title1=${choose.ch_title1}">
+		                <a href="${path}/chooseDetailPage.ch?ch_num=${choose.ch_num}">
 		                    <img src="${path}${choose.ch_image}" alt="${choose.ch_title1}">
 		                    <div class="slide-text1"> ${choose.ch_title1} </div>
 		                    <div class="slide-text2"> ${choose.ch_title2} </div>
@@ -69,36 +69,32 @@
 </div>
 
 <div id="min">
-	<div class="dest-card">
-	    <!-- 여행지 카드 내용 -->
-	    찜하기+999
-	    <span>❤️다른 사용자들이 찜하기 버튼을 많이 눌렀어요.!</span>
+	<!-- 선호 여행지 선택 문구 -->
+	<div class="choose-text">
+	    선호 여행지를 선택해주세요
+	    <span>여러분 여행지를 선택하고 즐거운 여행을 떠나보세요!</span>
 	</div>
-
+	
 	 <!-- 두번째 Swiper -->
 	 <div class="swiper mySwiper2">
 		  <div class="swiper-wrapper">
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/경복궁.jpg" alt="Slide 1"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/남산공원.jpg" alt="Slide 2"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/석촌호수.jpg" alt="Slide 3"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/여의도 윤중로.jpg" alt="Slide 4"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/제주 여행지.jpg" alt="Slide 5"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/경주 여행지.png" alt="Slide 6"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/부산.jpg"alt="Slide 7"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/부산 여행지.jpg" alt="Slide 8"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/Seoul.jpg"alt="Slide 9"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/333.png" alt="Slide 4"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/222.png" alt="Slide 5"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/111.png" alt="Slide 6"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/사진찍기 좋은 2.png"alt="Slide 7"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/사진찍기좋은3.png" alt="Slide 8"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/사진찍기좋은.png"alt="Slide 9"></div>
 		     <!-- 추가 슬라이드 -->
 		  </div>
 		  <!-- 페이지네이션 -->
 		  <div class="swiper2-pagination"></div>
 	</div>
 
-
-
-	<!-- 선호 여행지 선택 문구 -->
-	<div class="choose-text">
-	    선호 여행지를 선택해주세요
-	    <span>여러분 여행지를 선택하고 즐거운 여행을 떠나보세요!</span>
+	
+	<div class="dest-card">
+	    <!-- 여행지 카드 내용 -->
+	    찜하기+999
+	    <span>❤️다른 사용자들이 찜하기 버튼을 많이 눌렀어요.!</span>
 	</div>
 		
 	
@@ -106,7 +102,7 @@
 	    <div class="row">
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Seoul.jpg" class="card-img-top" alt="서울">
+	                <img src="${path}/resources/image/admin/choose/서우울.jpg" class="card-img-top" alt="서울">
 	                <div class="card-body">
 	                    <h5 class="card-title" style="align:center">서울</h5>
 	                    <p class="card-text">전통과 현대가 조화로운 대한민국의 수도</p>
@@ -122,22 +118,24 @@
 	        
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Daegu.jpg" class="card-img-top" alt="대구">
+	                <img src="${path}/resources/image/admin/choose/대구우.jpg" class="card-img-top" alt="경주">
 	                <div class="card-body">
-	                      <h5 class="card-title">대구</h5>
-	                    <p class="card-text">역사와 전통, 그리고 맛있는 음식이 가득한 도시</p>
+	                    <h5 class="card-title">경주</h5>
+	                    <p class="card-text">천년을 이어온 유적지와 문화유산의 고도</p>
 	                    <!-- 추가한 부분 -->
 	                    <input type="checkbox" class="heart-checkbox">
 			            <label class="heart-label">
 			                <i class="fa-regular fa-heart"></i>  <!-- Font Awesome 하트 아이콘 -->
 			            </label>
-	                    <a href="#" class="btn-primary" data-bs-toggle="modal" data-bs-target="#travelInfo2">자세히 보기</a>
+	                    <a href="#" class="btn-primary" data-bs-toggle="modal" data-bs-target="#travelInfo3">자세히 보기</a>
 	                </div>
 	            </div>
 	        </div>
+	        
+	        
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Gyeongju.jpg" class="card-img-top" alt="경주">
+	                <img src="${path}/resources/image/admin/choose/경주우.jpg" class="card-img-top" alt="경주">
 	                <div class="card-body">
 	                    <h5 class="card-title">경주</h5>
 	                    <p class="card-text">천년을 이어온 유적지와 문화유산의 고도</p>
@@ -153,7 +151,7 @@
 	        
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Jeju.jpg" class="card-img-top" alt="제주">
+	                <img src="${path}/resources/image/admin/choose/제에주.jpg" class="card-img-top" alt="제주">
 	                <div class="card-body">
 	                    <h5 class="card-title">제주</h5>
 	                    <p class="card-text">자연의 신비와 평화로운 풍경이 어우러진 섬</p>
@@ -169,7 +167,7 @@
 	        
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/Busan.jpg" class="card-img-top" alt="부산">
+	                <img src="${path}/resources/image/admin/choose/부사안.jpg" class="card-img-top" alt="부산">
 	                <div class="card-body">
 	                    <h5 class="card-title">부산</h5>
 	                    <p class="card-text">해양문화와 활기 넘치는 항구도시, 해변의 낭만</p>
@@ -185,7 +183,7 @@
 	        
 	         <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/광주_n.png" class="card-img-top" alt="광주">
+	                <img src="${path}/resources/image/admin/choose/과앙주.png" class="card-img-top" alt="광주">
 	                <div class="card-body">
 	                    <h5 class="card-title">광주</h5>
 	                    <p class="card-text">민주화운동의 역사적 의미와 풍부한 문화유산</p>
@@ -233,7 +231,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Seoul.jpg" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/서우울.jpg" alt="여행지 이미지" class="img-fluid">
         <div>
            <br>
            <h3>서울</h3>
@@ -270,7 +268,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Daegu.jpg" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/대구우.jpg" alt="여행지 이미지" class="img-fluid">
         <div>
            <br>
            <h3>대구</h3>
@@ -307,7 +305,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Gyeongju.jpg" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/경주우.jpg" alt="여행지 이미지" class="img-fluid">
         <div>
            <br>
            <h3>경주</h3>
@@ -344,7 +342,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Jeju.jpg" alt="여행지 이미지1" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/제에주.jpg" alt="여행지 이미지1" class="img-fluid">
         <div>
            <br>
            <h3>제주</h3>
@@ -381,7 +379,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/Busan.jpg" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/부사안.jpg" alt="여행지 이미지" class="img-fluid">
         <div>
            <br>
            <h3>부산</h3>
@@ -418,7 +416,7 @@ footer 하단 모달
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <img id="modalImage" src="${path}/resources/image/admin/choose/광주_n.png" alt="여행지 이미지" class="img-fluid">
+        <img id="modalImage" src="${path}/resources/image/admin/choose/과앙주.png" alt="여행지 이미지" class="img-fluid">
       <div>
          광주 개요
          위치: 광주는 전라남도에 위치한 광역시로, 대한민국의 남서부에 자리잡고 있습니다.

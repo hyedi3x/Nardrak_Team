@@ -158,4 +158,71 @@ public class LocalServiceImpl implements LocalService {
        response.getWriter().write(jsonResponse);
    }
 	
+// 국내 여행지 수정
+	@Override
+	public void modifyTour(MultipartHttpServletRequest request, HttpServletResponse response, Model model)
+			throws ServletException, IOException {
+		
+		// 기존 이미지 주소
+		String originImage = request.getParameter("originImage");
+		// 저장할 이미지 주소
+		String saveImage = "";
+		
+		 // 사용자가 업로드한 파일을 MultipartFile 객체로 저장
+        MultipartFile file = request.getFile("local_image");
+        System.out.println("file : "+ file);
+        
+		// 서버에서 저장될 디렉토리 경로 설정 (서버의 resources/upload/local 폴더)
+        String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/local");
+        System.out.println("saveDir : "+ saveDir);
+        
+        // 로컬 디스크에서 사용할 경로 설정
+        String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\local\\";
+		
+        // 파일 입출력을 위한 스트림 초기화
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        
+		//상세페이지에 있는 이미지를 수정할 경우, 기존 try ~ finally (끝까지) 잘라서 if문 내부에 넣기
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			try {
+				file.transferTo(new File(saveDir + file.getOriginalFilename())); // File 객체는 java.io에 있다.
+				fis = new FileInputStream(saveDir + file.getOriginalFilename());
+				fos = new FileOutputStream(realDir + file.getOriginalFilename());
+				saveImage = "/resources/upload/local/"+file.getOriginalFilename();
+				int data = 0;
+				while((data = fis.read()) != -1) { // .read()가 더 이상 읽을 데이터가 없으면 -1을 반환
+					fos.write(data);
+				}
+				
+			} catch(IOException e){
+				e.printStackTrace();
+			} finally {
+				if(fis != null) fis.close();
+				if(fos != null) fos.close();
+			}
+			
+		}
+		else { //추가
+			
+			// 기존 이미지 사용 (이미지 수정 안할 경우)
+			saveImage = originImage;
+			System.out.println("local_image1: "+ originImage);
+		}
+            
+            LocalDTO dto = new LocalDTO();
+        	
+            dto.setLocal_title(request.getParameter("local_title"));
+            dto.setRegion(request.getParameter("region"));
+            dto.setDescription(request.getParameter("description"));
+            dto.setLocal_tags(request.getParameter("local_tags"));
+            dto.setLocal_detail(request.getParameter("local_detail"));
+            String localImage = saveImage;
+            dto.setLocal_image(localImage);
+            dto.setLatitude(Double.parseDouble(request.getParameter("latitude")));
+            dto.setLongitude(Double.parseDouble(request.getParameter("longitude")));
+            
+            dao.updateTour(dto);
+	}
+
 }
