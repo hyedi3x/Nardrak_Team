@@ -94,13 +94,13 @@ public class ChooseServiceImpl implements ChooseService {
 		System.out.println("ChooseServiceImpl - ChooseInfo() ");
 		
 		// 쿼리 스트링으로 받은아온 pk값전달
-		String ch_title1 = request.getParameter("ch_title1");
+		int ch_num = Integer.parseInt(request.getParameter("ch_num"));
 		
 		ChooseDTO dto = null;
 		
 		// 쿼리 스트링으로 받아온 pk값이 있다면 상세정보 조회
-		if(ch_title1 != null) {
-			dto = dao.chooseInfo(ch_title1);
+		if(ch_num > 0) {
+			dto = dao.chooseInfo(ch_num);
 		}
 		
 		// dto에 담아 전달
@@ -113,7 +113,8 @@ public class ChooseServiceImpl implements ChooseService {
 			throws ServletException, IOException {
 	
 		// 기존 이미지 주소
-		String ch_title1 = request.getParameter("ch_title1");
+		String ch_title1 = request.getParameter("hidden_title1");
+		int ch_num = Integer.parseInt(request.getParameter("ch_number"));
 		
 		// 저장할 이미지 주소
 		String chImage = "";
@@ -159,6 +160,7 @@ public class ChooseServiceImpl implements ChooseService {
 		
 		ChooseDTO dto = new ChooseDTO();
 		
+		dto.setCh_num(ch_num);
 		dto.setCh_title1(request.getParameter("ch_title1"));
         dto.setCh_title2(request.getParameter("ch_title2"));
         String ch_image = chImage;
