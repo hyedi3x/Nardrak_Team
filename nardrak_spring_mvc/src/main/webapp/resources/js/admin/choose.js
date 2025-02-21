@@ -96,7 +96,7 @@
             if (!isLogin) {
                 event.preventDefault();
                 alert("로그인 후 찜하기 기능을 사용할 수 있습니다.");
-                window.location = "/nardrak_mvc/login.do";
+                window.location = path + "/login.do";
                 return;
             }
             
