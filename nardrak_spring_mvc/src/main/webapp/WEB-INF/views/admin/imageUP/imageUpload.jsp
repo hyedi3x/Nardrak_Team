@@ -46,7 +46,7 @@
 	                        <!-- 수정 버튼 -->
 	                        <form action="#" id="form-${image.image_id}" method="post" enctype="multipart/form-data">
 	                            <input type="hidden" name="imageId" value="${image.image_id}">
-	                            <input type="hidden" name="hiddenPath" value="${path}${image.image_path}">
+	                            <input type="hidden" name="hiddenPath" value="${image.image_path}">
 	                            <input type="file" name="ad_img" accept="image/*" style="display: none;" id="file-${image.image_id}">
 	                            <textarea name="image_rewrite" placeholder="수정할 설명을 입력하세요" rows="4" cols="50" required>${image.image_detail}</textarea><br><br>
 	                            <button type="button" class="btn-icon" onclick="document.getElementById('file-${image.image_id}').click();">✏️</button>
