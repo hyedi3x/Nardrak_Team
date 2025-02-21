@@ -29,6 +29,7 @@
 <script> 
 	var isLogin = ${sessionScope.sessionID != null ? 'true' : 'false'}; 
 	var isCustomer = ${sessionScope.login_session == "Customer" ? 'true' : 'false'};
+	var path = "${path}";
 </script>
 
  <!-- swiner styles -->
@@ -48,7 +49,7 @@
 	        <c:forEach var="choose" items="${list}">
 		        <div class="swiper-slide">
 		            <div class="slide-content">
-		                <a href="${path}/chooseDetailPage.ch?ch_title1=${choose.ch_title1}">
+		                <a href="${path}/chooseDetailPage.ch?ch_num=${choose.ch_num}">
 		                    <img src="${path}${choose.ch_image}" alt="${choose.ch_title1}">
 		                    <div class="slide-text1"> ${choose.ch_title1} </div>
 		                    <div class="slide-text2"> ${choose.ch_title2} </div>
@@ -68,36 +69,32 @@
 </div>
 
 <div id="min">
-	<div class="dest-card">
-	    <!-- 여행지 카드 내용 -->
-	    찜하기+999
-	    <span>❤️다른 사용자들이 찜하기 버튼을 많이 눌렀어요.!</span>
+	<!-- 선호 여행지 선택 문구 -->
+	<div class="choose-text">
+	    선호 여행지를 선택해주세요
+	    <span>여러분 여행지를 선택하고 즐거운 여행을 떠나보세요!</span>
 	</div>
-
+	
 	 <!-- 두번째 Swiper -->
 	 <div class="swiper mySwiper2">
 		  <div class="swiper-wrapper">
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/경복궁.jpg" alt="Slide 1"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/남산공원.jpg" alt="Slide 2"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/석촌호수.jpg" alt="Slide 3"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/여의도 윤중로.jpg" alt="Slide 4"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/제주 여행지.jpg" alt="Slide 5"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/경주 여행지.png" alt="Slide 6"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/부산.jpg"alt="Slide 7"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/부산 여행지.jpg" alt="Slide 8"></div>
-		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/Seoul.jpg"alt="Slide 9"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/333.png" alt="Slide 4"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/222.png" alt="Slide 5"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/111.png" alt="Slide 6"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/사진찍기 좋은 2.png"alt="Slide 7"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/사진찍기좋은3.png" alt="Slide 8"></div>
+		    <div class="swiper-slide"><img src="${path}/resources/image/admin/choose/사진찍기좋은.png"alt="Slide 9"></div>
 		     <!-- 추가 슬라이드 -->
 		  </div>
 		  <!-- 페이지네이션 -->
 		  <div class="swiper2-pagination"></div>
 	</div>
 
-
-
-	<!-- 선호 여행지 선택 문구 -->
-	<div class="choose-text">
-	    선호 여행지를 선택해주세요
-	    <span>여러분 여행지를 선택하고 즐거운 여행을 떠나보세요!</span>
+	
+	<div class="dest-card">
+	    <!-- 여행지 카드 내용 -->
+	    찜하기+999
+	    <span>❤️다른 사용자들이 찜하기 버튼을 많이 눌렀어요.!</span>
 	</div>
 		
 	
@@ -121,19 +118,21 @@
 	        
 	        <div class="col-md-4">
 	            <div class="card">
-	                <img src="${path}/resources/image/admin/choose/대구우.jpg" class="card-img-top" alt="대구">
+	                <img src="${path}/resources/image/admin/choose/대구우.jpg" class="card-img-top" alt="경주">
 	                <div class="card-body">
-	                      <h5 class="card-title">대구</h5>
-	                    <p class="card-text">역사와 전통, 그리고 맛있는 음식이 가득한 도시</p>
+	                    <h5 class="card-title">경주</h5>
+	                    <p class="card-text">천년을 이어온 유적지와 문화유산의 고도</p>
 	                    <!-- 추가한 부분 -->
 	                    <input type="checkbox" class="heart-checkbox">
 			            <label class="heart-label">
 			                <i class="fa-regular fa-heart"></i>  <!-- Font Awesome 하트 아이콘 -->
 			            </label>
-	                    <a href="#" class="btn-primary" data-bs-toggle="modal" data-bs-target="#travelInfo2">자세히 보기</a>
+	                    <a href="#" class="btn-primary" data-bs-toggle="modal" data-bs-target="#travelInfo3">자세히 보기</a>
 	                </div>
 	            </div>
 	        </div>
+	        
+	        
 	        <div class="col-md-4">
 	            <div class="card">
 	                <img src="${path}/resources/image/admin/choose/경주우.jpg" class="card-img-top" alt="경주">
