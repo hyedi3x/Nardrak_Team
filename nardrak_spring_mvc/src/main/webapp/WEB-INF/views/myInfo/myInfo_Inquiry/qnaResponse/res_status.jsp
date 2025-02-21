@@ -10,6 +10,8 @@
 <!-- css -->
 <link href="${path}/resources/css/myInfo/myInfo_Inquiry/res_status.css" rel="stylesheet">
 
+<!-- js -->
+<script src="${path}/resources/js/myInfo/qnaResponse.js" defer></script>
 </head>
 <body>
 	<c:set var="status" value="${param.status == 'complete' ? 'complete' : 'pending'}" scope="request"/>	
@@ -90,24 +92,17 @@
 	    </c:when>
 	</c:choose>
 	
-	<div id="pagingTd" class="font20">
-	    <c:if test="${paging.prev > 0}">
-	        <a href="${path}/res_status.do?page=${paging.prev}&status=${param.status}"> &lt;&lt; 이전 </a>
+	<div id="pagingTd">
+	    <c:if test="${paging.startBlock > paging.pageBlock}">
+	        <a onclick="load('${path}/res_status.do?page=${paging.prev}&status=${param.status}')"> &lt;&lt; prev </a>
 	    </c:if>
 	
-	    <c:forEach var="num" begin="${paging.startBlock}" end="${paging.endBlock}">
-	        <c:choose>
-	            <c:when test="${num == paging.currentPage}">
-	                <strong>${num}</strong>
-	            </c:when>
-	            <c:otherwise>
-	                <a href="${path}/res_status.do?page=${num}&status=${param.status}">${num}</a>
-	            </c:otherwise>
-	        </c:choose>
-	    </c:forEach>
+		<c:forEach var="num" begin="${paging.startBlock}" end="${paging.endBlock}">
+			<a onclick="load('${path}/res_status.do?page=${num}&status=${param.status}')">${num}</a>
+		</c:forEach>
 	
 	    <c:if test="${paging.next <= paging.pageNum}">
-	        <a href="${path}/res_status.do?page=${paging.next}&status=${param.status}"> 다음 &gt;&gt; </a>
+	        <a onclick="load('${path}/res_status.do?page=${paging.next}&status=${param.status}')"> next &gt;&gt; </a>
 	    </c:if>
 	</div>
 </body>
