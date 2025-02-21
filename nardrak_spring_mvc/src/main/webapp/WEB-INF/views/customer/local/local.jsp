@@ -67,23 +67,13 @@
 	<div class="tag-box">
 	    <h4>태그</h4>
 	    <div class="tag-list">
-	        <span>#전체</span>
-	        <span>#서울</span>
-	        <span>#부산</span>
-	        <span>#대구</span>
-	        <span>#인천</span>
-	        <span>#광주</span>
-	        <span>#대전</span>
-	        <span>#울산</span>
-	        <span>#강원</span>
-	        <span>#경기</span>
-	        <span>#전주</span>
-	        <span>#문화시설</span>
-	        <span>#역사</span>
-	        <span>#맛집</span>
-	        <span>#쇼핑</span>
-	        <span>#힐링</span>
-	        <span>#자연</span>
+	        <span><a href="${path}/local.tr?region=서울">>#서울</a></span>
+	        <span><a href="${path}/local.tr?region=경기">#경기</a></span>
+	        <span><a href="${path}/local.tr?region=강원">#강원</a></span>
+	        <span><a href="${path}/local.tr?region=충청">#충청</a></span>
+	        <span><a href="${path}/local.tr?region=경상">#경상</a></span>
+	        <span><a href="${path}/local.tr?region=전라">#전라</a></span>
+	        <span><a href="${path}/local.tr?region=제주">#제주</a></span>	    
 	    </div>
 	</div>
 </div>
