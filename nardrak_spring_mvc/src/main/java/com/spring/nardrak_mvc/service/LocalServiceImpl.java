@@ -40,18 +40,38 @@ public class LocalServiceImpl implements LocalService {
         
         // 로컬 디스크에서 사용할 경로 설정
         String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\local\\";
+        
+        String originalName = file.getOriginalFilename(); // 원래 파일 이름
+        String extension = ""; // 확장자
+        int lastDot = originalName.lastIndexOf(".");
+        
+        if(lastDot > 0) {
+        	extension = originalName.substring(lastDot);
+        	originalName = originalName.substring(0, lastDot);
+        }
+        
+        // 중복되지 않는 파일 이름
+        String newName = originalName + extension;
+        int count = 1;
+        File newFile = new File(saveDir + newName);
+        while(newFile.exists()) {
+        	newName = originalName + "(" + count + ")" + extension;
+        	newFile = new File(saveDir + newName);
+        	count++;
+        }
 		
         // 파일 입출력을 위한 스트림 초기화
         FileInputStream fis = null;
         FileOutputStream fos = null;
         
         try {
-        	file.transferTo(new File(saveDir + file.getOriginalFilename()));
-        	
-        	// 저장된 파일을 로컬 디스크로 복사하기 위한 입력, 출력 스트림 초기화
-            fis = new FileInputStream(saveDir + file.getOriginalFilename());
-            fos = new FileOutputStream(realDir + file.getOriginalFilename());
+        	// 업로드된 파일을 서버의 지정된 디렉토리에 저장
+            file.transferTo(newFile);
 
+            // 저장된 파일을 로컬 디스크로 복사하기 위한 입력, 출력 스트림 초기화
+            fis = new FileInputStream(newFile);
+            fos = new FileOutputStream(realDir + newName);
+            
             // 파일 내용을 한 바이트씩 읽고 로컬 파일에 복사
             int data = 0;
             while ((data = fis.read()) != -1) { // 파일 끝까지 읽기
@@ -65,7 +85,7 @@ public class LocalServiceImpl implements LocalService {
             dto.setDescription(request.getParameter("description"));
             dto.setLocal_tags(request.getParameter("local_tags"));
             dto.setLocal_detail(request.getParameter("local_detail"));
-            String localImage = "/resources/upload/local/" + file.getOriginalFilename();
+            String localImage = "/resources/upload/local/" + newName;
             dto.setLocal_image(localImage);
             dto.setLatitude(Double.parseDouble(request.getParameter("latitude")));
             dto.setLongitude(Double.parseDouble(request.getParameter("longitude")));
@@ -178,6 +198,25 @@ public class LocalServiceImpl implements LocalService {
         
         // 로컬 디스크에서 사용할 경로 설정
         String realDir = "D:\\Git\\Nardrak_Team\\nardrak_spring_mvc\\src\\main\\webapp\\resources\\upload\\local\\";
+        
+        String originalName = file.getOriginalFilename(); // 원래 파일 이름
+        String extension = ""; // 확장자
+        int lastDot = originalName.lastIndexOf(".");
+        
+        if(lastDot > 0) {
+        	extension = originalName.substring(lastDot);
+        	originalName = originalName.substring(0, lastDot);
+        }
+        
+        // 중복되지 않는 파일 이름
+        String newName = originalName + extension;
+        int count = 1;
+        File newFile = new File(saveDir + newName);
+        while(newFile.exists()) {
+        	newName = originalName + "(" + count + ")" + extension;
+        	newFile = new File(saveDir + newName);
+        	count++;
+        }
 		
         // 파일 입출력을 위한 스트림 초기화
         FileInputStream fis = null;
@@ -186,14 +225,19 @@ public class LocalServiceImpl implements LocalService {
 		//상세페이지에 있는 이미지를 수정할 경우, 기존 try ~ finally (끝까지) 잘라서 if문 내부에 넣기
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			try {
-				file.transferTo(new File(saveDir + file.getOriginalFilename())); // File 객체는 java.io에 있다.
-				fis = new FileInputStream(saveDir + file.getOriginalFilename());
-				fos = new FileOutputStream(realDir + file.getOriginalFilename());
-				saveImage = "/resources/upload/local/"+file.getOriginalFilename();
+				// 업로드된 파일을 서버의 지정된 디렉토리에 저장
+            	file.transferTo(newFile);
+            	
+            	// 저장된 파일을 로컬 디스크로 복사하기 위한 입력, 출력 스트림 초기화
+                fis = new FileInputStream(newFile);
+                fos = new FileOutputStream(realDir + newName);
+                
 				int data = 0;
 				while((data = fis.read()) != -1) { // .read()가 더 이상 읽을 데이터가 없으면 -1을 반환
 					fos.write(data);
 				}
+				
+				saveImage = "/resources/upload/local/"+newName;
 				
 			} catch(IOException e){
 				e.printStackTrace();
