@@ -34,14 +34,31 @@
 		
 		<div class="divWidth100"><img id ="local_image" class="local_image" src="${path}${dto.local_image}" alt="${dto.local_title}"></div>
 		
-	    <div class="detailDiv"><div><h3>상세정보</h3></div></div>
+	    <div class="detailDiv">
+	    	<div><h3>상세정보</h3></div>
+	    </div>
 	     
      	<div class="detailDiv2"><div id="local_detail">${dto.local_detail}</div></div>	
 		
+		<div class="detailDiv">
+	    	<div><h3>${dto.local_title} 지도</h3></div>
+	    </div>
+	    
 		<div id="mapDiv"><div id="map" style="width:700px;height:300px;"></div></div>
 
+		<div class="detailDiv"><div>
+			<h3>${dto.local_title} 로드뷰 [ 100m 이내 ]</h3></div>
+		</div>
+		
+		<!-- 로드뷰 -->
+		<div id="loadDiv">
+			<div id="roadview" style="width:100%;height:300px;"></div>	
+		    <div id="noRoadviewMessage" style="display:none; color:red;">로드뷰가 없습니다</div>
+		</div>
+		
 			<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41c38302d9f4c82a17d46b1f3eeff982"></script>
 			<script>
+				/* 지도 */
 			    var mapContainer = document.getElementById('map'),
 			        mapOption = {
 			            center: new kakao.maps.LatLng(${dto.latitude}, ${dto.longitude}),
@@ -81,54 +98,38 @@
 				// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 				infowindow.open(map, marker);
 				
-			 	// 카카오 장소 검색 API(키워드 검색할려면 필수로 해야 하는 부분)
-				var ps = new kakao.maps.services.Places();
-
-				document.getElementById('search-btn').addEventListener('click', function() {
-				    var keyword = document.getElementById('keyword-search').value;
-
-				    ps.keywordSearch(keyword, function(data, status, pagination) {
-				        if (status === kakao.maps.services.Status.OK) {
-				            var place = data[0]; // 첫 번째 검색 결과만 사용
-				            var latlng = new kakao.maps.LatLng(place.y, place.x);
-
-				            // 지도 중심 이동
-				            map.setCenter(latlng);
-				            
-				            // 마커 위치 이동
-				            marker.setPosition(latlng);
-				            
-				         	// 위도와 경도를 소수점 6자리로 반올림하여 입력
-				            var latitude = latlng.getLat().toFixed(6);
-				            var longitude = latlng.getLng().toFixed(6);
-				            
-				         	// 위도, 경도 값 입력
-				            document.getElementById('latitude').value = latitude;
-				            document.getElementById('longitude').value = longitude;
-				        } else {
-				            alert('검색된 결과가 없습니다.');
-				        }
-				    });
-				});
-			</script>
-			
-			<div class="detailDiv"><div><h3>${dto.local_title} 로드뷰</h3></div></div>
-			
-			<!-- 로드뷰 -->
-			<div id="loadDiv"><div id="roadview" style="width:100%;height:300px;"></div></div>
-
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41c38302d9f4c82a17d46b1f3eeff982"></script>
-			<script>
+				/* 로드뷰 */
 				var roadviewContainer = document.getElementById('roadview'); //로드뷰를 표시할 div
-				var roadview = new kakao.maps.Roadview(roadviewContainer); //로드뷰 객체
-				var roadviewClient = new kakao.maps.RoadviewClient(); //좌표로부터 로드뷰 파노ID를 가져올 로드뷰 helper객체
-				
-				var position = new kakao.maps.LatLng(${dto.latitude}, ${dto.longitude});
-				
-				// 특정 위치의 좌표와 가까운 로드뷰의 panoId를 추출하여 로드뷰를 띄운다.
-				roadviewClient.getNearestPanoId(position, 50, function(panoId) {
-				    roadview.setPanoId(panoId, position); //panoId와 중심좌표를 통해 로드뷰 실행
-				});
+			    var roadview = new kakao.maps.Roadview(roadviewContainer); //로드뷰 객체
+			    var roadviewClient = new kakao.maps.RoadviewClient(); //좌표로부터 로드뷰 파노ID를 가져올 로드뷰 helper객체
+			
+			    var position = new kakao.maps.LatLng(${dto.latitude}, ${dto.longitude}); // 로드뷰 위치
+			
+			    // 특정 위치의 좌표와 가까운 로드뷰의 panoId를 추출하여 로드뷰를 띄운다.
+			    roadviewClient.getNearestPanoId(position, 100, function(panoId) {
+			        if (panoId === null) {
+			            // 로드뷰가 없는 경우 메시지를 표시
+			            // 기존 noRoadviewMessage 숨김
+			            document.getElementById('noRoadviewMessage').style.display = 'none';
+			
+			            // 새로운 메시지 div 생성
+			            var messageDiv = document.createElement('div');
+			            messageDiv.innerHTML = '로드뷰가 없습니다';
+			            messageDiv.style.position = 'absolute'; // 절대 위치 설정
+			            messageDiv.style.top = '50%'; // 세로 중앙 정렬
+			            messageDiv.style.left = '50%'; // 가로 중앙 정렬
+			            messageDiv.style.transform = 'translate(-50%, -50%)'; // 중앙 정렬 보정
+			            messageDiv.style.color = 'white'; // 흰색 텍스트
+			            messageDiv.style.fontSize = '20px'; // 글꼴 크기 설정
+			            messageDiv.style.fontWeight = 'bold'; // 굵은 글꼴 설정
+			
+			            // 회색 화면 위에 메시지 추가
+			            roadviewContainer.appendChild(messageDiv);
+			        } else {
+			            // 로드뷰가 있는 경우 로드뷰 실행
+			            roadview.setPanoId(panoId, position);
+			        }
+			    });
 			</script>
 			
 	</div>
