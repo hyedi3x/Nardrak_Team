@@ -82,7 +82,6 @@ public class ChooseServiceImpl implements ChooseService {
       System.out.println("ChooseServiceImpl - ChooseList()");
 
 	  List<ChooseDTO> list = dao.ChooseList();
-      System.out.println(list);
       
       model.addAttribute("list", list);  
    }
