@@ -211,35 +211,23 @@ public class CustomerServiceImpl implements CustomerService{
       // [주소]
       String user_addr ="";
       
-      String postcode_ad = request.getParameter("postcode");  // 우편번호
-      String road_ad = request.getParameter("road");	      // 도로명주소
+      String postcode_ad = request.getParameter("postcode");  // 우편번호(required)
+      String road_ad = request.getParameter("road");	      // 도로명주소(required)
       String jibun_ad = request.getParameter("jibun");        // 지번주소
-      String detail_ad = request.getParameter("detail");      // 상세주소
+      String detail_ad = request.getParameter("detail");      // 상세주소(required)
       String extra_ad = request.getParameter("extra");        // 참고항목
       
-      // 지번주소, 상세주소, 참고항목 모두 있을 때	//isEmpty()는 문자열이 ""처럼 비어있을 때 true를 리턴
+      // 지번주소, 참고항목 모두 있을 때	//isEmpty()는 문자열이 ""처럼 비어있을 때 true를 리턴
       if (!jibun_ad.isEmpty() && !detail_ad.isEmpty() && !extra_ad.isEmpty()) {
           user_addr = postcode_ad + "," + road_ad + "," + jibun_ad + "," + detail_ad + "," + extra_ad;
       }
-      // 지번주소, 상세주소가 있을 때 (참고항목은 제외)
-      else if (!jibun_ad.isEmpty() && !detail_ad.isEmpty()) {
-          user_addr = postcode_ad + "," + road_ad + "," + jibun_ad + "," + detail_ad + "," + " ";
-      }
       // 지번주소만 있을 때 (상세주소와 참고항목은 제외)
       else if (!jibun_ad.isEmpty()) {
-          user_addr = postcode_ad + "," + road_ad + "," + jibun_ad + "," + " " + "," + " ";
-      }
-      // 상세주소, 참고항목 있을 때 (지번주소는 제외)
-      else if (!detail_ad.isEmpty() && !extra_ad.isEmpty()) {
-          user_addr = postcode_ad + "," + road_ad + "," + " " + "," + detail_ad + "," + extra_ad;
-      }
-      // 상세주소만 있을 때 (지번주소와 참고항목은 제외)
-      else if (!detail_ad.isEmpty()) {
-          user_addr = postcode_ad + "," + road_ad + "," + " " + "," + detail_ad + "," + " ";
+          user_addr = postcode_ad + "," + road_ad + "," + jibun_ad + "," + detail_ad + "," + " ";
       }
       // 참고항목만 있을 때 (지번주소와 상세주소는 제외)
       else if (!extra_ad.isEmpty()) {
-          user_addr = postcode_ad + "," + road_ad + "," + " " + "," + " " + "," + extra_ad;
+          user_addr = postcode_ad + "," + road_ad + "," + " " + "," + detail_ad + "," + extra_ad;
       }
       
       dto.setCs_zip(user_addr);
@@ -285,6 +273,8 @@ public class CustomerServiceImpl implements CustomerService{
       String cs_del_terms = request.getParameter("agree1"); //탈퇴 동의 여부
       String cs_drCode = request.getParameter("levCd"); // 탈퇴 사유 코드
       String cs_etc_cmmt = request.getParameter("etcCmmt"); // 기타 사유 (입력한 텍스트)
+      
+      System.out.println(cs_del_terms);
       
       //DTO 생성 후 파라미터 세팅
       CustomerDeleteDTO dto = new CustomerDeleteDTO();
