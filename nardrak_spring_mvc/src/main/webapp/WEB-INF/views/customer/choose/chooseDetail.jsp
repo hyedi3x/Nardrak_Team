@@ -24,9 +24,10 @@
 <div class="wrap">
 	<div class="container">
 		
-		<form name="chooseform" action="${path}/addChooseDetailAction.ch" method="post" enctype="multipart/form-data" onsubmit="return signlnCheck()">
+		<form name="chooseform" action="addChooseDetailAction.ch" method="post" enctype="multipart/form-data">
 	        
 	        <table>  
+	        
 	            <tr class="width100">
 	             	<th>제목1</th> 
 	             	<td>
