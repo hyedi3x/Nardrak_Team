@@ -163,10 +163,9 @@ public class MyInfoServiceImpl implements MyInfoService{
 	    dto.setI_title(request.getParameter("i_title")); // 문의 제목 설정
 	    
 	    // 선택한 문의 유형 설정
-	    String category = String.join(",", 
+	    String category = String.join(", ", 
 	        request.getParameter("i_category1"), 
-	        request.getParameter("i_category2"), 
-	        request.getParameter("i_category3"));
+	        request.getParameter("i_category2"));
 	    dto.setI_category(category);
 	    
 	    dto.setI_content(request.getParameter("i_content")); // 문의 내용 설정
