@@ -60,39 +60,4 @@ public class FavoriteController {
         return "customer/choose/choose"; 
     }
 		
-	// ==================== [ 꽃따라 봄 이미지 클릭 페이지 이동] =======================
-	@RequestMapping("/mySwiper1-1.fa")
-    public String mySwiper1_1(HttpServletRequest request,HttpServletResponse response , Model model) 
-			throws ServletException, IOException {
-		logger.info("<< url - Seoul.fa >>");
-        
-        return "customer/choose/mySwiper1-1";   
-	}
-	
-	// ==================== [ 꽃따라 봄 이미지 클릭 페이지 이동] =======================
-	@RequestMapping("/mySwiper1-2.fa")
-    public String mySwiper1_2(HttpServletRequest request,HttpServletResponse response , Model model) 
-			throws ServletException, IOException {
-		logger.info("<< url - mySwiper1-2.fa >>");
-        
-        return "customer/choose/mySwiper1-2";   
-	}
-		
-	// ==================== [ 꽃따라 봄 이미지 클릭 페이지 이동] =======================
-	@RequestMapping("/mySwiper1-3.fa")
-    public String mySwiper1_3(HttpServletRequest request,HttpServletResponse response , Model model) 
-			throws ServletException, IOException {
-		logger.info("<< url - mySwiper1-3 >>");
-        
-        return "customer/choose/mySwiper1-3";   
-	}	
-
-	// ==================== [ 꽃따라 봄 이미지 클릭 페이지 이동] =======================
-	@RequestMapping("/mySwiper1-4.fa")
-    public String mySwiper1_4(HttpServletRequest request,HttpServletResponse response , Model model) 
-			throws ServletException, IOException {
-		logger.info("<< url - mySwiper1-4 >>");
-        
-        return "customer/choose/mySwiper1-4";   
-		}
 }

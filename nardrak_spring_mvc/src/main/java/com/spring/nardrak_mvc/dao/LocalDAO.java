@@ -24,4 +24,8 @@ public interface LocalDAO {
 	
 	// 
 	public int checkTitle(String local_title);
+	
+	// ======================= [국내 여행지 상세정보 수정] =======================
+	public int updateTour(LocalDTO dto);
+	
 }

@@ -21,13 +21,15 @@ public class AdminDTO {
 	private String l_session; 		// 계정권한 (admin)
 	private String access_status;   // 관리자 권한
 	private String rn;              // 페이지에 사용되는 RowNum
-	// 디폴트 생성자
-	public AdminDTO() {}
+	private String delete_status;              // 페이지에 사용되는 RowNum
+	private String timeDiff;              // 페이지에 사용되는 RowNum
 	
-	// 매개변수 생성자
+	public AdminDTO() {}
+
 	public AdminDTO(String ad_id, String ad_pwd, String ad_name, String ad_birth, String ad_phone, String ad_email,
 			String ad_zip, String ad_tel, String ad_empnum, String ad_dep, Timestamp ad_regDate, String ad_terms,
-			String ad_permission, String l_session, String access_status, String rn) {
+			String ad_permission, String l_session, String access_status, String rn, String delete_status,
+			String timeDiff) {
 		super();
 		this.ad_id = ad_id;
 		this.ad_pwd = ad_pwd;
@@ -45,9 +47,10 @@ public class AdminDTO {
 		this.l_session = l_session;
 		this.access_status = access_status;
 		this.rn = rn;
+		this.delete_status = delete_status;
+		this.timeDiff = timeDiff;
 	}
 
-	// getter, setter
 	public String getAd_id() {
 		return ad_id;
 	}
@@ -159,7 +162,7 @@ public class AdminDTO {
 	public void setL_session(String l_session) {
 		this.l_session = l_session;
 	}
-	
+
 	public String getAccess_status() {
 		return access_status;
 	}
@@ -167,7 +170,7 @@ public class AdminDTO {
 	public void setAccess_status(String access_status) {
 		this.access_status = access_status;
 	}
-	
+
 	public String getRn() {
 		return rn;
 	}
@@ -175,14 +178,30 @@ public class AdminDTO {
 	public void setRn(String rn) {
 		this.rn = rn;
 	}
-	
-	// toString
+
+	public String getDelete_status() {
+		return delete_status;
+	}
+
+	public void setDelete_status(String delete_status) {
+		this.delete_status = delete_status;
+	}
+
+	public String getTimeDiff() {
+		return timeDiff;
+	}
+
+	public void setTimeDiff(String timeDiff) {
+		this.timeDiff = timeDiff;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminDTO [ad_id=" + ad_id + ", ad_pwd=" + ad_pwd + ", ad_name=" + ad_name + ", ad_birth=" + ad_birth
 				+ ", ad_phone=" + ad_phone + ", ad_email=" + ad_email + ", ad_zip=" + ad_zip + ", ad_tel=" + ad_tel
 				+ ", ad_empnum=" + ad_empnum + ", ad_dep=" + ad_dep + ", ad_regDate=" + ad_regDate + ", ad_terms="
-				+ ad_terms + ", ad_permission=" + ad_permission + ", l_session=" + l_session + ","
-				+ " access_status=" + access_status + "rn=" + rn + "]";
+				+ ad_terms + ", ad_permission=" + ad_permission + ", l_session=" + l_session + ", access_status="
+				+ access_status + ", rn=" + rn + ", delete_status=" + delete_status + ", timeDiff=" + timeDiff + "]";
 	}
+	
 }
