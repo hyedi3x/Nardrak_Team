@@ -58,7 +58,7 @@
     
     // 찜 목록을 서버에서 받아오기.
     $.ajax({
-        url: "/nardrak_mvc/getFavoriteList.fa", // 찜 목록을 가져오는 requestMapping한 URL
+        url: path + "/getFavoriteList.fa", // 찜 목록을 가져오는 requestMapping한 URL
         method: "POST",
         dataType: "json",
         success: function(favorites) {
@@ -113,7 +113,7 @@
 
             // 찜하기 추가/삭제 AJAX 요청
             $.ajax({
-                url: "/nardrak_mvc/favorite.fa",
+                url: path + "/favorite.fa",
                 method: "POST",
                 data: {
                     dest_name: destName,
