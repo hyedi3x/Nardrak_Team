@@ -47,7 +47,7 @@ public class MyInfoDAOImpl implements MyInfoDAO{
 	//======================= [ 1:1 문의 등록 ] =======================
 	@Override
 	public int insertInquiry(InquiryDTO dto) {
-		System.out.println("CustomerDAOImpl - insertInquiry()");
+		System.out.println("MyInfoDAOImpl - insertInquiry()");
 		
 		return sqlSession.insert(namespace + "insertInquiry", dto);
 	}
@@ -55,7 +55,7 @@ public class MyInfoDAOImpl implements MyInfoDAO{
 	//======================= [ 1:1 문의 내역 불러오기] =======================
 	@Override
 	public List<InquiryDTO> inquiryResList(Map<String, Object> maps) {
-	    System.out.println("CustomerDAOImpl - inquiryResList()");
+	    System.out.println("MyInfoDAOImpl - inquiryResList()");
 
 	    return sqlSession.selectList(namespace + "inquiryResList", maps);
 	}
@@ -63,7 +63,7 @@ public class MyInfoDAOImpl implements MyInfoDAO{
 	//======================= [ 1:1 문의 내역 전체 게시글 수를 반환 ] =======================
 	@Override
 	public int inquiryResListCnt(Map<String, Object> maps) {
-	    System.out.println("CustomerDAOImpl - inquiryResListCount()");
+	    System.out.println("MyInfoDAOImpl - inquiryResListCount()");
 	    
 	    return sqlSession.selectOne(namespace + "inquiryResListCount", maps);
 	}

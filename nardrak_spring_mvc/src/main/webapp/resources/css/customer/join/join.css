@@ -177,6 +177,14 @@ select:focus {
 	outline: none;
 }
 
+input[readonly] {
+	background-color: #f8f9fa !important;
+    border: 1px solid #ccc !important;
+    color: #222 !important;
+    text-align: center !important;
+    cursor: not-allowed !important;
+}
+
 /* ------------------ [반응형 설정] ------------------ */
 @media (max-width: 768px) {
     table {
