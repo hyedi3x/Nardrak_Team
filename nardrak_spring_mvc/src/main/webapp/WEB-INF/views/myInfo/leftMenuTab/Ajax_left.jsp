@@ -67,6 +67,8 @@
 					<ul class="info_menu">
 						<li class="on"><a href="#">☞ 찜한 상품</a></li>
 						<li class="on"><a onclick="window.location='${path}/locationDetail.tr'">국내여행지 정보 등록</a></li>
+						<li class="on"><a onclick="window.location='${path}/chooseDetail.ch'">추천 여행지 정보 등록</a></li>
+						
 					</ul>
 				</li>				
 				
