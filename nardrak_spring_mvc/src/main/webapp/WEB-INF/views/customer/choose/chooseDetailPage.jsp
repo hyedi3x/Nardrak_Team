@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 
 <!-- css -->
-<link rel="stylesheet" href="${path}/resources/css/admin/chooseDetail/chooseDetail.css">
+<link rel="stylesheet" href="${path}/resources/css/admin/choose/chooseDetail.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> <!-- Swiper 적용-->
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- 글씨체 적용(js)  -->
 
