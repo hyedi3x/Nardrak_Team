@@ -2,6 +2,7 @@ package com.spring.nardrak_mvc.dto;
 
 public class ChooseDTO {
 
+	private int ch_num;					// 번호
 	private String ch_title1;			// 부연설명1 
 	private String ch_title2;			// 부연설명 
 	private String ch_image;			// 이미지 URL 
@@ -15,10 +16,10 @@ public class ChooseDTO {
 		super();
 	}
 
-	// 매개변수 생성자
-	public ChooseDTO(String ch_title1, String ch_title2, String ch_image, String ch_tags1, String ch_tags2,
+	public ChooseDTO(int ch_num, String ch_title1, String ch_title2, String ch_image, String ch_tags1, String ch_tags2,
 			String ch_detail_image, String ch_detail) {
 		super();
+		this.ch_num = ch_num;
 		this.ch_title1 = ch_title1;
 		this.ch_title2 = ch_title2;
 		this.ch_image = ch_image;
@@ -29,7 +30,14 @@ public class ChooseDTO {
 	}
 
 	
-	// getter, setter
+	public int getCh_num() {
+		return ch_num;
+	}
+
+	public void setCh_num(int ch_num) {
+		this.ch_num = ch_num;
+	}
+
 	public String getCh_title1() {
 		return ch_title1;
 	}
@@ -86,12 +94,11 @@ public class ChooseDTO {
 		this.ch_detail = ch_detail;
 	}
 
-	// toString
 	@Override
 	public String toString() {
-		return "ChooseDTO [ch_title1=" + ch_title1 + ", ch_title2=" + ch_title2 + ", ch_image=" + ch_image
-				+ ", ch_tags1=" + ch_tags1 + ", ch_tags2=" + ch_tags2 + ", ch_detail_image=" + ch_detail_image
-				+ ", ch_detail=" + ch_detail + "]";
+		return "ChooseDTO [ch_num=" + ch_num + ", ch_title1=" + ch_title1 + ", ch_title2=" + ch_title2 + ", ch_image="
+				+ ch_image + ", ch_tags1=" + ch_tags1 + ", ch_tags2=" + ch_tags2 + ", ch_detail_image="
+				+ ch_detail_image + ", ch_detail=" + ch_detail + "]";
 	}
 
 	
