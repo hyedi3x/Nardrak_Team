@@ -68,7 +68,7 @@
 	<select id="adminAccessCount" resultType="int">
 		SELECT COUNT(*)
 		  FROM admin_tb
-		WHERE access_status = 'N'
+		WHERE access_status = 'N' AND delete_status = 'N'
 	</select>
 	
 	<!-- 관리자 등록 요청 조회 -->
@@ -78,7 +78,7 @@
 		      SELECT ROWNUM rn, ad.*
 		        FROM (SELECT *
 		                FROM admin_tb
-		              WHERE access_status = 'N'
+		              WHERE access_status = 'N' AND delete_status = 'N'
 		              ORDER BY ad_regdate
 		              ) ad
 		      )
